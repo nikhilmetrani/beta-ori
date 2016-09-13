@@ -23,7 +23,9 @@ Dependency setup
     3.10.3
     ```
 2. Install npm dependencies
-    ```npm install gulp -g
+
+    ```
+    npm install gulp -g
     npm install gulp-cli -g
     npm install typings -g
     npm install typescript -g
@@ -90,4 +92,4 @@ _This task will watch for changes in src folder and execute the build and deploy
 References
 ---------
 
-- A step-by-step tutorial - http://blog.codeleak.pl/2016/03/quickstart-angular2-with-typescript-and.html
+- https://angular.io/
