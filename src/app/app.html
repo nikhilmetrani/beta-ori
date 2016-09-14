@@ -32,11 +32,51 @@
                 <li><a routerLink="/about">About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li *ngIf="!isAuthenticated"><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
+                <li class="dropdown" *ngIf="isAuthenticated">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">{{userName}}</a></li>
+                        <li><button (click)="logout()" class="btn btn-primary">Logout</button></li> 
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<!-- Modal -->
+<div id="loginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Sign in</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4 social-buttons">
+                            <a class="btn btn-block btn-social btn-facebook" href="/login/facebook">
+                                <span class="fa fa-facebook"></span> Sign in with Facebook
+                            </a>
+                            <a class="btn btn-block btn-social btn-github" href="/login/github">
+                                <span class="fa fa-github"></span> Sign in with GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <div class="container">
     <router-outlet></router-outlet>
 </div>

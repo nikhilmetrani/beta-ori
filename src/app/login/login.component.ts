@@ -24,7 +24,6 @@ import {Observable} from 'rxjs/Observable';
 })
 export class LoginComponent implements OnInit {
     userName: string;
-    userNameObs: Observable<any>;
     isAuthenticated: boolean;
 
     constructor(private loginService: LoginService) {
@@ -38,8 +37,6 @@ export class LoginComponent implements OnInit {
     tryLogin() {
         this.loginService.login().subscribe(
             user => {
-                console.log(user);
-                console.log(user.name);
                 this.validateUser(user.name);
             }
         );

@@ -1,5 +1,4 @@
 #Beta-Ori
-=================================
 
 The fornt-end for Alpha-Umi REST API server.
 
