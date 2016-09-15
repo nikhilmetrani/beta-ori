@@ -38,12 +38,7 @@ export class LoginService {
     }
 
     logout() {
-
-        var useHeaders = new Headers({
-            'X-Requested-With': 'XMLHttpRequest'
-        });
-
-        return this.http.post("/logout", {}, {'headers': useHeaders})
+        return this.http.post("logout", {})
             .map(response => this.extractData)
             .catch(this.logError);
     }

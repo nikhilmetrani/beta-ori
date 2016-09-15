@@ -21,6 +21,7 @@ import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {AboutComponent} from "./about/components/about.components";
 import {LoginComponent} from "./login/login.component";
+import {DeveloperComponent} from "./developer/developer.component";
 import {LoginService} from "./login/login.service";
 
 import {DeveloperListPipe} from './store/shared/developer-list.pipe';
@@ -46,6 +47,7 @@ import {FormsModule} from "@angular/forms";
         FavoriteDirective,
         Application,
         AboutComponent,
+        DeveloperComponent,
         LoginComponent
     ],
     providers: [

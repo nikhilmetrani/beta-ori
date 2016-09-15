@@ -32,13 +32,26 @@
                 <li><a routerLink="/about">About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li *ngIf="!isAuthenticated"><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
-                <li class="dropdown" *ngIf="isAuthenticated">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
+                <li class="dropdown" *ngIf="!isAuthenticated">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Sign in
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">{{userName}}</a></li>
-                        <li><button (click)="logout()" class="btn btn-primary">Logout</button></li> 
+                        <li><a href="/login/facebook"><span class="glyphicon glyphicon-hand-right"></span> Sign in with Facebook</a></li>
+                        <li><a href="/login/github"><span class="glyphicon glyphicon-hand-right"></span> Sign in with Github</a></li> 
+                    </ul>
+                </li>
+                <li class="dropdown" *ngIf="isAuthenticated">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{userName}}
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a routerLink="/">My Profile</a></li>
+                        <li><a routerLink="/">My Library</a></li>
+                        <li class="divider"></li>
+                        <li><a routerLink="/developer">My Applications</a></li>
+                        <li class="divider"></li>
+                        <li><a routerLink="/">Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" (click)="logout()">Logout</a></li> 
                     </ul>
                 </li>
             </ul>

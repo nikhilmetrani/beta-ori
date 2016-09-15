@@ -17,6 +17,7 @@
 import {Routes, RouterModule, ExtraOptions} from '@angular/router';
 import {AboutComponent} from "./about/components/about.components";
 import {LoginComponent} from "./login/login.component";
+import {DeveloperComponent} from "./developer/developer.component";
 import {ApplicationList} from './store/index';
 import {ModuleWithProviders} from "@angular/core";
 
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
     {path: '_', redirectTo: 'store', pathMatch: 'full'},
     {path: 'store', component: ApplicationList, data: {title: 'Store'}},
     {path: 'login', component: LoginComponent, data: {title: 'Login'}},
+    {path: 'developer', component: DeveloperComponent, data: {title: 'Developer'}},
     {path: 'about', component: AboutComponent, data: {title: 'About'}}
 ];
 

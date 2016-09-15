@@ -41,8 +41,9 @@ export class AppComponent implements OnInit {
     }
 
     logout() {
-        this.loginService.logout();
-        this.invalidateUser();
+        this.loginService.logout().subscribe(
+            response => this.invalidateUser()
+        );
     }
 
     validateUser(userName: string) {
