@@ -1,5 +1,4 @@
-///<reference path="../../typings/index.d.ts"/>
-
+<!--
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -15,10 +14,19 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 **/
+-->
 
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {AppModule} from './app.module';
-
-const platform = platformBrowserDynamic();
-
-platform.bootstrapModule(AppModule);
+<div class="container" *ngIf="!isAuthenticated">
+    <div>
+        Consumer: <a href="/login/facebook">click here</a>
+    </div>
+    <div>
+        Developer: <a href="/login/github">click here</a>
+    </div>
+</div>
+<div class="container" *ngIf="isAuthenticated">
+    Logged in as: <span>{{userName}}</span>
+    <div>
+        <button (click)="logout()" class="btn btn-primary">Logout</button>
+    </div>
+</div>

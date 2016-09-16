@@ -1,5 +1,5 @@
 /**
-* Copyright 2016 - 29cu.io and the authors of alpha-umi open source project
+* Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -19,15 +19,12 @@ import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from "@angular/http";
 
 import {AppComponent} from "./app.component";
-import {AboutComponent} from "./about/components/about.components";
-import {LoginComponent} from "./login/login.component";
-import {DeveloperComponent} from "./developer/developer.component";
-import {LoginService} from "./login/login.service";
-
-import {DeveloperListPipe} from './store/shared/developer-list.pipe';
-import {CategoryListPipe} from './store/shared/category-list.pipe';
-import {FavoriteDirective} from './store/shared/favorite.directive';
-import {ApplicationList, Application, StoreService} from './store/index';
+import {AboutComponent,
+        LoginComponent,
+        DeveloperComponent,
+        ApplicationList,
+        Application} from "./components/exports";
+import {LoginService, DeveloperListPipe, CategoryListPipe, FavoriteDirective, StoreService} from "./core/exports";
 
 import {routing, appRoutingProviders} from './app.routes';
 import {FormsModule} from "@angular/forms";

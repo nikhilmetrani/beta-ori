@@ -14,36 +14,37 @@
 * limitations under the License.
 **/
 
-import {Component, OnInit} from "@angular/core";
-import {LoginService, User} from "./core/exports";
+import {Component} from "@angular/core";
+import {OnInit} from "@angular/core";
+import {LoginService, User} from "../../core/exports";
+import {Observable} from 'rxjs/Observable';
 
 @Component({
-    selector: "app",
-    templateUrl: "./app/app.html"
+    templateUrl: './app/components/login/login.html'
 })
-export class AppComponent implements OnInit {
+export class LoginComponent implements OnInit {
     userName: string;
     isAuthenticated: boolean;
 
-    constructor(private loginService: LoginService) {}
+    constructor(private loginService: LoginService) {
+
+    }
 
     ngOnInit() {
-        console.log("Application component initialized ...");
         this.tryLogin();
     }
 
     tryLogin() {
         this.loginService.login().subscribe(
-            (user: User) => {
+            (user:User) => {
                 this.validateUser(user.name);
             }
         );
     }
 
     logout() {
-        this.loginService.logout().subscribe(
-            response => this.invalidateUser()
-        );
+        this.loginService.logout();
+        this.invalidateUser();
     }
 
     validateUser(userName: string) {

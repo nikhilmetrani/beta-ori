@@ -1,5 +1,3 @@
-///<reference path="../../typings/index.d.ts"/>
-
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -16,9 +14,13 @@
 * limitations under the License.
 **/
 
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {AppModule} from './app.module';
+// Common export file for all views
+// Usage: import {ClassName} from './views/exports';
 
-const platform = platformBrowserDynamic();
+// Expore views
+export {AboutComponent} from './about/about.component';
+export {DeveloperComponent} from './developer/developer.component';
+export {LoginComponent} from './login/login.component';
 
-platform.bootstrapModule(AppModule);
+export {Application} from './store/application/application';
+export {ApplicationList} from './store/application-list/application-list';

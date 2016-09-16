@@ -1,5 +1,5 @@
 /**
-* Copyright 2016 - 29cu.io and the authors of alpha-umi open source project
+* Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -15,10 +15,11 @@
 **/
 
 import {Routes, RouterModule, ExtraOptions} from '@angular/router';
-import {AboutComponent} from "./about/components/about.components";
-import {LoginComponent} from "./login/login.component";
-import {DeveloperComponent} from "./developer/developer.component";
-import {ApplicationList} from './store/index';
+import {AboutComponent,
+        LoginComponent,
+        DeveloperComponent,
+        ApplicationList,
+        Application} from "./components/exports";
 import {ModuleWithProviders} from "@angular/core";
 
 const appRoutes: Routes = [

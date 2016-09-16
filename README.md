@@ -31,6 +31,44 @@ Dependency setup
     ```
     Use sudo prefix on Linux and OSX
 
+Source structure
+-------
+
+The source folder structure is described below.
+
+```
+beta-ori/
++-- src
+    +-- app/
+        +-- components/
+            +-- **              <= Component sub directories and source files (*.ts, *.html, *.css)
+            +-- exports.ts      <= Exported classes
+        +-- core/
+            +-- **              <= Core sub directories and source files (*.ts)
+            +-- exports.ts      <= Exported classes
+        +-- app.html
+        +-- app.component.ts
+        +-- app.module.ts
+        +-- app.routes.ts
+        +-- main.ts
+    +-- index.html
+    +-- systemjs.config.js
++-- .gitignore
++-- gulpfile.ts
++-- package.json
++-- Readme.md
++-- tsconfig.json
++-- tslint.json
++-- typings.json
+```
+
+Coding conventions
+-------
+
+The project adheres to Microsoft [TypeScript coding guidelines](https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines "Open link") and [Angular 2 style guide](https://angular.io/styleguide "Open link").
+
+`In case of conflicts between the two styles, Angular 2 style guide takes priority.`
+
 Running
 -------
 
@@ -56,6 +94,11 @@ Build the project:
 
 `build` directory should be created during the build
 
+```
+> clean - To clean up the output folders - build and int
+> build - To build the project
+```
+
 Deploy the project:
 
 > npm run deploy
@@ -71,6 +114,7 @@ parent/
                 +-- public <= Deployment location (git ignored)
 +-- beta-ori
     +-- build <= Build location (git ignored)
+    +-- int <= Intermediate build location (git ignored)
     +-- node_modules <= npm packages (git ignored)
     +-- src
     +-- .gitignore

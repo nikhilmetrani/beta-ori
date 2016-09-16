@@ -1,5 +1,3 @@
-///<reference path="../../typings/index.d.ts"/>
-
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -16,9 +14,27 @@
 * limitations under the License.
 **/
 
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {AppModule} from './app.module';
+import {Directive, HostBinding, HostListener, Input} from '@angular/core';
 
-const platform = platformBrowserDynamic();
+@Directive({
+    selector: '[mwFavorite]'
+})
+export class FavoriteDirective {
+    @HostBinding('class.is-favorite') isFavorite = true;
+    @HostBinding('class.is-favorite-hovering') hovering = false;
 
-platform.bootstrapModule(AppModule);
+    @HostListener('mouseenter')
+    onMouseEnter() {
+        this.hovering = true;
+    }
+
+    @HostListener('mouseleave')
+    onMouseLeave() {
+        this.hovering = false;
+    }
+
+    @Input()
+    set mwFavorite(value) {
+        this.isFavorite = value;
+    }
+}

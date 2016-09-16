@@ -1,5 +1,3 @@
-///<reference path="../../typings/index.d.ts"/>
-
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -16,9 +14,44 @@
 * limitations under the License.
 **/
 
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {AppModule} from './app.module';
-
-const platform = platformBrowserDynamic();
-
-platform.bootstrapModule(AppModule);
+:host {
+    display: flex;
+    min-height: 90vh;
+    flex-direction: column;
+    padding: 10px;
+}
+header {
+    color: #32435b;
+}
+header.category-development {
+    color: #53ace4;
+}
+header.category-productivity {
+    color: #45bf94;
+}
+header.category-photography {
+    color: #ff704d;
+}
+header > h2 {
+    font-size: 1.4em;
+}
+header > h2.error {
+    color: #d93a3e;
+}
+section {
+    flex: 1;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+}
+section > application {
+    margin: 10px;
+}
+footer {
+    text-align: right;
+}
+footer .icon {
+    width: 64px;
+    height: 64px;
+    margin: 15px;
+}

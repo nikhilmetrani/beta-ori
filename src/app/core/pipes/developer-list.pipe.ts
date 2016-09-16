@@ -1,5 +1,3 @@
-///<reference path="../../typings/index.d.ts"/>
-
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -16,9 +14,19 @@
 * limitations under the License.
 **/
 
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {AppModule} from './app.module';
+import {Pipe, PipeTransform} from '@angular/core';
 
-const platform = platformBrowserDynamic();
-
-platform.bootstrapModule(AppModule);
+@Pipe({
+    name: 'developerList'
+})
+export class DeveloperListPipe implements PipeTransform  {
+    transform(storeItems) {
+        var developers = [];
+        storeItems.forEach(application => {
+            if (developers.indexOf(application.developer.name) <= -1) {
+                developers.push(application.developer.name);
+            }
+        });
+        return developers.join(', ');
+    }
+}

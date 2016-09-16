@@ -1,5 +1,3 @@
-///<reference path="../../typings/index.d.ts"/>
-
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -16,9 +14,20 @@
 * limitations under the License.
 **/
 
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {AppModule} from './app.module';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {FavoriteDirective} from '../../../core/exports';
+import {StoreApplication} from '../../../core/exports';
 
-const platform = platformBrowserDynamic();
+@Component({
+    selector: 'application',
+    templateUrl: './app/components/store/application/application.html',
+    styleUrls: ['./app/components/store/application/application.css']
+})
+export class Application {
+    @Input('applicationItem') application: StoreApplication;
+    @Output('deleted') delete = new EventEmitter();
 
-platform.bootstrapModule(AppModule);
+    onDelete() {
+        this.delete.emit(this.application);
+    }
+}

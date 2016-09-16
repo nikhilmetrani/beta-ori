@@ -22,12 +22,18 @@ const tsc = require("gulp-typescript");
 const sourcemaps = require('gulp-sourcemaps');
 const tsProject = tsc.createProject("tsconfig.json");
 const tslint = require('gulp-tslint');
+var uglify = require('gulp-uglify');
+var pump = require('pump');
 
 /**
  * Remove build directory.
  */
-gulp.task('clean', (cb) => {
+gulp.task('clean', ["clean_int"], (cb) => {
     return del(["build"], cb);
+});
+
+gulp.task('clean_int', (cb) => {
+    return del(["int"], cb);
 });
 
 /**
@@ -40,15 +46,73 @@ gulp.task('tslint', () => {
 });
 
 /**
- * Compile TypeScript sources and create sourcemaps in build directory.
+ * Compile TypeScript sources and create sourcemaps in int directory.
  */
-gulp.task("compile", ["tslint"], () => {
+gulp.task("compile", ["tslint", "copy_systemjs"], () => {
+    console.log('Compiling TypeScript to javascript...');
     let tsResult = gulp.src("src/**/*.ts")
         .pipe(sourcemaps.init())
         .pipe(tsc(tsProject));
     return tsResult.js
         .pipe(sourcemaps.write(".", {sourceRoot: '/src'}))
-        .pipe(gulp.dest("build/js"));
+        .pipe(gulp.dest("int/js"));
+});
+
+/**
+ * Copy systemjs.config.js into int/js directory.
+ */
+gulp.task("copy_systemjs", () => {
+    return gulp.src(["src/systemjs.config.js"])
+        .pipe(gulp.dest("int/js"));
+});
+
+/**
+ * Uglify javascript files to build/js directory.
+ */
+gulp.task('uglify', ["uglify_systemjs", "uglify_app"], () => {
+  console.log('uglifying javascript files...');
+});
+
+/**
+ * Uglify systemjs to build/js directory.
+ */
+gulp.task('uglify_systemjs', ["copy_systemjs"], function (cbs) {
+  pump([
+        gulp.src('int/js/*.js'),
+        uglify({
+                output: {
+                    comments: 'saveLicense'
+                }
+            }),
+        gulp.dest('build/js')
+    ],
+    cbs
+  );
+});
+
+/**
+ * Uglify app files to build/js directory.
+ */
+gulp.task('uglify_app', ["compile"], function (cba) {
+  pump([
+        gulp.src('int/js/app/**/*.js'),
+        uglify({
+                output: {
+                    comments: 'saveLicense'
+                }
+            }),
+        gulp.dest('build/js/app')
+    ],
+    cba
+  );
+});
+
+/**
+ * Copy all source maps into build directory.
+ */
+gulp.task("copy_sourcemaps", ["compile"], () => {
+    return gulp.src(["int/js/app/**/*.js.map"])
+        .pipe(gulp.dest("build/js/app"));
 });
 
 /**
@@ -57,14 +121,6 @@ gulp.task("compile", ["tslint"], () => {
 gulp.task("resources", () => {
     return gulp.src(["src/**/*", "!**/*.ts", "!**/*systemjs.config.js"])
         .pipe(gulp.dest("build"));
-});
-
-/**
- * Copy systemjs.config.js into build/js directory.
- */
-gulp.task("copy_systemjs", () => {
-    return gulp.src(["src/systemjs.config.js"])
-        .pipe(gulp.dest("build/js"));
 });
 
 /**
@@ -78,7 +134,9 @@ gulp.task("libs", () => {
             'reflect-metadata/Reflect.js',
             'rxjs/**',
             'zone.js/dist/**',
-            '@angular/**'
+            '@angular/**',
+            'bootstrap/dist/**',
+            'jquery/dist/jquery.min.js'
         ], {cwd: "node_modules/**"}) /* Glob required here. */
         .pipe(gulp.dest("build/js/lib"));
 });
@@ -87,7 +145,7 @@ gulp.task("libs", () => {
  * Watch for changes in TypeScript, HTML and CSS files.
  */
 gulp.task('watch', function () {
-    gulp.watch(["src/**/*.ts"], ['compile']).on('change', function (e) {
+    gulp.watch(["src/**/*.ts"], ['compile', 'uglify']).on('change', function (e) {
         console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
     });
     gulp.watch(["src/**/*.html", "src/**/*.css"], ['resources']).on('change', function (e) {
@@ -104,7 +162,7 @@ gulp.task('watch', function () {
 /**
  * Build the project.
  */
-gulp.task("build", ['compile', 'resources', 'copy_systemjs', 'libs'], () => {
+gulp.task("build", ['compile', 'copy_sourcemaps', 'uglify', 'resources', 'libs'], () => {
     console.log("Building the project ...");
 });
 
