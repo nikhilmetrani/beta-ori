@@ -20,7 +20,8 @@ import {LoginService, User} from "../../core/exports";
 import {Observable} from 'rxjs/Observable';
 
 @Component({
-    templateUrl: './app/components/login/login.html'
+    templateUrl: './app/components/login/login.html',
+    styleUrls: ['./app/components/login/login.css']
 })
 export class LoginComponent implements OnInit {
     userName: string;

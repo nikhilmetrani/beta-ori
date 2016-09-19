@@ -39,7 +39,7 @@ export class LoginService {
     }
 
     logout() {
-        return this.http.post("logout", {})
+        return this.http.post("/logout", {})
             .map(response => this.extractData)
             .catch(this.logError);
     }

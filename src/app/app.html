@@ -16,6 +16,12 @@
 **/
 -->
 
+<link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Signika+Negative:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+<!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type='text/css'>-->
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -33,12 +39,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown" *ngIf="!isAuthenticated">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Sign in
-                    <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/login/facebook"><span class="glyphicon glyphicon-hand-right"></span> Sign in with Facebook</a></li>
-                        <li><a href="/login/github"><span class="glyphicon glyphicon-hand-right"></span> Sign in with Github</a></li> 
-                    </ul>
+                    <a class="dropdown-toggle" data-toggle="modal" data-target="#loginModal" href="#"> Login</a>
                 </li>
                 <li class="dropdown" *ngIf="isAuthenticated">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{userName}}
@@ -60,35 +61,33 @@
 </nav>
 
 <!-- Modal -->
-<div id="loginModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Sign in</h4>
+  <div class="modal fade" id="loginModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="text-align: center;background: #b0dbff;">
+        <div class="modal-header" style="background: #b0dbff;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> LOGIN</h4>
+        </div>
+        <div class="modal-body" style="background: #d5edff;">
+            <div class="containerlogin">
+                <p>All the applications you need</p>
             </div>
-            <div class="modal-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-4 social-buttons">
-                            <a class="btn btn-block btn-social btn-facebook" href="/login/facebook">
-                                <span class="fa fa-facebook"></span> Sign in with Facebook
-                            </a>
-                            <a class="btn btn-block btn-social btn-github" href="/login/github">
-                                <span class="fa fa-github"></span> Sign in with GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="containerlogin">
+                <a href="/login/facebook" class="button facebook"><span><i class="fa fa-facebook"></i></span><p>Facebook</p></a>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <div class="containerlogin">
+                <a href="/login/google" class="button google-plus"><span><i class="fa fa-google-plus"></i></span><p>Google</p></a>
+            </div>
+            <div class="containerlogin">
+                <a href="/login/github" class="button github"><span><i class="fa fa-github"></i></span><p>Github</p></a>
             </div>
         </div>
-
+      </div>
+      
     </div>
-</div>
+  </div>
 
 <div class="container">
     <router-outlet></router-outlet>

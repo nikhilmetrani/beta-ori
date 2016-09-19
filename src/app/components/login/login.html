@@ -16,17 +16,32 @@
 **/
 -->
 
-<div class="container" *ngIf="!isAuthenticated">
-    <div>
-        Consumer: <a href="/login/facebook">click here</a>
-    </div>
-    <div>
-        Developer: <a href="/login/github">click here</a>
-    </div>
-</div>
+<link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Signika+Negative:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
 <div class="container" *ngIf="isAuthenticated">
     Logged in as: <span>{{userName}}</span>
     <div>
         <button (click)="logout()" class="btn btn-primary">Logout</button>
+    </div>
+</div>
+
+<div class="container" *ngIf="!isAuthenticated">
+    <div class="containerlogin">
+        <h4><span class="glyphicon glyphicon-lock"></span> LOGIN</h4>
+    </div>
+    <div class="containerlogin">
+        <p>All the applications you need</p>
+    </div>
+    <div class="containerlogin">
+        <a href="/login/facebook" class="button facebook"><span><i class="fa fa-facebook"></i></span><p>Facebook</p></a>
+    </div>
+    <div class="containerlogin">
+        <a href="/login/google" class="button google-plus"><span><i class="fa fa-google-plus"></i></span><p>Google</p></a>
+    </div>
+    <div class="containerlogin">
+        <a href="/login/github" class="button github"><span><i class="fa fa-github"></i></span><p>Github</p></a>
     </div>
 </div>

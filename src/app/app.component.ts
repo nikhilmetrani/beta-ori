@@ -17,9 +17,13 @@
 import {Component, OnInit} from "@angular/core";
 import {LoginService, User} from "./core/exports";
 
+import { enableProdMode }    from '@angular/core';
+enableProdMode();
+
 @Component({
     selector: "app",
-    templateUrl: "./app/app.html"
+    templateUrl: "./app/app.html",
+    styleUrls: ['./app/app.css']
 })
 export class AppComponent implements OnInit {
     userName: string;
@@ -28,7 +32,6 @@ export class AppComponent implements OnInit {
     constructor(private loginService: LoginService) {}
 
     ngOnInit() {
-        console.log("Application component initialized ...");
         this.tryLogin();
     }
 

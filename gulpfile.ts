@@ -67,10 +67,19 @@ gulp.task("copy_systemjs", () => {
 });
 
 /**
+ * Copy javascript files to build/js directory.
+ */
+gulp.task('prettfy', ["compile"], () => {
+  console.log('Copying pretty javascript files...');
+  return gulp.src(["int/js/**/*.*"])
+        .pipe(gulp.dest("build/js"));
+});
+
+/**
  * Uglify javascript files to build/js directory.
  */
 gulp.task('uglify', ["uglify_systemjs", "uglify_app"], () => {
-  console.log('uglifying javascript files...');
+  console.log('Uglifying javascript files...');
 });
 
 /**
@@ -136,7 +145,9 @@ gulp.task("libs", () => {
             'zone.js/dist/**',
             '@angular/**',
             'bootstrap/dist/**',
-            'jquery/dist/jquery.min.js'
+            'jquery/dist/jquery.min.js',
+            'font-awesome/css/font-awesome.min.css',
+            'font-awesome/fonts/**'
         ], {cwd: "node_modules/**"}) /* Glob required here. */
         .pipe(gulp.dest("build/js/lib"));
 });
@@ -145,10 +156,10 @@ gulp.task("libs", () => {
  * Watch for changes in TypeScript, HTML and CSS files.
  */
 gulp.task('watch', function () {
-    gulp.watch(["src/**/*.ts"], ['compile', 'uglify']).on('change', function (e) {
+    gulp.watch(["src/**/*.ts"], ['compile', 'prettfy']).on('change', function (e) {
         console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
     });
-    gulp.watch(["src/**/*.html", "src/**/*.css"], ['resources']).on('change', function (e) {
+    gulp.watch(["src/**/*.html", "src/**/*.css", "src/**/*.png"], ['resources']).on('change', function (e) {
         console.log('Resource file ' + e.path + ' has been changed. Updating.');
     });
     gulp.watch(["src/systemjs.config.js"], ['copy_systemjs']).on('change', function (e) {
@@ -162,8 +173,15 @@ gulp.task('watch', function () {
 /**
  * Build the project.
  */
-gulp.task("build", ['compile', 'copy_sourcemaps', 'uglify', 'resources', 'libs'], () => {
+gulp.task("build", ['compile', 'prettfy', 'resources', 'libs'], () => {
     console.log("Building the project ...");
+});
+
+/**
+ * Build the project for production.
+ */
+gulp.task("build:prod", ['compile', 'uglify', 'resources', 'libs'], () => {
+    console.log("Building the project for production ...");
 });
 
 /**
