@@ -16,10 +16,20 @@
 **/
 -->
 
-<div class="container">
-  <div class="jumbotron">
-    <h1>Developer</h1> 
-    <p>Publish your applications</p> 
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Account</a></li>
+        <li><a href="#">Subscriptions</a></li>
+        <li><a href="#">Developer</a></li>
+      </ul><br>
+    </div>
+    <div class="col-sm-9">
+      <h4><small>Developer Home</small></h4>
+      <router-outlet></router-outlet>
+    </div>
   </div>
-  <p>Page components go here</p>
 </div>

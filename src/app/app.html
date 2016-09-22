@@ -22,40 +22,56 @@
 <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
 <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type='text/css'>-->
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">29Cu.io</a>
-        </div>
-        <div class="collapse navbar-collapse" id="mainNavBar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a routerLink="/store">Store</a></li>
-                <li><a routerLink="/about">About</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown" *ngIf="!isAuthenticated">
-                    <a class="dropdown-toggle" data-toggle="modal" data-target="#loginModal" href="#"> Login</a>
-                </li>
-                <li class="dropdown" *ngIf="isAuthenticated">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{userName}}
-                    <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a routerLink="/">My Profile</a></li>
-                        <li><a routerLink="/">My Library</a></li>
-                        <li class="divider"></li>
-                        <li><a routerLink="/developer">My Applications</a></li>
-                        <li class="divider"></li>
-                        <li><a routerLink="/">Settings</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#" (click)="logout()">Logout</a></li> 
-                    </ul>
-                </li>
-            </ul>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">29Cu.io</a>
+            </div>
+            <div class="collapse navbar-collapse" id="mainNavBar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a routerLink="/store">Store</a></li>
+                    <li><a routerLink="/about">About</a></li>
+                </ul>
+                <div class="col-sm-4 col-md-4">
+                    <form class="navbar-form" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search..." name="q">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown" *ngIf="!isAuthenticated" style="font-weight=900;">
+                        <a class="dropdown-toggle" data-toggle="modal" data-target="#loginModal" href="#"> Login</a>
+                    </li>
+                    <li class="dropdown" *ngIf="isAuthenticated">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{userName}}
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a routerLink="/">My Profile</a></li>
+                            <li><a routerLink="/">My Library</a></li>
+                            <li class="divider"></li>
+                            <li><a routerLink="/developer">My Applications</a></li>
+                            <li class="divider"></li>
+                            <li><a routerLink="/">Settings</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" (click)="logout()">Logout</a></li> 
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>

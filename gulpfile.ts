@@ -178,6 +178,16 @@ gulp.task("build", ['compile', 'prettfy', 'resources', 'libs'], () => {
 });
 
 /**
+ * Deploy all resources to Alpha-Umi target.
+ * => ../alpha-umi/target/classes/public
+ * This enables live reload.
+ */
+gulp.task("deploy", () => {
+    return gulp.src(["build/**/*.*"])
+        .pipe(gulp.dest("../alpha-umi/target/classes/public"));
+});
+
+/**
  * Build the project for production.
  */
 gulp.task("build:prod", ['compile', 'uglify', 'resources', 'libs'], () => {
@@ -188,7 +198,8 @@ gulp.task("build:prod", ['compile', 'uglify', 'resources', 'libs'], () => {
  * Deploy all resources to Alpha-Umi.
  * => ../alpha-umi/src/main/resources/public
  */
-gulp.task("deploy", () => {
+gulp.task("deploy:prod", () => {
     return gulp.src(["build/**/*.*"])
         .pipe(gulp.dest("../alpha-umi/src/main/resources/public"));
 });
+
