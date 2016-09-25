@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
     tryLogin() {
         this.loginService.login().subscribe(
             (user: User) => {
-                this.validateUser(user.name);
+                this.validateUser(user);
             }
         );
     }
@@ -49,15 +49,17 @@ export class AppComponent implements OnInit {
         );
     }
 
-    validateUser(userName: string) {
-        if (userName !== "N/A") {
-            this.userName = userName;
+    validateUser(user: User) {
+        if (user !== undefined) {
+            this.userName = user.name;
+            sessionStorage.setItem("uid", user.rid.toString());
             this.isAuthenticated = true;
         }
     }
 
     invalidateUser() {
-        this.userName = "N/A";
+        this.userName = undefined;
+        sessionStorage.removeItem("uid");
         this.isAuthenticated = false;
     }
 }

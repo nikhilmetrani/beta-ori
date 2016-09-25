@@ -19,32 +19,30 @@ import {Http, URLSearchParams, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
-import {User} from '../exports';
+import {DeveloperProfile} from '../exports';
 
 @Injectable()
-export class LoginService {
+export class ProfileService {
 
     constructor(private http: Http) {}
 
-    login() {
-
-        // Create headers from Plain Old JavaScript Object
-        var useHeaders = new Headers({
-        'X-Requested-With': 'XMLHttpRequest'
-        });
-
-        return this.http.get("/user", {'headers': useHeaders})
+    getDeveloperProfile(developerId: number) {
+        // We are passing in developer ID. It needs to be removed.
+        // If the id was manipulated, another users developer profile may get updated.
+        return this.http.get("/api/0/profile/developer/" + developerId)
             .map(this.extractData)
             .catch(this.logError);
     }
 
-    logout() {
-        return this.http.post("/logout", {})
+    createDeveloperProfile(developerId: number, profile: DeveloperProfile) {
+        // We are passing in developer ID. It needs to be removed.
+        // If the id was manipulated, another users developer profile may get updated.
+        return this.http.post("/api/0/profile/developer/" + developerId, profile)
             .map(response => this.extractData)
             .catch(this.logError);
     }
 
-    private extractData(res: Response): User {
+    private extractData(res: Response): DeveloperProfile {
         try {
             let body = res.json();
             return body || undefined;
@@ -54,8 +52,6 @@ export class LoginService {
     }
 
     logError(err: Response) {
-        console.log('There was an error: ' + err);
-        var dummy: any;
-        return dummy;
+        return undefined;
     }
 }

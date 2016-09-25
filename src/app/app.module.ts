@@ -19,12 +19,23 @@ import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from "@angular/http";
 
 import {AppComponent} from "./app.component";
-import {AboutComponent,
-        LoginComponent,
-        DeveloperComponent,
-        ApplicationList,
-        Application} from "./components/exports";
-import {LoginService, DeveloperListPipe, CategoryListPipe, FavoriteDirective, StoreService} from "./core/exports";
+import {
+            AboutComponent,
+            LoginComponent,
+            DeveloperComponent,
+            ApplicationList,
+            Application,
+            DeveloperWelcomeComponent,
+            DeveloperProfileCreateComponent
+        } from "./components/exports";
+import {
+            LoginService,
+            DeveloperListPipe,
+            CategoryListPipe,
+            FavoriteDirective,
+            StoreService,
+            ProfileService
+        } from "./core/exports";
 
 import {routing, appRoutingProviders} from './app.routes';
 import {FormsModule} from "@angular/forms";
@@ -45,12 +56,15 @@ import {FormsModule} from "@angular/forms";
         Application,
         AboutComponent,
         DeveloperComponent,
-        LoginComponent
+        LoginComponent,
+        DeveloperWelcomeComponent,
+        DeveloperProfileCreateComponent
     ],
     providers: [
         appRoutingProviders,
         LoginService,
-        StoreService
+        StoreService,
+        ProfileService
     ],
     bootstrap: [AppComponent]
 })

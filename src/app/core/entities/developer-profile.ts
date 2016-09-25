@@ -14,15 +14,10 @@
 * limitations under the License.
 **/
 
-// Common export file for all views
-// Usage: import {ClassName} from './views/exports';
-
-// Expore views
-export {AboutComponent} from './about/about.component';
-export {DeveloperComponent} from './developer/developer.component';
-export {DeveloperWelcomeComponent} from './developer/profile/welcome/welcome.component';
-export {DeveloperProfileCreateComponent} from './developer/profile/create/create.component';
-export {LoginComponent} from './login/login.component';
-
-export {Application} from './store/application/application';
-export {ApplicationList} from './store/application-list/application-list';
+export interface DeveloperProfile {
+    rid: number;
+    website: string;
+    email: string;
+    description: string;
+    company: string;
+}

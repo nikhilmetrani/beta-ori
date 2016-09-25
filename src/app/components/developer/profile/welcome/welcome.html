@@ -16,23 +16,10 @@
 **/
 -->
 
-<!--Display welcome page when profile is not created.-->
-<div class="container-fluid" *ngIf="!isProfileConfirmed">
-    <developer-welcome></developer-welcome> 
-</div>
-
-<div class="container-fluid" *ngIf="isProfileConfirmed">
-  <div class="row content">
-    <div class="col-sm-3 sidenav">
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Applications</a></li>
-        <li><a href="#">Settings</a></li>
-      </ul><br>
-    </div>
-    <div class="col-sm-9">
-      <h4><small>Developer Home</small></h4>
-      <router-outlet></router-outlet>
-    </div>
-  </div>
+<div class="container-fluid">
+    <h1>Welcome to Developer Centre</h1>
+    <p>Please click create profile to start publishing applications.</p>
+    <a routerLink="/createdevpro">
+        <button type="button" class="btn btn-success">Create profile</button>
+    </a>
 </div>

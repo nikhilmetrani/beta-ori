@@ -14,16 +14,39 @@
 * limitations under the License.
 **/
 
-import {Component} from "@angular/core";
-import {OnInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
+import {ActivatedRoute} from '@angular/router';
+import {ProfileService, DeveloperProfile} from "../../core/exports";
 
 @Component({
+    selector: 'developer',
     templateUrl: './app/components/developer/developer.html',
     styleUrls: ['./app/components/developer/developer.css']
 })
 export class DeveloperComponent implements OnInit {
 
-    ngOnInit() {
+    developerProfile: DeveloperProfile = undefined;
+    isProfileConfirmed: boolean = false;
+    developerId: number;
 
+    constructor (private profileService: ProfileService, private route: ActivatedRoute) {}
+
+    ngOnInit() {
+        this.developerId = +sessionStorage.getItem("uid");
+        this.getProfile();
+    }
+
+    getProfile() {
+        this.profileService.getDeveloperProfile(this.developerId).subscribe(
+            (profile: DeveloperProfile) => {
+                this.developerProfile = profile;
+                if (this.developerProfile !== undefined) {
+                    if (this.developerProfile.email !== null &&
+                        this.developerProfile.email !== undefined) {
+                        this.isProfileConfirmed = true;
+                    }
+                }
+            }
+        );
     }
 }

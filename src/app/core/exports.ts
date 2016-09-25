@@ -19,12 +19,14 @@
 
 // Expore entities
 export {User} from './entities/user';
+export {DeveloperProfile} from './entities/developer-profile';
 export {StoreApplication} from './entities/store-application';
 export {Link} from './entities/link';
 
 // Export services
 export {LoginService} from './services/login.service';
 export {StoreService} from './services/store.service';
+export {ProfileService} from './services/profile.service'
 
 //Export pipes
 export {CategoryListPipe} from './pipes/category-list.pipe';

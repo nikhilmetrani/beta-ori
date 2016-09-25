@@ -19,7 +19,9 @@ import {AboutComponent,
         LoginComponent,
         DeveloperComponent,
         ApplicationList,
-        Application} from "./components/exports";
+        Application,
+        DeveloperProfileCreateComponent
+        } from "./components/exports";
 import {ModuleWithProviders} from "@angular/core";
 
 const appRoutes: Routes = [
@@ -28,6 +30,7 @@ const appRoutes: Routes = [
     {path: 'store', component: ApplicationList, data: {title: 'Store'}},
     {path: 'login', component: LoginComponent, data: {title: 'Login'}},
     {path: 'developer', component: DeveloperComponent, data: {title: 'Developer'}},
+    {path: 'createdevpro', component: DeveloperProfileCreateComponent, data: {title: 'CreateDeveloperProfile'}},
     {path: 'about', component: AboutComponent, data: {title: 'About'}}
 ];
 
