@@ -28,10 +28,9 @@ export {LoginService} from './services/login.service';
 export {StoreService} from './services/store.service';
 export {ProfileService} from './services/profile.service'
 
-//Export pipes
+// Export pipes
 export {CategoryListPipe} from './pipes/category-list.pipe';
 export {DeveloperListPipe} from './pipes/developer-list.pipe';
 
-//Export directives
+// Export directives
 export {FavoriteDirective} from './directives/favorite.directive';
-

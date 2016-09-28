@@ -5,6 +5,9 @@ The fornt-end for Alpha-Umi REST API server.
 Dependencies
 -------------
 
+<a href="https://david-dm.org/nikhilmetrani/beta-ori"><img src="https://david-dm.org/nikhilmetrani/beta-ori.svg" alt="Dependency Status"></a>
+<a href="https://david-dm.org/nikhilmetrani/beta-ori/?type=dev"><img src="https://david-dm.org/nikhilmetrani/beta-ori/dev-status.svg" alt="devDependency Status"></a>
+
 - nodejs - current version - https://nodejs.org/en/
 - gulp and gulp-cli
 - typings
@@ -26,8 +29,6 @@ Dependency setup
     ```
     npm install gulp -g
     npm install gulp-cli -g
-    npm install typings -g
-    npm install typescript -g
     ```
     Use sudo prefix on Linux and OSX
 
@@ -41,25 +42,41 @@ beta-ori/
 +-- src
     +-- app/
         +-- components/
-            +-- **              <= Component sub directories and source files (*.ts, *.html, *.css)
-            +-- exports.ts      <= Exported classes
+            +-- **              <= Component sub directories and source files (*.ts, *.html, *.scss)
+            +-- index.ts      <= Exported classes
         +-- core/
             +-- **              <= Core sub directories and source files (*.ts)
-            +-- exports.ts      <= Exported classes
-        +-- app.html
+            +-- index.ts      <= Exported classes
+        +-- app.component.html
+        +-- app.component.scss
         +-- app.component.ts
         +-- app.module.ts
-        +-- app.routes.ts
-        +-- main.ts
-    +-- index.html
-    +-- systemjs.config.js
+        +-- app.routing.ts
+    +-- public/
+        +-- error/
+            +-- 404.css
+            +-- 404.html
+            +-- 404.png
+        +-- img/
+            +-- favicon.ico
+        +-- index.html
+        +-- service-worker.js
+    +-- style/
+        +-- app.scss
+    +-- main.ts
+    +-- polyfills.ts
+    +-- vendor.ts
 +-- .gitignore
-+-- gulpfile.ts
++-- gulpfile.js
++-- karma-shim.js
++-- karma.conf.js
 +-- package.json
-+-- Readme.md
++-- protractor.conf.js
++-- README.md
 +-- tsconfig.json
 +-- tslint.json
-+-- typings.json
++-- typedoc.json
++-- webpack.conf.json
 ```
 
 Coding conventions
@@ -113,24 +130,22 @@ parent/
             +-- resources
                 +-- public <= Deployment location (git ignored)
 +-- beta-ori
-    +-- build <= Build location (git ignored)
-    +-- int <= Intermediate build location (git ignored)
+    +-- coverage <= Test coverage reports build location (git ignored)
+    +-- dist <= Build output location (git ignored)
+    +-- doc <= Documentation output location (git ignored)
     +-- node_modules <= npm packages (git ignored)
     +-- src
-    +-- .gitignore
-    +-- gulpfile.ts
-    +-- package.json
-    +-- Readme.md
-    +-- tsconfig.json
-    +-- tslint.json
-    +-- typings.json
+    +-- *
 ```
 
 Watching for changes:
 
+```
 > npm run watch
+> npm run gulp-watch
+```
 
-_This task will watch for changes in src folder and execute the build and deploy tasks._
+_These tasks will watch for changes in src folder and execute the build and deploy tasks respectively._
 
 References
 ---------

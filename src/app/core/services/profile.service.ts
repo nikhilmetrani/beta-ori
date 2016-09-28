@@ -15,11 +15,11 @@
 **/
 
 import {Injectable} from '@angular/core';
-import {Http, URLSearchParams, Headers, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
+import {Http, Response } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
-import {DeveloperProfile} from '../exports';
+import {DeveloperProfile} from '../';
 
 @Injectable()
 export class ProfileService {
@@ -29,7 +29,7 @@ export class ProfileService {
     getDeveloperProfile(developerId: number) {
         // We are passing in developer ID. It needs to be removed.
         // If the id was manipulated, another users developer profile may get updated.
-        return this.http.get("/api/0/profile/developer/" + developerId)
+        return this.http.get('/api/0/profile/developer/' + developerId)
             .map(this.extractData)
             .catch(this.logError);
     }
@@ -37,7 +37,7 @@ export class ProfileService {
     createDeveloperProfile(developerId: number, profile: DeveloperProfile) {
         // We are passing in developer ID. It needs to be removed.
         // If the id was manipulated, another users developer profile may get updated.
-        return this.http.post("/api/0/profile/developer/" + developerId, profile)
+        return this.http.post('/api/0/profile/developer/' + developerId, profile)
             .map(response => this.extractData)
             .catch(this.logError);
     }
@@ -52,6 +52,7 @@ export class ProfileService {
     }
 
     logError(err: Response) {
-        return undefined;
+        console.error('There was an error: ' + err);
+        return Observable.throw(err.json().error || 'Server error');
     }
 }

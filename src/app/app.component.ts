@@ -14,24 +14,27 @@
 * limitations under the License.
 **/
 
-import {Component, OnInit} from "@angular/core";
-import {LoginService, User} from "./core/exports";
+import { Component, OnInit } from '@angular/core';
 
-import { enableProdMode }    from '@angular/core';
-enableProdMode();
+import {LoginService, User} from './core';
+
+import '../style/app.scss';
+
+import 'jquery';
 
 @Component({
-    selector: "app",
-    templateUrl: "./app/app.html",
-    styleUrls: ['./app/app.css']
+  selector: 'bo-app', // <my-app></my-app>
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-    userName: string;
-    isAuthenticated: boolean;
 
-    constructor(private loginService: LoginService) {}
+  userName: string;
+  isAuthenticated: boolean;
 
-    ngOnInit() {
+  constructor(private loginService: LoginService) {}
+
+  ngOnInit() {
         this.tryLogin();
     }
 
@@ -52,14 +55,14 @@ export class AppComponent implements OnInit {
     validateUser(user: User) {
         if (user !== undefined) {
             this.userName = user.name;
-            sessionStorage.setItem("uid", user.rid.toString());
+            sessionStorage.setItem('uid', user.rid.toString());
             this.isAuthenticated = true;
         }
     }
 
     invalidateUser() {
         this.userName = undefined;
-        sessionStorage.removeItem("uid");
+        sessionStorage.removeItem('uid');
         this.isAuthenticated = false;
     }
 }

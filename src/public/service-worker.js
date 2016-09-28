@@ -14,22 +14,4 @@
 * limitations under the License.
 **/
 
-import {Component, OnInit} from '@angular/core';
-import {ProfileService, DeveloperProfile} from '../../../../core';
-
-@Component({
-    selector: 'bo-developer-welcome',
-    templateUrl: './welcome.component.html'
-})
-export class DeveloperWelcomeComponent implements OnInit {
-
-    developerId: number;
-    developerProfile: DeveloperProfile;
-
-    constructor (private profileService: ProfileService) {}
-
-    ngOnInit() {
-        this.developerId = +sessionStorage.getItem('uid');
-    }
-}
-
+// This file is intentionally without code.

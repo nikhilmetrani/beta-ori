@@ -17,11 +17,11 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-    name: 'developerList'
+    name: 'boDeveloperList'
 })
 export class DeveloperListPipe implements PipeTransform  {
     transform(storeItems) {
-        var developers = [];
+        let developers = [];
         storeItems.forEach(application => {
             if (developers.indexOf(application.developer.name) <= -1) {
                 developers.push(application.developer.name);

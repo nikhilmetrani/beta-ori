@@ -17,11 +17,11 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-    name: 'categoryList'
+    name: 'boCategoryList'
 })
 export class CategoryListPipe implements PipeTransform {
     transform(storeItems) {
-        var categories = [];
+        let categories = [];
         storeItems.forEach(application => {
             if (categories.indexOf(application.category) <= -1) {
                 categories.push(application.category);

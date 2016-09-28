@@ -14,11 +14,11 @@
 * limitations under the License.
 **/
 
-import {Component} from "@angular/core";
-import {OnInit} from "@angular/core";
+import {Component} from '@angular/core';
+import {OnInit} from '@angular/core';
 
 @Component({
-    templateUrl: './app/components/about/about.html'
+    templateUrl: './about.component.html'
 })
 export class AboutComponent implements OnInit {
 

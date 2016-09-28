@@ -15,11 +15,11 @@
 **/
 
 import {Injectable} from '@angular/core';
-import {Http, URLSearchParams, Headers, Response} from '@angular/http';
+import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
-import {StoreApplication} from '../exports';
+import {StoreApplication} from '../';
 
 @Injectable()
 export class StoreService {
@@ -44,6 +44,6 @@ export class StoreService {
 
     logError(err: Response) {
         console.error('There was an error: ' + err);
-        return Observable.throw(err.json().error || "Server error");
+        return Observable.throw(err.json().error || 'Server error');
     }
 }

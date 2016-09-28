@@ -15,11 +15,11 @@
 **/
 
 import {Injectable} from '@angular/core';
-import {Http, URLSearchParams, Headers, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
+import {Http, Headers, Response } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
-import {User} from '../exports';
+import {User} from '../';
 
 @Injectable()
 export class LoginService {
@@ -29,17 +29,17 @@ export class LoginService {
     login() {
 
         // Create headers from Plain Old JavaScript Object
-        var useHeaders = new Headers({
+        let useHeaders = new Headers({
         'X-Requested-With': 'XMLHttpRequest'
         });
 
-        return this.http.get("/user", {'headers': useHeaders})
+        return this.http.get('/user', {'headers': useHeaders})
             .map(this.extractData)
             .catch(this.logError);
     }
 
     logout() {
-        return this.http.post("/logout", {})
+        return this.http.post('/logout', {})
             .map(response => this.extractData)
             .catch(this.logError);
     }
@@ -54,8 +54,7 @@ export class LoginService {
     }
 
     logError(err: Response) {
-        console.log('There was an error: ' + err);
-        var dummy: any;
-        return dummy;
+        console.error('There was an error: ' + err);
+        return Observable.throw(err.json().error || 'Server error');
     }
 }

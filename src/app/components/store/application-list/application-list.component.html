@@ -21,12 +21,12 @@
     'category-productivity':category === 'Productivity',
     'category-photography':category === 'Photography'}">
     <h2>Category > {{category}}</h2>
-    <div>{{ storeItemsArray | developerList }}</div>
+    <div>{{ storeItemsArray | boDeveloperList }}</div>
 </header>
 <section>
-    <application *ngFor="let application of storeItems | async"
-        [applicationItem]="application"
+    <bo-application *ngFor="let application of storeItems | async"
+        [application]="application"
         [ngClass]="{'category-development':category === 'Development',
                 'category-productivity':category === 'Productivity',
-                'category-photography':category === 'Photography'}"></application>
+                'category-photography':category === 'Photography'}"></bo-application>
 </section>

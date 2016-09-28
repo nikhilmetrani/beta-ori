@@ -22,8 +22,8 @@
 <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
 <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type='text/css'>-->
 
-
-<nav class="navbar navbar-default" role="navigation">
+<header>
+  <nav class="navbar navbar-default" role="navigation">
     <div class="container">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -74,37 +74,46 @@
             </div>
         </div>
     </div>
-</nav>
+  </nav>
+</header>
 
 <!-- Modal -->
-  <div class="modal fade" id="loginModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-    
-      <!-- Modal content-->
-      <div class="modal-content" style="text-align: center;background: #b0dbff;">
-        <div class="modal-header" style="background: #b0dbff;">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4><span class="glyphicon glyphicon-lock"></span> LOGIN</h4>
-        </div>
-        <div class="modal-body" style="background: #d5edff;">
-            <div class="containerlogin">
-                <p>All the applications you need</p>
-            </div>
-            <div class="containerlogin">
-                <a href="/login/facebook" class="button facebook"><span><i class="fa fa-facebook"></i></span><p>Facebook</p></a>
-            </div>
-            <div class="containerlogin">
-                <a href="/login/google" class="button google-plus"><span><i class="fa fa-google-plus"></i></span><p>Google</p></a>
-            </div>
-            <div class="containerlogin">
-                <a href="/login/github" class="button github"><span><i class="fa fa-github"></i></span><p>Github</p></a>
-            </div>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+<div class="modal fade" id="loginModal" role="dialog">
+<div class="modal-dialog modal-sm">
 
-<div class="container">
-    <router-outlet></router-outlet>
+    <!-- Modal content-->
+    <div class="modal-content" style="text-align: center;background: #b0dbff;">
+    <div class="modal-header" style="background: #b0dbff;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4><span class="glyphicon glyphicon-lock"></span> LOGIN</h4>
+    </div>
+    <div class="modal-body" style="background: #d5edff;">
+        <div class="containerlogin">
+            <p>All the applications you need</p>
+        </div>
+        <div class="containerlogin">
+            <a href="/login/facebook" class="button facebook"><span><i class="fa fa-facebook"></i></span><p>Facebook</p></a>
+        </div>
+        <div class="containerlogin">
+            <a href="/login/google" class="button google-plus"><span><i class="fa fa-google-plus"></i></span><p>Google</p></a>
+        </div>
+        <div class="containerlogin">
+            <a href="/login/github" class="button github"><span><i class="fa fa-github"></i></span><p>Github</p></a>
+        </div>
+    </div>
+    </div>
+    
 </div>
+</div>
+<main>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+<footer class="container-fluid text-center">
+    <div class="container">
+        <br>
+        <a href="https://github.com/nikhilmetrani/alpha-umi">alpha-umi</a> ||
+        <a href="https://github.com/nikhilmetrani/beta-ori">beta-ori</a>
+    </div>
+</footer>

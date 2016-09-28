@@ -14,14 +14,13 @@
 * limitations under the License.
 **/
 
-import {Component} from "@angular/core";
-import {OnInit} from "@angular/core";
-import {LoginService, User} from "../../core/exports";
-import {Observable} from 'rxjs/Observable';
+import {Component} from '@angular/core';
+import {OnInit} from '@angular/core';
+import {LoginService, User} from '../../core';
 
 @Component({
-    templateUrl: './app/components/login/login.html',
-    styleUrls: ['./app/components/login/login.css']
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
     userName: string;
@@ -37,26 +36,29 @@ export class LoginComponent implements OnInit {
 
     tryLogin() {
         this.loginService.login().subscribe(
-            (user:User) => {
-                this.validateUser(user.name);
+            (user: User) => {
+                this.validateUser(user);
             }
         );
     }
 
     logout() {
-        this.loginService.logout();
-        this.invalidateUser();
+        this.loginService.logout().subscribe(
+            response => this.invalidateUser()
+        );
     }
 
-    validateUser(userName: string) {
-        if (userName !== "N/A") {
-            this.userName = userName;
+    validateUser(user: User) {
+        if (user !== undefined) {
+            this.userName = user.name;
+            sessionStorage.setItem('uid', user.rid.toString());
             this.isAuthenticated = true;
         }
     }
 
     invalidateUser() {
-        this.userName = "N/A";
+        this.userName = undefined;
+        sessionStorage.removeItem('uid');
         this.isAuthenticated = false;
     }
 }

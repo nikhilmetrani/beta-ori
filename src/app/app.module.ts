@@ -14,20 +14,21 @@
 * limitations under the License.
 **/
 
-import {NgModule}      from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {HttpModule} from "@angular/http";
+import { NgModule, ApplicationRef } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
-import {AppComponent} from "./app.component";
+import { AppComponent } from './app.component';
 import {
             AboutComponent,
             LoginComponent,
             DeveloperComponent,
-            ApplicationList,
-            Application,
+            ApplicationListComponent,
+            ApplicationComponent,
             DeveloperWelcomeComponent,
             DeveloperProfileCreateComponent
-        } from "./components/exports";
+        } from './components';
 import {
             LoginService,
             DeveloperListPipe,
@@ -35,38 +36,54 @@ import {
             FavoriteDirective,
             StoreService,
             ProfileService
-        } from "./core/exports";
+        } from './core';
 
-import {routing, appRoutingProviders} from './app.routes';
-import {FormsModule} from "@angular/forms";
+import { routing } from './app.routing';
+
+import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule,
-        routing,
-        HttpModule
-    ],
-    declarations: [
-        AppComponent,
-        DeveloperListPipe,
-        CategoryListPipe,
-        ApplicationList,
-        FavoriteDirective,
-        Application,
-        AboutComponent,
-        DeveloperComponent,
-        LoginComponent,
-        DeveloperWelcomeComponent,
-        DeveloperProfileCreateComponent
-    ],
-    providers: [
-        appRoutingProviders,
-        LoginService,
-        StoreService,
-        ProfileService
-    ],
-    bootstrap: [AppComponent]
+  imports: [
+    BrowserModule,
+    HttpModule,
+    FormsModule,
+    routing
+  ],
+  declarations: [
+    AppComponent,
+    AboutComponent,
+    DeveloperListPipe,
+    CategoryListPipe,
+    ApplicationListComponent,
+    FavoriteDirective,
+    ApplicationComponent,
+    DeveloperComponent,
+    LoginComponent,
+    DeveloperWelcomeComponent,
+    DeveloperProfileCreateComponent
+  ],
+  providers: [
+    LoginService,
+    StoreService,
+    ProfileService
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(public appRef: ApplicationRef) {}
+  hmrOnInit(store) {
+    console.log('HMR store', store);
+  }
+  hmrOnDestroy(store) {
+    let cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
+    // recreate elements
+    store.disposeOldHosts = createNewHosts(cmpLocation);
+    // remove styles
+    removeNgStyles();
+  }
+  hmrAfterDestroy(store) {
+    // display new elements
+    store.disposeOldHosts();
+    delete store.disposeOldHosts;
+  }
 }

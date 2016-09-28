@@ -14,15 +14,44 @@
 * limitations under the License.
 **/
 
-// Common export file for all views
-// Usage: import {ClassName} from './views/exports';
-
-// Expore views
-export {AboutComponent} from './about/about.component';
-export {DeveloperComponent} from './developer/developer.component';
-export {DeveloperWelcomeComponent} from './developer/profile/welcome/welcome.component';
-export {DeveloperProfileCreateComponent} from './developer/profile/create/create.component';
-export {LoginComponent} from './login/login.component';
-
-export {Application} from './store/application/application';
-export {ApplicationList} from './store/application-list/application-list';
+:host {
+    display: flex;
+    min-height: 60vh;
+    flex-direction: column;
+    padding: 10px;
+}
+header {
+    color: #32435b;
+}
+header.category-development {
+    color: #53ace4;
+}
+header.category-productivity {
+    color: #45bf94;
+}
+header.category-photography {
+    color: #ff704d;
+}
+header > h2 {
+    font-size: 1.4em;
+}
+header > h2.error {
+    color: #d93a3e;
+}
+section {
+    flex: 1;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+}
+section > bo-application {
+    margin: 10px;
+}
+footer {
+    text-align: right;
+}
+footer .icon {
+    width: 64px;
+    height: 64px;
+    margin: 15px;
+}

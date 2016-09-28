@@ -14,14 +14,13 @@
 * limitations under the License.
 **/
 
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {ProfileService, DeveloperProfile} from "../../core/exports";
+import {ProfileService, DeveloperProfile} from '../../core';
 
 @Component({
-    selector: 'developer',
-    templateUrl: './app/components/developer/developer.html',
-    styleUrls: ['./app/components/developer/developer.css']
+    templateUrl: './developer.component.html',
+    styleUrls: ['./developer.component.scss']
 })
 export class DeveloperComponent implements OnInit {
 
@@ -32,7 +31,7 @@ export class DeveloperComponent implements OnInit {
     constructor (private profileService: ProfileService, private route: ActivatedRoute) {}
 
     ngOnInit() {
-        this.developerId = +sessionStorage.getItem("uid");
+        this.developerId = +sessionStorage.getItem('uid');
         this.getProfile();
     }
 

@@ -15,20 +15,20 @@
 **/
 
 import {Component, OnInit} from '@angular/core';
-import {StoreService} from '../../../core/exports';
+import {StoreService} from '../../../core';
 import {Observable} from 'rxjs/Observable';
 import {ActivatedRoute} from '@angular/router';
-import {StoreApplication, Link, User} from "../../../core/exports";
+import {StoreApplication} from '../../../core';
 
 @Component({
-  selector: 'application-list',
-  styleUrls: ['./app/components/store/application-list/application-list.css'],
-  templateUrl: './app/components/store/application-list/application-list.html',
+  selector: 'bo-application-list',
+  styleUrls: ['./application-list.component.scss'],
+  templateUrl: './application-list.component.html',
 })
-export class ApplicationList implements OnInit {
+export class ApplicationListComponent implements OnInit {
   category: string = 'All';
   storeItems: Observable<any>;
-  storeItemsArray = [];
+  storeItemsArray: StoreApplication[] = [];
 
   constructor(public storeService: StoreService, private route: ActivatedRoute) {
   }
@@ -36,7 +36,7 @@ export class ApplicationList implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.category = params['category'];
-      if (this.category && this.category !== "All") {
+      if (this.category && this.category !== 'All') {
         this.storeItems = this.storeService.getApplicationsByCategory(this.category);
       } else {
         this.category = 'All';

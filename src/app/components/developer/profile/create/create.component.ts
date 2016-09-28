@@ -14,15 +14,13 @@
 * limitations under the License.
 **/
 
-import {Component, Input, OnInit} from "@angular/core";
-import {FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {ProfileService, DeveloperProfile} from "../../../../core/exports";
+import {ProfileService, DeveloperProfile} from '../../../../core';
 
 @Component({
-    selector: 'developer-profile-create',
-    templateUrl: './app/components/developer/profile/create/create.html'//,
-    // styleUrls: ['./app/components/developer/profile/welcome/welcome.css']
+    selector: 'bo-developer-profile-create',
+    templateUrl: './create.component.html'
 })
 export class DeveloperProfileCreateComponent implements OnInit {
 
@@ -33,7 +31,7 @@ export class DeveloperProfileCreateComponent implements OnInit {
     ngOnInit() {}
 
     onSubmitCreateProfile() {
-        this.profileService.createDeveloperProfile(sessionStorage.getItem("uid"), this.developerProfile).subscribe(
+        this.profileService.createDeveloperProfile(+sessionStorage.getItem('uid'), this.developerProfile).subscribe(
             (response) => {if (response !== undefined) {
                 // The response we got is not undefined. So lets go back to the developer home page.
                 this.router.navigate(['/developer']);
