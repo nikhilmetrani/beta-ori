@@ -37,9 +37,7 @@ export class ProfileService {
     createDeveloperProfile(developerId: number, profile: DeveloperProfile) {
         // We are passing in developer ID. It needs to be removed.
         // If the id was manipulated, another users developer profile may get updated.
-        return this.http.post('/api/0/profile/developer/' + developerId, profile)
-            .map(response => this.extractData)
-            .catch(this.logError);
+        return this.http.post('/api/0/profile/developer/' + developerId, profile);
     }
 
     private extractData(res: Response): DeveloperProfile {

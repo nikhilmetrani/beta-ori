@@ -23,7 +23,7 @@ import '../style/app.scss';
 import 'jquery';
 
 @Component({
-  selector: 'bo-app', // <my-app></my-app>
+  selector: 'bo-app', // <bo-app></bo-app>
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
@@ -35,11 +35,11 @@ export class AppComponent implements OnInit {
   constructor(private loginService: LoginService) {}
 
   ngOnInit() {
-        this.tryLogin();
+        this.fetchLoggedInUser();
     }
 
-    tryLogin() {
-        this.loginService.login().subscribe(
+    fetchLoggedInUser() {
+        this.loginService.getUserDetails().subscribe(
             (user: User) => {
                 this.validateUser(user);
             }

@@ -31,11 +31,11 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.tryLogin();
+        this.fetchLoggedInUser();
     }
 
-    tryLogin() {
-        this.loginService.login().subscribe(
+    fetchLoggedInUser() {
+        this.loginService.getUserDetails().subscribe(
             (user: User) => {
                 this.validateUser(user);
             }

@@ -14,9 +14,9 @@
 * limitations under the License.
 **/
 
-import {Injectable} from '@angular/core';
-import {Http, Headers, Response } from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import { Injectable} from '@angular/core';
+import { Http, Headers, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import {User} from '../';
@@ -26,8 +26,8 @@ export class LoginService {
 
     constructor(private http: Http) {}
 
-    login() {
-
+    /** Gets the details of logged in user */
+    getUserDetails() {
         // Create headers from Plain Old JavaScript Object
         let useHeaders = new Headers({
         'X-Requested-With': 'XMLHttpRequest'
@@ -38,6 +38,7 @@ export class LoginService {
             .catch(this.logError);
     }
 
+    /** Logout user */
     logout() {
         return this.http.post('/logout', {})
             .map(response => this.extractData)
@@ -46,7 +47,7 @@ export class LoginService {
 
     private extractData(res: Response): User {
         try {
-            let body = res.json();
+            let body: User = res.json();
             return body || undefined;
         } catch (err) {
             return undefined;

@@ -32,10 +32,12 @@ export class DeveloperProfileCreateComponent implements OnInit {
 
     onSubmitCreateProfile() {
         this.profileService.createDeveloperProfile(+sessionStorage.getItem('uid'), this.developerProfile).subscribe(
-            (response) => {if (response !== undefined) {
-                // The response we got is not undefined. So lets go back to the developer home page.
-                this.router.navigate(['/developer']);
-            }}
+            (response) => {
+                if (response.status === 200) {
+                // Success response, so lets go back to the developer home page.
+                    this.router.navigate(['/developer']);
+                }
+            }
         );
     }
 }
