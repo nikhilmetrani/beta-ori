@@ -50,7 +50,6 @@ export class ProfileService {
     }
 
     logError(err: Response) {
-        console.error('There was an error: ' + err);
         return Observable.throw(err.json().error || 'Server error');
     }
 }

@@ -40,9 +40,7 @@ export class LoginService {
 
     /** Logout user */
     logout() {
-        return this.http.post('/logout', {})
-            .map(response => this.extractData)
-            .catch(this.logError);
+        return this.http.post('/logout', {});
     }
 
     private extractData(res: Response): User {

@@ -5,7 +5,7 @@ import {
   inject
 } from '@angular/core/testing';
 import {
-  Headers, BaseRequestOptions,
+  BaseRequestOptions,
   Response, HttpModule, Http, XHRBackend, RequestMethod
 } from '@angular/http';
 

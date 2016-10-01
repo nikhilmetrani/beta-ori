@@ -24,7 +24,7 @@
 <div class="container" *ngIf="isAuthenticated">
     Logged in as: <span>{{userName}}</span>
     <div>
-        <button (click)="logout()" class="btn btn-primary">Logout</button>
+        <a href="/"><button (click)="logout()" class="btn btn-primary">Logout</button></a>
     </div>
 </div>
 

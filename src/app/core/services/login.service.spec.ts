@@ -6,7 +6,7 @@ import {
 } from '@angular/core/testing';
 import {
   BaseRequestOptions,
-  Response, HttpModule, Http, XHRBackend
+  Response, HttpModule, Http, XHRBackend, RequestMethod
 } from '@angular/http';
 
 import {ResponseOptions} from '@angular/http';
@@ -90,5 +90,19 @@ describe('Login Service', () => {
             expect(user.rid).toEqual(16);
             expect(user.name).toEqual('Mocked User');
       });
+    })));
+
+    it('Should perform logout',
+        async(inject([MockBackend, LoginService], (mockBackend: MockBackend, loginService: LoginService) => {
+        mockBackend.connections.subscribe((connection: MockConnection) => {
+            expect(connection.request.method).toBe(RequestMethod.Post);
+            connection.mockRespond(new Response(new ResponseOptions({status: 200})));
+        });
+
+        loginService.logout().subscribe(
+            (successResult) => {
+                expect(successResult).toBeDefined();
+                expect(successResult.status).toBe(200);
+            });
     })));
 });
