@@ -14,9 +14,16 @@
 * limitations under the License.
 **/
 
-import {Component} from '@angular/core';
+import {AboutComponent} from '../';
 
-@Component({
-    templateUrl: './about.component.html'
-})
-export class AboutComponent {}
+describe('Testing message state in message.component', () => {
+  let app: AboutComponent;
+
+  beforeEach(() => {
+    app = new AboutComponent();
+  });
+
+  it('Should be initialized', () => {
+    expect(app).toBeDefined();
+  });
+});
