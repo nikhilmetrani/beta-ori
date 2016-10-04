@@ -45,10 +45,10 @@ beta-ori/
     +-- app/
         +-- components/
             +-- **              <= Component sub directories and source files (*.ts, *.html, *.scss)
-            +-- index.ts      <= Exported classes
+            +-- index.ts        <= Exported classes
         +-- core/
             +-- **              <= Core sub directories and source files (*.ts)
-            +-- index.ts      <= Exported classes
+            +-- index.ts        <= Exported classes
         +-- app.component.html
         +-- app.component.scss
         +-- app.component.ts
@@ -103,7 +103,8 @@ Install dependencies:
 
 > npm install
 
-`node_modules` and `typings` directories should be created during the install.
+`node_modules` directory should be created during the install.
+This is where all the project dependency modules downloaded.
 
 If `typings` folder is not created, run `npm run postinstall`
 
@@ -114,23 +115,22 @@ Build the project:
 `build` directory should be created during the build
 
 ```
-> clean - To clean up the output folders - build and int
-> build - To build the project
+> npm run clean - To clean up the output folders - build and int
+> npm run build - To build the project
 ```
 
 Deploy the project:
 
 > npm run deploy
 
-This will deploy the build into resources/public folder of alpha-umi project.
+`npm run deploy` will copy the build output to Tomcat server (target\classes\public folder in alpha-umi project).
 
 ```
 parent/
 +-- alpha-umi
-    +-- src
-        +-- main
-            +-- resources
-                +-- public <= Deployment location (git ignored)
+    +-- target
+        +-- classes
+            +-- public <= Deployment location (git ignored)
 +-- beta-ori
     +-- coverage <= Test coverage reports build location (git ignored)
     +-- dist <= Build output location (git ignored)
@@ -142,12 +142,14 @@ parent/
 
 Watching for changes:
 
+Enables hot build, by running build and deply as soon as any file changes.
+
 ```
 > npm run watch
 > npm run gulp-watch
 ```
 
-_These tasks will watch for changes in src folder and execute the build and deploy tasks respectively._
+*NOTE: These two commands must run in two different command windows.*
 
 References
 ---------

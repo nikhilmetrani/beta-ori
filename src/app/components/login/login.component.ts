@@ -38,6 +38,9 @@ export class LoginComponent implements OnInit {
         this.loginService.getUserDetails().subscribe(
             (user: User) => {
                 this.validateUser(user);
+            },
+            (err: Error) => {
+                // User is not logged in! 
             }
         );
     }

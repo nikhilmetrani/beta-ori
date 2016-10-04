@@ -23,7 +23,7 @@ import {StoreApplication} from '../';
 
 @Injectable()
 export class StoreService {
-    storeUrl: string = '/store/';
+    storeUrl: string = '/api/1/store/';
 
     constructor(private http: Http) {}
 

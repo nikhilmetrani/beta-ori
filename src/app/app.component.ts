@@ -42,6 +42,10 @@ export class AppComponent implements OnInit {
         this.loginService.getUserDetails().subscribe(
             (user: User) => {
                 this.validateUser(user);
+            },
+            (err: any) => {
+                // User is not logged in!
+                this.invalidateUser(); 
             }
         );
     }

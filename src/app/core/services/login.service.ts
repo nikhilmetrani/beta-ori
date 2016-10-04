@@ -52,8 +52,9 @@ export class LoginService {
         }
     }
 
-    logError(err: Response) {
-        console.error('There was an error: ' + err);
-        return Observable.throw(err.json().error || 'Server error');
+    logError(error: any) {
+        let errMsg = (error.message) ? error.message :
+        error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        return Observable.throw(errMsg);
     }
 }
