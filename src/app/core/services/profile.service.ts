@@ -27,16 +27,14 @@ export class ProfileService {
     constructor(private http: Http) {}
 
     getDeveloperProfile(developerId: number) {
-        // We are passing in developer ID. It needs to be removed.
-        // If the id was manipulated, another users developer profile may get updated.
+        // Developer ID validation is now implemented on server side.
         return this.http.get('/api/0/profile/developer/' + developerId)
             .map(this.extractData)
             .catch(this.logError);
     }
 
     createDeveloperProfile(developerId: number, profile: DeveloperProfile) {
-        // We are passing in developer ID. It needs to be removed.
-        // If the id was manipulated, another users developer profile may get updated.
+        // Developer ID validation is now implemented on server side.
         return this.http.post('/api/0/profile/developer/' + developerId, profile);
     }
 

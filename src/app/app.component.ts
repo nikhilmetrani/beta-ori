@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
             },
             (err: any) => {
                 // User is not logged in!
-                this.invalidateUser(); 
+                this.invalidateUser();
             }
         );
     }
