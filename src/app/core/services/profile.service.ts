@@ -38,6 +38,10 @@ export class ProfileService {
         return this.http.post('/api/0/profile/developer/' + developerId, profile);
     }
 
+    modifyDeveloperProfile(developerId: number, profile: DeveloperProfile) {
+        return this.http.post('/api/0/profile/developer/' + developerId, profile);
+    }
+
     private extractData(res: Response): DeveloperProfile {
         try {
             let body = res.json();
