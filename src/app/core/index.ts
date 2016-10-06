@@ -34,3 +34,6 @@ export {DeveloperListPipe} from './pipes/developer-list.pipe';
 
 // Export directives
 export {FavoriteDirective} from './directives/favorite.directive';
+
+// Export guards
+export {AuthGuard} from './guards/auth.guard';

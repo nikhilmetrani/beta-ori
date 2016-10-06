@@ -35,7 +35,8 @@ import {
             CategoryListPipe,
             FavoriteDirective,
             StoreService,
-            ProfileService
+            ProfileService,
+            AuthGuard
         } from './core';
 
 import { routing } from './app.routing';
@@ -63,6 +64,7 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     DeveloperProfileCreateComponent
   ],
   providers: [
+    AuthGuard,
     LoginService,
     StoreService,
     ProfileService

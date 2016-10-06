@@ -23,14 +23,17 @@ import {AboutComponent,
         DeveloperProfileCreateComponent
         } from './components';
 
+import {AuthGuard} from './core';
+
 const routes: Routes = [
-  {path: '', redirectTo: 'store', pathMatch: 'full'},
-  {path: '_', redirectTo: 'store', pathMatch: 'full'},
   {path: 'store', component: ApplicationListComponent, data: {title: 'Store'}},
   {path: 'login', component: LoginComponent, data: {title: 'Login'}},
-  {path: 'developer', component: DeveloperComponent, data: {title: 'Developer'}},
-  {path: 'createdevpro', component: DeveloperProfileCreateComponent, data: {title: 'CreateDeveloperProfile'}},
-  {path: 'about', component: AboutComponent, data: {title: 'About'}}
+  {path: 'developer', component: DeveloperComponent, data: {title: 'Developer'}, canActivate: [AuthGuard]},
+  {path: 'createdevpro', component: DeveloperProfileCreateComponent, data: {title: 'CreateDeveloperProfile'}, canActivate: [AuthGuard]},
+  {path: 'about', component: AboutComponent, data: {title: 'About'}},
+
+  // If none of the routes match, go to store.
+  {path: '**', redirectTo: 'store'}
 ];
 
 export const routing = RouterModule.forRoot(routes, { useHash: true });

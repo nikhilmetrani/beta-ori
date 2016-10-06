@@ -6,7 +6,7 @@ const gulp = require("gulp");
  * Watch for changes in TypeScript, HTML and CSS files.
  */
 gulp.task('watch', function () {
-    gulp.watch(["dist/**/*.*"], ['deploy']).on('change', function (e) {
+    return gulp.watch(["dist/**/*.*"], ['deploy']).on('change', function (e) {
         console.log('Build updated. File ' + e.path + ' has been changed. Deploying.');
     });
 });
