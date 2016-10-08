@@ -23,23 +23,28 @@ import {DeveloperProfile} from '../';
 
 @Injectable()
 export class ProfileService {
+    developerUrl: string = '/api/0/developer/';
 
     constructor(private http: Http) {}
 
     getDeveloperProfile(developerId: number) {
         // Developer ID validation is now implemented on server side.
-        return this.http.get('/api/0/profile/developer/' + developerId)
+        return this.http.get(this.getProfileUrl(developerId))
             .map(this.extractData)
             .catch(this.logError);
     }
 
     createDeveloperProfile(developerId: number, profile: DeveloperProfile) {
         // Developer ID validation is now implemented on server side.
-        return this.http.post('/api/0/profile/developer/' + developerId, profile);
+        return this.http.post(this.getProfileUrl(developerId), profile);
     }
 
     modifyDeveloperProfile(developerId: number, profile: DeveloperProfile) {
-        return this.http.post('/api/0/profile/developer/' + developerId, profile);
+        return this.http.post(this.getProfileUrl(developerId), profile);
+    }
+
+    getProfileUrl(developerId: number): string {
+        return this.developerUrl + developerId + '/profile';
     }
 
     private extractData(res: Response): DeveloperProfile {
