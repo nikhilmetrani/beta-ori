@@ -27,7 +27,11 @@ import {
             ApplicationListComponent,
             ApplicationComponent,
             DeveloperWelcomeComponent,
-            DeveloperProfileCreateComponent
+            DeveloperProfileCreateComponent,
+            ApplicationsComponent,
+            DeveloperHomeComponent,
+            CreateApplicationComponent,
+            DeveloperApplicationComponent
         } from './components';
 import {
             LoginService,
@@ -36,7 +40,8 @@ import {
             FavoriteDirective,
             StoreService,
             ProfileService,
-            AuthGuard
+            AuthGuard,
+            DeveloperApplicationsService
         } from './core';
 
 import { routing } from './app.routing';
@@ -61,13 +66,19 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     DeveloperComponent,
     LoginComponent,
     DeveloperWelcomeComponent,
-    DeveloperProfileCreateComponent
+    DeveloperProfileCreateComponent,
+    ApplicationsComponent,
+    DeveloperHomeComponent,
+    CreateApplicationComponent,
+    DeveloperApplicationComponent,
+    DeveloperApplicationComponent
   ],
   providers: [
     AuthGuard,
     LoginService,
     StoreService,
-    ProfileService
+    ProfileService,
+    DeveloperApplicationsService
   ],
   bootstrap: [AppComponent]
 })

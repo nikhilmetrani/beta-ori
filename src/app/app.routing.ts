@@ -20,7 +20,10 @@ import {AboutComponent,
         LoginComponent,
         DeveloperComponent,
         ApplicationListComponent,
-        DeveloperProfileCreateComponent
+        DeveloperProfileCreateComponent,
+        ApplicationsComponent,
+        DeveloperHomeComponent,
+        CreateApplicationComponent
         } from './components';
 
 import {AuthGuard} from './core';
@@ -28,7 +31,14 @@ import {AuthGuard} from './core';
 const routes: Routes = [
   {path: 'store', component: ApplicationListComponent, data: {title: 'Store'}},
   {path: 'login', component: LoginComponent, data: {title: 'Login'}},
-  {path: 'developer', component: DeveloperComponent, data: {title: 'Developer'}, canActivate: [AuthGuard]},
+  {path: 'developer', component: DeveloperComponent, data: {title: 'Developer'}, canActivate: [AuthGuard],
+    children: [
+      {path: 'dev-home', component: DeveloperHomeComponent, data: {title: 'Developer Home'}, canActivate: [AuthGuard]},
+      {path: 'applications', component: ApplicationsComponent, data: {title: 'Applications'}, canActivate: [AuthGuard]},
+      {path: 'create-app', component: CreateApplicationComponent, data: {title: 'Create Application'}, canActivate: [AuthGuard]},
+      { path: '**', redirectTo: 'dev-home'}
+    ]
+  },
   {path: 'createdevpro', component: DeveloperProfileCreateComponent, data: {title: 'CreateDeveloperProfile'}, canActivate: [AuthGuard]},
   {path: 'about', component: AboutComponent, data: {title: 'About'}},
 

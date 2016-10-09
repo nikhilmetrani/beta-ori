@@ -16,17 +16,17 @@
 **/
 -->
 
-<header 
-    [ngClass]="{'category-development':category === 'Development',
-    'category-productivity':category === 'Productivity',
-    'category-photography':category === 'Photography'}">
-    <h2>Category > {{category}}</h2>
-    <div>Developers > {{ storeItemsArray | boDeveloperList }}</div>
+
+<header>
+    <div class="container">
+        <button type="button" class="btn btn-primary" (click)="createNewApplication()">Create Application</button>
+    </div>
 </header>
-<section>
-    <bo-application *ngFor="let application of storeItems | async"
-        [application]="application"
-        [ngClass]="{'category-development':category === 'Development',
-                'category-productivity':category === 'Productivity',
-                'category-photography':category === 'Photography'}"></bo-application>
-</section>
+<br><br>
+<div class="container">
+    <section>
+        <bo-dev-app *ngFor="let application of devAppsArray"
+            [application]="application"
+            ></bo-dev-app>
+    </section>
+</div>

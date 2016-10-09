@@ -16,22 +16,4 @@
 **/
 -->
 
-<!--Display welcome page when profile is not created.-->
-<div class="container-fluid" *ngIf="!isProfileConfirmed">
-    <bo-developer-welcome></bo-developer-welcome> 
-</div>
-
-<div class="container-fluid">
-  <div class="row content">
-    <div class="col-sm-3 sidenav">
-      <ul class="nav nav-pills nav-stacked">
-        <li><a routerLink="dev-home">Home</a></li>
-        <li><a routerLink="applications">Applications</a></li>
-        <li><a routerLink="#">Settings</a></li>
-      </ul><br>
-    </div>
-    <div class="col-sm-9">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</div>
+<h4><small>Developer Home</small></h4>

@@ -1,4 +1,3 @@
-<!--
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -14,24 +13,15 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 **/
--->
 
-<!--Display welcome page when profile is not created.-->
-<div class="container-fluid" *ngIf="!isProfileConfirmed">
-    <bo-developer-welcome></bo-developer-welcome> 
-</div>
+import {Component, Input} from '@angular/core';
+import {DeveloperApplication} from '../../../../core';
 
-<div class="container-fluid">
-  <div class="row content">
-    <div class="col-sm-3 sidenav">
-      <ul class="nav nav-pills nav-stacked">
-        <li><a routerLink="dev-home">Home</a></li>
-        <li><a routerLink="applications">Applications</a></li>
-        <li><a routerLink="#">Settings</a></li>
-      </ul><br>
-    </div>
-    <div class="col-sm-9">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</div>
+@Component({
+    selector: 'bo-dev-app',
+    templateUrl: './developer-application.component.html',
+    styleUrls: ['./developer-application.component.scss']
+})
+export class DeveloperApplicationComponent {
+    @Input() application: DeveloperApplication;
+}
