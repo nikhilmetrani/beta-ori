@@ -20,8 +20,8 @@
 <template [ngIf]="application.watchedOn">
     <div>Watched on {{ application.watchedOn | date: 'shortDate' }}</div>
 </template>
-<a [routerLink]="['/store', { category: application.category }]">    
-    <div>{{ application.category }}</div>
+<a [routerLink]="['/store', { category: application.category.name }]">    
+    <div>{{ application.category.name }}</div>
 </a>
 <div class="tools">
     <svg [boFavorite]="application.isFavorite"

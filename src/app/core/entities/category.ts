@@ -14,19 +14,7 @@
 * limitations under the License.
 **/
 
-import {Pipe, PipeTransform} from '@angular/core';
-
-@Pipe({
-    name: 'boCategoryList'
-})
-export class CategoryListPipe implements PipeTransform {
-    transform(storeItems) {
-        let categories = [];
-        storeItems.forEach(application => {
-            if (categories.indexOf(application.category) <= -1) {
-                categories.push(application.category.name);
-            }
-        });
-        return categories.join(', ');
-    }
+export interface Category {
+    id: number;
+    name: string;
 }

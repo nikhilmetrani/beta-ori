@@ -22,7 +22,7 @@ let storeApps: StoreApplication[] = [{
                     name: 'Application 2',
                     developer: user,
                     links: [],
-                    category: 'Productivity',
+                    category: { id: 1, name: 'Productivity' },
                     isFavorite: false
                 },
                 {
@@ -30,7 +30,7 @@ let storeApps: StoreApplication[] = [{
                     name: 'Application 3',
                     developer: user2,
                     links: [],
-                    category: 'Development',
+                    category: { id: 1, name: 'Development' },
                     isFavorite: false
                 }];
 

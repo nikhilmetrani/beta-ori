@@ -22,7 +22,7 @@ let storeApps: StoreApplication[] = [{
                     name: 'Application 2',
                     developer: user,
                     links: [],
-                    category: 'Productivity',
+                    category: { id: 1, name: 'Productivity' },
                     isFavorite: false
                 },
                 {
@@ -30,7 +30,7 @@ let storeApps: StoreApplication[] = [{
                     name: 'Application 3',
                     developer: user2,
                     links: [],
-                    category: 'Development',
+                    category: { id: 1, name: 'Development' },
                     isFavorite: false
                 }];
 
@@ -43,6 +43,6 @@ describe('CategoryListPipe Tests', () => {
 
     it('Should return comma separated string of categories', () => {
         let result = pipe.transform(storeApps);
-        expect(result).toEqual(storeApps[0].category + ', ' + storeApps[1].category);
+        expect(result).toEqual(storeApps[0].category.name + ', ' + storeApps[1].category.name);
     });
 });

@@ -17,16 +17,16 @@
 -->
 
 <header 
-    [ngClass]="{'category-development':category === 'Development',
-    'category-productivity':category === 'Productivity',
-    'category-photography':category === 'Photography'}">
-    <h2>Category > {{category}}</h2>
+    [ngClass]="{'category-development':categoryString === 'Development',
+    'category-productivity':categoryString === 'Productivity',
+    'category-photography':categoryString === 'Photography'}">
+    <h2>Category > {{categoryString}}</h2>
     <div>Developers > {{ storeItemsArray | boDeveloperList }}</div>
 </header>
 <section>
     <bo-application *ngFor="let application of storeItems | async"
         [application]="application"
-        [ngClass]="{'category-development':category === 'Development',
-                'category-productivity':category === 'Productivity',
-                'category-photography':category === 'Photography'}"></bo-application>
+        [ngClass]="{'category-development':categoryString === 'Development',
+                'category-productivity':categoryString === 'Productivity',
+                'category-photography':categoryString === 'Photography'}"></bo-application>
 </section>

@@ -14,14 +14,13 @@
 * limitations under the License.
 **/
 
-import {User} from './user';
-import {Link} from './link';
+import {User, Link, Category} from '../';
 
 export interface StoreApplication {
     rid: Number;
     name: string;
     developer: User;
     links: Link[];
-    category: string;
+    category: Category;
     isFavorite: boolean;
 }

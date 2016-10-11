@@ -18,7 +18,7 @@ import {Component, OnInit} from '@angular/core';
 import {StoreService} from '../../../core';
 import {Observable} from 'rxjs/Observable';
 import {ActivatedRoute} from '@angular/router';
-import {StoreApplication} from '../../../core';
+import {StoreApplication, Category} from '../../../core';
 
 @Component({
   selector: 'bo-application-list',
@@ -26,7 +26,8 @@ import {StoreApplication} from '../../../core';
   templateUrl: './application-list.component.html',
 })
 export class ApplicationListComponent implements OnInit {
-  category: string = 'All';
+  category: Category = undefined;
+  categoryString = 'All';
   storeItems: Observable<any>;
   storeItemsArray: StoreApplication[] = [];
 
@@ -35,11 +36,14 @@ export class ApplicationListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.category = params['category'];
-      if (this.category && this.category !== 'All') {
-        this.storeItems = this.storeService.getApplicationsByCategory(this.category);
+      let categoryParam = params['category'];
+      if (categoryParam && categoryParam !== 'All') {
+        this.category = {id: undefined, name: categoryParam};
+        this.categoryString = categoryParam;
+        this.storeItems = this.storeService.getApplicationsByCategory(categoryParam);
       } else {
-        this.category = 'All';
+        this.category = undefined;
+        this.categoryString = 'All';
         this.storeItems = this.storeService.getApplications();
       }
       this.storeItems.forEach(next => this.storeItemsArray = next);

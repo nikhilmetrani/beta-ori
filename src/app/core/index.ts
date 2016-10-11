@@ -23,6 +23,7 @@ export {DeveloperProfile} from './entities/developer-profile';
 export {StoreApplication} from './entities/store-application';
 export {Link} from './entities/link';
 export {DeveloperApplication} from './entities/developer-application';
+export {Category} from './entities/category';
 
 // Export services
 export {LoginService} from './services/login.service';

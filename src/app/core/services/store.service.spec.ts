@@ -40,7 +40,7 @@ let storeApps: StoreApplication[] = [{
                     name: 'Application 2',
                     developer: user,
                     links: [],
-                    category: 'Productivity',
+                    category: { id: 1, name: 'Productivity' },
                     isFavorite: false
                 },
                 {
@@ -48,7 +48,7 @@ let storeApps: StoreApplication[] = [{
                     name: 'Application 3',
                     developer: user,
                     links: [],
-                    category: 'Development',
+                    category: { id: 1, name: 'Development' },
                     isFavorite: false
                 }];
 
@@ -100,8 +100,8 @@ describe('StoreService Tests', () => {
             expect(apps[0].name).toEqual('Application 2');
             expect(apps[1].name).toEqual('Application 3');
 
-            expect(apps[0].category).toEqual('Productivity');
-            expect(apps[1].category).toEqual('Development');
+            expect(apps[0].category.name).toEqual('Productivity');
+            expect(apps[1].category.name).toEqual('Development');
             done();
         });
     });
@@ -125,8 +125,8 @@ describe('StoreService Tests', () => {
             expect(apps[0].name).toEqual('Application 2');
             expect(apps[1].name).toEqual('Application 3');
 
-            expect(apps[0].category).toEqual('Productivity');
-            expect(apps[1].category).toEqual('Development');
+            expect(apps[0].category.name).toEqual('Productivity');
+            expect(apps[1].category.name).toEqual('Development');
       });
     })));
 
@@ -149,7 +149,7 @@ describe('StoreService Tests', () => {
             expect(apps.length).toEqual(1);
             expect(apps[0].rid).toEqual(2);
             expect(apps[0].name).toEqual('Application 2');
-            expect(apps[0].category).toEqual('Productivity');
+            expect(apps[0].category.name).toEqual('Productivity');
             done();
         });
     });
@@ -170,7 +170,7 @@ describe('StoreService Tests', () => {
             expect(apps.length).toEqual(1);
             expect(apps[0].rid).toEqual(3);
             expect(apps[0].name).toEqual('Application 3');
-            expect(apps[0].category).toEqual('Development');
+            expect(apps[0].category.name).toEqual('Development');
       });
     })));
 
