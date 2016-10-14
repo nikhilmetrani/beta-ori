@@ -15,8 +15,8 @@
 **/
 
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {ProfileService, DeveloperProfile} from '../../core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ProfileService, DeveloperProfile, User, LoginService} from '../../core';
 
 @Component({
     templateUrl: './developer.component.html',
@@ -28,11 +28,23 @@ export class DeveloperComponent implements OnInit {
     isProfileConfirmed: boolean = false;
     developerId: number;
 
-    constructor (private profileService: ProfileService, private route: ActivatedRoute) {}
+    userName: string;
+    isAuthenticated: boolean;
+
+    constructor (private profileService: ProfileService,
+                    private route: ActivatedRoute,
+                    private loginService: LoginService,
+                    private router: Router) {}
 
     ngOnInit() {
         this.developerId = +sessionStorage.getItem('uid');
         this.getProfile();
+        this.fetchLoggedInUser();
+    }
+
+    createNewApplication() {
+        // Navigate by URL to call parent route
+        this.router.navigateByUrl('/developer/create-app');
     }
 
     getProfile() {
@@ -47,5 +59,37 @@ export class DeveloperComponent implements OnInit {
                 }
             }
         );
+    }
+
+    fetchLoggedInUser() {
+        this.loginService.getUserDetails().subscribe(
+            (user: User) => {
+                this.validateUser(user);
+            },
+            (err: any) => {
+                // User is not logged in!
+                this.invalidateUser();
+            }
+        );
+    }
+
+    logout() {
+        this.loginService.logout().subscribe(
+            response => this.invalidateUser()
+        );
+    }
+
+    validateUser(user: User) {
+        if (user !== undefined) {
+            this.userName = user.name;
+            sessionStorage.setItem('uid', user.rid.toString());
+            this.isAuthenticated = true;
+        }
+    }
+
+    invalidateUser() {
+        this.userName = undefined;
+        sessionStorage.removeItem('uid');
+        this.isAuthenticated = false;
     }
 }
