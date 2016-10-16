@@ -26,12 +26,11 @@ import {
             DeveloperComponent,
             ApplicationListComponent,
             ApplicationComponent,
-            DeveloperWelcomeComponent,
-            DeveloperProfileCreateComponent,
-            ApplicationsComponent,
-            DeveloperHomeComponent,
-            CreateApplicationComponent,
-            DeveloperApplicationComponent
+            DeveloperApplicationCardComponent,
+            DeveloperApplicationsComponent,
+            DeveloperProfileComponent,
+            DeveloperApplicationComponent,
+            DeveloperSettingsComponent
         } from './components';
 import {
             LoginService,
@@ -41,6 +40,7 @@ import {
             StoreService,
             ProfileService,
             AuthGuard,
+            DeveloperGuard,
             DeveloperApplicationsService
         } from './core';
 
@@ -65,16 +65,15 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     ApplicationComponent,
     DeveloperComponent,
     LoginComponent,
-    DeveloperWelcomeComponent,
-    DeveloperProfileCreateComponent,
-    ApplicationsComponent,
-    DeveloperHomeComponent,
-    CreateApplicationComponent,
+    DeveloperApplicationCardComponent,
     DeveloperApplicationComponent,
-    DeveloperApplicationComponent
+    DeveloperApplicationsComponent,
+    DeveloperProfileComponent,
+    DeveloperSettingsComponent
   ],
   providers: [
     AuthGuard,
+    DeveloperGuard,
     LoginService,
     StoreService,
     ProfileService,

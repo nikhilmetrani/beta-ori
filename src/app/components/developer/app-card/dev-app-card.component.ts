@@ -1,4 +1,3 @@
-<!--
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -14,6 +13,15 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 **/
--->
 
-<h4><small>Developer Home</small></h4>
+import {Component, Input} from '@angular/core';
+import {DeveloperApplication} from '../../../core';
+
+@Component({
+    selector: 'bo-dev-app-card',
+    templateUrl: './dev-app-card.component.html',
+    styleUrls: ['./dev-app-card.component.css']
+})
+export class DeveloperApplicationCardComponent {
+    @Input() application: DeveloperApplication;
+}

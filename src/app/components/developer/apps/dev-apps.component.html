@@ -16,10 +16,18 @@
 **/
 -->
 
-<div class="container-fluid">
-    <h1>Welcome to Developer Centre</h1>
-    <p>Please click create profile to start publishing applications.</p>
-    <a routerLink="/createdevpro">
-        <button type="button" class="btn btn-success">Create profile</button>
-    </a>
-</div>
+
+<header>
+    <div class="container-fluid">
+        <h1>Developer Applications</h1>
+        <h3>Search and filters here</h3>
+    </div>
+</header>
+<br><br>
+<section>
+    <div class="container-fluid">
+        <bo-dev-app-card *ngFor="let application of devAppsArray"
+            [application]="application"
+            ></bo-dev-app-card>
+    </div>
+</section>

@@ -59,14 +59,14 @@ export class AppComponent implements OnInit {
     validateUser(user: User) {
         if (user !== undefined) {
             this.userName = user.name;
-            sessionStorage.setItem('uid', user.rid.toString());
+            localStorage.setItem('uid', user.rid.toString());
             this.isAuthenticated = true;
         }
     }
 
     invalidateUser() {
         this.userName = undefined;
-        sessionStorage.removeItem('uid');
+        localStorage.removeItem('uid');
         this.isAuthenticated = false;
     }
 }

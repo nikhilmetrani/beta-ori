@@ -20,23 +20,23 @@ import {Observable} from 'rxjs/Observable';
 import {DeveloperApplication, DeveloperApplicationsService} from '../../../core';
 
 @Component({
-    selector: 'bo-applications',
-    templateUrl: './applications.component.html',
-    styleUrls: ['./applications.component.scss']
+    selector: 'bo-dev-apps',
+    templateUrl: './dev-apps.component.html',
+    styleUrls: ['./dev-apps.component.css']
 })
-export class ApplicationsComponent implements OnInit {
+export class DeveloperApplicationsComponent implements OnInit {
 
     devAppsObservable: Observable<any>;
     devAppsArray: DeveloperApplication[] = [];
     constructor(private router: Router, private devAppsService: DeveloperApplicationsService) {}
 
     ngOnInit() {
-        this.devAppsObservable = this.devAppsService.getApplications(+sessionStorage.getItem('uid'));
+        this.devAppsObservable = this.devAppsService.getApplications(+localStorage.getItem('uid'));
         this.devAppsObservable.forEach(next => this.devAppsArray = next);
     }
 
     createNewApplication() {
         // Navigate by URL to call parent route
-        this.router.navigateByUrl('/developer/create-app');
+        this.router.navigateByUrl('/apps/create');
     }
 }

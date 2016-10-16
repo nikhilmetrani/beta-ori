@@ -16,11 +16,16 @@
 **/
 -->
 
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="!isProfileConfirmed">
     <h1>Welcome to Developer Centre</h1>
-    <p>Modify Developer Profile</p>
-    <section class="modify-profile">
-        <form #f="ngForm" (ngSubmit)="onSubmitModifyProfile()">
+    <p>Please click create profile to start publishing applications.</p>
+    <button type="button" class="btn btn-success" (click)="onClickCreateProfile()">Create profile</button>
+</div>
+
+<div class="container-fluid" *ngIf="isProfileConfirmed">
+    <h1>Your Developer Profile</h1>
+    <section class="create-profile">
+        <form #f="ngForm" (ngSubmit)="onSubmitCreateProfile()">
             <div class="form-group">
                 <label for="id">Email:</label>
                 <input class="form-control" type="email"  
@@ -45,5 +50,4 @@
             </div>
         </form>
     </section>
-
 </div>

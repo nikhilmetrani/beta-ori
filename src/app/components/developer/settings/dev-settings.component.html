@@ -1,3 +1,4 @@
+<!--
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -13,23 +14,8 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 **/
+-->
 
-import {Component, OnInit} from '@angular/core';
-import {ProfileService, DeveloperProfile} from '../../../../core';
-
-@Component({
-    selector: 'bo-developer-welcome',
-    templateUrl: './welcome.component.html'
-})
-export class DeveloperWelcomeComponent implements OnInit {
-
-    developerId: number;
-    developerProfile: DeveloperProfile;
-
-    constructor (private profileService: ProfileService) {}
-
-    ngOnInit() {
-        this.developerId = +sessionStorage.getItem('uid');
-    }
-}
-
+<div class="container-fluid">
+    <h1>Configure your settings here</h1>
+</div>

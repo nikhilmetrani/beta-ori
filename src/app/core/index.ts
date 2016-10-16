@@ -17,7 +17,10 @@
 // Common export file for all core classes
 // Usage: import {ClassName} from './core/exports';
 
-// Expore entities
+// Export module
+export {BOCoreModule} from './bo-core.module';
+
+// Export entities
 export {User} from './entities/user';
 export {DeveloperProfile} from './entities/developer-profile';
 export {StoreApplication} from './entities/store-application';
@@ -40,3 +43,4 @@ export {FavoriteDirective} from './directives/favorite.directive';
 
 // Export guards
 export {AuthGuard} from './guards/auth.guard';
+export {DeveloperGuard} from './guards/developer.guard';

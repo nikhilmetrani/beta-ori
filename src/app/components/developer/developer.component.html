@@ -27,18 +27,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">29Cu.io</a>
+                <a class="navbar-brand" routerLink="/about">29Cu.io</a>
             </div>
-            <div class="collapse navbar-collapse" id="mainNavBar">
+            <div class="collapse navbar-collapse" id="mainNavBar" *ngIf="isAuthenticated">
                 <ul class="nav navbar-nav">
-                    <li><a routerLink="/">Applications</a></li>
+                    <li><a routerLink="/apps">Applications</a></li>
                     <li class="dropdown" >
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                           <span class="glyphicon glyphicon-plus"></span> 
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" (click)="createNewApplication()">New Application</a></li>
-                            <li><a routerLink="/">New Update</a></li> 
+                            <li><a routerLink="/apps/create">New Application</a></li>
+                            <!--<li><a routerLink="/">New Update</a></li> -->
                         </ul>
                     </li>
                 </ul>
@@ -54,40 +54,35 @@
                         </div>
                     </form>
                 </div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> {{userName}}
-                            <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a routerLink="/">Profile</a></li>
-                                <li><a routerLink="/">Settings</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#" (click)="logout()"> Logout</a></li> 
-                            </ul>
-                        </li>
-                    </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown" >
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="glyphicon glyphicon-thumbs-up"></span> 
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a routerLink="/"><span class="glyphicon glyphicon-thumbs-up"></span> Thumbs Up</a></li>
+                            <li><a routerLink="/"><span class="glyphicon glyphicon-thumbs-down"></span> Thumbs Down</a></li> 
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> {{userName}}
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a routerLink="/profile">Profile</a></li>
+                            <li><a routerLink="/settings">Settings</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" (click)="logout()"> Logout</a></li> 
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
   </nav>
 </header>
 
-<!--Display welcome page when profile is not created.-->
-<div class="container-fluid" *ngIf="!isProfileConfirmed">
-    <bo-developer-welcome></bo-developer-welcome> 
-</div>
-
-<div class="container-fluid">
-  <div class="row content">
-    <div class="col-sm-3 sidenav">
-      <ul class="nav nav-pills nav-stacked">
-        <li><a routerLink="dev-home">Home</a></li>
-        <li><a routerLink="applications">Applications</a></li>
-        <li><a routerLink="#">Settings</a></li>
-      </ul><br>
+<div class="container">
+    <div class="container-fluid">
+        <router-outlet></router-outlet>
     </div>
-    <div class="col-sm-9">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
 </div>

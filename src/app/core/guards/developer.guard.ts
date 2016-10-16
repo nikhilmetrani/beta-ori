@@ -1,3 +1,4 @@
+
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -14,14 +15,22 @@
 * limitations under the License.
 **/
 
-import {Component, Input} from '@angular/core';
-import {DeveloperApplication} from '../../../../core';
+import { Injectable } from '@angular/core';
+import { Router, CanActivate } from '@angular/router';
 
-@Component({
-    selector: 'bo-dev-app',
-    templateUrl: './developer-application.component.html',
-    styleUrls: ['./developer-application.component.scss']
-})
-export class DeveloperApplicationComponent {
-    @Input() application: DeveloperApplication;
+@Injectable()
+export class DeveloperGuard implements CanActivate {
+
+    constructor(private router: Router) { }
+
+    canActivate() {
+        if (localStorage.getItem('isDev')) {
+            // logged in so return true
+            return true;
+        }
+
+        // not logged in so redirect to login page
+        this.router.navigate(['/createdevpro']);
+        return false;
+    }
 }

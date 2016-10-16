@@ -23,8 +23,20 @@ import {User} from '../';
 
 @Injectable()
 export class LoginService {
+    private user: User;
 
     constructor(private http: Http) {}
+
+    isLoggedIn() {
+        if (localStorage.getItem('uid')) {
+            return true;
+        }
+        return false;
+    }
+
+    getLoggedInUser() {
+        return this.user;
+    }
 
     /** Gets the details of logged in user */
     getUserDetails() {

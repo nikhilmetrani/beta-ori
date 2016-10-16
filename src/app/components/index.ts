@@ -18,15 +18,19 @@
 // Usage: import {ClassName} from './views/exports';
 
 // Expore views
-export {AboutComponent} from './about/about.component';
+
+// Developer center
 export {DeveloperComponent} from './developer/developer.component';
-export {DeveloperWelcomeComponent} from './developer/profile/welcome/welcome.component';
-export {DeveloperProfileCreateComponent} from './developer/profile/create/create.component';
-export {ApplicationsComponent} from './developer/applications/applications.component';
-export {DeveloperHomeComponent} from './developer/home/developer-home.component';
-export {CreateApplicationComponent} from './developer/applications/create/create-application.component';
-export {DeveloperApplicationComponent} from './developer/applications/application/developer-application.component';
+export {DeveloperProfileComponent} from './developer/profile/dev-profile.component';
+export {DeveloperApplicationsComponent} from './developer/apps/dev-apps.component';
+export {DeveloperApplicationCardComponent} from './developer/app-card/dev-app-card.component';
+export {DeveloperApplicationComponent} from './developer/app/dev-app.component';
+export {DeveloperSettingsComponent} from './developer/settings/dev-settings.component';
+
+// Login and About
+export {AboutComponent} from './about/about.component';
 export {LoginComponent} from './login/login.component';
 
+// Store
 export {ApplicationComponent} from './store/application/application.component';
 export {ApplicationListComponent} from './store/application-list/application-list.component';

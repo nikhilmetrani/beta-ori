@@ -16,26 +16,30 @@
 
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {ProfileService, DeveloperProfile} from '../../../../core';
+import {DeveloperApplication, DeveloperApplicationsService} from '../../../core';
 
 @Component({
-    selector: 'bo-developer-profile-create',
-    templateUrl: './create.component.html'
+    selector: 'bo-developer-application',
+    templateUrl: './dev-app.component.html'
 })
-export class DeveloperProfileCreateComponent implements OnInit {
+export class DeveloperApplicationComponent implements OnInit {
+    private newApplication: DeveloperApplication = {rid: undefined,
+        category: undefined, developer: undefined,
+        downloadUrl: undefined, name: undefined,
+        status: undefined, version: undefined};
 
-    developerProfile: DeveloperProfile = {rid: undefined, email: undefined, description: undefined, website: undefined, company: undefined};
+    constructor(private developerAppsService: DeveloperApplicationsService,
+                private router: Router) {}
 
-    constructor(private profileService: ProfileService, private router: Router) {}
+    ngOnInit() {
+    }
 
-    ngOnInit() {}
-
-    onSubmitCreateProfile() {
-        this.profileService.createDeveloperProfile(+sessionStorage.getItem('uid'), this.developerProfile).subscribe(
+    onSubmitCreateApplication() {
+        this.developerAppsService.createApplication(+localStorage.getItem('uid'), this.newApplication).subscribe(
             (response) => {
                 if (response.status === 200) {
                 // Success response, so lets go back to the developer home page.
-                    this.router.navigate(['/developer']);
+                    this.router.navigate(['/apps']);
                 }
             }
         );

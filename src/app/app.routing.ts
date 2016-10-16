@@ -19,31 +19,31 @@ import { RouterModule, Routes } from '@angular/router';
 import {AboutComponent,
         LoginComponent,
         DeveloperComponent,
-        ApplicationListComponent,
-        DeveloperProfileCreateComponent,
-        ApplicationsComponent,
-        DeveloperHomeComponent,
-        CreateApplicationComponent
+        DeveloperApplicationComponent,
+        DeveloperApplicationsComponent,
+        DeveloperProfileComponent,
+        DeveloperSettingsComponent
         } from './components';
 
 import {AuthGuard} from './core';
 
 const routes: Routes = [
-  {path: 'store', component: ApplicationListComponent, data: {title: 'Store'}},
-  {path: 'login', component: LoginComponent, data: {title: 'Login'}},
-  {path: 'developer', component: DeveloperComponent, data: {title: 'Developer'}, canActivate: [AuthGuard],
+  {path: '', component: DeveloperComponent, data: {title: 'Developer'},
     children: [
-      {path: 'dev-home', component: DeveloperHomeComponent, data: {title: 'Developer Home'}, canActivate: [AuthGuard]},
-      {path: 'applications', component: ApplicationsComponent, data: {title: 'Applications'}, canActivate: [AuthGuard]},
-      {path: 'create-app', component: CreateApplicationComponent, data: {title: 'Create Application'}, canActivate: [AuthGuard]},
-      { path: '**', redirectTo: 'dev-home'}
+      {path: 'login', component: LoginComponent},
+      {path: 'apps', component: DeveloperApplicationsComponent, canActivate: [AuthGuard]},
+      {path: 'apps/app', component: DeveloperApplicationComponent, data: { action: 'view' }, canActivate: [AuthGuard]},
+      {path: 'apps/create', component: DeveloperApplicationComponent, data: { action: 'create' }, canActivate: [AuthGuard]},
+      {path: 'profile', component: DeveloperProfileComponent, data: { action: 'view' }, canActivate: [AuthGuard]},
+      {path: 'settings', component: DeveloperSettingsComponent, canActivate: [AuthGuard]},
+      {path: 'about', component: AboutComponent, data: {title: 'About'}},
+
+      { path: '**', redirectTo: 'apps'}
     ]
   },
-  {path: 'createdevpro', component: DeveloperProfileCreateComponent, data: {title: 'CreateDeveloperProfile'}, canActivate: [AuthGuard]},
-  {path: 'about', component: AboutComponent, data: {title: 'About'}},
 
   // If none of the routes match, go to store.
-  {path: '**', redirectTo: 'store'}
+  {path: '**', redirectTo: ''}
 ];
 
 export const routing = RouterModule.forRoot(routes, { useHash: true });

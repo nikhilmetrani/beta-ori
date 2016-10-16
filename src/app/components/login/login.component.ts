@@ -14,8 +14,8 @@
 * limitations under the License.
 **/
 
-import {Component} from '@angular/core';
-import {OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {LoginService, User} from '../../core';
 
 @Component({
@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
     userName: string;
     isAuthenticated: boolean;
 
-    constructor(private loginService: LoginService) {
+    constructor(private loginService: LoginService,
+                private router: Router) {
 
     }
 
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit {
         this.loginService.getUserDetails().subscribe(
             (user: User) => {
                 this.validateUser(user);
+                this.router.navigateByUrl('/');
             },
             (err: Error) => {
                 // User is not logged in! 
@@ -54,14 +56,14 @@ export class LoginComponent implements OnInit {
     validateUser(user: User) {
         if (user !== undefined) {
             this.userName = user.name;
-            sessionStorage.setItem('uid', user.rid.toString());
+            localStorage.setItem('uid', user.rid.toString());
             this.isAuthenticated = true;
         }
     }
 
     invalidateUser() {
         this.userName = undefined;
-        sessionStorage.removeItem('uid');
+        localStorage.removeItem('uid');
         this.isAuthenticated = false;
     }
 }
