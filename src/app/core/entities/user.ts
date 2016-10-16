@@ -15,7 +15,7 @@
 **/
 
 export interface User {
-    rid: number;
+    rid: string;
     name: string;
     // TODO: rest of the attributes
 }

@@ -35,7 +35,7 @@ export class DeveloperApplicationComponent implements OnInit {
     }
 
     onSubmitCreateApplication() {
-        this.developerAppsService.createApplication(+localStorage.getItem('uid'), this.newApplication).subscribe(
+        this.developerAppsService.createApplication(localStorage.getItem('uid'), this.newApplication).subscribe(
             (response) => {
                 if (response.status === 200) {
                 // Success response, so lets go back to the developer home page.

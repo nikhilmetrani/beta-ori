@@ -25,7 +25,7 @@ import {ProfileService, DeveloperProfile} from '../../../core';
 export class DeveloperProfileComponent implements OnInit {
 
     developerProfile: DeveloperProfile = {rid: undefined, email: undefined, description: undefined, website: undefined, company: undefined};
-    private developerId: number = -1;
+    private developerId: string = undefined;
     private isProfileConfirmed: boolean = false;
 
     constructor(private profileService: ProfileService,
@@ -33,7 +33,7 @@ export class DeveloperProfileComponent implements OnInit {
                 private activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
-        this.developerId = +localStorage.getItem('uid');
+        this.developerId = localStorage.getItem('uid');
         this.getProfile();
     }
 
@@ -56,7 +56,7 @@ export class DeveloperProfileComponent implements OnInit {
     }
 
     onSubmitCreateProfile() {
-        this.profileService.createDeveloperProfile(+localStorage.getItem('uid'), this.developerProfile).subscribe(
+        this.profileService.createDeveloperProfile(localStorage.getItem('uid'), this.developerProfile).subscribe(
             (response) => {
                 if (response.status === 200) {
                 // Success response, so lets go back to the developer home page.

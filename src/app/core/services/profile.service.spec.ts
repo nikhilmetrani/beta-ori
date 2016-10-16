@@ -69,7 +69,7 @@ describe('ProfileService Tests', () => {
           connection.mockRespond(new Response(
             new ResponseOptions({
                 body: {
-                        rid: 16,
+                        rid: 'resourceid16',
                         website: 'http://localhost.com',
                         email: 'mokeduser@mocked.com',
                         description: 'Mocked user description',
@@ -82,9 +82,9 @@ describe('ProfileService Tests', () => {
         profileService = getTestBed().get(ProfileService);
         expect(profileService).toBeDefined();
 
-        profileService.getDeveloperProfile(16).subscribe((devProfile: DeveloperProfile) => {
+        profileService.getDeveloperProfile('resourceid16').subscribe((devProfile: DeveloperProfile) => {
             expect(devProfile).toBeDefined();
-            expect(devProfile.rid).toEqual(16);
+            expect(devProfile.rid).toEqual('resourceid16');
             expect(devProfile.website).toEqual('http://localhost.com');
             expect(devProfile.email).toEqual('mokeduser@mocked.com');
             expect(devProfile.description).toEqual('Mocked user description');
@@ -101,7 +101,7 @@ describe('ProfileService Tests', () => {
           connection.mockRespond(new Response(
             new ResponseOptions({
                 body: {
-                        rid: 16,
+                        rid: 'resourceid16',
                         website: 'http://localhost.com',
                         email: 'mokeduser@mocked.com',
                         description: 'Mocked user description',
@@ -111,10 +111,10 @@ describe('ProfileService Tests', () => {
             )));
         });
 
-      profileService.getDeveloperProfile(16).subscribe(
+      profileService.getDeveloperProfile('resourceid16').subscribe(
         (devProfile: DeveloperProfile) => {
             expect(devProfile).toBeDefined();
-            expect(devProfile.rid).toBe(16);
+            expect(devProfile.rid).toBe('resourceid16');
             expect(devProfile.website).toBe('http://localhost.com');
             expect(devProfile.email).toBe('mokeduser@mocked.com');
             expect(devProfile.description).toBe('Mocked user description');
@@ -136,7 +136,7 @@ describe('ProfileService Tests', () => {
                         description: 'Mocked user description',
                         company: 'Mocked company'
                     };
-        profileService.createDeveloperProfile(16, developerProfile).subscribe(
+        profileService.createDeveloperProfile('resourceid16', developerProfile).subscribe(
             (successResult) => {
                 expect(successResult).toBeDefined();
                 expect(successResult.status).toBe(200);

@@ -27,21 +27,21 @@ export class DeveloperApplicationsService {
 
     constructor(private http: Http) {}
 
-    getApplications(developerId: number) {
+    getApplications(developerId: string) {
         return this.http.get(this.getApplicationsUrl(developerId))
             .map((response) => <DeveloperApplication[]> response.json().applications)
             .catch(this.logError);
     }
 
-    createApplication(developerId: number, application: DeveloperApplication) {
+    createApplication(developerId: string, application: DeveloperApplication) {
         return this.http.post(this.getApplicationsUrl(developerId) + '/create', application);
     }
 
-    // modifyDeveloperProfile(developerId: number, profile: DeveloperProfile) {
+    // modifyDeveloperProfile(developerId: string, profile: DeveloperProfile) {
     //     return this.http.post(this.getAppCreateUrl(developerId), profile);
     // }
 
-    getApplicationsUrl(developerId: number): string {
+    getApplicationsUrl(developerId: string): string {
         return this.appsUrl + developerId + '/applications';
     }
 

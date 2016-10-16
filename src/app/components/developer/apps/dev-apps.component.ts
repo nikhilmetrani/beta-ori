@@ -31,7 +31,7 @@ export class DeveloperApplicationsComponent implements OnInit {
     constructor(private router: Router, private devAppsService: DeveloperApplicationsService) {}
 
     ngOnInit() {
-        this.devAppsObservable = this.devAppsService.getApplications(+localStorage.getItem('uid'));
+        this.devAppsObservable = this.devAppsService.getApplications(localStorage.getItem('uid'));
         this.devAppsObservable.forEach(next => this.devAppsArray = next);
     }
 
