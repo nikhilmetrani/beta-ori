@@ -25,7 +25,7 @@ import 'jquery';
 @Component({
   selector: 'bo-app', // <bo-app></bo-app>
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
 

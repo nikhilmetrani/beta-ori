@@ -52,7 +52,7 @@ export class DeveloperComponent implements OnInit {
             () => {
                 localStorage.removeItem('uid');
                 this.isAuthenticated = false;
-                this.router.navigateByUrl('/');
+                this.router.navigateByUrl('/login');
             });
     }
 }
