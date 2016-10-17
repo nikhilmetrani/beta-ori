@@ -43,16 +43,33 @@ export class DeveloperComponent implements OnInit {
     fetchLoggedInUser() {
         this.loginService.getUserDetails().subscribe(
             (user: User) => {
+                this.userName = user.name;
                 this.isAuthenticated = true;
-            });
+            },
+            (error) => {
+                this.isAuthenticated = false;
+                this.router.navigateByUrl('/login');
+            }
+            );
     }
 
     logout() {
         this.loginService.logout().subscribe(
-            () => {
-                localStorage.removeItem('uid');
-                this.isAuthenticated = false;
-                this.router.navigateByUrl('/login');
-            });
+                () => {
+                    this.invalidateUser();
+                    this.router.navigate(['/login']);
+                },
+                () => {
+                    this.invalidateUser();
+                    this.router.navigate(['/login']);
+                }
+            );
+    }
+
+    invalidateUser() {
+        this.isAuthenticated = false;
+        try {
+            localStorage.removeItem('uid');
+        } catch (ex) {} // Catching just in case uid does not exist
     }
 }

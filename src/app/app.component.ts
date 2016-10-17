@@ -29,8 +29,8 @@ import 'jquery';
 })
 export class AppComponent implements OnInit {
 
-  userName: string;
-  isAuthenticated: boolean;
+  private userName: string;
+  private isAuthenticated: boolean;
 
   constructor(private loginService: LoginService) {}
 
@@ -39,15 +39,19 @@ export class AppComponent implements OnInit {
     }
 
     fetchLoggedInUser() {
-        this.loginService.getUserDetails().subscribe(
-            (user: User) => {
-                this.validateUser(user);
-            },
-            (err: any) => {
-                // User is not logged in!
-                this.invalidateUser();
-            }
-        );
+        try {
+            this.loginService.getUserDetails().subscribe(
+                (user: User) => {
+                    this.validateUser(user);
+                },
+                (error) => {
+                    // User is not logged in!
+                    this.invalidateUser();
+                }
+            );
+        } catch (ex) {
+            this.invalidateUser();
+        }
     }
 
     logout() {

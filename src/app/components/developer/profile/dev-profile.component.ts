@@ -47,7 +47,8 @@ export class DeveloperProfileComponent implements OnInit {
                         this.isProfileConfirmed = true;
                     }
                 }
-            }
+            },
+            () => this.isProfileConfirmed = false
         );
     }
 
@@ -62,7 +63,9 @@ export class DeveloperProfileComponent implements OnInit {
                 // Success response, so lets go back to the developer home page.
                     this.router.navigate(['/']);
                 }
-            }
+            },
+            () => { // Handle failure to create profile 
+                }
         );
     }
 }
