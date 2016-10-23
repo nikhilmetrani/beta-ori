@@ -20,4 +20,15 @@ export interface DeveloperProfile {
     email: string;
     description: string;
     company: string;
+    jobTitle: string;
+    country: string;
+    address: string;
+    city: string;
+    state: string;
+    zipCode: string;
+    workPhone: string;
+    homePhone: string;
+    dateOfBirth: string;
+    gender: string;   
+
 }
