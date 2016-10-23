@@ -14,6 +14,7 @@
     "deploy": "rimraf ../alpha-umi/target/classes/public && gulp deploy",
     "deploy-prod": "rimraf ../alpha-umi/src/main/resources/public && gulp deploy:prod",
     "build": "rimraf dist && webpack --progress --profile --bail",
+    "debug": "rimraf dist && webpack --progress --profile --bail",
     "server": "webpack-dashboard -- webpack-dev-server --inline --port 9200",
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start",
