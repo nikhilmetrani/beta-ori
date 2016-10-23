@@ -24,9 +24,10 @@ import {DeveloperApplication, DeveloperApplicationsService} from '../../../core'
 })
 export class DeveloperApplicationComponent implements OnInit {
     private newApplication: DeveloperApplication = {rid: undefined,
-        category: undefined, developer: undefined,
-        downloadUrl: undefined, name: undefined,
-        status: undefined, version: undefined};
+        description: undefined, category: undefined, 
+        whatsNew: undefined, developer: undefined, 
+        downloadUrl: undefined, name: undefined, 
+        state: undefined, version: undefined};
 
     constructor(private developerAppsService: DeveloperApplicationsService,
                 private router: Router) {}

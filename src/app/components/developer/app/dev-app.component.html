@@ -26,6 +26,11 @@
                     [(ngModel)]="newApplication.name" required name="name">
             </div>
             <div class="form-group">
+                <label for="description">Description:</label>
+                <input class="form-control" type="text"  
+                    [(ngModel)]="newApplication.description" required name="description">
+            </div>
+            <div class="form-group">
                 <label for="version">Version:</label>
                 <input class="form-control" type="text"  
                     [(ngModel)]="newApplication.version" required name="version">
@@ -36,14 +41,19 @@
                     [(ngModel)]="newApplication.category" required name="category">
             </div>
             <div class="form-group">
+                <label for="whatsNew">What's New:</label>
+                <input class="form-control" type="text"  
+                    [(ngModel)]="newApplication.whatsNew" required name="whatsNew">
+            </div>
+            <div class="form-group">
                 <label for="downloadUrl">Download URL:</label>
                 <input class="form-control" type="url"  
                     [(ngModel)]="newApplication.downloadUrl" required name="downloadUrl">
             </div>
             <div class="form-group">
-                <label for="status">Status:</label>
+                <label for="state">Status:</label>
                 <input class="form-control" type="text"  
-                    [(ngModel)]="newApplication.status" required name="status" value="Staging">
+                    [(ngModel)]="newApplication.state" required name="state" value="Staging">
             </div>
             <div class="form-group">
                 <button class="btn btn-success pull-right" type="submit" [disabled]="!f.valid">Submit</button>
