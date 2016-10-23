@@ -28,6 +28,7 @@ import {
             ApplicationComponent,
             DeveloperApplicationCardComponent,
             DeveloperApplicationsComponent,
+            DeveloperApplicationsBundleComponent,
             DeveloperProfileComponent,
             DeveloperApplicationComponent,
             DeveloperSettingsComponent
@@ -41,7 +42,8 @@ import {
             ProfileService,
             AuthGuard,
             DeveloperGuard,
-            DeveloperApplicationsService
+            DeveloperApplicationsService,
+            DeveloperApplicationsBundleService
         } from './core';
 
 import { routing } from './app.routing';
@@ -69,7 +71,8 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     DeveloperApplicationComponent,
     DeveloperApplicationsComponent,
     DeveloperProfileComponent,
-    DeveloperSettingsComponent
+    DeveloperSettingsComponent,
+    DeveloperApplicationsBundleComponent
   ],
   providers: [
     AuthGuard,
@@ -77,7 +80,8 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     LoginService,
     StoreService,
     ProfileService,
-    DeveloperApplicationsService
+    DeveloperApplicationsService,
+    DeveloperApplicationsBundleService
   ],
   bootstrap: [AppComponent]
 })

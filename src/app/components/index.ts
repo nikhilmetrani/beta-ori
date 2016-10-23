@@ -23,6 +23,7 @@
 export {DeveloperComponent} from './developer/developer.component';
 export {DeveloperProfileComponent} from './developer/profile/dev-profile.component';
 export {DeveloperApplicationsComponent} from './developer/apps/dev-apps.component';
+export {DeveloperApplicationsBundleComponent} from './developer/app-bundle/dev-app-bundle.component';
 export {DeveloperApplicationCardComponent} from './developer/app-card/dev-app-card.component';
 export {DeveloperApplicationComponent} from './developer/app/dev-app.component';
 export {DeveloperSettingsComponent} from './developer/settings/dev-settings.component';
