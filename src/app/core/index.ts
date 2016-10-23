@@ -26,13 +26,16 @@ export {DeveloperProfile} from './entities/developer-profile';
 export {StoreApplication} from './entities/store-application';
 export {Link} from './entities/link';
 export {DeveloperApplication} from './entities/developer-application';
+export {DeveloperApplicationsBundle} from './entities/developer-app-bundle';
 export {Category} from './entities/category';
 
 // Export services
 export {LoginService} from './services/login.service';
 export {StoreService} from './services/store.service';
-export {ProfileService} from './services/profile.service'
+export {ProfileService} from './services/profile.service';
 export {DeveloperApplicationsService} from './services/developer-applications.service';
+export {DeveloperApplicationsBundleService} from './services/developer-app-bundle.service';
+
 
 // Export pipes
 export {CategoryListPipe} from './pipes/category-list.pipe';

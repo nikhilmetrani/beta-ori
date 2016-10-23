@@ -21,6 +21,7 @@ import {AboutComponent,
         DeveloperComponent,
         DeveloperApplicationComponent,
         DeveloperApplicationsComponent,
+        DeveloperApplicationsBundleComponent,
         DeveloperProfileComponent,
         DeveloperSettingsComponent
         } from './components';
@@ -34,6 +35,7 @@ const routes: Routes = [
       {path: 'apps', component: DeveloperApplicationsComponent, canActivate: [AuthGuard]},
       {path: 'apps/app', component: DeveloperApplicationComponent, data: { action: 'view' }, canActivate: [AuthGuard]},
       {path: 'apps/create', component: DeveloperApplicationComponent, data: { action: 'create' }, canActivate: [AuthGuard]},
+      {path: 'bundle/create', component: DeveloperApplicationsBundleComponent, data: { action: 'create' }, canActivate: [AuthGuard]},
       {path: 'profile', component: DeveloperProfileComponent, data: { action: 'view' }, canActivate: [AuthGuard]},
       {path: 'settings', component: DeveloperSettingsComponent, canActivate: [AuthGuard]},
       {path: 'about', component: AboutComponent, data: {title: 'About'}},
