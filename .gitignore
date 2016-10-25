@@ -57,3 +57,4 @@ __build__/**
 .idea
 /build
 /int
+/aot

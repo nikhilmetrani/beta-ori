@@ -14,56 +14,36 @@
 * limitations under the License.
 **/
 
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {LoginService, User} from '../../core';
+// import * as toastr from 'toastr';
+import {LoginService} from '../../core';
 
 @Component({
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-    userName: string;
-    isAuthenticated: boolean;
+export class LoginComponent {
 
-    constructor(private loginService: LoginService,
-                private router: Router) {
+  private error: string = undefined;
 
+  constructor(private router: Router,
+              private loginService: LoginService) {
+  }
+
+  login(username, password) {
+    this.loginService.login(username, password)
+      .subscribe(() => {
+        this.router.navigate(['/']);
+      }, this.handleError)
+    ;
+  }
+
+  handleError(error) {
+    switch (error.status) {
+      case 401:
+        this.error = 'Username or password is wrong.';
+        // toastr.error('Username or password is wrong.');
     }
-
-    ngOnInit() {
-        this.fetchLoggedInUser();
-    }
-
-    fetchLoggedInUser() {
-        this.loginService.getUserDetails().subscribe(
-            (user: User) => {
-                this.validateUser(user);
-                this.router.navigateByUrl('/');
-            },
-            (err: Error) => {
-                // User is not logged in! 
-            }
-        );
-    }
-
-    logout() {
-        this.loginService.logout().subscribe(
-            response => this.invalidateUser()
-        );
-    }
-
-    validateUser(user: User) {
-        if (user !== undefined) {
-            this.userName = user.name;
-            localStorage.setItem('uid', user.rid.toString());
-            this.isAuthenticated = true;
-        }
-    }
-
-    invalidateUser() {
-        this.userName = undefined;
-        localStorage.removeItem('uid');
-        this.isAuthenticated = false;
-    }
+  }
 }

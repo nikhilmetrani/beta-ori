@@ -15,17 +15,18 @@
 **/
 
 import {Injectable} from '@angular/core';
-import {Http, Response } from '@angular/http';
+import {Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import {DeveloperProfile} from '../';
+import {JsonHttp} from './json-http';
 
 @Injectable()
 export class ProfileService {
     developerUrl: string = '/api/0/developer/';
 
-    constructor(private http: Http) {}
+    constructor(private http: JsonHttp) {}
 
     getDeveloperProfile(developerId: string) {
         // Developer ID validation is now implemented on server side.

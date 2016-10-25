@@ -15,17 +15,18 @@
 **/
 
 import { Injectable} from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import {DeveloperApplication} from '../';
+import {JsonHttp} from './json-http';
 
 @Injectable()
 export class DeveloperApplicationsService {
     appsUrl: string = '/api/0/developer/';
 
-    constructor(private http: Http) {}
+    constructor(private http: JsonHttp) {}
 
     getApplications(developerId: string) {
         return this.http.get(this.getApplicationsUrl(developerId))

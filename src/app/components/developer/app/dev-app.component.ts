@@ -23,7 +23,7 @@ import {DeveloperApplication, DeveloperApplicationsService} from '../../../core'
     templateUrl: './dev-app.component.html'
 })
 export class DeveloperApplicationComponent implements OnInit {
-    private newApplication: DeveloperApplication = {rid: undefined,
+    newApplication: DeveloperApplication = {rid: undefined,
         category: undefined, developer: undefined,
         downloadUrl: undefined, name: undefined,
         status: undefined, version: undefined};

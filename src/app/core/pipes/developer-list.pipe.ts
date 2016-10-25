@@ -23,8 +23,8 @@ export class DeveloperListPipe implements PipeTransform  {
     transform(storeItems) {
         let developers = [];
         storeItems.forEach(application => {
-            if (developers.indexOf(application.developer.name) <= -1) {
-                developers.push(application.developer.name);
+            if (developers.indexOf(application.developer.username) <= -1) {
+                developers.push(application.developer.username);
             }
         });
         return developers.join(', ');

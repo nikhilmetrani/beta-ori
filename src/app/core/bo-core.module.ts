@@ -14,35 +14,69 @@
 * limitations under the License.
 **/
 
-
+import {CommonModule} from '@angular/common';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import {
-            LoginService,
-            DeveloperListPipe,
-            CategoryListPipe,
-            FavoriteDirective,
-            StoreService,
-            ProfileService,
-            AuthGuard,
-            DeveloperApplicationsService
-        } from './';
+import {SkipSelf, Optional} from '@angular/core';
+import {XHRBackend, Http, RequestOptions, HttpModule} from '@angular/http';
+
+// Export services
+import {JsonHttp} from './services/json-http';
+import {HttpErrorHandler} from './services/http-error-handler';
+import {LoginService} from './services/login.service';
+import {UserService} from './services/user.service';
+import {StoreService} from './services/store.service';
+import {ProfileService} from './services/profile.service';
+import {DeveloperApplicationsService} from './services/developer-applications.service';
+
+// // Export pipes
+// import {CategoryListPipe} from './pipes/category-list.pipe';
+// import {DeveloperListPipe} from './pipes/developer-list.pipe';
+
+// // Export directives
+// import {FavoriteDirective} from './directives/favorite.directive';
+
+// Export guards
+import {PublicPageGuard} from './guards/public-page.guard';
+import {PrivatePageGuard} from './guards/private-page.guard';
+
+
+export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOptions) {
+  const ngHttp = new Http(xhrBackend, requestOptions);
+  return new JsonHttp(ngHttp);
+}
 
 @NgModule({
   imports: [
+    CommonModule,
     HttpModule
   ],
+  exports: [],
   declarations: [
-    DeveloperListPipe,
-    CategoryListPipe,
-    FavoriteDirective
+    // DeveloperListPipe,
+    // CategoryListPipe,
+    // FavoriteDirective
   ],
   providers: [
-    AuthGuard,
+    {
+      provide: JsonHttp,
+      useFactory: createJsonHttp,
+      deps: [XHRBackend, RequestOptions]
+    },
+    HttpErrorHandler,
     LoginService,
+    UserService,
+    PublicPageGuard,
+    PrivatePageGuard,
     StoreService,
     ProfileService,
     DeveloperApplicationsService
   ]
 })
-export class BOCoreModule {}
+export class BOCoreModule {
+  constructor(@Optional() @SkipSelf() parentModule: BOCoreModule) {
+    if (parentModule) {
+      throw new Error(
+        'BOCoreModule is already loaded. Import it in the AppModule only');
+    }
+  }
+}

@@ -14,57 +14,51 @@
 * limitations under the License.
 **/
 
-import { Injectable} from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/Rx';
-import {User} from '../';
+import {Observable} from 'rxjs/Observable';
+import {Injectable} from '@angular/core';
+import {Response} from '@angular/http';
+import {Subject} from 'rxjs/Rx';
+import {JsonHttp} from './json-http';
 
 @Injectable()
 export class LoginService {
-    private user: User;
 
-    constructor(private http: Http) {}
+  private authEvents: Subject<AuthEvent>;
 
-    isLoggedIn() {
-        if (localStorage.getItem('uid')) {
-            return true;
-        }
-        return false;
-    }
+  constructor(private http: JsonHttp) {
+    this.authEvents = new Subject<AuthEvent>();
+  }
 
-    getLoggedInUser() {
-        return this.user;
-    }
+  login(username: string, password: string): Observable<Response> {
+    const body = {
+      username: username,
+      password: password,
+    };
+    return this.http.post('/api/1/login', body).do(resp => {
+      localStorage.setItem('jwt', resp.headers.get('x-auth-token'));
+      this.authEvents.next(new DidLogin());
+    });
+  }
 
-    /** Gets the details of logged in user */
-    getUserDetails() {
-        // Create headers from Plain Old JavaScript Object
-        let useHeaders = new Headers({
-        'X-Requested-With': 'XMLHttpRequest'
-        });
+  logout(): void {
+    localStorage.removeItem('jwt');
+    this.authEvents.next(new DidLogout());
+  }
 
-        return this.http.get('/user', {'headers': useHeaders})
-            .map(this.extractData)
-            .catch(this.logError);
-    }
+  isSignedIn(): boolean {
+    return localStorage.getItem('jwt') !== null;
+  }
 
-    /** Logout user */
-    logout() {
-        return this.http.post('/logout', {});
-    }
+  get events(): Observable<AuthEvent> {
+    return this.authEvents;
+  }
 
-    private extractData(res: Response): User {
-        try {
-            let body: User = res.json();
-            return body || undefined;
-        } catch (err) {
-            return undefined;
-        }
-    }
-
-    logError(err: any) {
-        return Observable.throw(err.json().error || 'Server error');
-    }
 }
+
+export class DidLogin {
+}
+export class DidLogout {
+}
+
+export type AuthEvent = DidLogin | DidLogout;
+

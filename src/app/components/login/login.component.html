@@ -16,27 +16,24 @@
 **/
 -->
 
-<div class="container" *ngIf="isAuthenticated">
-    Logged in as: <span>{{userName}}</span>
-    <div>
-        <a href="/"><button (click)="logout()" class="btn btn-primary">Logout</button></a>
-    </div>
-</div>
+<h1>Sign in</h1>
 
-<div class="container" *ngIf="!isAuthenticated">
-    <div class="containerlogin">
-        <h4><span class="glyphicon glyphicon-lock"></span> LOGIN</h4>
-    </div>
-    <div class="containerlogin">
-        <p>All the applications you need</p>
-    </div>
-    <div class="containerlogin">
-        <a href="/login/facebook"><button type="button" class="button facebook">Login with Facebook</button></a>
-    </div>
-    <div class="containerlogin">
-        <a href="/login/google"><button type="button" class="button google">Login with Google</button></a>
-    </div>
-    <div class="containerlogin">
-        <a href="/login/github"><button type="button" class="button github">Login with Github</button></a>
-    </div>
-</div>
+<form (submit)="login(username.value, password.value); $event.preventDefault()">
+
+  <div class="form-group">
+    <label class="col-form-label" for="username">Username</label>
+    <input type="text" #username class="form-control" id="username"
+           placeholder="Username">
+  </div>
+
+  <div class="form-group">
+    <label class="col-form-label" for="password">Password</label>
+    <input type="password" #password class="form-control" id="password"
+           placeholder="Password">
+  </div>
+
+  <button type="submit" class="btn btn-lg btn-primary">Sign in</button>
+
+</form>
+
+<p>New user? <a [routerLink]="['/signup']">Sign up now!</a></p>

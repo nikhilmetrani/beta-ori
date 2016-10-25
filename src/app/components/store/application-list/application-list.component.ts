@@ -22,7 +22,7 @@ import {StoreApplication, Category} from '../../../core';
 
 @Component({
   selector: 'bo-application-list',
-  styleUrls: ['./application-list.component.scss'],
+  styleUrls: ['./application-list.component.css'],
   templateUrl: './application-list.component.html',
 })
 export class ApplicationListComponent implements OnInit {
@@ -30,6 +30,7 @@ export class ApplicationListComponent implements OnInit {
   categoryString = 'All';
   storeItems: Observable<any>;
   storeItemsArray: StoreApplication[] = [];
+  isAuthenticated: boolean = false;
 
   constructor(public storeService: StoreService, private route: ActivatedRoute) {
   }

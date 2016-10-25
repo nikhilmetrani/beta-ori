@@ -25,8 +25,8 @@ import {ProfileService, DeveloperProfile} from '../../../core';
 export class DeveloperProfileComponent implements OnInit {
 
     developerProfile: DeveloperProfile = {rid: undefined, email: undefined, description: undefined, website: undefined, company: undefined};
-    private developerId: string = undefined;
-    private isProfileConfirmed: boolean = false;
+    developerId: string = undefined;
+    isProfileConfirmed: boolean = false;
 
     constructor(private profileService: ProfileService,
                 private router: Router,

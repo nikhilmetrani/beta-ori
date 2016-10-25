@@ -6,13 +6,17 @@ import '@angular/common';
 import '@angular/http';
 import '@angular/router';
 
-import 'rxjs';
-import '@angularclass/hmr';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/finally';
+import 'rxjs/add/operator/do';
 
 // Other vendors for example jQuery, Lodash or Bootstrap
 // You can import js, ts, css, sass, ...
 
-import 'jquery/dist/jquery.js';
-
-import 'bootstrap/dist/css/bootstrap.css';
+import 'jquery';
 import 'bootstrap/dist/js/bootstrap.js';
+require('!style!raw!../node_modules/bootstrap/dist/css/bootstrap.css');
+if ('production' === ENV) {
+} else {
+}

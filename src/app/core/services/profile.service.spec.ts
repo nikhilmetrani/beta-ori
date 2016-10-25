@@ -21,43 +21,36 @@ import {
   inject
 } from '@angular/core/testing';
 import {
-  BaseRequestOptions,
-  Response, HttpModule, Http, XHRBackend, RequestMethod
+  Response, HttpModule, RequestMethod
 } from '@angular/http';
 
 import {ResponseOptions} from '@angular/http';
-import {Router} from '@angular/router';
 import {MockBackend, MockConnection} from '@angular/http/testing';
 import {DeveloperProfile, ProfileService} from '../';
+
+import {APP_TEST_HTTP_PROVIDERS} from '../../../testing';
 
 class MockRouter {
     navigate = jasmine.createSpy('navigate');
   }
 
 describe('ProfileService Tests', () => {
+  let profileService: ProfileService;
   let mockBackend: MockBackend;
-  const mockRouter = new MockRouter();
-  beforeEach(async(() => {
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        ProfileService,
-        MockBackend,
-        BaseRequestOptions,
-        {
-          provide: Http,
-          deps: [MockBackend, BaseRequestOptions],
-          useFactory:
-            (backend: XHRBackend, defaultOptions: BaseRequestOptions) => {
-              return new Http(backend, defaultOptions);
-            }
-       },
-       {provide: Router, useValue: mockRouter}
-      ],
       imports: [
-        HttpModule
-      ]
+        HttpModule,
+      ],
+      providers: [
+        APP_TEST_HTTP_PROVIDERS,
+        ProfileService,
+      ],
     });
-    mockBackend = getTestBed().get(MockBackend);
+  });
+  beforeEach(inject([ProfileService, MockBackend], (..._) => {
+    [profileService, mockBackend] = _;
   }));
 
   it('Should get developer profile', done => {

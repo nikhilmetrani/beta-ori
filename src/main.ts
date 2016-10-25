@@ -1,18 +1,8 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {AppModule} from './app/app.module';
+import {decorateModuleRef} from './app/environment';
 
-// depending on the env mode, enable prod mode or add debugging modules
-if (process.env.ENV === 'build' || process.env.ENV === 'watch') {
-  enableProdMode();
-}
-
-export function main() {
-  return platformBrowserDynamic().bootstrapModule(AppModule);
-}
-
-if (document.readyState === 'complete') {
-  main();
-} else {
-  document.addEventListener('DOMContentLoaded', main);
-}
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .then(decorateModuleRef)
+  .catch(err => console.error(err));

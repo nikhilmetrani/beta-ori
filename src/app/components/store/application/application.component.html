@@ -17,9 +17,9 @@
 -->
 
 <h2>{{ application.name }}</h2>
-<template [ngIf]="application.watchedOn">
+<!--<template [ngIf]="application.watchedOn">
     <div>Watched on {{ application.watchedOn | date: 'shortDate' }}</div>
-</template>
+</template>-->
 <a [routerLink]="['/store', { category: application.category.name }]">    
     <div>{{ application.category.name }}</div>
 </a>
