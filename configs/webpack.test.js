@@ -30,11 +30,12 @@ module.exports = {
       },
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader?inlineSourceMap=true&sourceMap=false', 'angular2-template-loader']
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader']
       },
       {test: /\.css$/, loader: 'raw-loader'},
       {test: /\.html$/, loader: 'raw-loader'},
       // {
+      //   enforce: 'post',
       //   test: /\.ts$/,
       //   include: helpers.path.resolve('src'),
       //   loader: 'istanbul-instrumenter-loader',
