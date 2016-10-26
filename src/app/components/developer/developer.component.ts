@@ -16,7 +16,7 @@
 
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProfileService, DeveloperProfile, LoginService} from '../../core';
+import {ProfileService, DeveloperProfile, LoginService, UserService} from '../../core';
 
 @Component({
     templateUrl: './developer.component.html',
@@ -36,12 +36,16 @@ export class DeveloperComponent implements OnInit {
     constructor (private profileService: ProfileService,
                     private route: ActivatedRoute,
                     private loginService: LoginService,
+                    private userService: UserService,
                     private router: Router) {}
 
     ngOnInit() {
         this.isSignedIn = this.loginService.isSignedIn();
         this.loginService.events.subscribe(() => {
-        this.isSignedIn = this.loginService.isSignedIn();
+            this.isSignedIn = this.loginService.isSignedIn();
+            if (this.isSignedIn) { // We are now logged in. Let's get the user name.
+                this.userService.get('user').subscribe((user) => this.userName = user.username);
+            }
         });
     }
 

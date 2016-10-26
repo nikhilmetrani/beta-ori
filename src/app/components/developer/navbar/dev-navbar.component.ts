@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
-import {LoginService} from '../../../core';
+import {LoginService, User} from '../../../core';
 
 @Component({
   selector: 'bo-dev-navbar',
@@ -8,6 +8,7 @@ import {LoginService} from '../../../core';
 })
 export class DeveloperNavbarComponent implements OnInit {
 
+  @Input() userName: string;
   isSignedIn: boolean;
 
   constructor(private router: Router,

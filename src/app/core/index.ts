@@ -32,6 +32,8 @@ export {Category} from './entities/category';
 export {LoginService} from './services/login.service';
 export {StoreService} from './services/store.service';
 export {ProfileService} from './services/profile.service'
+export {UserService} from './services/user.service';
+export {UserInfoResolver} from './services/user-info.resolver';
 export {DeveloperApplicationsService} from './services/developer-applications.service';
 export {JsonHttp} from './services/json-http';
 export {HttpErrorHandler} from './services/http-error-handler';

@@ -27,7 +27,7 @@ import {UserService} from './services/user.service';
 import {StoreService} from './services/store.service';
 import {ProfileService} from './services/profile.service';
 import {DeveloperApplicationsService} from './services/developer-applications.service';
-
+import {UserInfoResolver} from './services/user-info.resolver';
 // // Export pipes
 // import {CategoryListPipe} from './pipes/category-list.pipe';
 // import {DeveloperListPipe} from './pipes/developer-list.pipe';
@@ -69,7 +69,8 @@ export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOp
     PrivatePageGuard,
     StoreService,
     ProfileService,
-    DeveloperApplicationsService
+    DeveloperApplicationsService,
+    UserInfoResolver
   ]
 })
 export class BOCoreModule {

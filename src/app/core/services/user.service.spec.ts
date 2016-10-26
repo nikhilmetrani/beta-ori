@@ -74,7 +74,7 @@ describe('UserService', () => {
           body: JSON.stringify(dummyListJson),
         })));
         expect(conn.request.method).toEqual(RequestMethod.Get);
-        expect(conn.request.url).toEqual('/user?page=1&size=5');
+        expect(conn.request.url).toEqual('/api?page=1&size=5');
       });
       userService.list().subscribe(res => {
         expect(res).toEqual(dummyListJson);
@@ -90,7 +90,7 @@ describe('UserService', () => {
           body: JSON.stringify(dummyGetJson),
         })));
         expect(conn.request.method).toEqual(RequestMethod.Get);
-        expect(conn.request.url).toEqual('/user/1');
+        expect(conn.request.url).toEqual('/api/0/1');
       });
       userService.get(1).subscribe(res => {
         expect(res).toEqual(dummyGetJson);
@@ -109,7 +109,7 @@ describe('UserService', () => {
       backend.connections.subscribe(conn => {
         conn.mockRespond(new Response(new BaseResponseOptions()));
         expect(conn.request.method).toEqual(RequestMethod.Post);
-        expect(conn.request.url).toEqual('/user/create');
+        expect(conn.request.url).toEqual('/api/1/signup');
         expect(conn.request.json()).toEqual(params);
       });
       userService.create(params).subscribe(() => {
@@ -128,7 +128,7 @@ describe('UserService', () => {
       backend.connections.subscribe(conn => {
         conn.mockRespond(new Response(new BaseResponseOptions()));
         expect(conn.request.method).toEqual(RequestMethod.Patch);
-        expect(conn.request.url).toEqual('/user/me');
+        expect(conn.request.url).toEqual('/api/me');
         expect(conn.request.json()).toEqual(params);
       });
       userService.updateMe(params).subscribe(() => {
