@@ -112,7 +112,7 @@ Build the project:
 
 > npm run clean & npm run build
 
-`build` directory should be created during the build
+`dist` directory should be created during the build
 
 ```
 > npm run clean - To clean up the output folders - build and int

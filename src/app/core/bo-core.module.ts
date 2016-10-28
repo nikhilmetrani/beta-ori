@@ -27,6 +27,7 @@ import {UserService} from './services/user.service';
 import {StoreService} from './services/store.service';
 import {ProfileService} from './services/profile.service';
 import {DeveloperApplicationsService} from './services/developer-applications.service';
+import {DeveloperApplicationsBundleService} from './services/developer-app-bundle.service';
 import {UserInfoResolver} from './services/user-info.resolver';
 // // Export pipes
 // import {CategoryListPipe} from './pipes/category-list.pipe';
@@ -70,6 +71,7 @@ export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOp
     StoreService,
     ProfileService,
     DeveloperApplicationsService,
+    DeveloperApplicationsBundleService,
     UserInfoResolver
   ]
 })

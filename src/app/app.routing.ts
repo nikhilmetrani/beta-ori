@@ -21,6 +21,7 @@ import {AboutComponent,
         DeveloperComponent,
         DeveloperApplicationComponent,
         DeveloperApplicationsComponent,
+        DeveloperApplicationsBundleComponent,
         DeveloperProfileComponent,
         DeveloperSettingsComponent
         } from './components';
@@ -56,6 +57,12 @@ const routes: Routes = [
       {
         path: 'apps/create',
         component: DeveloperApplicationComponent,
+        data: { action: 'create' },
+        canActivate: [PrivatePageGuard]
+      },
+      {
+        path: 'bundle/create',
+        component: DeveloperApplicationsBundleComponent,
         data: { action: 'create' },
         canActivate: [PrivatePageGuard]
       },

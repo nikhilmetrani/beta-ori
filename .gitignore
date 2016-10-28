@@ -58,3 +58,4 @@ __build__/**
 /build
 /int
 /aot
+npm-debug.log*
