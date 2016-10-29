@@ -16,23 +16,36 @@
 
 import {
   TestBed,
-  getTestBed,
-  async,
   inject
 } from '@angular/core/testing';
 import {
+  Headers,
   Response, HttpModule, RequestMethod
 } from '@angular/http';
 
 import {ResponseOptions} from '@angular/http';
-import {MockBackend, MockConnection} from '@angular/http/testing';
+import {MockBackend} from '@angular/http/testing';
 import {DeveloperProfile, ProfileService} from '../';
 
 import {APP_TEST_HTTP_PROVIDERS} from '../../../testing';
 
-class MockRouter {
-    navigate = jasmine.createSpy('navigate');
-  }
+let dummyProfile: DeveloperProfile = {
+                        rid: 16,
+                        website: 'http://localhost.com',
+                        email: 'mokeduser@mocked.com',
+                        description: 'Mocked user description',
+                        company: 'Mocked company',
+                        address: '',
+                        city: '',
+                        country: '',
+                        dateOfBirth: '',
+                        gender: '',
+                        homePhone: '',
+                        jobTitle: '',
+                        state: '',
+                        workPhone: '',
+                        zipCode: ''
+                    };
 
 describe('ProfileService Tests', () => {
   let profileService: ProfileService;
@@ -53,86 +66,42 @@ describe('ProfileService Tests', () => {
     [profileService, mockBackend] = _;
   }));
 
-  it('Should get developer profile', done => {
-    let profileService: ProfileService;
-
-    getTestBed().compileComponents().then(() => {
-      mockBackend.connections.subscribe(
-        (connection: MockConnection) => {
-          connection.mockRespond(new Response(
-            new ResponseOptions({
-                body: {
-                        rid: 'resourceid16',
-                        website: 'http://localhost.com',
-                        email: 'mokeduser@mocked.com',
-                        description: 'Mocked user description',
-                        company: 'Mocked company'
-                    }
-              }
-            )));
-        });
-
-        profileService = getTestBed().get(ProfileService);
-        expect(profileService).toBeDefined();
-
-        profileService.getDeveloperProfile('resourceid16').subscribe((devProfile: DeveloperProfile) => {
-            expect(devProfile).toBeDefined();
-            expect(devProfile.rid).toEqual('resourceid16');
-            expect(devProfile.website).toEqual('http://localhost.com');
-            expect(devProfile.email).toEqual('mokeduser@mocked.com');
-            expect(devProfile.description).toEqual('Mocked user description');
-            expect(devProfile.company).toEqual('Mocked company');
-            done();
-        });
+  describe('.Get Developer Profile', () => {
+    it('Can get developer profile', (done) => {
+      mockBackend.connections.subscribe(conn => {
+        conn.mockRespond(new Response(new ResponseOptions({
+          headers: new Headers({'x-auth-token': 'my jwt'}),
+          body: JSON.stringify(dummyProfile),
+          status: 200
+        })));
+        expect(conn.request.method).toEqual(RequestMethod.Get);
+        expect(conn.request.url).toEqual('/api/0/developer/profile');
+      });
+      profileService.getDeveloperProfile('resourceid16').subscribe(res => {
+        expect(res.json()).toEqual(dummyProfile);
+        done();
+      });
     });
   });
 
-  it('Should get developer profile async',
-    async(inject([MockBackend, ProfileService], (mockBackend: MockBackend, profileService: ProfileService) => {
-      mockBackend.connections.subscribe(
-        (connection: MockConnection) => {
-          connection.mockRespond(new Response(
-            new ResponseOptions({
-                body: {
-                        rid: 'resourceid16',
-                        website: 'http://localhost.com',
-                        email: 'mokeduser@mocked.com',
-                        description: 'Mocked user description',
-                        company: 'Mocked company'
-                    }
-              }
-            )));
-        });
-
-      profileService.getDeveloperProfile('resourceid16').subscribe(
-        (devProfile: DeveloperProfile) => {
-            expect(devProfile).toBeDefined();
-            expect(devProfile.rid).toBe('resourceid16');
-            expect(devProfile.website).toBe('http://localhost.com');
-            expect(devProfile.email).toBe('mokeduser@mocked.com');
-            expect(devProfile.description).toBe('Mocked user description');
-            expect(devProfile.company).toBe('Mocked company');
+  describe('.Create developer profile', () => {
+    it('can create developer profile', (done) => {
+      mockBackend.connections.subscribe(conn => {
+        conn.mockRespond(new Response(new ResponseOptions({
+          headers: new Headers({'x-auth-token': 'my jwt'}),
+          body: JSON.stringify(dummyProfile),
+          status: 200
+        })));
+        expect(conn.request.method).toEqual(RequestMethod.Post);
+        expect(conn.request.url).toEqual('/api/0/developer/profile');
+        expect(conn.request.json()).toEqual(dummyProfile);
       });
-    })));
-
-    it('Should create developer profile',
-        async(inject([MockBackend, ProfileService], (mockBackend: MockBackend, profileService: ProfileService) => {
-        mockBackend.connections.subscribe((connection: MockConnection) => {
-            expect(connection.request.method).toBe(RequestMethod.Post);
-            connection.mockRespond(new Response(new ResponseOptions({status: 200})));
-        });
-
-        let developerProfile: DeveloperProfile = {
-                        rid: 16,
-                        website: 'http://localhost.com',
-                        email: 'mokeduser@mocked.com',
-                        description: 'Mocked user description',
-                        company: 'Mocked company'
-                    };
-        profileService.createDeveloperProfile('resourceid16', developerProfile).subscribe(
-            (successResult) => {
-                expect(successResult).toBeDefined();
-                expect(successResult.status).toBe(200);
-            });
-    })));
+      profileService.createDeveloperProfile('username', dummyProfile).subscribe((response: Response) => {
+        expect(response).toBeDefined();
+        expect(response.json()).toEqual(dummyProfile);
+        expect(response.status).toBe(200);
+        done();
+      });
+    });
+  });
 });

@@ -15,30 +15,31 @@
 **/
 
 import { Injectable} from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import {DeveloperApplication} from '../';
+import {JsonHttp} from './json-http';
 
 @Injectable()
 export class DeveloperApplicationsBundleService {
     appsUrl: string = '/api/0/developer/';
 
-    constructor(private http: Http) {}
+    constructor(private http: JsonHttp) {}
 
     getApplications(developerId: string) {
-        return this.http.get(this.getApplicationsUrl(developerId))
+        return this.http.get(this.getApplicationsUrl())
             .map((response) => <DeveloperApplication[]> response.json().applications)
             .catch(this.logError);
     }
 
     createApplicationBundle(developerId: string, application: DeveloperApplication) {
-        return this.http.post(this.getApplicationsUrl(developerId) + '/create', application);
+        return this.http.post(this.getApplicationsUrl() + '/create', application);
     }
 
-    getApplicationsUrl(developerId: string): string {
-        return this.appsUrl + developerId + '/applications';
+    getApplicationsUrl(): string {
+        return this.appsUrl + '/applications';
     }
 
     logError(err: Response) {

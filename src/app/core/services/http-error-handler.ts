@@ -11,8 +11,7 @@ export class HttpErrorHandler {
   }
 
   handle(error: any) {
-    switch (error.status)
-    {
+    switch (error.status) {
       case 500:
       case 401:
         this.loginService.logout();

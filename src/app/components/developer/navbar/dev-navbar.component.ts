@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
-import {LoginService, User} from '../../../core';
+import {LoginService} from '../../../core';
 
 @Component({
   selector: 'bo-dev-navbar',

@@ -56,10 +56,10 @@ describe('LoginService', () => {
         expect(conn.request.url).toEqual('/api/1/login');
         expect(conn.request.json()).toEqual({
           username: 'username',
-          password: 'secret',
+          password: 'password',
         });
       });
-      loginService.login('username', 'secret').subscribe(() => {
+      loginService.login('username', 'password').subscribe(() => {
         expect(localStorage.getItem('jwt')).toEqual('my jwt');
         done();
       });

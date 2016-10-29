@@ -16,14 +16,16 @@
 
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {DeveloperApplication, DeveloperApplicationsBundle, DeveloperApplicationsService, DeveloperApplicationsBundleService} from '../../../core';
+import { DeveloperApplicationsBundle,
+         DeveloperApplicationsBundleService
+       } from '../../../core';
 
 @Component({
     selector: 'bo-developer-application-bundle',
     templateUrl: './dev-app-bundle.component.html'
 })
 export class DeveloperApplicationsBundleComponent implements OnInit {
-    private newApplicationBundle: DeveloperApplicationsBundle = {rid: undefined,
+    newApplicationBundle: DeveloperApplicationsBundle = {rid: undefined,
         name: undefined, description: undefined,
         category: undefined, state: undefined,
         developer: undefined, applications: undefined};
@@ -35,13 +37,13 @@ export class DeveloperApplicationsBundleComponent implements OnInit {
     }
 
     onSubmitCreateApplicationBundle() {
-        //this.developerAppBundleService.createApplicationBundle(localStorage.getItem('uid'), this.newAppBundle).subscribe(
+        // this.developerAppBundleService.createApplicationBundle(localStorage.getItem('uid'), this.newAppBundle).subscribe(
         //    (response) => {
         //        if (response.status === 200) {
         //            // Success response, so lets go back to the developer home page.
         //            this.router.navigate(['/apps']);
         //        }
         //    }
-        //);
+        // );
     }
 }

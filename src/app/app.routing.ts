@@ -26,13 +26,12 @@ import {AboutComponent,
         DeveloperSettingsComponent
         } from './components';
 
-import { PublicPageGuard, PrivatePageGuard, UserInfoResolver } from './core';
+import { PublicPageGuard, PrivatePageGuard } from './core';
 
 const routes: Routes = [
   {
     path: '',
     component: DeveloperComponent,
-    // resolve: {user: UserInfoResolver},
     children: [
       {
         path: 'login',

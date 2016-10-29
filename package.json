@@ -24,7 +24,8 @@
     "posttest": "remap-istanbul -i coverage/json/coverage-final.json -o coverage/html -t html",
     "test-watch": "karma start --browsers Chrome --reporters dots,notify --single-run false",
     "docs": "typedoc --options typedoc.json src/**/*.ts",
-    "start": "npm run server-dev"
+    "start": "npm run server-dev",
+    "start-prod": "npm run server-prod"
   },
   "repository": {
     "type": "git",
