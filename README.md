@@ -11,7 +11,7 @@ Dependencies
 <a href="https://david-dm.org/nikhilmetrani/beta-ori/?type=dev"><img src="https://david-dm.org/nikhilmetrani/beta-ori/dev-status.svg" alt="devDependency Status"></a>
 
 - nodejs - current version - https://nodejs.org/en/
-- gulp and gulp-cli
+- gulp and gulp-cli (__Removed__)
 - typings
 - typescript
 
@@ -26,13 +26,6 @@ Dependency setup
     v6.4.0
     3.10.3
     ```
-2. Install npm dependencies
-
-    ```
-    npm install gulp -g
-    npm install gulp-cli -g
-    ```
-    Use sudo prefix on Linux and OSX
 
 Source structure
 -------
@@ -106,11 +99,9 @@ Install dependencies:
 `node_modules` directory should be created during the install.
 This is where all the project dependency modules downloaded.
 
-If `typings` folder is not created, run `npm run postinstall`
+Building the project:
 
-Build the project:
-
-> npm run clean & npm run build
+> npm run build
 
 `dist` directory should be created during the build
 
@@ -119,37 +110,30 @@ Build the project:
 > npm run build - To build the project
 ```
 
-Deploy the project:
+Start the project:
 
-> npm run deploy
+> npm run start
 
-`npm run deploy` will copy the build output to Tomcat server (target\classes\public folder in alpha-umi project).
-
-```
-parent/
-+-- alpha-umi
-    +-- target
-        +-- classes
-            +-- public <= Deployment location (git ignored)
-+-- beta-ori
-    +-- coverage <= Test coverage reports build location (git ignored)
-    +-- dist <= Build output location (git ignored)
-    +-- doc <= Documentation output location (git ignored)
-    +-- node_modules <= npm packages (git ignored)
-    +-- src
-    +-- *
-```
+`npm run start` will launch webpack server and the website can be accessed
+ by navigating to http://localhost:4200. It also performs the build task.
 
 Watching for changes:
 
-Enables hot build, by running build and deply as soon as any file changes.
+`npm run start` will automatically watch for changes and refresh the 
+website.
 
-```
-> npm run watch
-> npm run gulp-watch
-```
+Production build:
 
-*NOTE: These two commands must run in two different command windows.*
+> npm run build-prod
+
+`npm run build-prod` will perform the build for production.
+
+Starting in production mode:
+
+Run `npm run start-prod` to start the production server. 
+The website can be accessed from http://localhost:4200.
+
+__NOTE: build-prod must be executed before starting the production server.__
 
 References
 ---------
