@@ -20,7 +20,7 @@ import {StoreApplication} from '../../../core';
 @Component({
     selector: 'bo-application',
     templateUrl: './application.component.html',
-    styleUrls: ['./application.component.scss']
+    styleUrls: ['./application.component.css']
 })
 export class ApplicationComponent {
     @Input() application: StoreApplication;

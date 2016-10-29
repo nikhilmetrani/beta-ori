@@ -16,6 +16,10 @@
 
 export interface User {
     rid: string;
-    name: string;
-    // TODO: rest of the attributes
+    username: string;
+    firstname: string;
+    lastname: string;
+    email: string;
+    authorities: any;
+    enabled: boolean;
 }

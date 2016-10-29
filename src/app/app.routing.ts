@@ -26,19 +26,60 @@ import {AboutComponent,
         DeveloperSettingsComponent
         } from './components';
 
-import {AuthGuard} from './core';
+import { PublicPageGuard, PrivatePageGuard } from './core';
 
 const routes: Routes = [
-  {path: '', component: DeveloperComponent, data: {title: 'Developer'},
+  {
+    path: '',
+    component: DeveloperComponent,
     children: [
-      {path: 'login', component: LoginComponent},
-      {path: 'apps', component: DeveloperApplicationsComponent, canActivate: [AuthGuard]},
-      {path: 'apps/app', component: DeveloperApplicationComponent, data: { action: 'view' }, canActivate: [AuthGuard]},
-      {path: 'apps/create', component: DeveloperApplicationComponent, data: { action: 'create' }, canActivate: [AuthGuard]},
-      {path: 'bundle/create', component: DeveloperApplicationsBundleComponent, data: { action: 'create' }, canActivate: [AuthGuard]},
-      {path: 'profile', component: DeveloperProfileComponent, data: { action: 'view' }, canActivate: [AuthGuard]},
-      {path: 'settings', component: DeveloperSettingsComponent, canActivate: [AuthGuard]},
-      {path: 'about', component: AboutComponent, data: {title: 'About'}},
+      {
+        path: 'login',
+        component: LoginComponent,
+        canActivate: [PublicPageGuard]
+      },
+      {
+        path: 'signup',
+        loadChildren: './components/signup/signup.module#SignupModule',
+        canActivate: [PublicPageGuard]
+      },
+      {
+        path: 'apps',
+        component: DeveloperApplicationsComponent,
+        canActivate: [PrivatePageGuard]
+      },
+      { path: 'apps/app',
+        component: DeveloperApplicationComponent,
+        data: { action: 'view' },
+        canActivate: [PrivatePageGuard]
+      },
+      {
+        path: 'apps/create',
+        component: DeveloperApplicationComponent,
+        data: { action: 'create' },
+        canActivate: [PrivatePageGuard]
+      },
+      {
+        path: 'bundle/create',
+        component: DeveloperApplicationsBundleComponent,
+        data: { action: 'create' },
+        canActivate: [PrivatePageGuard]
+      },
+      {
+        path: 'profile',
+        component: DeveloperProfileComponent,
+        data: { action: 'view' },
+        canActivate: [PrivatePageGuard]},
+      {
+        path: 'settings',
+        component: DeveloperSettingsComponent,
+        canActivate: [PrivatePageGuard]
+      },
+      {
+        path: 'about',
+        component: AboutComponent,
+        data: {title: 'About'}
+      },
 
       { path: '**', redirectTo: 'apps'}
     ]

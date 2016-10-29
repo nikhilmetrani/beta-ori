@@ -16,7 +16,7 @@
 
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProfileService, DeveloperProfile, User, LoginService} from '../../core';
+import {ProfileService, DeveloperProfile, LoginService, UserService} from '../../core';
 
 @Component({
     templateUrl: './developer.component.html',
@@ -31,45 +31,26 @@ export class DeveloperComponent implements OnInit {
     userName: string;
     isAuthenticated: boolean;
 
+    isSignedIn: boolean;
+
     constructor (private profileService: ProfileService,
                     private route: ActivatedRoute,
                     private loginService: LoginService,
+                    private userService: UserService,
                     private router: Router) {}
 
     ngOnInit() {
-        this.fetchLoggedInUser();
-    }
-
-    fetchLoggedInUser() {
-        this.loginService.getUserDetails().subscribe(
-            (user: User) => {
-                this.userName = user.name;
-                this.isAuthenticated = true;
-            },
-            (error) => {
-                this.isAuthenticated = false;
-                this.router.navigateByUrl('/login');
+        this.isSignedIn = this.loginService.isSignedIn();
+        this.loginService.events.subscribe(() => {
+            this.isSignedIn = this.loginService.isSignedIn();
+            if (this.isSignedIn) { // We are now logged in. Let's get the user name.
+                this.userService.get('user').subscribe((user) => this.userName = user.username);
             }
-            );
+        });
     }
 
     logout() {
-        this.loginService.logout().subscribe(
-                () => {
-                    this.invalidateUser();
-                    this.router.navigate(['/login']);
-                },
-                () => {
-                    this.invalidateUser();
-                    this.router.navigate(['/login']);
-                }
-            );
-    }
-
-    invalidateUser() {
-        this.isAuthenticated = false;
-        try {
-            localStorage.removeItem('uid');
-        } catch (ex) {} // Catching just in case uid does not exist
+        this.loginService.logout();
+        this.router.navigate(['/login']);
     }
 }

@@ -29,6 +29,5 @@ export interface DeveloperProfile {
     workPhone: string;
     homePhone: string;
     dateOfBirth: string;
-    gender: string;   
-
+    gender: string;
 }

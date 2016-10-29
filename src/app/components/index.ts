@@ -27,10 +27,12 @@ export {DeveloperApplicationsBundleComponent} from './developer/app-bundle/dev-a
 export {DeveloperApplicationCardComponent} from './developer/app-card/dev-app-card.component';
 export {DeveloperApplicationComponent} from './developer/app/dev-app.component';
 export {DeveloperSettingsComponent} from './developer/settings/dev-settings.component';
+export {DeveloperNavbarComponent} from './developer/navbar/dev-navbar.component';
 
 // Login and About
 export {AboutComponent} from './about/about.component';
 export {LoginComponent} from './login/login.component';
+export {SignupComponent} from './signup/signup.component';
 
 // Store
 export {ApplicationComponent} from './store/application/application.component';

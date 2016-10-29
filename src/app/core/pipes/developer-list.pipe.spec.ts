@@ -15,8 +15,22 @@
 **/
 
 import {DeveloperListPipe, StoreApplication, User} from '../';
-let user: User = {rid: 7, name: 'App owner 1'};
-let user2: User = {rid: 8, name: 'App owner 2'};
+let user: User = {rid: 'user7',
+                    username: 'App owner 1',
+                    firstname: 'first',
+                    lastname: 'last',
+                    authorities: ['ROLE_USER', 'ROLE_DEVELOPER'],
+                    email: 'user7@email.com',
+                    enabled: true
+                };
+let user2: User = {rid: 'user8',
+                    username: 'App owner 2',
+                    firstname: 'first',
+                    lastname: 'last',
+                    authorities: ['ROLE_USER', 'ROLE_DEVELOPER'],
+                    email: 'user7@email.com',
+                    enabled: true
+                };
 let storeApps: StoreApplication[] = [{
                     rid: 2,
                     name: 'Application 2',
@@ -43,6 +57,6 @@ describe('DeveloperListPipe Tests', () => {
 
     it('Should return comma separated string of developer names', () => {
         let result = pipe.transform(storeApps);
-        expect(result).toEqual(storeApps[0].developer.name + ', ' + storeApps[1].developer.name);
+        expect(result).toEqual(storeApps[0].developer.username + ', ' + storeApps[1].developer.username);
     });
 });

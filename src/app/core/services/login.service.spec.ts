@@ -14,111 +14,79 @@
 * limitations under the License.
 **/
 
+import {inject, TestBed} from '@angular/core/testing';
 import {
-  TestBed,
-  getTestBed,
-  async,
-  inject
-} from '@angular/core/testing';
-import {
-  BaseRequestOptions,
-  Response, HttpModule, Http, XHRBackend, RequestMethod
+  Headers,
+  ResponseOptions,
+  Response,
+  RequestMethod,
+  HttpModule
 } from '@angular/http';
+import {MockBackend} from '@angular/http/testing';
+import {LoginService} from './login.service';
+import {APP_TEST_HTTP_PROVIDERS} from '../../../testing';
 
-import {ResponseOptions} from '@angular/http';
-import {Router} from '@angular/router';
-import {MockBackend, MockConnection} from '@angular/http/testing';
-import {User, LoginService} from '../';
+describe('LoginService', () => {
 
-class MockRouter {
-    navigate = jasmine.createSpy('navigate');
-  }
+  let loginService: LoginService;
+  let backend: MockBackend;
 
-describe('LoginService Tests', () => {
-  let mockBackend: MockBackend;
-  const mockRouter = new MockRouter();
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        LoginService,
-        MockBackend,
-        BaseRequestOptions,
-        {
-          provide: Http,
-          deps: [MockBackend, BaseRequestOptions],
-          useFactory:
-            (backend: XHRBackend, defaultOptions: BaseRequestOptions) => {
-              return new Http(backend, defaultOptions);
-            }
-       },
-       {provide: Router, useValue: mockRouter}
-      ],
       imports: [
-        HttpModule
-      ]
-    });
-    mockBackend = getTestBed().get(MockBackend);
-  }));
-
-  it('Should get user', done => {
-    let loginService: LoginService;
-
-    getTestBed().compileComponents().then(() => {
-      mockBackend.connections.subscribe(
-        (connection: MockConnection) => {
-          connection.mockRespond(new Response(
-            new ResponseOptions({
-                body: {
-                        rid: 16,
-                        name: 'Mocked User'
-                    }
-              }
-            )));
-        });
-
-        loginService = getTestBed().get(LoginService);
-        expect(loginService).toBeDefined();
-
-        loginService.getUserDetails().subscribe((user: User) => {
-            expect(user.rid).toEqual(16);
-            expect(user.name).toEqual('Mocked User');
-            done();
-        });
+        HttpModule,
+      ],
+      providers: [
+        APP_TEST_HTTP_PROVIDERS,
+        LoginService,
+      ],
     });
   });
+  beforeEach(inject([LoginService, MockBackend], (..._) => {
+    [loginService, backend] = _;
+  }));
 
-  it('should get user async',
-    async(inject([MockBackend, LoginService], (mockBackend, loginService) => {
-      mockBackend.connections.subscribe(
-        (connection: MockConnection) => {
-          connection.mockRespond(new Response(
-            new ResponseOptions({
-                body: {
-                        rid: 16,
-                        name: 'Mocked User'
-                    }
-              }
-            )));
+  describe('.login', () => {
+    it('can login', (done) => {
+      backend.connections.subscribe(conn => {
+        conn.mockRespond(new Response(new ResponseOptions({
+          headers: new Headers({'x-auth-token': 'my jwt'}),
+        })));
+        expect(conn.request.method).toEqual(RequestMethod.Post);
+        expect(conn.request.url).toEqual('/api/1/login');
+        expect(conn.request.json()).toEqual({
+          username: 'username',
+          password: 'password',
         });
-
-      loginService.getUserDetails().subscribe(
-        (user: User) => {
-            expect(user.rid).toEqual(16);
-            expect(user.name).toEqual('Mocked User');
       });
-    })));
+      loginService.login('username', 'password').subscribe(() => {
+        expect(localStorage.getItem('jwt')).toEqual('my jwt');
+        done();
+      });
+    });
+  }); // .login
 
-    it('Should perform logout',
-        async(inject([MockBackend, LoginService], (mockBackend: MockBackend, loginService: LoginService) => {
-        mockBackend.connections.subscribe((connection: MockConnection) => {
-            expect(connection.request.method).toBe(RequestMethod.Post);
-            connection.mockRespond(new Response(new ResponseOptions({status: 200})));
-        });
+  describe('.logout', () => {
+    it('can logout', () => {
+      localStorage.setItem('jwt', 'my jwt');
+      loginService.logout();
+      expect(localStorage.getItem('jwt')).toBeFalsy();
+    });
+  }); // .logout
 
-        loginService.logout().subscribe(
-            (successResult) => {
-                expect(successResult).toBeDefined();
-                expect(successResult.status).toBe(200);
-            });
-    })));
+  describe('.isSignedIn', () => {
+    describe('when not signed in', () => {
+      it('should be false', () => {
+        expect(loginService.isSignedIn()).toBeFalsy();
+      });
+    });
+
+    describe('when signed in', () => {
+      beforeEach(() => localStorage.setItem('jwt', 'dummy'));
+      it('should be true', () => {
+        expect(loginService.isSignedIn()).toBeTruthy();
+      });
+    });
+  }); // .isSignedIn
+
 });

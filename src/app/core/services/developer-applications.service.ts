@@ -15,34 +15,35 @@
 **/
 
 import { Injectable} from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import {DeveloperApplication} from '../';
+import {JsonHttp} from './json-http';
 
 @Injectable()
 export class DeveloperApplicationsService {
     appsUrl: string = '/api/0/developer/';
 
-    constructor(private http: Http) {}
+    constructor(private http: JsonHttp) {}
 
     getApplications(developerId: string) {
-        return this.http.get(this.getApplicationsUrl(developerId))
+        return this.http.get(this.getApplicationsUrl())
             .map((response) => <DeveloperApplication[]> response.json().applications)
             .catch(this.logError);
     }
 
     createApplication(developerId: string, application: DeveloperApplication) {
-        return this.http.post(this.getApplicationsUrl(developerId) + '/create', application);
+        return this.http.post(this.getApplicationsUrl() + '/create', application);
     }
 
     // modifyDeveloperProfile(developerId: string, profile: DeveloperProfile) {
     //     return this.http.post(this.getAppCreateUrl(developerId), profile);
     // }
 
-    getApplicationsUrl(developerId: string): string {
-        return this.appsUrl + developerId + '/applications';
+    getApplicationsUrl(): string {
+        return this.appsUrl + '/applications';
     }
 
     // private extractData(res: Response): DeveloperProfile {

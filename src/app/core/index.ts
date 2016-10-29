@@ -32,10 +32,13 @@ export {Category} from './entities/category';
 // Export services
 export {LoginService} from './services/login.service';
 export {StoreService} from './services/store.service';
-export {ProfileService} from './services/profile.service';
+export {ProfileService} from './services/profile.service'
+export {UserService} from './services/user.service';
+export {UserInfoResolver} from './services/user-info.resolver';
 export {DeveloperApplicationsService} from './services/developer-applications.service';
+export {JsonHttp} from './services/json-http';
+export {HttpErrorHandler} from './services/http-error-handler';
 export {DeveloperApplicationsBundleService} from './services/developer-app-bundle.service';
-
 
 // Export pipes
 export {CategoryListPipe} from './pipes/category-list.pipe';
@@ -45,5 +48,5 @@ export {DeveloperListPipe} from './pipes/developer-list.pipe';
 export {FavoriteDirective} from './directives/favorite.directive';
 
 // Export guards
-export {AuthGuard} from './guards/auth.guard';
-export {DeveloperGuard} from './guards/developer.guard';
+export {PublicPageGuard} from './guards/public-page.guard';
+export {PrivatePageGuard} from './guards/private-page.guard';

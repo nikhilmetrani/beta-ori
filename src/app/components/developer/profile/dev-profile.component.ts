@@ -16,7 +16,9 @@
 
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {ProfileService, DeveloperProfile} from '../../../core';
+import {ProfileService, HttpErrorHandler} from '../../../core';
+import {Observable} from 'rxjs/Observable';
+import {Response} from '@angular/http';
 
 @Component({
     selector: 'bo-dev-profile',
@@ -24,10 +26,11 @@ import {ProfileService, DeveloperProfile} from '../../../core';
 })
 export class DeveloperProfileComponent implements OnInit {
 
-    developerProfile: DeveloperProfile = {rid: undefined, 
-        email: undefined, 
+    observableDevProfile: () => Observable<Response>;
+    developerProfile: any = {rid: undefined,
+        email: undefined,
         description: undefined,
-        website: undefined, 
+        website: undefined,
         company: undefined,
         jobTitle: undefined,
         country: undefined,
@@ -38,33 +41,35 @@ export class DeveloperProfileComponent implements OnInit {
         workPhone: undefined,
         homePhone: undefined,
         dateOfBirth: undefined,
-        gender: undefined   
+        gender: undefined
     };
-    private developerId: string = undefined;
-    private isProfileConfirmed: boolean = false;
+    developerId: string = undefined;
+    isProfileConfirmed: boolean = false;
 
     constructor(private profileService: ProfileService,
                 private router: Router,
-                private activatedRoute: ActivatedRoute) {}
+                private activatedRoute: ActivatedRoute,
+                private errorHandler: HttpErrorHandler) {}
 
     ngOnInit() {
         this.developerId = localStorage.getItem('uid');
+        this.profile();
         this.getProfile();
     }
 
     getProfile() {
-        this.profileService.getDeveloperProfile(this.developerId).subscribe(
-            (profile: DeveloperProfile) => {
-                this.developerProfile = profile;
-                if (this.developerProfile !== undefined) {
-                    if (this.developerProfile.email !== null &&
-                        this.developerProfile.email !== undefined) {
-                        this.isProfileConfirmed = true;
-                    }
-                }
-            },
-            () => this.isProfileConfirmed = false
-        );
+        this.observableDevProfile = () => {
+            return this.profileService.getDeveloperProfile(this.developerId);
+        };
+    }
+
+    profile() {
+        this.observableDevProfile()
+            .subscribe(profile => {
+                    this.developerProfile = profile;
+                }, e => this.errorHandler.handle(e)
+      )
+    ;
     }
 
     onClickCreateProfile() {

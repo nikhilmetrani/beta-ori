@@ -15,48 +15,32 @@
 **/
 
 import {Injectable} from '@angular/core';
-import {Http, Response } from '@angular/http';
-import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import {DeveloperProfile} from '../';
+import {JsonHttp} from './json-http';
 
 @Injectable()
 export class ProfileService {
     developerUrl: string = '/api/0/developer/';
 
-    constructor(private http: Http) {}
+    constructor(private http: JsonHttp) {}
 
     getDeveloperProfile(developerId: string) {
         // Developer ID validation is now implemented on server side.
-        return this.http.get(this.getProfileUrl(developerId))
-            .map(this.extractData)
-            .catch(this.logError);
+        return this.http.get(this.getProfileUrl());
     }
 
     createDeveloperProfile(developerId: string, profile: DeveloperProfile) {
         // Developer ID validation is now implemented on server side.
-        return this.http.post(this.getProfileUrl(developerId), profile);
+        return this.http.post(this.getProfileUrl(), profile);
     }
 
     modifyDeveloperProfile(developerId: string, profile: DeveloperProfile) {
-        return this.http.post(this.getProfileUrl(developerId), profile);
+        return this.http.post(this.getProfileUrl(), profile);
     }
 
-    getProfileUrl(developerId: string): string {
-        return this.developerUrl + developerId + '/profile';
-    }
-
-    private extractData(res: Response): DeveloperProfile {
-        try {
-            let body = res.json();
-            return body || undefined;
-        } catch (err) {
-            return undefined;
-        }
-    }
-
-    logError(err: Response) {
-        return Observable.throw(err.json().error || 'Server error');
+    getProfileUrl(): string {
+        return this.developerUrl + 'profile';
     }
 }

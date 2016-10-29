@@ -21,20 +21,21 @@ import {
   inject
 } from '@angular/core/testing';
 import {
-  BaseRequestOptions,
-  Response, HttpModule, Http, XHRBackend
+  Response, HttpModule
 } from '@angular/http';
 
 import {ResponseOptions} from '@angular/http';
-import {Router} from '@angular/router';
 import {MockBackend, MockConnection} from '@angular/http/testing';
 import {User, StoreApplication, StoreService} from '../';
-
-class MockRouter {
-    navigate = jasmine.createSpy('navigate');
-  }
-
-let user: User = {rid: 7, name: 'App owner'};
+import {APP_TEST_HTTP_PROVIDERS} from '../../../testing';
+let user: User = {rid: 'user7',
+                    username: 'App owner 1',
+                    firstname: 'first',
+                    lastname: 'last',
+                    authorities: ['ROLE_USER', 'ROLE_DEVELOPER'],
+                    email: 'user7@email.com',
+                    enabled: true
+                };
 let storeApps: StoreApplication[] = [{
                     rid: 2,
                     name: 'Application 2',
@@ -53,29 +54,22 @@ let storeApps: StoreApplication[] = [{
                 }];
 
 describe('StoreService Tests', () => {
+  let storeService: StoreService;
   let mockBackend: MockBackend;
-  const mockRouter = new MockRouter();
-  beforeEach(async(() => {
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        StoreService,
-        MockBackend,
-        BaseRequestOptions,
-        {
-          provide: Http,
-          deps: [MockBackend, BaseRequestOptions],
-          useFactory:
-            (backend: XHRBackend, defaultOptions: BaseRequestOptions) => {
-              return new Http(backend, defaultOptions);
-            }
-       },
-       {provide: Router, useValue: mockRouter}
-      ],
       imports: [
-        HttpModule
-      ]
+        HttpModule,
+      ],
+      providers: [
+        APP_TEST_HTTP_PROVIDERS,
+        StoreService,
+      ],
     });
-    mockBackend = getTestBed().get(MockBackend);
+  });
+  beforeEach(inject([StoreService, MockBackend], (..._) => {
+    [storeService, mockBackend] = _;
   }));
 
   it('Should get applications', done => {

@@ -15,17 +15,18 @@
 **/
 
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
 import {StoreApplication} from '../';
+import {JsonHttp} from './json-http';
 
 @Injectable()
 export class StoreService {
     storeUrl: string = '/api/1/store/';
 
-    constructor(private http: Http) {}
+    constructor(private http: JsonHttp) {}
 
     getApplications() {
         return this.makeRequest('');
