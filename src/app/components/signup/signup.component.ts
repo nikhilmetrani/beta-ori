@@ -1,18 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
-// import * as toastr from 'toastr';
 import {
   EMAIL_PATTERN,
   Validators as AppValidators
 } from '../../core/forms';
 import {UserService} from '../../core/services/user.service';
 import {LoginService} from '../../core/services/login.service';
-// import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'bo-signup',
   templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
 
