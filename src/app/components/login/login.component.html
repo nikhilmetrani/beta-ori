@@ -23,10 +23,10 @@
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-xs-6">
-							<a routerLink="/login" class="active" id="login-form-link">Login</a>
+							<a routerLink="/login" class="active" id="login-form-link">Log in</a>
 						</div>
 						<div class="col-xs-6">
-							<a routerLink="/signup" id="register-form-link">Signup</a>
+							<a routerLink="/signup" id="signup-form-link">Sign up</a>
 						</div>
 					</div>
 					<hr>
@@ -34,12 +34,17 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-12">
-							<form id="login-form" (submit)="login(username.value, password.value); $event.preventDefault()" role="form" style="display: block;">
+							<form id="login-form" (submit)="login(username.value, password.value); $event.preventDefault()" style="display: block;">
 								<div class="form-group">
-									<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+									<!--<label class="col-form-label" for="username">Username</label>-->
+									<input type="text" #username tabindex="1" class="form-control" id="username"
+										placeholder="Username">
 								</div>
+
 								<div class="form-group">
-									<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+									<!--<label class="col-form-label" for="password">Password</label>-->
+									<input type="password" #password tabindex="2" class="form-control" id="password"
+										placeholder="Password">
 								</div>
 								<div class="form-group text-center">
 									<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
