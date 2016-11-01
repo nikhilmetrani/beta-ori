@@ -23,7 +23,8 @@ import {AboutComponent,
         DeveloperApplicationsComponent,
         DeveloperApplicationsBundleComponent,
         DeveloperProfileComponent,
-        DeveloperSettingsComponent
+        DeveloperSettingsComponent,
+        DeveloperApplicationUpdateComponent
         } from './components';
 
 import { PublicPageGuard, PrivatePageGuard, ProfileDataResolver} from './core';
@@ -59,6 +60,12 @@ const routes: Routes = [
         data: { action: 'create' },
         canActivate: [PrivatePageGuard]
       },
+      {
+        path: 'apps/update', 
+        component: DeveloperApplicationUpdateComponent, 
+        data: { action: 'create' }, 
+        canActivate: [PrivatePageGuard]},
+
       {
         path: 'bundle/create',
         component: DeveloperApplicationsBundleComponent,

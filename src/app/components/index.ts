@@ -28,6 +28,7 @@ export {DeveloperApplicationCardComponent} from './developer/app-card/dev-app-ca
 export {DeveloperApplicationComponent} from './developer/app/dev-app.component';
 export {DeveloperSettingsComponent} from './developer/settings/dev-settings.component';
 export {DeveloperNavbarComponent} from './developer/navbar/dev-navbar.component';
+export {DeveloperApplicationUpdateComponent} from './developer/update/dev-update.component';
 
 // Login and About
 export {AboutComponent} from './about/about.component';

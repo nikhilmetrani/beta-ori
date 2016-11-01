@@ -16,6 +16,7 @@
 
 import {Component, Input} from '@angular/core';
 import {DeveloperApplication} from '../../../core';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'bo-dev-app-card',
@@ -24,4 +25,11 @@ import {DeveloperApplication} from '../../../core';
 })
 export class DeveloperApplicationCardComponent {
     @Input() application: DeveloperApplication;
+
+    constructor(private router: Router) {}
+
+    createApplicationUpdate(){
+        localStorage.setItem('appid', this.application.rid.toString());
+        this.router.navigateByUrl('/apps/update');
+    }
 }
