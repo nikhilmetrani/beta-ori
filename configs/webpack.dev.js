@@ -34,6 +34,10 @@ module.exports = webpackMerge(commonConfig, {
           from: 'node_modules/bootstrap/dist/fonts',
           to: 'fonts'
         },
+        { // Copy stylesheets
+          from: 'src/public/css',
+          to: 'css'
+        },
         { // Copy images / icons
           from: 'src/public/img',
           to: 'img'

@@ -39,6 +39,7 @@ export {DeveloperApplicationsService} from './services/developer-applications.se
 export {JsonHttp} from './services/json-http';
 export {HttpErrorHandler} from './services/http-error-handler';
 export {DeveloperApplicationsBundleService} from './services/developer-app-bundle.service';
+export {ProfileDataResolver} from './services/profile-data.resolver';
 
 // Export pipes
 export {CategoryListPipe} from './pipes/category-list.pipe';

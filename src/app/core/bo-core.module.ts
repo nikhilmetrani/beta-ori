@@ -29,6 +29,7 @@ import {ProfileService} from './services/profile.service';
 import {DeveloperApplicationsService} from './services/developer-applications.service';
 import {DeveloperApplicationsBundleService} from './services/developer-app-bundle.service';
 import {UserInfoResolver} from './services/user-info.resolver';
+import {ProfileDataResolver} from './services/profile-data.resolver';
 // // Export pipes
 // import {CategoryListPipe} from './pipes/category-list.pipe';
 // import {DeveloperListPipe} from './pipes/developer-list.pipe';
@@ -72,7 +73,8 @@ export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOp
     ProfileService,
     DeveloperApplicationsService,
     DeveloperApplicationsBundleService,
-    UserInfoResolver
+    UserInfoResolver,
+    ProfileDataResolver
   ]
 })
 export class BOCoreModule {

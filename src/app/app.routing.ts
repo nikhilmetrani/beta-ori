@@ -26,7 +26,7 @@ import {AboutComponent,
         DeveloperSettingsComponent
         } from './components';
 
-import { PublicPageGuard, PrivatePageGuard } from './core';
+import { PublicPageGuard, PrivatePageGuard, ProfileDataResolver} from './core';
 
 const routes: Routes = [
   {
@@ -68,7 +68,7 @@ const routes: Routes = [
       {
         path: 'profile',
         component: DeveloperProfileComponent,
-        data: { action: 'view' },
+        resolve: {profile: ProfileDataResolver},
         canActivate: [PrivatePageGuard]},
       {
         path: 'settings',
@@ -89,4 +89,4 @@ const routes: Routes = [
   {path: '**', redirectTo: ''}
 ];
 
-export const routing = RouterModule.forRoot(routes, { useHash: true });
+export const routing = RouterModule.forRoot(routes, { useHash: false });
