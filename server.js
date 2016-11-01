@@ -14,8 +14,11 @@ app.all("/api/*", (req, res) => {
 });
 
 // fallback to index.html for SPA.
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(__dirname + '/dist/index.html');
+});
+app.get('*', (req, res) => {
+  res.sendFile(__dirname + '/dist/error/404.html');
 });
 
 app.listen(4200);

@@ -89,4 +89,4 @@ const routes: Routes = [
   {path: '**', redirectTo: ''}
 ];
 
-export const routing = RouterModule.forRoot(routes, { useHash: false });
+export const routing = RouterModule.forRoot(routes, { useHash: true });

@@ -52,7 +52,14 @@ module.exports = webpackMerge(commonConfig, {
   devServer: {
     port: 4200,
     host: 'localhost',
-    historyApiFallback: true,
+    historyApiFallback: {
+    rewrites: [
+        // shows index.html as the landing page
+        { from: /^\/$/, to: '/index.html' },
+        // shows error/404.html on all other pages
+        { from: /./, to: '/error/404.html' },
+    ],
+},
     watchOptions: {
       aggregateTimeout: 300,
       poll: 1000
