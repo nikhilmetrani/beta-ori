@@ -26,6 +26,6 @@ section {
     flex-flow: row wrap;
     align-content: flex-start;
 }
-section > bo-dev-app {
+section > bo-dev-app-card {
     margin: 10px;
 }
