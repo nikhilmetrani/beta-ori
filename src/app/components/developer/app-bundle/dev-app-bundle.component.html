@@ -30,10 +30,17 @@
                 <input class="form-control" type="text"  
                     [(ngModel)]="newApplicationBundle.description" required name="description">
             </div>
-            <div class="form-group">
-                <label for="name">Choose Apps:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="newApplicationBundle.applications" required name="applications">
+            <div class="dropdown">
+                <label for="name">Applications:</label>
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Select
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li>App1</li>
+                    <li>App2</li>
+                    <li>App3</li>
+                </ul>
             </div>
             <div class="form-group">
                 <button class="btn btn-success pull-right" type="submit" [disabled]="!f.valid">Submit</button>
