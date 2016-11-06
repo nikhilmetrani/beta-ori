@@ -16,49 +16,69 @@
 **/
 -->
 
-<div class="container-fluid">
-    <h1>Create New Application</h1>
-    <section class="create-application">
-        <form #f="ngForm" (ngSubmit)="onSubmitCreateApplication()">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="newApplication.name" required name="name">
-            </div>
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="newApplication.description" required name="description">
-            </div>
-            <div class="form-group">
-                <label for="version">Version:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="newApplication.version" required name="version">
-            </div>
-            <div class="form-group">
-                <label for="category">Category:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="newApplication.category" required name="category">
-            </div>
-            <div class="form-group">
-                <label for="whatsNew">What's New:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="newApplication.whatsNew" required name="whatsNew">
-            </div>
-            <div class="form-group">
-                <label for="downloadUrl">Download URL:</label>
-                <input class="form-control" type="url"  
-                    [(ngModel)]="newApplication.downloadUrl" required name="downloadUrl">
-            </div>
-            <div class="form-group">
-                <label for="state">Status:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="newApplication.state" required name="state" value="Staging">
-            </div>
-            <div class="form-group">
-                <button class="btn btn-success pull-right" type="submit" [disabled]="!f.valid">Submit</button>
-            </div>
-        </form>
-    </section>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel panel-dev-app">
+				<div class="panel-heading">
+					<div class="row">
+                        <div class="col-lg-12">
+						    <h2>Create New Application</h2>
+                        </div>
+					</div>
+					<hr>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-12">
+							<form id="login-form" #f="ngForm" style="display: block;" (ngSubmit)="onSubmitCreateApplication()">
+								<div class="form-group">
+									<input type="text" #name tabindex="1" class="form-control" id="name" name="name"
+										placeholder="Name" [(ngModel)]="newApplication.name" required>
+								</div>
 
+								<div class="form-group">
+									<input type="text" #description tabindex="1" class="form-control" id="description" name="description"
+										placeholder="Description" [(ngModel)]="newApplication.description" required>
+								</div>
+
+                                <div class="form-group">
+									<input type="text" #version tabindex="1" class="form-control" id="version" name="version"
+										placeholder="Version" [(ngModel)]="newApplication.version" required>
+								</div>
+
+                                <div class="form-group">
+									<input type="text" #category tabindex="1" class="form-control" id="category" name="category"
+										placeholder="Category" [(ngModel)]="newApplication.category" required>
+								</div>
+
+                                <div class="form-group">
+									<input type="text" #whatsnew tabindex="1" class="form-control" id="whatsnew" name="whatsnew"
+										placeholder="What's New" [(ngModel)]="newApplication.whatsNew">
+								</div>
+
+                                <div class="form-group">
+									<input type="text" #downloadUrl tabindex="1" class="form-control" id="downloadUrl" name="downloadUrl"
+										placeholder="Download Url" [(ngModel)]="newApplication.downloadUrl">
+								</div>
+
+                                <div class="form-group">
+									<input type="text" #status tabindex="1" class="form-control" id="state" name="state"
+										placeholder="State" [(ngModel)]="newApplication.state">
+								</div>
+
+								<div class="form-group">
+									<div class="row">
+										<div class="col-sm-6 col-sm-offset-3">
+											<input type="submit" name="dev-app-create" id="dev-app-create" tabindex="4" class="form-control btn btn-dev-app" value="Submit" [disabled]="!f.valid">
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

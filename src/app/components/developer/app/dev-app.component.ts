@@ -20,7 +20,8 @@ import {DeveloperApplication, DeveloperApplicationsService} from '../../../core'
 
 @Component({
     selector: 'bo-developer-application',
-    templateUrl: './dev-app.component.html'
+    templateUrl: './dev-app.component.html',
+    styleUrls: ['./dev-app.component.css']
 })
 export class DeveloperApplicationComponent implements OnInit {
     newApplication: DeveloperApplication = {rid: undefined,
