@@ -42,13 +42,14 @@ export class DeveloperApplicationsService {
     //     return this.http.post(this.getAppCreateUrl(developerId), profile);
     // }
     createApplicationUpdate(developerId: string, appName: String, application: DeveloperApplication) {
-            return this.http.post(this.getApplicationUrl(developerId) +'/'+ appName +'/createUpdate' ,application);
+            return this.http.post(this.getApplicationUrl(developerId) + '/' + appName + '/createUpdate',
+                                    application);
     }
 
     getApplicationsUrl(): string {
         return this.appsUrl + '/applications';
     }
-    
+
     getApplicationUrl(developerId: string): string {
         return this.appsUrl + developerId + '/applications';
     }
