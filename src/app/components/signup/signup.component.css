@@ -23,7 +23,7 @@ body {
 	transition: all 0.1s linear;
 }
 .panel-login>.panel-heading a.active{
-	color: #029f5b;
+	color: #ff6c16;
 	font-size: 18px;
 }
 .panel-login>.panel-heading hr{
@@ -81,7 +81,24 @@ body {
 }
 
 .btn-signup {
-	background-color: #1CB94E;
+	background-color: #ff811d;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #ff8119;
+}
+.btn-signup:hover,
+.btn-signup:focus {
+	color: #fff;
+	background-color: #ff6c16;
+	border-color: #ff6c16;
+}
+
+/*background-color: #1CB94E;
 	outline: none;
 	color: #fff;
 	font-size: 14px;
@@ -94,6 +111,5 @@ body {
 .btn-signup:hover,
 .btn-signup:focus {
 	color: #fff;
-	background-color: #1CA347;
-	border-color: #1CA347;
-}
+	background-color: #ff6c16;
+	border-color: #1CA347;*/

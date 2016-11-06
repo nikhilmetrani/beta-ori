@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
   onSubmit(params) {
     this.userService.create(params)
       .mergeMap(() => {
-        return this.loginService.login(params.username, params.password);
+        return this.loginService.login(params.email, params.password);
       })
       .subscribe(() => {
         this.router.navigate(['/']);
@@ -44,16 +44,6 @@ export class SignupComponent implements OnInit {
   }
 
   private initForm() {
-    this.username = new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.minLength(4),
-    ]));
-    this.firstname = new FormControl('', Validators.compose([
-      Validators.minLength(4),
-    ]));
-    this.lastname = new FormControl('', Validators.compose([
-      Validators.minLength(4),
-    ]));
     this.email = new FormControl('', Validators.compose([
       Validators.required,
       Validators.pattern(EMAIL_PATTERN),
@@ -67,9 +57,6 @@ export class SignupComponent implements OnInit {
       AppValidators.match(this.password),
     ]));
     this.myForm = new FormGroup({
-      username: this.username,
-      firstname: this.firstname,
-      lastname: this.lastname,
       email: this.email,
       password: this.password,
       passwordConfirmation: this.passwordConfirmation,

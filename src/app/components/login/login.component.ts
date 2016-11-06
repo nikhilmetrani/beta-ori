@@ -31,8 +31,8 @@ export class LoginComponent {
               private loginService: LoginService) {
   }
 
-  login(username, password) {
-    this.loginService.login(username, password)
+  login(email, password) {
+    this.loginService.login(email, password)
       .subscribe(() => {
         this.router.navigate(['/']);
       }, this.handleError)
@@ -42,8 +42,8 @@ export class LoginComponent {
   handleError(error) {
     switch (error.status) {
       case 401:
-        this.error = 'Username or password is wrong.';
-        // toastr.error('Username or password is wrong.');
+        this.error = 'Email or password is wrong.';
+        // toastr.error('Email or password is wrong.');
     }
   }
 }
