@@ -35,6 +35,9 @@ export {AboutComponent} from './about/about.component';
 export {LoginComponent} from './login/login.component';
 export {SignupComponent} from './signup/signup.component';
 
+// Common components
+export {UploadComponent} from './common/upload/upload.component';
+
 // Store
 export {ApplicationComponent} from './store/application/application.component';
 export {ApplicationListComponent} from './store/application-list/application-list.component';

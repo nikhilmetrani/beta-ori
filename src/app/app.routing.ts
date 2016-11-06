@@ -61,9 +61,9 @@ const routes: Routes = [
         canActivate: [PrivatePageGuard]
       },
       {
-        path: 'apps/update', 
-        component: DeveloperApplicationUpdateComponent, 
-        data: { action: 'create' }, 
+        path: 'apps/update',
+        component: DeveloperApplicationUpdateComponent,
+        data: { action: 'create' },
         canActivate: [PrivatePageGuard]},
 
       {

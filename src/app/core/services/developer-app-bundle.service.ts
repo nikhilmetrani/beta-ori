@@ -20,26 +20,27 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import {DeveloperApplication} from '../';
+import {DeveloperApplicationsBundle} from '../';
 import {JsonHttp} from './json-http';
 
 @Injectable()
 export class DeveloperApplicationsBundleService {
-    appsUrl: string = '/api/0/developer/';
+    appsBundleUrl: string = '/api/0/developer/';
 
     constructor(private http: JsonHttp) {}
 
-    getApplications(developerId: string) {
-        return this.http.get(this.getApplicationsUrl())
-            .map((response) => <DeveloperApplication[]> response.json().applications)
+    getApplicationsBundle(developerId: string) {
+        return this.http.get(this.getApplicationsBundleUrl())
+            .map((response) => <DeveloperApplicationsBundle> response.json())
             .catch(this.logError);
     }
 
-    createApplicationBundle(developerId: string, application: DeveloperApplication) {
-        return this.http.post(this.getApplicationsUrl() + '/create', application);
+    createApplicationBundle(developerId: string, applicationBundle: DeveloperApplicationsBundle) {
+        return this.http.post(this.getApplicationsBundleUrl() + '/create', applicationBundle);
     }
 
-    getApplicationsUrl(): string {
-        return this.appsUrl + '/applications';
+    getApplicationsBundleUrl(): string {
+        return this.appsBundleUrl + '/applicationsBundle';
     }
 
     logError(err: Response) {

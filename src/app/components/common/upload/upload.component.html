@@ -1,3 +1,4 @@
+<!--
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -13,23 +14,24 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 **/
+-->
 
-import {Component, Input} from '@angular/core';
-import {DeveloperApplication} from '../../../core';
-import {Router} from '@angular/router';
+<input type="file" 
+       ngFileSelect
+       [options]="options"
+       (onUpload)="handleUpload($event)">
 
-@Component({
-    selector: 'bo-dev-app-card',
-    templateUrl: './dev-app-card.component.html',
-    styleUrls: ['./dev-app-card.component.css']
-})
-export class DeveloperApplicationCardComponent {
-    @Input() application: DeveloperApplication;
+<!-- drag & drop file example-->
+<style>
+  .file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+</style>
+<div ngFileDrop
+     [options]="options"
+     (onUpload)="handleUpload($event)"
+     [ngClass]="{'file-over': hasBaseDropZoneOver}"
+     (onFileOver)="fileOverBase($event)">
+</div>
 
-    constructor(private router: Router) {}
-
-    createApplicationUpdate() {
-        localStorage.setItem('appid', this.application.rid.toString());
-        this.router.navigateByUrl('/apps/update');
-    }
-}
+<div>
+Response: {{ uploadFile | json }}
+</div>

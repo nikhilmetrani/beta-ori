@@ -28,7 +28,7 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
         whatsNew: undefined, developer: undefined,
         downloadUrl: undefined, name: undefined,
         state: undefined, version: undefined};
-        
+
     constructor(private developerAppsService: DeveloperApplicationsService,
                 private router: Router) {}
 
@@ -36,7 +36,10 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
     }
 
     onSubmitCreateApplicationUpdate() {
-        this.developerAppsService.createApplicationUpdate(localStorage.getItem('uid'), localStorage.getItem('appid'), this.newApplication).subscribe(
+        this.developerAppsService.createApplicationUpdate(
+            localStorage.getItem('uid'),
+            localStorage.getItem('appid'),
+            this.newApplication).subscribe(
             (response) => {
                 if (response.status === 200) {
                 // Success response, so lets go back to the developer home page.

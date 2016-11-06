@@ -19,6 +19,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ENV_PROVIDERS} from './environment';
 import { AppComponent } from './app.component';
+import { UPLOAD_DIRECTIVES } from 'ng2-uploader/ng2-uploader';
 import {
             AboutComponent,
             LoginComponent,
@@ -32,7 +33,8 @@ import {
             DeveloperApplicationComponent,
             DeveloperSettingsComponent,
             DeveloperNavbarComponent,
-            DeveloperApplicationUpdateComponent
+            DeveloperApplicationUpdateComponent,
+            UploadComponent
         } from './components';
 import {
             DeveloperListPipe,
@@ -55,6 +57,8 @@ import { routing } from './app.routing';
     BOCoreModule
   ],
   declarations: [
+    UPLOAD_DIRECTIVES,
+    UploadComponent,
     AppComponent,
     AboutComponent,
     ApplicationListComponent,
