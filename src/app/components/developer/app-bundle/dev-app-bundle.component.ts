@@ -17,7 +17,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import { DeveloperApplicationsBundle,
-         DeveloperApplicationsBundleService
+         DeveloperApplicationsBundleService,
+         DeveloperApplication
        } from '../../../core';
 
 @Component({
@@ -25,10 +26,11 @@ import { DeveloperApplicationsBundle,
     templateUrl: './dev-app-bundle.component.html'
 })
 export class DeveloperApplicationsBundleComponent implements OnInit {
+    appArray: DeveloperApplication[] = [];
     newApplicationBundle: DeveloperApplicationsBundle = {rid: undefined,
         name: undefined, description: undefined,
         category: undefined, state: undefined,
-        developer: undefined, applications: undefined};
+        developer: undefined, applications: this.appArray};
 
     constructor(private developerAppBundleService: DeveloperApplicationsBundleService,
                 private router: Router) {}
@@ -37,13 +39,13 @@ export class DeveloperApplicationsBundleComponent implements OnInit {
     }
 
     onSubmitCreateApplicationBundle() {
-        // this.developerAppBundleService.createApplicationBundle(localStorage.getItem('uid'), this.newAppBundle).subscribe(
-        //    (response) => {
-        //        if (response.status === 200) {
-        //            // Success response, so lets go back to the developer home page.
-        //            this.router.navigate(['/apps']);
-        //        }
-        //    }
-        // );
+        this.developerAppBundleService.createApplicationBundle(localStorage.getItem('uid'), this.newApplicationBundle).subscribe(
+            (response) => {
+                if (response.status === 200) {
+                    // Success response, so lets go back to the developer home page.
+                    this.router.navigate(['/apps']);
+                }
+            }
+         );
     }
 }
