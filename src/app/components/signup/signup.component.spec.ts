@@ -80,16 +80,10 @@ describe('SignupComponent', () => {
   describe('.When dirty', () => {
     it('can validate inputs', () => {
       const page: SignupComponent = cmpDebugElement.componentInstance;
-      page.username.setValue('a');
-      page.firstname.setValue('firstname');
-      page.lastname.setValue('lastname');
       page.email.setValue('b', {});
       page.password.setValue('c', {});
       page.passwordConfirmation.setValue('d', {});
       expect(page.myForm.valid).toBeFalsy();
-      page.username.setValue('akira', {});
-      page.firstname.setValue('firstname');
-      page.lastname.setValue('lastname');
       page.email.setValue('test@test.com', {});
       page.password.setValue('secret123', {});
       page.passwordConfirmation.setValue('secret123', {});
@@ -107,11 +101,8 @@ describe('SignupComponent', () => {
       page.onSubmit({
         email: 'test@test.com',
         password: 'secret',
-        username: 'akira',
-        firstname: 'fn',
-        lastname: 'ln'
       });
-      expect(loginService.login).toHaveBeenCalledWith('akira', 'secret');
+      expect(loginService.login).toHaveBeenCalledWith('test@test.com', 'secret');
       advance(fixture);
       expect(location.path()).toEqual('/');
     }));
