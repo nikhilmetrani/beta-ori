@@ -28,6 +28,7 @@ export {Link} from './entities/link';
 export {DeveloperApplication} from './entities/developer-application';
 export {DeveloperApplicationsBundle} from './entities/developer-app-bundle';
 export {Category} from './entities/category';
+export {Code} from './entities/code';
 
 // Export services
 export {LoginService} from './services/login.service';
@@ -40,6 +41,7 @@ export {JsonHttp} from './services/json-http';
 export {HttpErrorHandler} from './services/http-error-handler';
 export {DeveloperApplicationsBundleService} from './services/developer-app-bundle.service';
 export {ProfileDataResolver} from './services/profile-data.resolver';
+export {CodeDefinitionService} from './services/code-definition.service';
 
 // Export pipes
 export {CategoryListPipe} from './pipes/category-list.pipe';

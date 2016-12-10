@@ -16,12 +16,14 @@
 
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {DeveloperApplication, DeveloperApplicationsService} from '../../../core';
+import {Observable} from 'rxjs/Observable';
+import {DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitionService} from '../../../core';
 
 @Component({
     selector: 'bo-developer-application',
     templateUrl: './dev-app.component.html',
-    styleUrls: ['./dev-app.component.css']
+    styleUrls: ['./dev-app.component.css'], 
+    providers: [CodeDefinitionService]
 })
 export class DeveloperApplicationComponent implements OnInit {
     newApplication: DeveloperApplication = {rid: undefined,
@@ -29,11 +31,15 @@ export class DeveloperApplicationComponent implements OnInit {
         whatsNew: undefined, developer: undefined,
         downloadUrl: undefined, name: undefined,
         state: undefined, version: undefined};
+        categoryArray: Code[] = [];
+        categoryObservable: Observable<any>;
 
-    constructor(private developerAppsService: DeveloperApplicationsService,
+    constructor(private developerAppsService: DeveloperApplicationsService, private codeService: CodeDefinitionService,
                 private router: Router) {}
 
     ngOnInit() {
+        this.categoryObservable = this.codeService.getCategoryCodes();
+        this.categoryObservable.forEach(next => this.categoryArray = next);
     }
 
     onSubmitCreateApplication() {

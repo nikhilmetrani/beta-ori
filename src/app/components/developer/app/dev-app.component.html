@@ -48,8 +48,10 @@
 								</div>
 
                                 <div class="form-group">
-									<input type="text" #category tabindex="1" class="form-control" id="category" name="category"
-										placeholder="Category" [(ngModel)]="newApplication.category" required>
+									<select #category tabindex="1" class="form-control" id="category" name="category"
+										placeholder="Categories" [(ngModel)]="newApplication.category" required>
+										<option *ngFor="let code of categoryArray" [ngValue]="code.name">{{code.value}}</option>
+									</select>
 								</div>
 
                                 <div class="form-group">

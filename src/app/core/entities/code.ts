@@ -1,4 +1,3 @@
-<!--
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -14,15 +13,8 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 **/
--->
 
-<h2>{{ application.name }}</h2>
-<!--<template [ngIf]="application.watchedOn">
-    <div>Watched on {{ application.watchedOn | date: 'shortDate' }}</div>
-</template>-->
-<div>{{ application.category.name }}</div>
-<div class="tools">
-    
-    <button class="btn btn-success pull-right details" (click)="createApplicationUpdate()">View</button>
-
-</div>
+export interface Code {
+    name: string;
+    value: string;
+}
