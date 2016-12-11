@@ -42,14 +42,25 @@ export class DeveloperApplicationComponent implements OnInit {
         this.categoryObservable.forEach(next => this.categoryArray = next);
     }
 
-    onSubmitCreateApplication() {
-        this.developerAppsService.createApplication(localStorage.getItem('uid'), this.newApplication).subscribe(
-            (response) => {
-                if (response.status === 200) {
-                // Success response, so lets go back to the developer home page.
-                    this.router.navigate(['/apps']);
+    onSubmitCreateApplication(event) {
+        if(event=='publish') {
+            this.developerAppsService.createAndPublishDeveloperApplication(localStorage.getItem('uid'), this.newApplication).subscribe(
+                (response) => {
+                    if (response.status === 200) {
+                    // Success response, so lets go back to the developer home page.
+                        this.router.navigate(['/apps']);
+                    }
                 }
-            }
-        );
+            );
+        } else {
+            this.developerAppsService.createApplication(localStorage.getItem('uid'), this.newApplication).subscribe(
+                (response) => {
+                    if (response.status === 200) {
+                    // Success response, so lets go back to the developer home page.
+                        this.router.navigate(['/apps']);
+                    }
+                }
+            );
+        }
     }
 }
