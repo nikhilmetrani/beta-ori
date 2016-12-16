@@ -46,4 +46,12 @@ export class StoreService {
     logError(err: Response) {
         return Observable.throw(err.json().error || 'Server error');
     }
+
+    searchApplications() {
+        return this.makeRequest('search');
+    }
+
+    searchApplicationsByCategory(categoryId: string) {
+        return this.makeRequest('search/category/' + categoryId);
+    }
 }
