@@ -25,6 +25,7 @@ import {DeveloperApplication, DeveloperApplicationsService} from '../../../core'
     styleUrls: ['./dev-apps.component.css']
 })
 export class DeveloperApplicationsComponent implements OnInit {
+    private query: string = '';
 
     devAppsObservable: Observable<any>;
     devAppsArray: DeveloperApplication[] = [];

@@ -39,6 +39,7 @@ import {
 import {
             DeveloperListPipe,
             CategoryListPipe,
+            ApplicationListPipe,
             FavoriteDirective,
         } from './core';
 
@@ -75,6 +76,7 @@ import { routing } from './app.routing';
     DeveloperListPipe,
     CategoryListPipe,
     FavoriteDirective,
+    ApplicationListPipe,
     DeveloperApplicationUpdateComponent
   ],
   providers: [

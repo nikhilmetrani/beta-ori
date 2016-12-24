@@ -46,6 +46,7 @@ export {CodeDefinitionService} from './services/code-definition.service';
 // Export pipes
 export {CategoryListPipe} from './pipes/category-list.pipe';
 export {DeveloperListPipe} from './pipes/developer-list.pipe';
+export {ApplicationListPipe} from './pipes/application-list.pipe';
 
 // Export directives
 export {FavoriteDirective} from './directives/favorite.directive';

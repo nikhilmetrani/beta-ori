@@ -24,8 +24,18 @@
     </div>
 </header>
 <br><br>
+
+<table class="table table-striped">
+    <thead class="thead-default">
+    <tr>
+        <th><h3>Published</h3></th>
+        <th><input type="text" placeholder="Search" [(ngModel)]="query"></th>
+    </tr>
+    </thead>
+</table>
+
 <section>
-        <bo-dev-app-card *ngFor="let application of devAppsArray"
-            [application]="application"
-            ></bo-dev-app-card>
+        <bo-dev-app-card *ngFor="let application of (devAppsArray | boApplicationList:query)"
+            [application]="application"></bo-dev-app-card>
+        <a>query</a>
 </section>
