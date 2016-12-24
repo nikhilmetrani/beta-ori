@@ -16,9 +16,7 @@
 **/
 -->
 
-
 <header>
-    <p>{{devAppsArray}}</p>
     <bo-dev-welcome *ngIf="!(devAppsArray && devAppsArray.length > 0)"></bo-dev-welcome>
     <div class="container-fluid" *ngIf="devAppsArray && devAppsArray.length > 0">
         <h1>Developer Applications</h1>
