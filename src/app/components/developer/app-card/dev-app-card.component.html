@@ -16,13 +16,14 @@
 **/
 -->
 
+<div class="card">
 <h2>{{ application.name }}</h2>
-<!--<template [ngIf]="application.watchedOn">
-    <div>Watched on {{ application.watchedOn | date: 'shortDate' }}</div>
-</template>-->
+    <div>State: {{ application.state | uppercase}}</div>
+    <!--| date: 'shortDate' -->
 <div>{{ application.category.name }}</div>
 <div class="tools">
     
-    <button class="btn btn-success pull-right details" (click)="createApplicationUpdate()">View</button>
+    <button class="btn btn-success pull-left details" (click)="createApplicationUpdate()">Details</button>
 
+</div>
 </div>
