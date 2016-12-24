@@ -1,4 +1,3 @@
-<!--
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -14,20 +13,12 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 **/
--->
 
+import {Component, OnInit} from '@angular/core';
 
-<header>
-    <p>{{devAppsArray}}</p>
-    <bo-dev-welcome *ngIf="!(devAppsArray && devAppsArray.length > 0)"></bo-dev-welcome>
-    <div class="container-fluid" *ngIf="devAppsArray && devAppsArray.length > 0">
-        <h1>Developer Applications</h1>
-        <h3>Search and filters here</h3>
-    </div>
-</header>
-<br><br>
-<section *ngIf="devAppsArray && devAppsArray.length > 0">
-    <bo-dev-app-card *ngFor="let application of devAppsArray"
-        [application]="application"
-        ></bo-dev-app-card>
-</section>
+@Component({
+    selector: 'bo-dev-welcome',
+    templateUrl: './dev-welcome.component.html'
+})
+export class DeveloperWelcomeComponent{
+}

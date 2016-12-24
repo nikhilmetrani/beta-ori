@@ -34,7 +34,8 @@ import {
             DeveloperSettingsComponent,
             DeveloperNavbarComponent,
             DeveloperApplicationUpdateComponent,
-            UploadComponent
+            UploadComponent,
+            DeveloperWelcomeComponent
         } from './components';
 import {
             DeveloperListPipe,
@@ -75,7 +76,8 @@ import { routing } from './app.routing';
     DeveloperListPipe,
     CategoryListPipe,
     FavoriteDirective,
-    DeveloperApplicationUpdateComponent
+    DeveloperApplicationUpdateComponent,
+    DeveloperWelcomeComponent
   ],
   providers: [
     ENV_PROVIDERS
