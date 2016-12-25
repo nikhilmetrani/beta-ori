@@ -33,15 +33,7 @@ export class DeveloperProfileComponent implements OnInit {
         website: undefined,
         company: undefined,
         jobTitle: undefined,
-        country: undefined,
-        address: undefined,
-        city: undefined,
-        state: undefined,
-        zipCode: undefined,
         workPhone: undefined,
-        homePhone: undefined,
-        dateOfBirth: undefined,
-        gender: undefined
     };
     developerId: string = undefined;
     isProfileConfirmed: boolean = false;
@@ -57,6 +49,7 @@ export class DeveloperProfileComponent implements OnInit {
             this.developerProfile = data['profile'];
             this.isProfileConfirmed = true;
         });
+       
         // this.profile();
         // this.getProfile();
     }

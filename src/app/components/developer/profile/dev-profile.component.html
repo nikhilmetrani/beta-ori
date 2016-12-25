@@ -25,75 +25,27 @@
 <div class="container-fluid" *ngIf="isProfileConfirmed">
     <h1>Your Developer Profile</h1>
     <section class="create-profile">
-        <form #f="ngForm" (ngSubmit)="onSubmitCreateProfile()">                    
-            <div class="form-group">
-                <label for="company">Company:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="developerProfile.company" required name="company">
-            </div>
-              <div class="form-group">
-                <label for="jobTitle">JobTitle:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="developerProfile.jobTitle" required name="jobTitle">
-            </div>
-             <div class="form-group">
-                <label for="website">Website:</label>
-                <input class="form-control" type="url"  
-                    [(ngModel)]="developerProfile.website" required name="website">
-            </div>             
-             <div class="form-group">
-                <label for="country">Country:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="developerProfile.country" required name="country">
-            </div>
-             <div class="form-group">
-                <label for="address">Address:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="developerProfile.address" required name="address">
-            </div> 
-              <div class="form-group">
-                <label for="city">City:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="developerProfile.city" required name="city">
-            </div> 
-             <div class="form-group">
-                <label for="state">State:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="developerProfile.state" required name="state">
-            </div>
-             <div class="form-group">
-                <label for="zipCode">Zipcode:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="developerProfile.zipCode" required name="zipCode">
-            </div>
-             <div class="form-group">
-                <label for="workPhone">Work Phone:</label>
-                <input class="form-control" type="number"  
-                    [(ngModel)]="developerProfile.workPhone" required name="workPhone">
-            </div> 
-             <div class="form-group">
-                <label for="homePhone">Home Phone:</label>
-                <input class="form-control" type="number"  
-                    [(ngModel)]="developerProfile.homePhone" required name="homePhone">
-            </div> 
-              <div class="form-group">
-                <label for="dateOfBirth">Date Of Birth:</label>
-                <input class="form-control" type="date"  
-                    [(ngModel)]="developerProfile.dateOfBirth" required name="dateOfBirth" >
-            </div>   
-            <div class="form-group">
-                <label for="gender" name="gender">Gender:</label>
-                <input type="hidden" name="gender"  [(ngModel)]="developerProfile.gender"  >            
-                <label class="radio-inline"><input type="radio" name="gender" value="Male"
-                >Male</label>
-                <label class="radio-inline"><input type="radio" name="gender"  value="Female"
-                >Female</label>                           
-            </div>       
+        <form #f="ngForm" (ngSubmit)="onSubmitCreateProfile()">  
             <div class="form-group">
                 <label for="id">Email:</label>                
                 <input class="form-control" type="email"  
                     [(ngModel)]="developerProfile.email" required name="email" id="name">
-            </div>               
+            </div>                    
+            <div class="form-group">
+                <label for="company">Company:</label>
+                <input class="form-control" type="text"  
+                    [(ngModel)]="developerProfile.company" required name="company">
+            </div>            
+             <div class="form-group">
+                <label for="website">Website:</label>
+                <input class="form-control" type="url"  
+                    [(ngModel)]="developerProfile.website" required name="website">
+            </div>           
+             <div class="form-group">
+                <label for="workPhone">Contact number :</label>
+                <input class="form-control" type="number"  
+                    [(ngModel)]="developerProfile.workPhone" required name="workPhone">
+            </div>                      
             <div class="form-group">
                 <label for="description">Description:</label>
                 <textarea class="form-control" [(ngModel)]="developerProfile.description" rows="5" name="description"></textarea>
