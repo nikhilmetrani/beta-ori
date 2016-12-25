@@ -29,6 +29,8 @@ export {DeveloperApplicationComponent} from './developer/app/dev-app.component';
 export {DeveloperSettingsComponent} from './developer/settings/dev-settings.component';
 export {DeveloperNavbarComponent} from './developer/navbar/dev-navbar.component';
 export {DeveloperApplicationUpdateComponent} from './developer/update/dev-update.component';
+export {DeveloperWelcomeComponent} from './developer/welcome/dev-welcome.component';
+export {DeveloperApplicationDetailsComponent} from './developer/app/dev-app-details.component';
 
 // Login and About
 export {AboutComponent} from './about/about.component';

@@ -18,11 +18,11 @@
 
 <header>
 	<div class="container-fluid">
-		<h1>Create New Application</h1>
+		<h1>Application Details</h1>
 	</div>
 </header>
 <section>
-	<form id="login-form" #f="ngForm" style="display: block;" (ngSubmit)="onSubmitCreateApplication('create')">
+	<form id="login-form" #f="ngForm" style="display: block;" (ngSubmit)="onSubmitViewDetails('create')">
 		<div class="container-fluid">
 			<div id="accordion" role="tablist" aria-multiselectable="true">
 				<div class="card">
@@ -36,45 +36,16 @@
 							<div class="form-group row">
 								<label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
 								<div class="col-xs-5">
-									<input type="text" #name tabindex="1" class="form-control" id="name" name="name" placeholder="" [(ngModel)]="newApplication.name"
-										required>
+                                    {{devApplication.name}}									
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="example-text-input" class="col-xs-2 col-form-label">Description</label>
 								<div class="col-xs-5">
-									<input type="text" #description tabindex="1" class="form-control" id="description" name="description" placeholder="" [(ngModel)]="newApplication.description"
-										required>
+									{{devApplication.description}}	
 								</div>
 							</div>
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Version</label>
-								<div class="col-xs-5">
-									<input type="text" #version tabindex="1" class="form-control" id="version" name="version" placeholder="" [(ngModel)]="newApplication.version"
-										required>
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Category</label>
-								<div class="col-xs-5">
-									<select #category tabindex="1" class="form-control" id="category" name="category" placeholder="" [(ngModel)]="newApplication.category"
-										required>
-										<option *ngFor="let code of categoryArray" [ngValue]="code.name">{{code.value}}</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">What's New</label>
-								<div class="col-xs-5">
-									<input type="text" #whatsnew tabindex="1" class="form-control" id="whatsnew" name="whatsnew" placeholder="" [(ngModel)]="newApplication.whatsNew">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Download Url</label>
-								<div class="col-xs-5">
-									<input type="text" #downloadUrl tabindex="1" class="form-control" id="downloadUrl" name="downloadUrl" placeholder="" [(ngModel)]="newApplication.downloadUrl">
-								</div>
-							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -87,17 +58,30 @@
 					<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
 						<div class="card-block">
 							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Email</label>
+								<label for="example-text-input" class="col-xs-2 col-form-label">Version</label>
 								<div class="col-xs-5">
-									<input type="text" #email tabindex="1" class="form-control" id="email" name="email" placeholder="">
+									{{devApplication.version}}
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Contact</label>
+								<label for="example-text-input" class="col-xs-2 col-form-label">Category</label>
 								<div class="col-xs-5">
-									<input type="text" #description tabindex="1" class="form-control" id="contact" name="contact" placeholder="">
+									{{devApplication.category}}
 								</div>
 							</div>
+							<div class="form-group row">
+								<label for="example-text-input" class="col-xs-2 col-form-label">What's New</label>
+								<div class="col-xs-5">
+									{{devApplication.whatsNew}}
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="example-text-input" class="col-xs-2 col-form-label">Download Url</label>
+								<div class="col-xs-5">
+									{{devApplication.downloadUrl}}
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
@@ -106,12 +90,12 @@
 			<div class="form-group row">
 				<label for="example-text-input" class="col-xs-1 col-form-label"></label>
 				<div class="col-sm-2 col-sm-offset-1">
-					<input type="submit" name="dev-app-create" id="dev-app-create" tabindex="4" class="form-control btn btn-dev-app" value="Submit"
+					<input type="submit" name="dev-app-create" id="dev-app-create" tabindex="4" class="form-control btn btn-dev-app" value="Create"
 						[disabled]="!f.valid">
 				</div>
 				<div class="col-sm-2 col-sm-offset-1">
 					<button type="submit" name="dev-app-publish" id="dev-app-publish" tabindex="5" class="form-control btn btn-dev-app" [disabled]="!f.valid"
-						(click)="onSubmitCreateApplication('publish'); $event.preventDefault()">Publish</button>
+						(click)="onSubmitViewDetails('publish'); $event.preventDefault()">Publish</button>
 				</div>
 			</div>
 		</div>

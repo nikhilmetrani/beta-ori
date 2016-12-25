@@ -31,10 +31,12 @@ import {
             DeveloperApplicationsBundleComponent,
             DeveloperProfileComponent,
             DeveloperApplicationComponent,
+            DeveloperApplicationDetailsComponent,
             DeveloperSettingsComponent,
             DeveloperNavbarComponent,
             DeveloperApplicationUpdateComponent,
-            UploadComponent
+            UploadComponent,
+            DeveloperWelcomeComponent
         } from './components';
 import {
             DeveloperListPipe,
@@ -68,6 +70,7 @@ import { routing } from './app.routing';
     LoginComponent,
     DeveloperApplicationCardComponent,
     DeveloperApplicationComponent,
+    DeveloperApplicationDetailsComponent,
     DeveloperApplicationsComponent,
     DeveloperProfileComponent,
     DeveloperSettingsComponent,
@@ -77,6 +80,7 @@ import { routing } from './app.routing';
     CategoryListPipe,
     FavoriteDirective,
     ApplicationListPipe,
+    DeveloperWelcomeComponent,
     DeveloperApplicationUpdateComponent
   ],
   providers: [

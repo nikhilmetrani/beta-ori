@@ -16,9 +16,9 @@
 **/
 -->
 
-
 <header>
-    <div class="container-fluid">
+    <bo-dev-welcome *ngIf="!(devAppsArray && devAppsArray.length > 0)"></bo-dev-welcome>
+    <div class="container-fluid" *ngIf="devAppsArray && devAppsArray.length > 0">
         <h1>Developer Applications</h1>
         <h3>Search and filters here</h3>
     </div>
@@ -34,8 +34,7 @@
     </thead>
 </table>
 
-<section>
-        <bo-dev-app-card *ngFor="let application of (devAppsArray | boApplicationList:query)"
-            [application]="application"></bo-dev-app-card>
-        <a>query</a>
+<section *ngIf="devAppsArray && devAppsArray.length > 0">
+    <bo-dev-app-card *ngFor="let application of (devAppsArray | boApplicationList:query)"
+        [application]="application"></bo-dev-app-card>
 </section>

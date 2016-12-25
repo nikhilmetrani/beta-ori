@@ -14,22 +14,15 @@
 * limitations under the License.
 **/
 
-import {Component, Input} from '@angular/core';
-import {DeveloperApplication} from '../../../core';
-import {Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+//import {Router} from '@angular/router';
+//import {Observable} from 'rxjs/Observable';
+//import {DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitionService} from '../../../core';
 
 @Component({
-    selector: 'bo-dev-app-card',
-    templateUrl: './dev-app-card.component.html',
-    styleUrls: ['./dev-app-card.component.css']
+    selector: 'bo-dev-welcome',
+    templateUrl: './dev-welcome.component.html'
+    //providers: [CodeDefinitionService]
 })
-export class DeveloperApplicationCardComponent {
-    @Input() application: DeveloperApplication;
-
-    constructor(private router: Router) {}
-
-    createApplicationUpdate() {
-        localStorage.setItem('appid', this.application.rid.toString());
-        this.router.navigateByUrl('/apps/details');
-    }
+export class DeveloperWelcomeComponent{
 }

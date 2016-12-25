@@ -34,6 +34,12 @@ export class DeveloperApplicationsService {
             .catch(this.logError);
     }
 
+    getApplication(applicationId: string) {
+        return this.http.get(this.getApplicationsUrl() + "/" +applicationId)
+            .map((response) => <DeveloperApplication> response.json().application)
+            .catch(this.logError);
+    }    
+
     createApplication(developerId: string, application: DeveloperApplication) {
         return this.http.post(this.getApplicationsUrl() + '/create', application);
     }
