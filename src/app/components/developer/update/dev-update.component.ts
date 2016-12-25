@@ -16,18 +16,26 @@
 
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+//import {Observable} from 'rxjs/Observable';
+//import {DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitionService} from '../../../core';
 import {DeveloperApplication, DeveloperApplicationsService} from '../../../core';
 
 @Component({
     selector: 'bo-developer-application',
     templateUrl: './dev-update.component.html'
+  //  providers: [CodeDefinitionService]
+
 })
+
 export class DeveloperApplicationUpdateComponent implements OnInit {
     private newApplication: DeveloperApplication = {rid: undefined,
         description: undefined, category: undefined,
         whatsNew: undefined, developer: undefined,
         downloadUrl: undefined, name: undefined,
         state: undefined, version: undefined};
+       // categoryArray: Code[] = [];
+	    //categoryObservable: Observable<any>;
+
 
     constructor(private developerAppsService: DeveloperApplicationsService,
                 private router: Router) {}

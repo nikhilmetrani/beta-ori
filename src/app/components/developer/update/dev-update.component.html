@@ -16,49 +16,90 @@
 **/
 -->
 
-<div class="container-fluid">
-    <h1>Create New Application Update</h1>
-    <section class="create-update-application">
-        <form #f="ngForm" (ngSubmit)="onSubmitCreateApplicationUpdate()">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="newApplication.name" required name="name">
+<header>
+	<div class="container-fluid">
+		<h1>Create New Application Update</h1>
+	</div>
+</header>
+<section>
+	<form id="login-form" #f="ngForm" style="display: block;" (ngSubmit)="onSubmitCreateApplicationUpdate()">
+		<div class="container-fluid">
+			<div id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="card">
+					<div class="card-header" role="tab" id="headingOne">
+						<h4 class="mb-0">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">General</a>
+						</h4>
+					</div>
+					<div id="collapseOne" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
+						<div class="card-block">
+							<div class="form-group row">
+								<label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
+								<div class="col-xs-5">
+									<input type="text" #name tabindex="1" class="form-control" id="name" name="name" placeholder="" [(ngModel)]="newApplication.name"
+										required>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="example-text-input" class="col-xs-2 col-form-label">Description</label>
+								<div class="col-xs-5">
+									<input type="text" #description tabindex="1" class="form-control" id="description" name="description" placeholder="" [(ngModel)]="newApplication.description"
+										>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="example-text-input" class="col-xs-2 col-form-label">Version</label>
+								<div class="col-xs-5">
+									<input type="text" #version tabindex="1" class="form-control" id="version" name="version" placeholder="" [(ngModel)]="newApplication.version"
+										required>
+								</div>
+							</div>
+				            <div class="form-group row">
+								<label for="example-text-input" class="col-xs-2 col-form-label">What's New</label>
+								<div class="col-xs-5">
+									<input type="text" #whatsnew tabindex="1" class="form-control" id="whatsnew" name="whatsnew" placeholder="" [(ngModel)]="newApplication.whatsNew" required>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="example-text-input" class="col-xs-2 col-form-label">Download Url</label>
+								<div class="col-xs-5">
+									<input type="text" #downloadUrl tabindex="1" class="form-control" id="downloadUrl" name="downloadUrl" placeholder="" [(ngModel)]="newApplication.downloadUrl">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" role="tab" id="headingTwo">
+						<h4 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">More...</a>
+						</h4>
+					</div>
+					<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+						<div class="card-block">
+							<div class="form-group row">
+								<label for="example-text-input" class="col-xs-2 col-form-label">Email</label>
+								<div class="col-xs-5">
+									<input type="text" #email tabindex="1" class="form-control" id="email" name="email" placeholder="">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="example-text-input" class="col-xs-2 col-form-label">Contact</label>
+								<div class="col-xs-5">
+									<input type="text" #description tabindex="1" class="form-control" id="contact" name="contact" placeholder="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br/><br/>
+			<div class="form-group row">
+				<label for="example-text-input" class="col-xs-1 col-form-label"></label>
+				<div class="col-sm-3 col-sm-offset-1">
+				<button type="submit" name="dev-app-create" id="dev-app-create" tabindex="3" class="btn btn-success pull-right">Submit</button>
+				</div>
             </div>
-            <div class="form-group">
-                <label for="version">Version:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="newApplication.version" required name="version">
-            </div>
-            <div class="form-group">
-                <label for="category">Category:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="newApplication.category" required name="category">
-            </div>
-             <div class="form-group">
-                <label for="description">Description:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="newApplication.description" required name="description">
-            </div>
-             <div class="form-group">
-                <label for="whatsNew">New update:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="newApplication.whatsNew" required name="whatsNew">
-            </div>
-            <div class="form-group">
-                <label for="downloadUrl">Download URL:</label>
-                <input class="form-control" type="url"  
-                    [(ngModel)]="newApplication.downloadUrl" required name="downloadUrl">
-            </div>
-            <div class="form-group">
-                <label for="status">Status:</label>
-                <input class="form-control" type="text"  
-                    [(ngModel)]="newApplication.status" required name="status" value="Staging">
-            </div>
-            <div class="form-group">
-                <button class="btn btn-success pull-right" type="submit" [disabled]="!f.valid">Submit</button>
-            </div>
-        </form>
-    </section>
-
-</div>
+		</div>
+	</form>
+</section>
