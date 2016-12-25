@@ -43,6 +43,7 @@ import {
             CategoryListPipe,
             ApplicationListPipe,
             FavoriteDirective,
+            HideActiveAppsListPipe
         } from './core';
 
 // import {SignupModule} from './components/signup/signup.module';
@@ -81,7 +82,8 @@ import { routing } from './app.routing';
     FavoriteDirective,
     ApplicationListPipe,
     DeveloperWelcomeComponent,
-    DeveloperApplicationUpdateComponent
+    DeveloperApplicationUpdateComponent,
+    HideActiveAppsListPipe
   ],
   providers: [
     ENV_PROVIDERS
