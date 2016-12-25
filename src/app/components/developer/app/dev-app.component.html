@@ -104,15 +104,15 @@
 			</div>
 			<br/><br/>
 			<div class="form-group row">
-				<label for="example-text-input" class="col-xs-1 col-form-label"></label>
+				<label for="example-text-input" class="col-xs-2 col-form-label"></label>
 				<div class="col-sm-2 col-sm-offset-1">
-					<input type="submit" name="dev-app-create" id="dev-app-create" tabindex="4" class="form-control btn btn-dev-app" value="Submit"
+					<input type="submit" name="dev-app-create" id="dev-app-create" tabindex="4" class="form-control btn btn-success" value="Save"
 						[disabled]="!f.valid">
 				</div>
-				<div class="col-sm-2 col-sm-offset-1">
-					<button type="submit" name="dev-app-publish" id="dev-app-publish" tabindex="5" class="form-control btn btn-dev-app" [disabled]="!f.valid"
+				<!--div class="col-sm-2 col-sm-offset-1">
+					<button type="submit" name="dev-app-publish" id="dev-app-publish" tabindex="5" class="form-control btn btn-success" [disabled]="!f.valid"
 						(click)="onSubmitCreateApplication('publish'); $event.preventDefault()">Publish</button>
-				</div>
+				</div-->
 			</div>
 		</div>
 	</form>
