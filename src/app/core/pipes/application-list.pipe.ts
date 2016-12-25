@@ -9,9 +9,9 @@ import {DeveloperApplication} from "../entities/developer-application";
 export class ApplicationListPipe implements PipeTransform{
     transform(applications: DeveloperApplication[], args: String): DeveloperApplication[] {
         let query = args.toLocaleLowerCase();
-        return applications.filter((application =>
-              (application.name.toLowerCase().indexOf(query) !== -1)
-            ||(application.description !== null && application.description.toLowerCase().indexOf(query) !== -1)
-            ||(application.category !== null && application.category.name.toLowerCase().indexOf(query) !== -1)));
+        return applications.filter(application =>
+              (application.name.toLowerCase().indexOf(query) !== -1));
+            // ||(application.description && application.description.toLowerCase().indexOf(query) !== -1)
+            // ||(application.category && application.category.toLowerCase().indexOf(query) !== -1));
     }
 }
