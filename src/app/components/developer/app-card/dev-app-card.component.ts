@@ -30,6 +30,6 @@ export class DeveloperApplicationCardComponent {
 
     createApplicationUpdate() {
         localStorage.setItem('appid', this.application.rid.toString());
-        this.router.navigateByUrl('/apps/update');
+        this.router.navigateByUrl('/apps/details');
     }
 }

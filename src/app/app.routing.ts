@@ -20,6 +20,7 @@ import {AboutComponent,
         LoginComponent,
         DeveloperComponent,
         DeveloperApplicationComponent,
+        DeveloperApplicationDetailsComponent,
         DeveloperApplicationsComponent,
         DeveloperApplicationsBundleComponent,
         DeveloperProfileComponent,
@@ -58,6 +59,12 @@ const routes: Routes = [
         path: 'apps/create',
         component: DeveloperApplicationComponent,
         data: { action: 'create' },
+        canActivate: [PrivatePageGuard]
+      },
+      {
+        path: 'apps/details',
+        component: DeveloperApplicationDetailsComponent,
+        data: { action: 'details' },
         canActivate: [PrivatePageGuard]
       },
       {
