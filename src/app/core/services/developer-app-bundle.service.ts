@@ -19,7 +19,6 @@ import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
-import {DeveloperApplication} from '../';
 import {DeveloperApplicationsBundle} from '../';
 import {JsonHttp} from './json-http';
 

@@ -1,12 +1,12 @@
 import {Injectable, Pipe, PipeTransform} from '@angular/core';
-import {DeveloperApplication} from "../entities/developer-application";
+import {DeveloperApplication} from '../entities/developer-application';
 
 @Pipe({
     name: 'boApplicationList'
 })
 
 @Injectable()
-export class ApplicationListPipe implements PipeTransform{
+export class ApplicationListPipe implements PipeTransform {
     transform(applications: DeveloperApplication[], args: String): DeveloperApplication[] {
         let query = args.toLocaleLowerCase();
         return applications.filter(application =>

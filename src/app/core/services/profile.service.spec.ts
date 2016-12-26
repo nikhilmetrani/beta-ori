@@ -35,7 +35,7 @@ let dummyProfile: DeveloperProfile = {
                         email: 'mokeduser@mocked.com',
                         description: 'Mocked user description',
                         company: 'Mocked company',
-                        workPhone: '12345'                        
+                        workPhone: '12345'
                     };
 
 describe('ProfileService Tests', () => {

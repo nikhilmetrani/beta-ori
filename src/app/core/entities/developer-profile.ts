@@ -20,5 +20,5 @@ export interface DeveloperProfile {
     email: string;
     description: string;
     company: string;
-    workPhone: string; 
+    workPhone: string;
 }
