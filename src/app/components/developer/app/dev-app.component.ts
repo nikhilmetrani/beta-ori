@@ -22,7 +22,7 @@ import {DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinition
 @Component({
     selector: 'bo-developer-application',
     templateUrl: './dev-app.component.html',
-    styleUrls: ['./dev-app.component.css'], 
+    styleUrls: ['./dev-app.component.css'],
     providers: [CodeDefinitionService]
 })
 export class DeveloperApplicationComponent implements OnInit {
@@ -43,7 +43,7 @@ export class DeveloperApplicationComponent implements OnInit {
     }
 
     onSubmitCreateApplication(event) {
-        if(event=='publish') {
+        if ( event === 'publish') {
             this.developerAppsService.createAndPublishDeveloperApplication(localStorage.getItem('uid'), this.newApplication).subscribe(
                 (response) => {
                     if (response.status === 200) {
