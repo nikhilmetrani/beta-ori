@@ -14,7 +14,7 @@
 * limitations under the License.
 **/
 
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 // import {Router} from '@angular/router';
 // import {Observable} from 'rxjs/Observable';
 // import {DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitionService} from '../../../core';
@@ -24,5 +24,5 @@ import {Component, OnInit} from '@angular/core';
     templateUrl: './dev-welcome.component.html'
     // providers: [CodeDefinitionService]
 })
-export class DeveloperWelcomeComponent{
+export class DeveloperWelcomeComponent {
 }
