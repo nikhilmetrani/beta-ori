@@ -18,23 +18,36 @@
 
 <header>
     <bo-dev-welcome *ngIf="!(devAppsArray && devAppsArray.length > 0)"></bo-dev-welcome>
-    <div class="container-fluid" *ngIf="devAppsArray && devAppsArray.length > 0">
+    <div class="container" *ngIf="devAppsArray && devAppsArray.length > 0">
         <h1>Developer Applications</h1>
-        <h3>Search and filters here</h3>
+        <form class="form-horizontal">
+            <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" name="appSearch" type="text" placeholder="Search for applications by name..." [(ngModel)]="query">
+                <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+            </div>
+            </div>
+        </form>
+        <div>
+            <label class="switch">
+                <input type="checkbox" #activeApps [checked]=false                                       
+                        (change)="onHideActiveApps(activeApps.checked)">
+                <div class="slider round"></div>
+            </label>
+            <label class="switchText"> Hide applications published to store</label>
+        </div>
     </div>
 </header>
 <br><br>
-
-<table class="table">
-    <thead >
-    <tr>
-        <th><h3>Staging</h3></th>
-        <th><input type="text" placeholder="Search" [(ngModel)]="query"></th>
-    </tr>
-    </thead>
-</table>
-
-<section *ngIf="devAppsArray && devAppsArray.length > 0">
+<section *ngIf="devAppsArray && devAppsArray.length > 0 && hideActiveApps">
+    <bo-dev-app-card *ngFor="let application of (devAppsArray | boHideActiveAppsList | boApplicationList:query)"
+        [application]="application"></bo-dev-app-card>
+</section>
+<section *ngIf="devAppsArray && devAppsArray.length > 0 && !hideActiveApps">
     <bo-dev-app-card *ngFor="let application of (devAppsArray | boApplicationList:query)"
         [application]="application"></bo-dev-app-card>
 </section>

@@ -14,27 +14,24 @@
 * limitations under the License.
 **/
 
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitionService} from '../../../core';
 
 @Component({
-    selector: 'bo-developer-application',
+    selector: 'bo-dev-app-details',
     templateUrl: './dev-app-details.component.html',
     styleUrls: ['./dev-app-details.component.css']
 })
 export class DeveloperApplicationDetailsComponent implements OnInit {   
 
-    devAppsObservable: Observable<any>;
-    devApplication: DeveloperApplication; 
+    @Input() devApplication: DeveloperApplication; 
 
     constructor(private developerAppsService: DeveloperApplicationsService, 
                 private router: Router) {}
 
-    ngOnInit() {   
-        this.devAppsObservable = this.developerAppsService.getApplication(localStorage.getItem('appid'));    
-        this.devAppsObservable.first(next => this.devApplication = next);
+    ngOnInit() {
     }
 
     onSubmitViewDetails(event) {

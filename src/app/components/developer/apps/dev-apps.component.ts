@@ -25,7 +25,9 @@ import {DeveloperApplication, DeveloperApplicationsService} from '../../../core'
     styleUrls: ['./dev-apps.component.css']
 })
 export class DeveloperApplicationsComponent implements OnInit {
-    private query: string = '';
+    query: string = '';
+    queryActive: string = '';
+    hideActiveApps: boolean = false;
 
     devAppsObservable: Observable<any>;
     devAppsArray: DeveloperApplication[] = [];
@@ -40,4 +42,8 @@ export class DeveloperApplicationsComponent implements OnInit {
         // Navigate by URL to call parent route
         this.router.navigateByUrl('/apps/create');
     }
+
+    onHideActiveApps(flag) {
+        this.hideActiveApps = flag;
+   }
 }
