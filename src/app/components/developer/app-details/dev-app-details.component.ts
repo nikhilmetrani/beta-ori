@@ -16,26 +16,25 @@
 
 import {Component, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
-import {DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitionService} from '../../../core';
+import {DeveloperApplication, DeveloperApplicationsService} from '../../../core';
 
 @Component({
     selector: 'bo-dev-app-details',
     templateUrl: './dev-app-details.component.html',
     styleUrls: ['./dev-app-details.component.css']
 })
-export class DeveloperApplicationDetailsComponent implements OnInit {   
+export class DeveloperApplicationDetailsComponent implements OnInit {
 
-    @Input() devApplication: DeveloperApplication; 
+    @Input() devApplication: DeveloperApplication;
 
-    constructor(private developerAppsService: DeveloperApplicationsService, 
+    constructor(private developerAppsService: DeveloperApplicationsService,
                 private router: Router) {}
 
     ngOnInit() {
     }
 
     onSubmitViewDetails(event) {
-        if(event=='publish') {
+        if (event === 'publish') {
             this.developerAppsService.createAndPublishDeveloperApplication(localStorage.getItem('uid'), this.devApplication).subscribe(
                 (response) => {
                     if (response.status === 200) {
@@ -45,7 +44,7 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
                 }
             );
         } else {
-                        
+
         }
     }
 }
