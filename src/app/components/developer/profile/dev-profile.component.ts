@@ -49,7 +49,6 @@ export class DeveloperProfileComponent implements OnInit {
             this.developerProfile = data['profile'];
             this.isProfileConfirmed = true;
         });
-       
         // this.profile();
         // this.getProfile();
     }

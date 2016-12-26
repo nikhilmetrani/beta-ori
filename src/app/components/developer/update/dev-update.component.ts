@@ -16,8 +16,8 @@
 
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-//import {Observable} from 'rxjs/Observable';
-//import {DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitionService} from '../../../core';
+// import {Observable} from 'rxjs/Observable';
+// import {DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitionService} from '../../../core';
 import {DeveloperApplication, DeveloperApplicationsService} from '../../../core';
 
 @Component({
@@ -34,7 +34,7 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
         downloadUrl: undefined, name: undefined,
         state: undefined, version: undefined};
        // categoryArray: Code[] = [];
-	    //categoryObservable: Observable<any>;
+	    // categoryObservable: Observable<any>;
 
 
     constructor(private developerAppsService: DeveloperApplicationsService,

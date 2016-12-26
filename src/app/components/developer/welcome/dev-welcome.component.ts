@@ -15,14 +15,14 @@
 **/
 
 import {Component, OnInit} from '@angular/core';
-//import {Router} from '@angular/router';
-//import {Observable} from 'rxjs/Observable';
-//import {DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitionService} from '../../../core';
+// import {Router} from '@angular/router';
+// import {Observable} from 'rxjs/Observable';
+// import {DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitionService} from '../../../core';
 
 @Component({
     selector: 'bo-dev-welcome',
     templateUrl: './dev-welcome.component.html'
-    //providers: [CodeDefinitionService]
+    // providers: [CodeDefinitionService]
 })
 export class DeveloperWelcomeComponent{
 }
