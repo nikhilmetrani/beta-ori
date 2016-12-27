@@ -42,7 +42,7 @@ export class DeveloperApplicationDetailsModelComponent {
                 }
             );
         } else {
-                        
+            this.router.navigate(['/apps/update']);                        
         }
     }
 }
