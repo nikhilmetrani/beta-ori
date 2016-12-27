@@ -56,6 +56,12 @@ export class DeveloperApplicationsService {
         return this.http.post(this.getApplicationsUrl() + '/publish', application);
     }
 
+    publishDeveloperApplication(developerId: string, applicationId: string) {
+        return this.http.post(this.getApplicationsUrl() + '/' + applicationId + '/publish','');
+    }
+
+    
+
     getApplicationsUrl(): string {
         return this.appsUrl + '/applications';
     }

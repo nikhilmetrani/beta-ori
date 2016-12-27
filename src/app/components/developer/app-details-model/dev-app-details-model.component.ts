@@ -33,7 +33,7 @@ export class DeveloperApplicationDetailsModelComponent {
 
     onSubmitViewDetails(event) {
         if(event==='publish') {
-            this.developerAppsService.createAndPublishDeveloperApplication(localStorage.getItem('uid'), this.application).subscribe(
+            this.developerAppsService.publishDeveloperApplication(localStorage.getItem('uid'), localStorage.getItem('appid')).subscribe(
                 (response) => {
                     if (response.status === 200) {
                     // Success response, so lets go back to the developer home page.
