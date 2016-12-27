@@ -41,6 +41,7 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
                 private router: Router) {}
 
     ngOnInit() {
+        this.newApplication.name =  localStorage.getItem('name');  
     }
 
     onSubmitCreateApplicationUpdate() {

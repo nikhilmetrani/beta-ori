@@ -32,6 +32,7 @@ export class DeveloperApplicationDetailsModelComponent {
                 private router: Router) {}
 
     onSubmitViewDetails(event) {
+
         if(event==='publish') {
             this.developerAppsService.publishDeveloperApplication(localStorage.getItem('uid'), localStorage.getItem('appid')).subscribe(
                 (response) => {
@@ -42,6 +43,7 @@ export class DeveloperApplicationDetailsModelComponent {
                 }
             );
         } else {
+            localStorage.setItem('name', this.application.name.toString());  
             this.router.navigate(['/apps/update']);                        
         }
     }
