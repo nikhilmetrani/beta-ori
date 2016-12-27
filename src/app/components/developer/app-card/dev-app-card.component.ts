@@ -21,7 +21,8 @@ import {Router} from '@angular/router';
 @Component({
     selector: 'bo-dev-app-card',
     templateUrl: './dev-app-card.component.html',
-    styleUrls: ['./dev-app-card.component.css']
+    styleUrls: ['./dev-app-card.component.css'],
+    //template: '<bo-dev-app-details></bo-dev-app-details>'
 })
 export class DeveloperApplicationCardComponent {
     @Input() application: DeveloperApplication;
@@ -29,7 +30,9 @@ export class DeveloperApplicationCardComponent {
     constructor(private router: Router) {}
 
     createApplicationUpdate() {
-        localStorage.setItem('appid', this.application.rid.toString());
+        localStorage.setItem('appid', this.application.rid.toString());  
+            
         this.router.navigateByUrl('/apps/details');
+        
     }
 }

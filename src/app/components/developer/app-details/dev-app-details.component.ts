@@ -14,7 +14,7 @@
 * limitations under the License.
 **/
 
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {DeveloperApplication, DeveloperApplicationsService} from '../../../core';
 
@@ -25,12 +25,20 @@ import {DeveloperApplication, DeveloperApplicationsService} from '../../../core'
 })
 export class DeveloperApplicationDetailsComponent implements OnInit {
 
+<<<<<<< Updated upstream
     @Input() devApplication: DeveloperApplication;
+=======
+    devApplication: DeveloperApplication; 
+    appID = localStorage.getItem('appid');  
+    devAppObservable: Observable<any>;   
+    devAppsArray: DeveloperApplication[] = [];
+>>>>>>> Stashed changes
 
     constructor(private developerAppsService: DeveloperApplicationsService,
                 private router: Router) {}
 
     ngOnInit() {
+<<<<<<< Updated upstream
     }
 
     onSubmitViewDetails(event) {
@@ -47,4 +55,9 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
 
         }
     }
+=======
+        this.devAppObservable = this.developerAppsService.getApplication(this.appID);
+        this.devAppObservable.forEach(next => this.devAppsArray = next);
+    }    
+>>>>>>> Stashed changes
 }

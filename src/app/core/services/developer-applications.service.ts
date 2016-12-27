@@ -35,10 +35,17 @@ export class DeveloperApplicationsService {
     }
 
     getApplication(applicationId: string) {
+<<<<<<< Updated upstream
         return this.http.get(this.getApplicationsUrl() + '/' + applicationId)
             .map((response) => <DeveloperApplication> response.json().application)
             .catch(this.logError);
     }
+=======
+        return this.http.get(this.getApplicationsUrl() + '/' +applicationId+'/list')
+            .map((response) => <DeveloperApplication> response.json().applications)
+            .catch(this.logError);
+    }  
+>>>>>>> Stashed changes
 
     createApplication(developerId: string, application: DeveloperApplication) {
         return this.http.post(this.getApplicationsUrl() + '/create', application);
