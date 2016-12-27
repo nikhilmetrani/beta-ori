@@ -16,6 +16,7 @@
 
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
 import {DeveloperApplication, DeveloperApplicationsService} from '../../../core';
 
 @Component({
@@ -25,39 +26,16 @@ import {DeveloperApplication, DeveloperApplicationsService} from '../../../core'
 })
 export class DeveloperApplicationDetailsComponent implements OnInit {
 
-<<<<<<< Updated upstream
-    @Input() devApplication: DeveloperApplication;
-=======
-    devApplication: DeveloperApplication; 
     appID = localStorage.getItem('appid');  
     devAppObservable: Observable<any>;   
     devAppsArray: DeveloperApplication[] = [];
->>>>>>> Stashed changes
+
 
     constructor(private developerAppsService: DeveloperApplicationsService,
                 private router: Router) {}
 
     ngOnInit() {
-<<<<<<< Updated upstream
-    }
-
-    onSubmitViewDetails(event) {
-        if (event === 'publish') {
-            this.developerAppsService.createAndPublishDeveloperApplication(localStorage.getItem('uid'), this.devApplication).subscribe(
-                (response) => {
-                    if (response.status === 200) {
-                    // Success response, so lets go back to the developer home page.
-                        this.router.navigate(['/apps']);
-                    }
-                }
-            );
-        } else {
-
-        }
-    }
-=======
         this.devAppObservable = this.developerAppsService.getApplication(this.appID);
         this.devAppObservable.forEach(next => this.devAppsArray = next);
     }    
->>>>>>> Stashed changes
 }
