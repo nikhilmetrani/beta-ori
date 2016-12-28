@@ -56,11 +56,21 @@ export class DeveloperApplicationsService {
         return this.http.post(this.getApplicationsUrl() + '/publish', application);
     }
 
-    publishDeveloperApplication(developerId: string, applicationId: string) {
+    publishDeveloperApplication(applicationId: string) {
         return this.http.post(this.getApplicationsUrl() + '/' + applicationId + '/publish','');
     }
 
-    
+    updateAndPublishDeveloperApplication(applicationId:string, application: DeveloperApplication) {
+        return this.http.post(this.getApplicationsUrl() + '/' + applicationId + '/updateAndPublish',application);
+    }  
+
+    updateDeveloperApplication(applicationId:string, application: DeveloperApplication) {
+        return this.http.post(this.getApplicationsUrl() + '/' + applicationId + '/update', application);
+    } 
+
+    recallDeveloperApplication(applicationId:string) {
+        return this.http.post(this.getApplicationsUrl() + '/' + applicationId + '/recall','');
+    }   
 
     getApplicationsUrl(): string {
         return this.appsUrl + '/applications';
