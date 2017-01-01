@@ -66,9 +66,9 @@
 							<div class="form-group row">
 								<label for="example-text-input" class="col-xs-2 col-form-label">Category</label>
 								<div class="col-xs-5" *ngIf="!(application.state === 'Active') ">
-									<select #category tabindex="1" class="form-control" id="category" name="category" placeholder="" [(ngModel)]="application.category"
+									<select #category tabindex="1" class="form-control" id="category" name="category" placeholder="" [(ngModel)]="application.category.name"
 										required>
-										<option *ngFor="let code of categoryArray" [ngValue]="code.name">{{code.value}}</option>
+										<option *ngFor="let code of categoryArray" [ngValue]="code.value">{{code.value}}</option>
 									</select>
 								</div>
 								<div class="col-xs-5" *ngIf="application.state === 'Active'">

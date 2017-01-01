@@ -1,4 +1,4 @@
-import {User} from '../';
+import {User,Category} from '../';
 
 export interface DeveloperApplication {
     rid: number;
@@ -6,7 +6,7 @@ export interface DeveloperApplication {
     description: string;
     version: string;
     downloadUrl: string;
-    category: string;
+    category: Category;
     whatsNew: string;
     state: string;
     developer: User;
