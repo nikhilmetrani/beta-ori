@@ -36,7 +36,7 @@
 							<div class="form-group row">
 								<label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
 								<div class="col-xs-5" *ngIf="!(application.state === 'Active') ">
-									<input type="text" #description tabindex="1" class="form-control" id="description" name="description" placeholder="" [(ngModel)]="application.name"
+									<input type="text" #description tabindex="1" class="form-control" id="appName" name="appName" placeholder="" [(ngModel)]="application.name"
 										required>
 								</div>
 								<div class="col-xs-5" *ngIf="application.state === 'Active'">
