@@ -44,7 +44,8 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
         this.newApplication.name =  localStorage.getItem('name');  
     }
 
-    onSubmitCreateApplicationUpdate() {
+    onSubmitCreateApplicationUpdate(event) {
+    if(event =='create') {
         this.developerAppsService.createApplicationUpdate(
             localStorage.getItem('uid'),
             localStorage.getItem('appid'),
@@ -57,4 +58,9 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
             }
         );
     }
+    if(event =='close') {
+            
+            this.router.navigate(['/apps/details']);       
+        }   
+}
 }

@@ -22,7 +22,7 @@
 	</div>
 </header>
 <section>
-	<form id="login-form" #f="ngForm" style="display: block;" (ngSubmit)="onSubmitCreateApplicationUpdate()">
+	<form id="login-form" #f="ngForm" style="display: block;" (ngSubmit)="onSubmitCreateApplicationUpdate('create')">
 		<div class="container-fluid">
 			<div id="accordion" role="tablist" aria-multiselectable="true">
 				<div class="card">
@@ -97,6 +97,10 @@
 				<label for="example-text-input" class="col-xs-1 col-form-label"></label>
 				<div class="col-sm-3 col-sm-offset-1">
 				<button type="submit" name="dev-app-create" id="dev-app-create" tabindex="3" class="btn btn-success pull-right">Submit</button>
+				</div>
+				<div class="col-sm-1 col-sm-offset-1">
+					<button type="submit" name="dev-app-create" id="dev-app-create" tabindex="3" class="form-control btn btn-success"
+						(click)="onSubmitCreateApplicationUpdate('close'); $event.preventDefault()">Close</button>
 				</div>
             </div>
 		</div>
