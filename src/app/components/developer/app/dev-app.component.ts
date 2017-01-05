@@ -52,6 +52,8 @@ export class DeveloperApplicationComponent implements OnInit {
                     }
                 }
             );
+        } else if (event === "close") {
+            this.router.navigate(['/apps']);       
         } else {
             this.developerAppsService.createApplication(localStorage.getItem('uid'), this.newApplication).subscribe(
                 (response) => {

@@ -106,8 +106,12 @@
 			<div class="form-group row">
 				<label for="example-text-input" class="col-xs-2 col-form-label"></label>
 				<div class="col-sm-2 col-sm-offset-1">
-					<input type="submit" name="dev-app-create" id="dev-app-create" tabindex="4" class="form-control btn btn-success" value="Save"
-						[disabled]="!f.valid">
+					<button type="submit" name="dev-app-create" id="dev-app-create" tabindex="4" class="form-control btn btn-success" [disabled]="!f.valid"
+					(click)="onSubmitCreateApplication('create'); $event.preventDefault()">Save</button>	
+				</div>
+				<div class="col-sm-2 col-sm-offset-1">
+					<button type="submit" name="dev-app-close" id="dev-app-close" tabindex="5" class="form-control btn btn-success" 
+					(click)="onSubmitCreateApplication('close'); $event.preventDefault()">Close</button>	
 				</div>
 				<!--div class="col-sm-2 col-sm-offset-1">
 					<button type="submit" name="dev-app-publish" id="dev-app-publish" tabindex="5" class="form-control btn btn-success" [disabled]="!f.valid"
