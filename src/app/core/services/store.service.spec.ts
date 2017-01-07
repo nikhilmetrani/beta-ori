@@ -24,34 +24,35 @@ import {
   Response, HttpModule
 } from '@angular/http';
 
-import {ResponseOptions} from '@angular/http';
-import {MockBackend, MockConnection} from '@angular/http/testing';
-import {User, StoreApplication, StoreService} from '../';
-import {APP_TEST_HTTP_PROVIDERS} from '../../../testing';
-let user: User = {rid: 'user7',
-                    username: 'App owner 1',
-                    firstname: 'first',
-                    lastname: 'last',
-                    authorities: ['ROLE_USER', 'ROLE_DEVELOPER'],
-                    email: 'user7@email.com',
-                    enabled: true
-                };
+import { ResponseOptions } from '@angular/http';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { User, StoreApplication, StoreService } from '../';
+import { APP_TEST_HTTP_PROVIDERS } from '../../../testing';
+let user: User = {
+  rid: 'user7',
+  username: 'App owner 1',
+  firstname: 'first',
+  lastname: 'last',
+  authorities: ['ROLE_USER', 'ROLE_DEVELOPER'],
+  email: 'user7@email.com',
+  enabled: true
+};
 let storeApps: StoreApplication[] = [{
-                    rid: 2,
-                    name: 'Application 2',
-                    developer: user,
-                    links: [],
-                    category: { id: 1, name: 'Productivity' },
-                    isFavorite: false
-                },
-                {
-                    rid: 3,
-                    name: 'Application 3',
-                    developer: user,
-                    links: [],
-                    category: { id: 1, name: 'Development' },
-                    isFavorite: false
-                }];
+  rid: 2,
+  name: 'Application 2',
+  developer: user,
+  links: [],
+  category: { id: 1, name: 'Productivity' },
+  isFavorite: false
+},
+{
+  rid: 3,
+  name: 'Application 3',
+  developer: user,
+  links: [],
+  category: { id: 1, name: 'Development' },
+  isFavorite: false
+}];
 
 describe('StoreService Tests', () => {
   let storeService: StoreService;
@@ -80,24 +81,25 @@ describe('StoreService Tests', () => {
         (connection: MockConnection) => {
           connection.mockRespond(new Response(
             new ResponseOptions({
-                body: { applications: storeApps, status: 200}}
+              body: { applications: storeApps, status: 200 }
+            }
             )));
         });
 
-        storeService = getTestBed().get(StoreService);
-        expect(storeService).toBeDefined();
+      storeService = getTestBed().get(StoreService);
+      expect(storeService).toBeDefined();
 
-        storeService.getApplications().subscribe((apps: StoreApplication[]) => {
-            expect(apps[0].rid).toEqual(2);
-            expect(apps[1].rid).toEqual(3);
+      storeService.getApplications().subscribe((apps: StoreApplication[]) => {
+        expect(apps[0].rid).toEqual(2);
+        expect(apps[1].rid).toEqual(3);
 
-            expect(apps[0].name).toEqual('Application 2');
-            expect(apps[1].name).toEqual('Application 3');
+        expect(apps[0].name).toEqual('Application 2');
+        expect(apps[1].name).toEqual('Application 3');
 
-            expect(apps[0].category.name).toEqual('Productivity');
-            expect(apps[1].category.name).toEqual('Development');
-            done();
-        });
+        expect(apps[0].category.name).toEqual('Productivity');
+        expect(apps[1].category.name).toEqual('Development');
+        done();
+      });
     });
   });
 
@@ -107,24 +109,25 @@ describe('StoreService Tests', () => {
         (connection: MockConnection) => {
           connection.mockRespond(new Response(
             new ResponseOptions({
-                body: { applications: storeApps, status: 200}}
+              body: { applications: storeApps, status: 200 }
+            }
             )));
         });
 
       storeService.getApplications().subscribe(
         (apps: StoreApplication[]) => {
-            expect(apps[0].rid).toEqual(2);
-            expect(apps[1].rid).toEqual(3);
+          expect(apps[0].rid).toEqual(2);
+          expect(apps[1].rid).toEqual(3);
 
-            expect(apps[0].name).toEqual('Application 2');
-            expect(apps[1].name).toEqual('Application 3');
+          expect(apps[0].name).toEqual('Application 2');
+          expect(apps[1].name).toEqual('Application 3');
 
-            expect(apps[0].category.name).toEqual('Productivity');
-            expect(apps[1].category.name).toEqual('Development');
-      });
+          expect(apps[0].category.name).toEqual('Productivity');
+          expect(apps[1].category.name).toEqual('Development');
+        });
     })));
 
-    it('Should get applications by category', done => {
+  it('Should get applications by category', done => {
     let storeService: StoreService;
 
     getTestBed().compileComponents().then(() => {
@@ -132,20 +135,21 @@ describe('StoreService Tests', () => {
         (connection: MockConnection) => {
           connection.mockRespond(new Response(
             new ResponseOptions({
-                body: { applications: [storeApps[0]], status: 200}}
+              body: { applications: [storeApps[0]], status: 200 }
+            }
             )));
         });
 
-        storeService = getTestBed().get(StoreService);
-        expect(storeService).toBeDefined();
+      storeService = getTestBed().get(StoreService);
+      expect(storeService).toBeDefined();
 
-        storeService.getApplicationsByCategory('Productivity').subscribe((apps: StoreApplication[]) => {
-            expect(apps.length).toEqual(1);
-            expect(apps[0].rid).toEqual(2);
-            expect(apps[0].name).toEqual('Application 2');
-            expect(apps[0].category.name).toEqual('Productivity');
-            done();
-        });
+      storeService.getApplicationsByCategory('Productivity').subscribe((apps: StoreApplication[]) => {
+        expect(apps.length).toEqual(1);
+        expect(apps[0].rid).toEqual(2);
+        expect(apps[0].name).toEqual('Application 2');
+        expect(apps[0].category.name).toEqual('Productivity');
+        done();
+      });
     });
   });
 
@@ -155,41 +159,42 @@ describe('StoreService Tests', () => {
         (connection: MockConnection) => {
           connection.mockRespond(new Response(
             new ResponseOptions({
-                body: { applications: [storeApps[1]], status: 200}}
+              body: { applications: [storeApps[1]], status: 200 }
+            }
             )));
         });
 
       storeService.getApplicationsByCategory('Development').subscribe(
         (apps: StoreApplication[]) => {
-            expect(apps.length).toEqual(1);
-            expect(apps[0].rid).toEqual(3);
-            expect(apps[0].name).toEqual('Application 3');
-            expect(apps[0].category.name).toEqual('Development');
-      });
+          expect(apps.length).toEqual(1);
+          expect(apps[0].rid).toEqual(3);
+          expect(apps[0].name).toEqual('Application 3');
+          expect(apps[0].category.name).toEqual('Development');
+        });
     })));
 
-    it('Should catch error', done => {
-        let storeService: StoreService;
+  it('Should catch error', done => {
+    let storeService: StoreService;
 
-        getTestBed().compileComponents().then(() => {
-        mockBackend.connections.subscribe(
-            (connection: MockConnection) => {
-            connection.mockRespond(new Response(
-                new ResponseOptions({ body: undefined }
-                )));
-            });
-
-            storeService = getTestBed().get(StoreService);
-            expect(storeService).toBeDefined();
-
-            try {
-                storeService.getApplications().subscribe(
-                    (response) => {
-                        fail();
-                });
-            } catch (ex) {
-                done();
-            }
+    getTestBed().compileComponents().then(() => {
+      mockBackend.connections.subscribe(
+        (connection: MockConnection) => {
+          connection.mockRespond(new Response(
+            new ResponseOptions({ body: undefined }
+            )));
         });
+
+      storeService = getTestBed().get(StoreService);
+      expect(storeService).toBeDefined();
+
+      try {
+        storeService.getApplications().subscribe(
+          (response) => {
+            fail();
+          });
+      } catch (ex) {
+        done();
+      }
     });
+  });
 });

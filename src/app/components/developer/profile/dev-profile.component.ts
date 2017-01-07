@@ -18,7 +18,6 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {ProfileService, HttpErrorHandler} from '../../../core';
 import {Observable} from 'rxjs/Observable';
-import {Response} from '@angular/http';
 
 @Component({
     selector: 'bo-dev-profile',
@@ -51,7 +50,7 @@ export class DeveloperProfileComponent implements OnInit {
             console.log(this.developerProfile);
         });
      }
-   
+
     onClickCreateProfile() {
         this.isProfileConfirmed = true;
     }

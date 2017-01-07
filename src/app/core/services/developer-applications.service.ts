@@ -14,35 +14,35 @@
 * limitations under the License.
 **/
 
-import { Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
-import {DeveloperApplication} from '../';
-import {JsonHttp} from './json-http';
+import { DeveloperApplication } from '../';
+import { JsonHttp } from './json-http';
 
 @Injectable()
 export class DeveloperApplicationsService {
     appsUrl: string = '/api/0/developer/';
 
-    constructor(private http: JsonHttp) {}
+    constructor(private http: JsonHttp) { }
 
     getApplications(developerId: string) {
         return this.http.get(this.getApplicationsUrl())
-            .map((response) => <DeveloperApplication[]> response.json().applications)
+            .map((response) => <DeveloperApplication[]>response.json().applications)
             .catch(this.logError);
     }
-   
+
 
     getApplicationById(applicationId: string) {
-        return this.http.get(this.getApplicationsUrl() + '/' +applicationId)
+        return this.http.get(this.getApplicationsUrl() + '/' + applicationId)
             .map((response) => {
                 //console.log(response.json());
-                return <DeveloperApplication> response.json();
+                return <DeveloperApplication>response.json();
             })
             .catch(this.logError);
-    }  
+    }
 
     createApplication(developerId: string, application: DeveloperApplication) {
         return this.http.post(this.getApplicationsUrl() + '/create', application);
@@ -52,8 +52,8 @@ export class DeveloperApplicationsService {
     //     return this.http.post(this.getAppCreateUrl(developerId), profile);
     // }
     createApplicationUpdate(developerId: string, appName: String, application: DeveloperApplication) {
-            return this.http.post(this.getApplicationUrl(developerId) + '/' + appName + '/createUpdate',
-                                    application);
+        return this.http.post(this.getApplicationUrl(developerId) + '/' + appName + '/createUpdate',
+            application);
     }
 
     createAndPublishDeveloperApplication(developerId: string, application: DeveloperApplication) {
@@ -61,20 +61,20 @@ export class DeveloperApplicationsService {
     }
 
     publishDeveloperApplication(applicationId: string) {
-        return this.http.post(this.getApplicationsUrl() + '/' + applicationId + '/publish','');
+        return this.http.post(this.getApplicationsUrl() + '/' + applicationId + '/publish', '');
     }
 
-    updateAndPublishDeveloperApplication(applicationId:string, application: DeveloperApplication) {
-        return this.http.post(this.getApplicationsUrl() + '/' + applicationId + '/updateAndPublish',application);
-    }  
+    updateAndPublishDeveloperApplication(applicationId: string, application: DeveloperApplication) {
+        return this.http.post(this.getApplicationsUrl() + '/' + applicationId + '/updateAndPublish', application);
+    }
 
-    updateDeveloperApplication(applicationId:string, application: DeveloperApplication) {
+    updateDeveloperApplication(applicationId: string, application: DeveloperApplication) {
         return this.http.post(this.getApplicationsUrl() + '/' + applicationId + '/update', application);
-    } 
+    }
 
-    recallDeveloperApplication(applicationId:string) {
-        return this.http.post(this.getApplicationsUrl() + '/' + applicationId + '/recall','');
-    }   
+    recallDeveloperApplication(applicationId: string) {
+        return this.http.post(this.getApplicationsUrl() + '/' + applicationId + '/recall', '');
+    }
 
     getApplicationsUrl(): string {
         return this.appsUrl + '/applications';

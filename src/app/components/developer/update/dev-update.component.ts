@@ -14,53 +14,55 @@
 * limitations under the License.
 **/
 
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 // import {Observable} from 'rxjs/Observable';
 // import {DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitionService} from '../../../core';
-import {DeveloperApplication, DeveloperApplicationsService} from '../../../core';
+import { DeveloperApplication, DeveloperApplicationsService } from '../../../core';
 
 @Component({
     selector: 'bo-developer-application',
     templateUrl: './dev-update.component.html'
-  //  providers: [CodeDefinitionService]
+    //  providers: [CodeDefinitionService]
 
 })
 
 export class DeveloperApplicationUpdateComponent implements OnInit {
-    private newApplication: DeveloperApplication = {rid: undefined,
+    private newApplication: DeveloperApplication = {
+        rid: undefined,
         description: undefined, category: undefined,
         whatsNew: undefined, developer: undefined,
         downloadUrl: undefined, name: undefined,
-        state: undefined, version: undefined};
-       // categoryArray: Code[] = [];
-	    // categoryObservable: Observable<any>;
+        state: undefined, version: undefined
+    };
+    // categoryArray: Code[] = [];
+    // categoryObservable: Observable<any>;
 
 
     constructor(private developerAppsService: DeveloperApplicationsService,
-                private router: Router) {}
+        private router: Router) { }
 
     ngOnInit() {
-        this.newApplication.name =  localStorage.getItem('name');  
+        this.newApplication.name = localStorage.getItem('name');
     }
 
     onSubmitCreateApplicationUpdate(event) {
-    if(event =='create') {
-        this.developerAppsService.createApplicationUpdate(
-            localStorage.getItem('uid'),
-            localStorage.getItem('appid'),
-            this.newApplication).subscribe(
-            (response) => {
-                if (response.status === 200) {
-                // Success response, so lets go back to the developer home page.
-                    this.router.navigate(['/apps']);
+        if (event === 'create') {
+            this.developerAppsService.createApplicationUpdate(
+                localStorage.getItem('uid'),
+                localStorage.getItem('appid'),
+                this.newApplication).subscribe(
+                (response) => {
+                    if (response.status === 200) {
+                        // Success response, so lets go back to the developer home page.
+                        this.router.navigate(['/apps']);
+                    }
                 }
-            }
-        );
+                );
+        }
+        if (event === 'close') {
+
+            this.router.navigate(['/apps/details']);
+        }
     }
-    if(event =='close') {
-            
-            this.router.navigate(['/apps/details']);       
-        }   
-}
 }
