@@ -14,98 +14,76 @@
 * limitations under the License.
 **/
 
-/*:host {
-    display: flex;
-    flex-direction: column;
-    width: 320px;
-    height: 200px;
-    border: 1px solid;
-    border-radius: 12px;
-    background-color: #f9fafc;
-    padding: 10px;
-    color: #29394b;
-}*/
-h2 {
-    font-size: 1.6em;
-    flex: 1;
-}
-:host.medium-movies {
-    border-color: #53ace4;
-}
-:host.medium-movies > h2 {
-    color: #53ace4;
-}
-:host.medium-series {
-    border-color: #45bf94;
-}
-:host.medium-series > h2 {
-    color: #45bf94;
-}
-.tools {
-    margin-top: 8px;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-}
-.favorite {
-    width: 24px;
-    height: 24px;
-    fill: #7D3C98;
-}
-.favorite.is-favorite {
-    fill: #37ad79;
-}
-.favorite.is-favorite-hovering {
-    fill: #45bf94;
-}
-.favorite.is-favorite.is-favorite-hovering {
-    fill: #ec4342;
-}
-.delete {
-    display: block;
-    background-color: #ec4342;
-    padding: 4px;
-    font-size: .8em;
-    border-radius: 4px;
-    color: #ffffff;
-    cursor: pointer;
-}
-.details {
-    display: block;
-    background-color: #37ad79;
-    padding: 4px;
-    font-size: .8em;
-    border-radius: 4px;
-    color: #ffffff;
-    text-decoration: none;
+.buttonRight {
+    font: bold normal normal 12px Helvetica;
+    color: white;
+    width: 80px;
+    line-height: 10px;
+    float: right;
+    padding: 6px;
+    background-color: #FF7551;
+    border: 1px solid #FF7551;
+    margin: 8px;
+    text-align: center;
+    border-radius: 2px;
 }
 
-.card {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    border-radius: 5px; /* 5px rounded corners */
-    
-    display: flex;
-    flex-direction: column;
-    width: 320px;
-    height: 200px;
-    border: 1px solid;
-    border-radius: 12px;
-    background-color: #f9fafc;
-    padding: 10px;
-    color: #29394b;
+button:hover {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
 }
 
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+.buttonLeft {
+    font: bold normal normal 12px Helvetica;
+    color: #FF7551;
+    width: 80px;
+    line-height: 16px;
+    float: right;
+    padding: 6px;
+    border: 1px solid #FF7551;
+    margin: 8px;
+    text-align: center;
+    border-radius: 2px;
+    background-color: ghostwhite;
+} 
+
+.rigthValues {
+    font: bold normal normal 30px Helvetica;
+    width: 100px;
+    line-height: 10px;
+    padding-top: 5px;
+    margin-left: 8px;
+    text-align: right;
+}
+div {
+    width: 300px;
+    height: 300px;
+    border: 4px solid #FF7551;
+    /*background: url(PS_logo.jpg) no-repeat;*/
+    background-position: center;
+    float: left;
+    margin: 4px;
 }
 
-/* Add some padding inside the card container */
-.container {
-    padding: 2px 16px;
+.applogo {
+    margin-top: 40px;
+    margin-left: 100px;
+    float: left;
+    width: 100px;
+    height: 100px;
+    background: no-repeat;
+    background-position: center;
 }
-img {
-    border-radius: 5px 5px 0 0;
+
+h2 { 
+    font: bold normal normal 1.6em Arial;
+    text-align: center;
+    margin-top: 220px;
+
+}
+p {
+    font: bold normal normal 12px Helvetica;
+    line-height: 20px;
+    color: grey;
+    text-align: left;
+    margin-left: 14px;
 }

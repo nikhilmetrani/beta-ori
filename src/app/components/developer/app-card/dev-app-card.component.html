@@ -15,15 +15,12 @@
 * limitations under the License.
 **/
 -->
-
-<div class="card">
-<h2>{{ application.name }}</h2>
-    <div>State: {{ application.state | uppercase}}</div>
-    <!--| date: 'shortDate' -->
-<div>{{ application.category.name }}</div>
-
-<div class="tools">    
-    <button class="btn btn-success pull-left details" (click)="createApplicationUpdate()">Details</button>
-
-</div>
+<div>
+    <button class="buttonLeft" (click)="createApplicationUpdate()">Details</button>
+    <img class="applogo" src="" alt="{{application.name}}">
+    <h2>{{application.name}}</h2>
+    <p>
+        State: {{ application.state | uppercase}}
+        Category: {{ application.category.name }}
+    </p>
 </div>
