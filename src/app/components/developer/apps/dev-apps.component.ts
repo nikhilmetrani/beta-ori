@@ -45,5 +45,9 @@ export class DeveloperApplicationsComponent implements OnInit {
 
     onHideActiveApps(flag) {
         this.hideActiveApps = flag;
-   }
+    }
+
+    onClickCleanSearch() {
+        this.query = '';
+    }    
 }
