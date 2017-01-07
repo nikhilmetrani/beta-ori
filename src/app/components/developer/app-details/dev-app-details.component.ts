@@ -65,15 +65,17 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
 
     
     onChangeAppName(){
-        console.log(this.application.name);
-        console.log(this.originalAppName);
+        //console.log(this.application.name);
+        //console.log(this.originalAppName);
         if(this.application.name != this.originalAppName){
+            
              this.developerAppsService.checkApplicationNameExistsForDeveloper(this.application.name).subscribe(
                 (response) => {                  
-                    if(response.status === 200){
+                    if(response.status === 200){                        
                         this.nameIsUnique = false;                        
                     }
-                    else{                        
+                    else{
+                                              
                         this.nameIsUnique = true;
                     }
                 }
