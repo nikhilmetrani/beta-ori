@@ -37,7 +37,8 @@
 								<label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
 								<div class="col-xs-5">
 									<input type="text" #name tabindex="1" class="form-control" id="name" name="name" placeholder="" [(ngModel)]="newApplication.name"
-										required>
+										required (change)="onChangeAppName()">
+										<label for="example-text-input"  class="col-xs-2 col-form-label" *ngIf="!nameIsUnique">Duplicate name</label>
 								</div>
 							</div>
 							<div class="form-group row">

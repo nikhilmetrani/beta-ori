@@ -36,12 +36,32 @@ export class DeveloperApplicationComponent implements OnInit {
     categoryArray: Code[] = [];
     categoryObservable: Observable<any>;
 
+        nameIsUnique: boolean = true ;
+
     constructor(private developerAppsService: DeveloperApplicationsService, private codeService: CodeDefinitionService,
         private router: Router) { }
 
     ngOnInit() {
         this.categoryObservable = this.codeService.getCategoryCodes();
         this.categoryObservable.forEach(next => this.categoryArray = next);
+    }
+
+     onChangeAppName(){
+         console.log(this.newApplication.name);
+         this.developerAppsService.checkApplicationNameExistsForDeveloper(this.newApplication.name).subscribe(
+                (response) => {                  
+                    if(response.status === 200){
+                        this.nameIsUnique = false;                        
+                    }
+                    else
+                    {                        
+                        this.nameIsUnique = true;
+                    }
+                }
+                
+            );  
+
+         
     }
 
     onSubmitCreateApplication(event) {
