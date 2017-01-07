@@ -57,9 +57,6 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
     onSubmitViewDetails(event) {
 
         if (event === 'save') {
-            if (this.application.state === 'Recalled') {
-                this.application.state = 'Staging';
-            }
             this.developerAppsService.updateDeveloperApplication(localStorage.getItem('appid'), this.application).subscribe(
                 (response) => {
                     if (response.status === 200) {
