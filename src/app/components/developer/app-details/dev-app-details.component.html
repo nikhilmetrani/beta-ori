@@ -123,10 +123,11 @@
 			<br/><br/>
 			<div class="form-group row">
 				
-				<div class="col-sm-2 col-sm-offset-1" *ngIf="!(application.state === 'Active') ">
+				<div class="col-sm-2 col-sm-offset-1" *ngIf="!(application.state === 'Active') || application.state === 'Recalled'">
 					<button type="submit" name="dev-app-save" id="dev-app-save" tabindex="5" class="form-control btn btn-success" [disabled]="!f.valid"
 						(click)="onSubmitViewDetails('save'); $event.preventDefault()">Save</button>
 				</div>
+				
 				<div class="col-sm-2 col-sm-offset-1" *ngIf="application.state === 'Staging' ">
 					<button type="submit" name="dev-app-publish" id="dev-app-publish" tabindex="5" class="form-control btn btn-success" [disabled]="!f.valid"
 						(click)="onSubmitViewDetails('publish'); $event.preventDefault()">Publish</button>
