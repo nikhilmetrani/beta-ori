@@ -57,7 +57,7 @@
 								<label for="example-text-input" class="col-xs-2 col-form-label">Version</label>
 								<div class="col-xs-5" *ngIf="!(application.state === 'Active') ">
 									<input type="text" #version tabindex="1" class="form-control" id="version" name="version" placeholder="" [(ngModel)]="application.version"
-										required>
+										required minlength="1" pattern="\d{1,3}|\d{1,3}.\d{1,4}|\d{1,3}.\d{1,4}.\d{1,4}">
 								</div>
 								<div class="col-xs-5" *ngIf="application.state === 'Active'">
 									{{application.version}}
@@ -141,7 +141,7 @@
 						(click)="onSubmitViewDetails('recall'); $event.preventDefault()">Recall</button>
 				</div>
 				<div class="col-sm-2 col-sm-offset-1">
-					<button type="submit" name="dev-app-close" id="dev-app-close" tabindex="5" class="form-control btn btn-success" [disabled]="!f.valid"
+					<button type="submit" name="dev-app-close" id="dev-app-close" tabindex="5" class="form-control btn btn-success" 
 						(click)="onSubmitViewDetails('close'); $event.preventDefault()">Close</button>
 				</div>
 			</div>
