@@ -33,10 +33,14 @@ export class DeveloperApplicationsService {
             .map((response) => <DeveloperApplication[]> response.json().applications)
             .catch(this.logError);
     }
+   
 
-    getApplication(applicationId: string) {
-        return this.http.get(this.getApplicationsUrl() + '/' +applicationId+'/list')
-            .map((response) => <DeveloperApplication> response.json().applications)
+    getApplicationById(applicationId: string) {
+        return this.http.get(this.getApplicationsUrl() + '/' +applicationId)
+            .map((response) => {
+                //console.log(response.json());
+                return <DeveloperApplication> response.json();
+            })
             .catch(this.logError);
     }  
 
