@@ -28,8 +28,8 @@
         <form #f="ngForm" (ngSubmit)="onSubmitCreateProfile()">  
             <div class="form-group">
                 <label for="id">Email:</label>                
-                <input class="form-control" type="email"  
-                    [(ngModel)]="developerProfile.email" required name="email" id="name">
+                <input class="form-control" type="email"  placeholder="email@xyz.com"
+                    [(ngModel)]="developerProfile.email" required name="email" id="name">                    
             </div>                    
             <div class="form-group">
                 <label for="company">Company:</label>
@@ -38,7 +38,7 @@
             </div>            
              <div class="form-group">
                 <label for="website">Website:</label>
-                <input class="form-control" type="url"  
+                <input class="form-control" type="url" placeholder="http://www.xyz.com"  
                     [(ngModel)]="developerProfile.website" required name="website">
             </div>           
              <div class="form-group">

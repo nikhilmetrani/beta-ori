@@ -26,7 +26,7 @@ import {Response} from '@angular/http';
 })
 export class DeveloperProfileComponent implements OnInit {
 
-    observableDevProfile: (profile) => Observable<Response>;
+    observableDevProfile: Observable<any>;
     developerProfile: any = {rid: undefined,
         email: undefined,
         description: undefined,
@@ -46,28 +46,12 @@ export class DeveloperProfileComponent implements OnInit {
     ngOnInit() {
         this.developerId = localStorage.getItem('uid');
         this.activatedRoute.data.subscribe(data => {
-            this.developerProfile = data['profile'];
+            this.developerProfile = data['profile'].json();
             this.isProfileConfirmed = true;
+            console.log(this.developerProfile);
         });
-        // this.profile();
-        // this.getProfile();
-    }
-
-    // getProfile() {
-    //     this.observableDevProfile = () => {
-    //         return this.profileService.getDeveloperProfile(this.developerId);
-    //     };
-    // }
-
-    // profile() {
-    //     this.observableDevProfile.
-    //         .subscribe((profile) => {
-    //                 this.developerProfile = profile;
-    //             }, e => this.errorHandler.handle(e)
-    //   )
-    // ;
-    // }
-
+     }
+   
     onClickCreateProfile() {
         this.isProfileConfirmed = true;
     }
