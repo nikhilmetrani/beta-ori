@@ -67,15 +67,13 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
     onChangeAppName(){
         console.log(this.application.name);
         console.log(this.originalAppName);
-        if(this.application.name != this.originalAppName)
-        {
+        if(this.application.name != this.originalAppName){
              this.developerAppsService.checkApplicationNameExistsForDeveloper(this.application.name).subscribe(
                 (response) => {                  
                     if(response.status === 200){
                         this.nameIsUnique = false;                        
                     }
-                    else
-                    {                        
+                    else{                        
                         this.nameIsUnique = true;
                     }
                 }
@@ -83,12 +81,9 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
             );  
         
         }
-        else
-        {
+        else{
             console.log("No change for app name");
         }
-
-         
     }
 
     
@@ -97,10 +92,12 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
 
 
         if (event === 'save') {
+
             if(this.nameIsUnique === true){
                 if (this.application.state === 'Recalled') {
                 this.application.state = 'Staging';
-            }
+                }
+
             this.developerAppsService.updateDeveloperApplication(localStorage.getItem('appid'), this.application).subscribe(
                 (response) => {
                     if (response.status === 200) {

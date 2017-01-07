@@ -17,37 +17,37 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {ENV_PROVIDERS} from './environment';
+import { ENV_PROVIDERS } from './environment';
 import { AppComponent } from './app.component';
 import { UPLOAD_DIRECTIVES } from 'ng2-uploader/ng2-uploader';
 import {
-            AboutComponent,
-            LoginComponent,
-            DeveloperComponent,
-            ApplicationListComponent,
-            ApplicationComponent,
-            DeveloperApplicationCardComponent,
-            DeveloperApplicationsComponent,
-            DeveloperApplicationsBundleComponent,
-            DeveloperProfileComponent,
-            DeveloperApplicationComponent,
-            DeveloperApplicationDetailsComponent,           
-            DeveloperSettingsComponent,
-            DeveloperNavbarComponent,
-            DeveloperApplicationUpdateComponent,
-            UploadComponent,
-            DeveloperWelcomeComponent
-        } from './components';
+  AboutComponent,
+  LoginComponent,
+  DeveloperComponent,
+  ApplicationListComponent,
+  ApplicationComponent,
+  DeveloperApplicationCardComponent,
+  DeveloperApplicationsComponent,
+  DeveloperApplicationsBundleComponent,
+  DeveloperProfileComponent,
+  DeveloperApplicationComponent,
+  DeveloperApplicationDetailsComponent,
+  DeveloperSettingsComponent,
+  DeveloperNavbarComponent,
+  DeveloperApplicationUpdateComponent,
+  UploadComponent,
+  DeveloperWelcomeComponent
+} from './components';
 import {
-            DeveloperListPipe,
-            CategoryListPipe,
-            ApplicationListPipe,
-            FavoriteDirective,
-            HideActiveAppsListPipe
-        } from './core';
+  DeveloperListPipe,
+  CategoryListPipe,
+  ApplicationListPipe,
+  FavoriteDirective,
+  HideActiveAppsListPipe
+} from './core';
 
 // import {SignupModule} from './components/signup/signup.module';
-import {BOCoreModule} from './core/bo-core.module';
+import { BOCoreModule } from './core/bo-core.module';
 
 import { routing } from './app.routing';
 
@@ -71,7 +71,7 @@ import { routing } from './app.routing';
     LoginComponent,
     DeveloperApplicationCardComponent,
     DeveloperApplicationComponent,
-    DeveloperApplicationDetailsComponent,    
+    DeveloperApplicationDetailsComponent,
     DeveloperApplicationsComponent,
     DeveloperProfileComponent,
     DeveloperSettingsComponent,

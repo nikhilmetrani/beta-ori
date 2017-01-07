@@ -67,4 +67,8 @@ export class DeveloperProfileComponent implements OnInit {
                 }
         );
     }
+
+    onClickCloseProfile(){
+         this.router.navigate(['/']);
+    }
 }
