@@ -38,7 +38,7 @@ export class DeveloperApplicationsService {
     getApplicationById(applicationId: string) {
         return this.http.get(this.getApplicationsUrl() + '/' + applicationId)
             .map((response) => {
-                //console.log(response.json());
+                // console.log(response.json());
                 return <DeveloperApplication>response.json();
             })
             .catch(this.logError);
