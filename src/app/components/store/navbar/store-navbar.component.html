@@ -10,28 +10,21 @@
                 </button>
                 <a class="navbar-brand" routerLink="/about">29Cu.io</a>
             </div>
-            <div class="collapse navbar-collapse" id="mainNavBar" *ngIf="isSignedIn">
+            <div class="collapse navbar-collapse" id="mainNavBar">
                 <ul class="nav navbar-nav">
                     <li><a routerLink="/store">Store</a></li>
-                    <li><a routerLink="/developer/apps">Applications</a></li>
-                    <li class="dropdown" >
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="glyphicon glyphicon-plus"></span> 
-                        <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a routerLink="/developer/apps/create">New Application</a></li>
-                            <!--<li><a routerLink="/bundle/create">New Application Bundle</a></li> -->
-                            <!--<li><a routerLink="/">New Update</a></li> -->
-                        </ul>
-                    </li>
+                    <li *ngIf="isSignedIn"><a routerLink="/myapps">My Apps</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
+                    <li  *ngIf="!isSignedIn"><a routerLink="/login">Login / Signup</a></li>
+                    <li class="dropdown"  *ngIf="isSignedIn">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> {{userName}}
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a routerLink="/developer/profile">Profile</a></li>
-                            <li><a routerLink="/developer/settings">Settings</a></li>
+                            <li><a routerLink="/profile">Profile</a></li>
+                            <li><a routerLink="/developer">Developer</a></li>
+                            <li class="divider"></li>
+                            <li><a routerLink="/settings">Settings</a></li>
                             <li class="divider"></li>
                             <li><a href="#" (click)="logout()"> Logout</a></li> 
                         </ul>

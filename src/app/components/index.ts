@@ -41,7 +41,9 @@ export {SignupComponent} from './signup/signup.component';
 export {UploadComponent} from './common/upload/upload.component';
 
 // Store
+export {StoreComponent} from './store/store.component';
+export {StoreNavbarComponent} from './store/navbar/store-navbar.component';
 export {ApplicationComponent} from './store/application/application.component';
-export {ApplicationListComponent} from './store/application-list/application-list.component';
+export {StoreAppsComponent} from './store/apps/store-apps.component';
 export {ConsumerProfileComponent} from './store/profile/consumer-profile.component';
 export {ApplicationSubscriptionComponent} from './store/application-sub/application-sub.component';

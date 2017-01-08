@@ -40,7 +40,7 @@ export class DeveloperApplicationsComponent implements OnInit {
 
     createNewApplication() {
         // Navigate by URL to call parent route
-        this.router.navigateByUrl('/apps/create');
+        this.router.navigateByUrl('/developer/apps/create');
     }
 
     onHideActiveApps(flag) {

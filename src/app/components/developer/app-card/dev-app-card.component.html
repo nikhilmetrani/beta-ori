@@ -16,7 +16,7 @@
 **/
 -->
 <div>
-    <button class="buttonLeft" (click)="createApplicationUpdate()">Details</button>
+    <button [routerLink]="'/developer/apps/details'" class="buttonLeft" (click)="createApplicationUpdate()">Details</button>
     <img class="applogo" src="" alt="{{application.name}}">
     <h2>{{application.name}}</h2>
     <p>

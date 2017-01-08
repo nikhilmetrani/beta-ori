@@ -70,18 +70,18 @@ export class DeveloperApplicationComponent implements OnInit {
                 (response) => {
                     if (response.status === 200) {
                         // Success response, so lets go back to the developer home page.
-                        this.router.navigate(['/apps']);
+                        this.router.navigate(['/developer/apps']);
                     }
                 }
             );
         } else if (event === 'close') {
-            this.router.navigate(['/apps']);
+            this.router.navigate(['/developer/apps']);
         } else {
             this.developerAppsService.createApplication(localStorage.getItem('uid'), this.newApplication).subscribe(
                 (response) => {
                     if (response.status === 200) {
                         // Success response, so lets go back to the developer home page.
-                        this.router.navigate(['/apps']);
+                        this.router.navigate(['/developer/apps']);
                     }
                 }
             );

@@ -1,3 +1,4 @@
+<!--
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -13,16 +14,14 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 **/
+-->
 
-import {Component} from '@angular/core';
-import {Location} from '@angular/common';
+<header>
+  <bo-store-navbar [userName]="userName"></bo-store-navbar>
+</header>
 
-@Component({
-    templateUrl: './about.component.html'
-})
-export class AboutComponent {
-    constructor(private location: Location) {}
-    onBackClicked() {
-        this.location.back();
-    }
-}
+<div class="container">
+    <div class="container-fluid">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -101,7 +101,7 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
                 (response) => {
                     if (response.status === 200) {
                         // Success response, so lets go back to the developer home page.
-                        this.router.navigate(['/apps']);
+                        this.router.navigate(['/developer/apps']);
                     }
                 }
             );
@@ -117,7 +117,7 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
                 (response) => {
                     if (response.status === 200) {
                         // Success response, so lets go back to the developer home page.
-                        this.router.navigate(['/apps']);
+                        this.router.navigate(['/developer/apps']);
                     }
                 }
             );
@@ -129,18 +129,18 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
                 (response) => {
                     if (response.status === 200) {
                         // Success response, so lets go back to the developer home page.
-                        this.router.navigate(['/apps']);
+                        this.router.navigate(['/developer/apps']);
                     }
                 }
             );
         }
         if (event === 'create') {
             localStorage.setItem('name', this.application.name.toString());
-            this.router.navigate(['/apps/update']);
+            this.router.navigate(['/developer/apps/update']);
         }
         if (event === 'close') {
 
-            this.router.navigate(['/apps']);
+            this.router.navigate(['/developer/apps']);
         }
     }
 

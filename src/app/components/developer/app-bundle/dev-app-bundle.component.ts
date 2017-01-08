@@ -43,7 +43,7 @@ export class DeveloperApplicationsBundleComponent implements OnInit {
             (response) => {
                 if (response.status === 200) {
                     // Success response, so lets go back to the developer home page.
-                    this.router.navigate(['/apps']);
+                    this.router.navigate(['/developer/apps']);
                 }
             }
          );

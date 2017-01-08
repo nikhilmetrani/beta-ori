@@ -21,11 +21,11 @@ import {ActivatedRoute} from '@angular/router';
 import {StoreApplication, Category} from '../../../core';
 
 @Component({
-  selector: 'bo-application-list',
-  styleUrls: ['./application-list.component.css'],
-  templateUrl: './application-list.component.html',
+  selector: 'bo-store-apps',
+  styleUrls: ['./store-apps.component.css'],
+  templateUrl: './store-apps.component.html',
 })
-export class ApplicationListComponent implements OnInit {
+export class StoreAppsComponent implements OnInit {
   category: Category = undefined;
   categoryString = 'All';
   storeItems: Observable<any>;

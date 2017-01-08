@@ -18,6 +18,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {AboutComponent,
         LoginComponent,
+        StoreComponent,
+        StoreNavbarComponent,
+        StoreAppsComponent,
         DeveloperComponent,
         DeveloperApplicationComponent,
         DeveloperApplicationDetailsComponent,
@@ -33,19 +36,9 @@ import { PublicPageGuard, PrivatePageGuard, ProfileDataResolver} from './core';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'developer',
     component: DeveloperComponent,
     children: [
-      {
-        path: 'login',
-        component: LoginComponent,
-        canActivate: [PublicPageGuard]
-      },
-      {
-        path: 'signup',
-        loadChildren: './components/signup/signup.module#SignupModule',
-        canActivate: [PublicPageGuard]
-      },
       {
         path: 'apps',
         component: DeveloperApplicationsComponent,
@@ -96,18 +89,40 @@ const routes: Routes = [
         component: DeveloperSettingsComponent,
         canActivate: [PrivatePageGuard]
       },
-      {
-        path: 'about',
-        component: AboutComponent,
-        data: {title: 'About'}
-      },
 
       { path: '**', redirectTo: 'apps'}
     ]
   },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [PublicPageGuard]
+  },
+  {
+    path: 'signup',
+    loadChildren: './components/signup/signup.module#SignupModule',
+    canActivate: [PublicPageGuard]
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
+    data: {title: 'About'}
+  },
+  {
+    path: 'store',
+    component: StoreComponent,
+    children: [
+      {
+        path: '',
+        component: StoreAppsComponent
+      },
+
+      { path: '**', redirectTo: ''}
+    ]
+  },
 
   // If none of the routes match, go to store.
-  {path: '**', redirectTo: ''}
+  {path: '**', redirectTo: 'store'}
 ];
 
 export const routing = RouterModule.forRoot(routes, { useHash: true });
