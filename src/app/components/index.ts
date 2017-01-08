@@ -43,3 +43,4 @@ export {UploadComponent} from './common/upload/upload.component';
 // Store
 export {ApplicationComponent} from './store/application/application.component';
 export {ApplicationListComponent} from './store/application-list/application-list.component';
+export {ConsumerProfileComponent} from './store/profile/consumer-profile.component';
