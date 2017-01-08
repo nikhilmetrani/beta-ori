@@ -2,7 +2,7 @@
 
 The fornt-end for Alpha-Umi REST API server.
 
-[![Build Status](https://travis-ci.com/nikhilmetrani/beta-ori.svg?token=bQkogbxFfYCzp5uJhLW7&branch=devcenter)](https://travis-ci.com/nikhilmetrani/beta-ori)
+[![Build Status](https://travis-ci.com/nikhilmetrani/beta-ori.svg?token=bQkogbxFfYCzp5uJhLW7&branch=store)](https://travis-ci.com/nikhilmetrani/beta-ori)
 
 Dependencies
 -------------
