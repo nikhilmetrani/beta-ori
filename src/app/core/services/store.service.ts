@@ -25,6 +25,7 @@ import {JsonHttp} from './json-http';
 @Injectable()
 export class StoreService {
     storeUrl: string = '/api/1/store/';
+    storeUrlforLoginUser: string = '/api/0/store/';
 
     constructor(private http: JsonHttp) {}
 
@@ -53,5 +54,27 @@ export class StoreService {
 
     searchApplicationsByCategory(categoryId: string) {
         return this.makeRequest('search/category/' + categoryId);
+    }
+
+    subscribeApplication(applicationId:string){
+        return this.http.get(this.storeUrlforLoginUser + 'applications/'+applicationId+'/subscribe')
+            .map((response) => {
+                console.log(response.json());
+                return <StoreApplication>response.json();
+            })
+            .catch(this.logError);
+    }
+
+    unsubscribeApplication(applicationId:string){
+        return this.http.get(this.storeUrlforLoginUser + 'applications/'+applicationId+'/unsubscribe')
+            .map((response) => {
+                console.log(response.json());
+                return <StoreApplication>response.json();
+            })
+            .catch(this.logError);
+    }
+
+     checkAppIsSubscibled(applicationId:string){
+        return this.http.get(this.storeUrlforLoginUser + 'applications/'+applicationId+'/checkAppIsSubscibled');           
     }
 }
