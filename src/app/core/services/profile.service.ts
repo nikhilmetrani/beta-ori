@@ -18,11 +18,13 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import {DeveloperProfile} from '../';
+import {ConsumerProfile} from '../';
 import {JsonHttp} from './json-http';
 
 @Injectable()
 export class ProfileService {
     developerUrl: string = '/api/0/developer/';
+    consumerUrl: string = '/api/0/consumer/';
 
     constructor(private http: JsonHttp) {}
 
@@ -42,5 +44,23 @@ export class ProfileService {
 
     getProfileUrl(): string {
         return this.developerUrl + 'profile';
+    }
+
+    getConsumerProfile(developerId: string) {
+        // Consumer ID validation is now implemented on server side.
+        return this.http.get(this.getConsumerProfileUrl());
+    }
+
+    createConsumerProfile(developerId: string, profile: DeveloperProfile) {
+        // Developer ID validation is now implemented on server side.
+        return this.http.post(this.getConsumerProfileUrl(), profile);
+    }
+
+    modifyConsumerProfile(developerId: string, profile: DeveloperProfile) {
+        return this.http.post(this.getConsumerProfileUrl(), profile);
+    }
+
+    getConsumerProfileUrl(): string {
+        return this.consumerUrl + 'profile';
     }
 }

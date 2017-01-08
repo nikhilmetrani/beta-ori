@@ -23,6 +23,7 @@ export {BOCoreModule} from './bo-core.module';
 // Export entities
 export {User} from './entities/user';
 export {DeveloperProfile} from './entities/developer-profile';
+export {ConsumerProfile} from './entities/consumer-profile';
 export {StoreApplication} from './entities/store-application';
 export {Link} from './entities/link';
 export {DeveloperApplication} from './entities/developer-application';
