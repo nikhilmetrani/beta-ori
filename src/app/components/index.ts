@@ -44,3 +44,4 @@ export {UploadComponent} from './common/upload/upload.component';
 export {ApplicationComponent} from './store/application/application.component';
 export {ApplicationListComponent} from './store/application-list/application-list.component';
 export {ConsumerProfileComponent} from './store/profile/consumer-profile.component';
+export {ApplicationSubscriptionComponent} from './store/application-sub/application-sub.component';

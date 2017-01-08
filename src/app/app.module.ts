@@ -36,7 +36,8 @@ import {
   DeveloperNavbarComponent,
   DeveloperApplicationUpdateComponent,
   UploadComponent,
-  DeveloperWelcomeComponent
+  DeveloperWelcomeComponent,
+  ApplicationSubscriptionComponent
 } from './components';
 import {
   DeveloperListPipe,
@@ -83,7 +84,8 @@ import { routing } from './app.routing';
     ApplicationListPipe,
     DeveloperWelcomeComponent,
     DeveloperApplicationUpdateComponent,
-    HideActiveAppsListPipe
+    HideActiveAppsListPipe,
+    ApplicationSubscriptionComponent
   ],
   providers: [
     ENV_PROVIDERS

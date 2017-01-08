@@ -25,7 +25,8 @@ import {AboutComponent,
         DeveloperApplicationsBundleComponent,
         DeveloperProfileComponent,
         DeveloperSettingsComponent,
-        DeveloperApplicationUpdateComponent
+        DeveloperApplicationUpdateComponent,
+        ApplicationSubscriptionComponent
         } from './components';
 
 import { PublicPageGuard, PrivatePageGuard, ProfileDataResolver} from './core';
@@ -77,6 +78,12 @@ const routes: Routes = [
         path: 'bundle/create',
         component: DeveloperApplicationsBundleComponent,
         data: { action: 'create' },
+        canActivate: [PrivatePageGuard]
+      },
+      {
+        path: 'store/sub',
+        component: ApplicationSubscriptionComponent,
+        data: { action: 'sub' },
         canActivate: [PrivatePageGuard]
       },
       {
