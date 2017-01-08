@@ -49,7 +49,7 @@
 						<label for="example-text-input" class="col-xs-2 col-form-label">Version</label>
 						<div class="col-xs-5">
 							<input type="text" #version tabindex="1" class="form-control" id="version" name="version" placeholder="" [(ngModel)]="newApplication.version"
-								required>
+								required minlength="1" pattern="((\d{1,3})|(\d{1,3}.\d{1,4})|(\d{1,3}.\d{1,4}.\d{1,4}))">
 						</div>
 					</div>
 					<div class="form-group row">
