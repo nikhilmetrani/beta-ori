@@ -95,10 +95,7 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
 
         if (event === 'save') {
 
-            if(this.nameIsUnique === true){
-                if (this.application.state === 'Recalled') {
-                this.application.state = 'Staging';
-                }
+            if(this.nameIsUnique === true){              
 
             this.developerAppsService.updateDeveloperApplication(localStorage.getItem('appid'), this.application).subscribe(
                 (response) => {
