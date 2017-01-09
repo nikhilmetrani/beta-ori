@@ -27,6 +27,7 @@ export {ConsumerProfile} from './entities/consumer-profile';
 export {StoreApplication} from './entities/store-application';
 export {Link} from './entities/link';
 export {DeveloperApplication} from './entities/developer-application';
+export {Installer} from './entities/installer';
 export {DeveloperApplicationsBundle} from './entities/developer-app-bundle';
 export {Category} from './entities/category';
 export {Code} from './entities/code';

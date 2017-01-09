@@ -70,12 +70,6 @@
 									<input type="text" #whatsnew tabindex="1" class="form-control" id="whatsnew" name="whatsnew" placeholder="" [(ngModel)]="newApplication.whatsNew">
 								</div>
 							</div>
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Download Url</label>
-								<div class="col-xs-5">
-									<input type="text" #downloadUrl tabindex="1" class="form-control" id="downloadUrl" name="downloadUrl" placeholder="" [(ngModel)]="newApplication.downloadUrl">
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -87,16 +81,65 @@
 					</div>
 					<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
 						<div class="card-block">
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Email</label>
-								<div class="col-xs-5">
-									<input type="text" #email tabindex="1" class="form-control" id="email" name="email" placeholder="">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Contact</label>
-								<div class="col-xs-5">
-									<input type="text" #description tabindex="1" class="form-control" id="contact" name="contact" placeholder="">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="panel panel-default">
+											<div class="panel-body">
+												<form ng-submit="addNew()">
+													<table class="table table-striped table-bordered">
+														<thead>
+															<tr>
+																<th><input type="checkbox" ng-model="selectedAll" (click)="checkAll()" /></th>
+																<th>Platform</th>
+																<th>OS</th>
+																<th>Download Url</th>
+																<th>Express Install Command</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr *ngFor="let installer of newApplication.installers">
+																<td>
+																	<input type="checkbox" ng-model="installer_selected"/></td>
+																<td>
+																	<select #installer.platform tabindex="1" class="form-control" id="installer.platform" name="platform" placeholder="" [(ngModel)]="installer.platform" required>
+																		<option value="">--Select--</option>
+																		<option value="x64">x64</option>
+																		<option value="x86">x86</option>
+																	</select>
+																</td>
+																<td>
+																	<select #installer.os tabindex="1" class="form-control" id="installer.os" name="os" placeholder="" [(ngModel)]="installer.os" required>
+																		<option value="">--Select--</option>
+																		<option value="Windows">Windows</option>
+																		<option value="Mac">Mac</option>
+																		<option value="Linux">Linux</option>
+																	</select>
+																</td>
+																<td>
+																	<input type="text" #downloadUrl tabindex="1" class="form-control" id="installer.downloadUrl" name="installer.downloadUrl" placeholder="" [(ngModel)]="installer.downloadUrl" required>
+																<td>
+																	<input type="text" #expressInstallCommand tabindex="1" class="form-control" id="installer.expressInstallCommand" name="installer.expressInstallCommand" placeholder="" [(ngModel)]="installer.expressInstallCommand" /></td>
+															</tr>
+														</tbody>
+													</table>
+
+													<div class="form-group row">&nbsp;&nbsp;&nbsp;&nbsp;
+														<div class="col-sm-1 col-sm-offset">
+															<button [disabled]="newApplication.installers.length>4" type="submit" name="add-installer" id="add-installer"  class="btn btn-primary addnew pull-right" (click)="onSubmitInstaller('add'); $event.preventDefault()">
+																Add New
+															</button>
+														</div>
+														<div class="col-sm-1 col-sm-offset">
+															<button [disabled]="newApplication.installers.length<2" type="submit" name="remove-installer" id="remove-installer" class="btn btn-danger remove pull-right" (click)="onSubmitInstaller('remove'); $event.preventDefault()">
+																Remove
+															</button>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

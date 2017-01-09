@@ -17,7 +17,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitionService } from '../../../core';
+import { DeveloperApplication, Installer, DeveloperApplicationsService, Code, CodeDefinitionService } from '../../../core';
 
 @Component({
     selector: 'bo-developer-application',
@@ -30,13 +30,26 @@ export class DeveloperApplicationComponent implements OnInit {
         rid: undefined,
         description: undefined, category: undefined,
         whatsNew: undefined, developer: undefined,
-        downloadUrl: undefined, name: undefined,
-        state: undefined, version: undefined
+        name: undefined, state: undefined,
+        version: undefined, installers: [
+        {
+            rid: undefined,
+            platform: undefined, os: undefined,
+            downloadUrl: undefined, expressInstallCommand: undefined
+        }
+    ]
+    };
+    newInstaller: Installer = {
+        rid: undefined,
+        platform: undefined, os: undefined,
+        downloadUrl: undefined, expressInstallCommand: undefined
     };
     categoryArray: Code[] = [];
     categoryObservable: Observable<any>;
 
         nameIsUnique: boolean = true ;
+    selectedAll: string;
+    installer_selected: string[] = [];
 
     constructor(private developerAppsService: DeveloperApplicationsService, private codeService: CodeDefinitionService,
         private router: Router) { }
@@ -85,6 +98,44 @@ export class DeveloperApplicationComponent implements OnInit {
                     }
                 }
             );
+        }
+    }
+
+    onSubmitInstaller(event) {
+        if(event=='add') {
+            this.newApplication.installers.push({
+                'rid': undefined,
+                'platform': "",
+                'os': "",
+                'downloadUrl': "",
+                'expressInstallCommand': ""
+            });
+        } else if(event=='remove') {
+            var newDataList = []; 
+            alert(this.selectedAll);
+            if(this.selectedAll=='Y') {
+                this.newApplication.installers = [];
+            }else{
+                alert(this.installer_selected.length);
+                for(var i=0; i<this.installer_selected.length; i++) {
+                    alert(this.installer_selected[i]);
+                    if(this.installer_selected[i]!='Y') {
+                        newDataList.push(this.newApplication.installers[i]);
+                    }
+                }
+                this.newApplication.installers = newDataList;
+            }
+        }
+    }
+
+    checkAll() {
+        alert(this.installer_selected.length)
+        for(var i=0; i<this.installer_selected.length; i++) {
+            if (this.selectedAll = 'Y') {
+                this.installer_selected[i]='Y';
+            }else{
+                this.installer_selected[i]='N';
+            }
         }
     }
 }
