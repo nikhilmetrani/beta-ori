@@ -32,8 +32,14 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
         rid: undefined,
         description: undefined, category: undefined,
         whatsNew: undefined, developer: undefined,
-        downloadUrl: undefined, name: undefined,
-        state: undefined, version: undefined
+        name: undefined, state: undefined, 
+        version: undefined, installers: [
+        {
+            rid: undefined,
+            platform: undefined, os: undefined,
+            downloadUrl: undefined, expressInstallCommand: undefined
+        }
+    ]
     };
     // categoryArray: Code[] = [];
     // categoryObservable: Observable<any>;

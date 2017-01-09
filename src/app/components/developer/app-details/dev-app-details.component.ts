@@ -35,8 +35,14 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
         rid: undefined,
         description: undefined, category: {id: undefined, name: undefined},
         whatsNew: undefined, developer: undefined,
-        downloadUrl: undefined, name: undefined,
-        state: undefined, version: undefined
+        name: undefined, state: undefined, 
+        version: undefined, installers: [
+        {
+            rid: undefined,
+            platform: undefined, os: undefined,
+            downloadUrl: undefined, expressInstallCommand: undefined
+        }
+    ]
     };
     categoryArray: Code[] = [];
     categoryObservable: Observable<any>;
