@@ -59,22 +59,16 @@ export class DeveloperApplicationComponent implements OnInit {
         this.categoryObservable.forEach(next => this.categoryArray = next);
     }
 
-     onChangeAppName(){
+     onChangeAppName() {
          console.log(this.newApplication.name);
          this.developerAppsService.checkApplicationNameExistsForDeveloper(this.newApplication.name).subscribe(
-                (response) => {                  
-                    if(response.status === 200){
-                        this.nameIsUnique = false;                        
-                    }
-                    else
-                    {                        
+                (response) => {
+                    if (response.status === 200) {
+                        this.nameIsUnique = false;
+                    } else {
                         this.nameIsUnique = true;
                     }
-                }
-                
-            );  
-
-         
+                });
     }
 
     onSubmitCreateApplication(event) {
@@ -90,7 +84,7 @@ export class DeveloperApplicationComponent implements OnInit {
         } else if (event === 'close') {
             this.router.navigate(['/developer/apps']);
         } else {
-            this.developerAppsService.createApplication(localStorage.getItem('uid'), this.newApplication).subscribe(
+            this.developerAppsService.createApplication(localStorage.getItem('uid'), this.newApplication).subscribe (
                 (response) => {
                     if (response.status === 200) {
                         // Success response, so lets go back to the developer home page.
@@ -102,24 +96,24 @@ export class DeveloperApplicationComponent implements OnInit {
     }
 
     onSubmitInstaller(event) {
-        if(event=='add') {
+        if (event === 'add') {
             this.newApplication.installers.push({
                 'rid': undefined,
-                'platform': "",
-                'os': "",
-                'downloadUrl': "",
-                'expressInstallCommand': ""
+                'platform': '',
+                'os': '',
+                'downloadUrl': '',
+                'expressInstallCommand': ''
             });
-        } else if(event=='remove') {
-            var newDataList = []; 
+        } else if (event === 'remove') {
+            let newDataList = [];
             alert(this.selectedAll);
-            if(this.selectedAll=='Y') {
+            if (this.selectedAll === 'Y') {
                 this.newApplication.installers = [];
-            }else{
+            } else {
                 alert(this.installer_selected.length);
-                for(var i=0; i<this.installer_selected.length; i++) {
+                for (let i = 0; i < this.installer_selected.length; i++) {
                     alert(this.installer_selected[i]);
-                    if(this.installer_selected[i]!='Y') {
+                    if (this.installer_selected[i] !== 'Y') {
                         newDataList.push(this.newApplication.installers[i]);
                     }
                 }
@@ -129,12 +123,12 @@ export class DeveloperApplicationComponent implements OnInit {
     }
 
     checkAll() {
-        alert(this.installer_selected.length)
-        for(var i=0; i<this.installer_selected.length; i++) {
-            if (this.selectedAll = 'Y') {
-                this.installer_selected[i]='Y';
-            }else{
-                this.installer_selected[i]='N';
+        alert(this.installer_selected.length);
+        for (let i = 0; i < this.installer_selected.length; i++) {
+            if (this.selectedAll === 'Y') {
+                this.installer_selected[i] = 'Y';
+            } else {
+                this.installer_selected[i] = 'N';
             }
         }
     }

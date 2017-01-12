@@ -32,7 +32,7 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
         rid: undefined,
         description: undefined, category: undefined,
         whatsNew: undefined, developer: undefined,
-        name: undefined, state: undefined, 
+        name: undefined, state: undefined,
         version: undefined, installers: [
         {
             rid: undefined,

@@ -76,15 +76,12 @@ export class DeveloperApplicationsService {
         return this.http.post(this.getApplicationsUrl() + '/' + applicationId + '/recall', '');
     }
 
- 
-
-    checkApplicationNameExistsForDeveloper(applicationName:string) {       
-        return this.http.get(this.getApplicationsUrl() + '/check?name='+applicationName);
-    }   
-
+    checkApplicationNameExistsForDeveloper(applicationName: string) {
+        return this.http.get(this.getApplicationsUrl() + '/check?name=' + applicationName);
+    }
 
     getApplicationsUrl(): string {
-        return this.appsUrl + '/applications';
+        return this.appsUrl + 'applications';
     }
 
     getApplicationUrl(developerId: string): string {

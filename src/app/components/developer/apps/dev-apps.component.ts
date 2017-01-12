@@ -49,5 +49,5 @@ export class DeveloperApplicationsComponent implements OnInit {
 
     onClickCleanSearch() {
         this.query = '';
-    }    
+    }
 }

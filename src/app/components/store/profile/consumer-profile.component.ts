@@ -64,7 +64,7 @@ export class ConsumerProfileComponent implements OnInit {
         );
     }
 
-    onClickCloseProfile(){
+    onClickCloseProfile() {
          this.router.navigate(['/developer']);
     }
 }

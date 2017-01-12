@@ -26,109 +26,83 @@ import { DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitio
     providers: [CodeDefinitionService]
 })
 export class DeveloperApplicationDetailsComponent implements OnInit {
-
-
-    appID = localStorage.getItem('appid');  
-
-    devAppObservable: Observable<any>;   
+    appID = localStorage.getItem('appid');
+    devAppObservable: Observable<any>;
     application: DeveloperApplication = {
         rid: undefined,
         description: undefined, category: {id: undefined, name: undefined},
         whatsNew: undefined, developer: undefined,
-        name: undefined, state: undefined, 
+        name: undefined, state: undefined,
         version: undefined, installers: [
         {
             rid: undefined,
             platform: undefined, os: undefined,
             downloadUrl: undefined, expressInstallCommand: undefined
         }
-    ]
-    };
+    ]};
     categoryArray: Code[] = [];
     categoryObservable: Observable<any>;
+    nameIsUnique: boolean = true;
+    originalAppName: string = '';
 
-    nameIsUnique: boolean = true ;
-    originalAppName:string = "";
-
-
-    constructor(private developerAppsService: DeveloperApplicationsService, private codeService: CodeDefinitionService,
-        private router: Router) { }
+    constructor(private developerAppsService: DeveloperApplicationsService,
+                private codeService: CodeDefinitionService,
+                private router: Router) { }
 
     ngOnInit() {
         this.devAppObservable = this.developerAppsService.getApplicationById(this.appID);
         this.devAppObservable.forEach(next => {
-            //console.log(next);
+            // console.log(next);
             this.application = next;
             this.originalAppName =  this.application.name;
         });
-        
-
-
         this.categoryObservable = this.codeService.getCategoryCodes();
         this.categoryObservable.forEach(next => this.categoryArray = next);
         this.nameIsUnique = true;
     }
 
-    
-    onChangeAppName(){
-        //console.log(this.application.name);
-        //console.log(this.originalAppName);
-        if(this.application.name != this.originalAppName){
-            
-             this.developerAppsService.checkApplicationNameExistsForDeveloper(this.application.name).subscribe(
-                (response) => {                  
-                    if(response.status === 200){                        
-                        this.nameIsUnique = false;                        
-                    }
-                    else{
-                                              
+    onChangeAppName() {
+        // console.log(this.application.name);
+        // console.log(this.originalAppName);
+        if (this.application.name !== this.originalAppName) {
+            this.developerAppsService.checkApplicationNameExistsForDeveloper(this.application.name).subscribe(
+                (response) => {
+                    if (response.status === 200) {
+                        this.nameIsUnique = false;
+                    } else {
                         this.nameIsUnique = true;
                     }
                 }
-                
-            );  
-        
-        }
-        else{
-            console.log("No change for app name");
+            );
+        } else {
+            console.log('No change for app name');
         }
     }
 
-    
-
     onSubmitViewDetails(event) {
-
-
         if (event === 'save') {
-
-            if(this.nameIsUnique === true){              
-
-            this.developerAppsService.updateDeveloperApplication(localStorage.getItem('appid'), this.application).subscribe(
-                (response) => {
-                    if (response.status === 200) {
-                        // Success response, so lets go back to the developer home page.
-                        this.router.navigate(['/developer/apps']);
+            if (this.nameIsUnique === true) {
+                this.developerAppsService.updateDeveloperApplication(localStorage.getItem('appid'), this.application).subscribe(
+                    (response) => {
+                        if (response.status === 200) {
+                            // Success response, so lets go back to the developer home page.
+                            this.router.navigate(['/developer/apps']);
+                        }
                     }
-                }
-            );
+                );
             }
-            
         }
         if (event === 'publish') {
-            if(this.nameIsUnique === true){
-            this.developerAppsService.updateAndPublishDeveloperApplication(localStorage.getItem('appid'), this.application).subscribe(
-
-
-      
-                (response) => {
-                    if (response.status === 200) {
-                        // Success response, so lets go back to the developer home page.
-                        this.router.navigate(['/developer/apps']);
+            if (this.nameIsUnique === true) {
+                this.developerAppsService.updateAndPublishDeveloperApplication(localStorage.getItem('appid'), this.application).subscribe(
+                    (response) => {
+                        if (response.status === 200) {
+                            // Success response, so lets go back to the developer home page.
+                            this.router.navigate(['/developer/apps']);
+                        }
                     }
-                }
-            );
+                );
             }
-            
         }
         if (event === 'recall') {
             this.developerAppsService.recallDeveloperApplication(localStorage.getItem('appid')).subscribe(
@@ -145,9 +119,7 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
             this.router.navigate(['/developer/apps/update']);
         }
         if (event === 'close') {
-
             this.router.navigate(['/developer/apps']);
         }
     }
-
 }

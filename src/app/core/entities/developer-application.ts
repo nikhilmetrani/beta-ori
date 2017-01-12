@@ -1,4 +1,4 @@
-import {User,Category,Installer} from '../';
+import {User, Category, Installer} from '../';
 
 export interface DeveloperApplication {
     rid: number;

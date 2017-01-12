@@ -19,7 +19,6 @@ import { RouterModule, Routes } from '@angular/router';
 import {AboutComponent,
         LoginComponent,
         StoreComponent,
-        StoreNavbarComponent,
         StoreAppsComponent,
         DeveloperComponent,
         DeveloperApplicationComponent,

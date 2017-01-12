@@ -17,7 +17,6 @@
 import {
   TestBed,
   getTestBed,
-  async,
   inject
 } from '@angular/core/testing';
 import {
@@ -53,10 +52,10 @@ let storeApps: StoreApplication[] = [{
   category: { id: 1, name: 'Development' },
   isFavorite: false
 }];
+let storeService: StoreService;
+let mockBackend: MockBackend;
 
 describe('StoreService Tests', () => {
-  let storeService: StoreService;
-  let mockBackend: MockBackend;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -74,7 +73,7 @@ describe('StoreService Tests', () => {
   }));
 
   it('Should get applications', done => {
-    let storeService: StoreService;
+    // let storeService: StoreService;
 
     getTestBed().compileComponents().then(() => {
       mockBackend.connections.subscribe(
@@ -103,32 +102,32 @@ describe('StoreService Tests', () => {
     });
   });
 
-  it('Should get applications async',
-    async(inject([MockBackend, StoreService], (mockBackend, storeService: StoreService) => {
-      mockBackend.connections.subscribe(
-        (connection: MockConnection) => {
-          connection.mockRespond(new Response(
-            new ResponseOptions({
-              body: { applications: storeApps, status: 200 }
-            }
-            )));
-        });
+  // it('Should get applications async',
+  //   async(inject([MockBackend, StoreService], (mockBackend, storeService: StoreService) => {
+  //     mockBackend.connections.subscribe(
+  //       (connection: MockConnection) => {
+  //         connection.mockRespond(new Response(
+  //           new ResponseOptions({
+  //             body: { applications: storeApps, status: 200 }
+  //           }
+  //           )));
+  //       });
 
-      storeService.getApplications().subscribe(
-        (apps: StoreApplication[]) => {
-          expect(apps[0].rid).toEqual(2);
-          expect(apps[1].rid).toEqual(3);
+  //     storeService.getApplications().subscribe(
+  //       (apps: StoreApplication[]) => {
+  //         expect(apps[0].rid).toEqual(2);
+  //         expect(apps[1].rid).toEqual(3);
 
-          expect(apps[0].name).toEqual('Application 2');
-          expect(apps[1].name).toEqual('Application 3');
+  //         expect(apps[0].name).toEqual('Application 2');
+  //         expect(apps[1].name).toEqual('Application 3');
 
-          expect(apps[0].category.name).toEqual('Productivity');
-          expect(apps[1].category.name).toEqual('Development');
-        });
-    })));
+  //         expect(apps[0].category.name).toEqual('Productivity');
+  //         expect(apps[1].category.name).toEqual('Development');
+  //       });
+  //   })));
 
   it('Should get applications by category', done => {
-    let storeService: StoreService;
+    // let storeService: StoreService;
 
     getTestBed().compileComponents().then(() => {
       mockBackend.connections.subscribe(
@@ -153,28 +152,28 @@ describe('StoreService Tests', () => {
     });
   });
 
-  it('Should get applications by category async',
-    async(inject([MockBackend, StoreService], (mockBackend, storeService: StoreService) => {
-      mockBackend.connections.subscribe(
-        (connection: MockConnection) => {
-          connection.mockRespond(new Response(
-            new ResponseOptions({
-              body: { applications: [storeApps[1]], status: 200 }
-            }
-            )));
-        });
+  // it('Should get applications by category async',
+  //   async(inject([MockBackend, StoreService], (mockBackend, storeService: StoreService) => {
+  //     mockBackend.connections.subscribe(
+  //       (connection: MockConnection) => {
+  //         connection.mockRespond(new Response(
+  //           new ResponseOptions({
+  //             body: { applications: [storeApps[1]], status: 200 }
+  //           }
+  //           )));
+  //       });
 
-      storeService.getApplicationsByCategory('Development').subscribe(
-        (apps: StoreApplication[]) => {
-          expect(apps.length).toEqual(1);
-          expect(apps[0].rid).toEqual(3);
-          expect(apps[0].name).toEqual('Application 3');
-          expect(apps[0].category.name).toEqual('Development');
-        });
-    })));
+  //     storeService.getApplicationsByCategory('Development').subscribe(
+  //       (apps: StoreApplication[]) => {
+  //         expect(apps.length).toEqual(1);
+  //         expect(apps[0].rid).toEqual(3);
+  //         expect(apps[0].name).toEqual('Application 3');
+  //         expect(apps[0].category.name).toEqual('Development');
+  //       });
+  //   })));
 
   it('Should catch error', done => {
-    let storeService: StoreService;
+    // let storeService: StoreService;
 
     getTestBed().compileComponents().then(() => {
       mockBackend.connections.subscribe(

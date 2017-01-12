@@ -18,6 +18,7 @@ import {Component} from '@angular/core';
 import {Location} from '@angular/common';
 
 @Component({
+    selector: 'bo-about',
     templateUrl: './about.component.html'
 })
 export class AboutComponent {

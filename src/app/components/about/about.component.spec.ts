@@ -14,16 +14,68 @@
 * limitations under the License.
 **/
 
+import {inject,
+    TestBed,
+    fakeAsync,
+    ComponentFixture
+  } from '@angular/core/testing';
+import {Location} from '@angular/common';
+import {Component, DebugElement} from '@angular/core';
+import {By} from '@angular/platform-browser/src/dom/debug/by';
+import {RouterTestingModule} from '@angular/router/testing';
+import {APP_TEST_HTTP_PROVIDERS} from '../../../testing';
+
 import {AboutComponent} from '../';
 
-describe('Testing message state in message.component', () => {
-  let app: AboutComponent;
+describe('AboutComponent', () => {
+  @Component({
+    template: `<bo-about></bo-about><router-outlet></router-outlet>`,
+  })
+  class TestComponent {
+  }
+  @Component({
+    template: ``,
+  })
+  class BlankComponent {
+  }
+  let location: Location;
+  let fixture: ComponentFixture<any>;
+  let cmpDebugElement: DebugElement;
 
   beforeEach(() => {
-    app = new AboutComponent();
+    TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule.withRoutes([
+          {
+            path: 'home',
+            component: BlankComponent,
+          },
+        ])
+      ],
+      providers: [
+        APP_TEST_HTTP_PROVIDERS,
+      ],
+      declarations: [
+        AboutComponent,
+        TestComponent,
+        BlankComponent,
+      ]
+    });
   });
+  beforeEach(inject([Location], (..._) => {
+    [location] = _;
+  }));
+  beforeEach(fakeAsync(() => {
+    TestBed.compileComponents().then(() => {
+      fixture = TestBed.createComponent(TestComponent);
+      fixture.detectChanges();
+      cmpDebugElement = fixture.debugElement.query(By.directive(AboutComponent));
+    });
+  }));
 
-  it('Should be initialized', () => {
-    expect(app).toBeDefined();
+  it('.When Open', () => {
+    describe('can be shown', () => {
+      expect(cmpDebugElement).toBeTruthy();
+    });
   });
 });
