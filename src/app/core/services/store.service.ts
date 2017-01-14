@@ -59,7 +59,6 @@ export class StoreService {
     subscribeApplication(applicationId: string) {
         return this.http.post(this.storeUrlforLoginUser + 'applications/' + applicationId + '/subscribe', '')
             .map((response) => {
-                console.log(response.json());
                 return <StoreApplication>response.json();
             })
             .catch(this.logError);
@@ -68,7 +67,6 @@ export class StoreService {
     unsubscribeApplication(applicationId: string) {
         return this.http.post(this.storeUrlforLoginUser + 'applications/' + applicationId + '/unsubscribe', '')
             .map((response) => {
-                console.log(response.json());
                 return <StoreApplication>response.json();
             })
             .catch(this.logError);

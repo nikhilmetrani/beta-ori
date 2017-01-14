@@ -40,7 +40,6 @@ export class ApplicationSubscriptionComponent implements OnInit {
                     }else {
                          this.storeService.subscribeApplication(this.applicationId).subscribe(
                 (response) => {
-                    console.log(response);
                     if (response.status === 400) {
                         // bad request - Show message
                     } else {
