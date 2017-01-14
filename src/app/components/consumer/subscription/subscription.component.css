@@ -1,0 +1,80 @@
+/**
+* Copyright 2016 - 29cu.io and the authors of beta-ori open source project
+
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+
+*     http://www.apache.org/licenses/LICENSE-2.0
+
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+**/
+
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 140px;
+    height: 200px;
+    border: 2px solid;
+    background-color: #FBFFEC;
+    padding: 10px;
+    color: #29394b;
+}
+h2 {
+    font-size: 1.6em;
+    flex: 1;
+}
+:host.medium-movies {
+    border-color: #53ace4;
+}
+:host.medium-movies > h2 {
+    color: #53ace4;
+}
+:host.medium-series {
+    border-color: #45bf94;
+}
+:host.medium-series > h2 {
+    color: #45bf94;
+}
+.tools {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+.favorite {
+    width: 24px;
+    height: 24px;
+    fill: #7D3C98;
+}
+.favorite.is-favorite {
+    fill: #37ad79;
+}
+.favorite.is-favorite-hovering {
+    fill: #45bf94;
+}
+.favorite.is-favorite.is-favorite-hovering {
+    fill: #ec4342;
+}
+.delete {
+    display: block;
+    background-color: #ec4342;
+    padding: 4px;
+    font-size: .8em;
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+}
+.details {
+    display: block;
+    background-color: #37ad79;
+    padding: 4px;
+    font-size: .8em;
+    border-radius: 4px;
+    color: #ffffff;
+    text-decoration: none;
+}

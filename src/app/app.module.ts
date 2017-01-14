@@ -40,7 +40,9 @@ import {
   DeveloperApplicationUpdateComponent,
   UploadComponent,
   DeveloperWelcomeComponent,
-  ApplicationSubscriptionComponent
+  ApplicationSubscriptionComponent,
+  ConsumerAppsComponent,
+  ConsumerSubscriptionComponent
 } from './components';
 import {
   DeveloperListPipe,
@@ -91,7 +93,9 @@ import { routing } from './app.routing';
     DeveloperWelcomeComponent,
     DeveloperApplicationUpdateComponent,
     HideActiveAppsListPipe,
-    ApplicationSubscriptionComponent
+    ApplicationSubscriptionComponent,
+    ConsumerAppsComponent,
+    ConsumerSubscriptionComponent
   ],
   providers: [
     ENV_PROVIDERS

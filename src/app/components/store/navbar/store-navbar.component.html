@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="mainNavBar">
                 <ul class="nav navbar-nav">
                     <li><a routerLink="/store">Store</a></li>
-                    <li *ngIf="isSignedIn"><a routerLink="/myapps">My Apps</a></li>
+                    <li *ngIf="isSignedIn"><a routerLink="/store/myapps">My Apps</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li  *ngIf="!isSignedIn"><a routerLink="/login">Login / Signup</a></li>

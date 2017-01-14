@@ -46,6 +46,7 @@ export {DeveloperApplicationsBundleService} from './services/developer-app-bundl
 export {ConsumerProfileDataResolver} from './services/consumer-profile-data.resolver';
 export {DeveloperProfileDataResolver} from './services/developer-profile-data.resolver';
 export {CodeDefinitionService} from './services/code-definition.service';
+export {SubscriptionService} from './services/subscription.service';
 
 // Export pipes
 export {CategoryListPipe} from './pipes/category-list.pipe';

@@ -29,7 +29,8 @@ import {AboutComponent,
         DeveloperSettingsComponent,
         DeveloperApplicationUpdateComponent,
         ApplicationSubscriptionComponent,
-        ConsumerProfileComponent
+        ConsumerProfileComponent,
+        ConsumerAppsComponent,
         } from './components';
 
 import { PublicPageGuard, PrivatePageGuard, DeveloperProfileDataResolver, ConsumerProfileDataResolver} from './core';
@@ -121,6 +122,11 @@ const routes: Routes = [
         path: 'profile',
         component: ConsumerProfileComponent,
         resolve: {profile: ConsumerProfileDataResolver},
+        canActivate: [PrivatePageGuard]
+      },
+      {
+        path: 'myapps',
+        component: ConsumerAppsComponent,
         canActivate: [PrivatePageGuard]
       },
 

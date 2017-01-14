@@ -19,7 +19,7 @@ import { NgModule } from '@angular/core';
 import {SkipSelf, Optional} from '@angular/core';
 import {XHRBackend, Http, RequestOptions, HttpModule} from '@angular/http';
 
-// Export services
+// Import services
 import {JsonHttp} from './services/json-http';
 import {HttpErrorHandler} from './services/http-error-handler';
 import {LoginService} from './services/login.service';
@@ -31,14 +31,9 @@ import {DeveloperApplicationsBundleService} from './services/developer-app-bundl
 import {UserInfoResolver} from './services/user-info.resolver';
 import {ConsumerProfileDataResolver} from './services/consumer-profile-data.resolver';
 import {DeveloperProfileDataResolver} from './services/developer-profile-data.resolver';
-// // Export pipes
-// import {CategoryListPipe} from './pipes/category-list.pipe';
-// import {DeveloperListPipe} from './pipes/developer-list.pipe';
+import {SubscriptionService} from './services/subscription.service';
 
-// // Export directives
-// import {FavoriteDirective} from './directives/favorite.directive';
-
-// Export guards
+// Import guards
 import {PublicPageGuard} from './guards/public-page.guard';
 import {PrivatePageGuard} from './guards/private-page.guard';
 
@@ -76,7 +71,8 @@ export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOp
     DeveloperApplicationsBundleService,
     UserInfoResolver,
     ConsumerProfileDataResolver,
-    DeveloperProfileDataResolver
+    DeveloperProfileDataResolver,
+    SubscriptionService
   ]
 })
 export class BOCoreModule {
