@@ -16,6 +16,34 @@
 **/
 -->
 
-<div class="container-fluid">
-    <h1>Application Reports</h1>
-</div>
+<header>
+    <div class="container-fluid">
+        <h1>Application Reports</h1>
+    </div>
+</header>
+
+<form id="login-form" #f="ngForm" style="display: block;" (ngSubmit)="onSubmitCreateApplication('create')">
+    <div class="container-fluid">
+        <div id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="card">
+                <div id="collapseOne" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="card-block">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-xs-2 col-form-label">Application</label>
+                            <div class="col-xs-5">
+                                <select #category tabindex="1" class="form-control" id="category" name="category"
+                                        placeholder=""
+                                        [(ngModel)]="newApplication.category"
+                                        required>
+                                    <option *ngFor="let code of devAppsArray" [ngValue]="code.name">{{code.value}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>

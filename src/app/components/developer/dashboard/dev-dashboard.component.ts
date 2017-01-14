@@ -15,27 +15,37 @@
  **/
 
 import {Component, OnInit} from '@angular/core';
-// import {Router, ActivatedRoute} from '@angular/router';
+import {Observable} from "rxjs/Observable";
+import {Router} from "@angular/router";
+import {DeveloperApplication, DeveloperApplicationsService, DeveloperReportsService} from '../../../core';
 
 @Component({
     selector: 'bo-dev-dashboard',
-    templateUrl: './dev-dashboard.component.html'
+    templateUrl: './dev-dashboard.component.html',
+    styleUrls: ['./dev-dashboard.component.css']
 })
 export class DeveloperDashboardComponent implements OnInit {
-    // private developerSettings;
-    // constructor(private settingsService: SettingsService) {}
+    query: string = '';
+    devAppsObservable: Observable<any>;
+    devAppsArray: DeveloperApplication[] = [];
 
-    ngOnInit() {}
+    constructor(private router: Router, private devAppsService: DeveloperApplicationsService, private devReportsService: DeveloperReportsService) {
+    }
 
-    // Possible save logic
-    // onSubmitSaveSettings() {
-    //     this.settingsService.saveDeveloperSettings(+localStorage.getItem('uid'), this.developerSettings).subscribe(
+    ngOnInit() {
+        this.devAppsObservable = this.devAppsService.getApplications(localStorage.getItem('uid'));
+        this.devAppsObservable.forEach(next => this.devAppsArray = next);
+    }
+
+    // onGettingReport() {
+    //     this.devReportsService.findSubscribedUsersPerApplication(localStorage.getItem('uid'), this.newApplication).subscribe(
     //         (response) => {
     //             if (response.status === 200) {
-    //             // Success response, so lets go back to the developer home page.
-    //                 this.router.navigate(['/']);
+    //                 // Success response, so lets go back to the developer home page.
+    //                 this.router.navigate(['/developer/apps']);
     //             }
     //         }
     //     );
     // }
+
 }
