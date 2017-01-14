@@ -46,6 +46,7 @@ export {StoreComponent} from './store/store.component';
 export {StoreNavbarComponent} from './store/navbar/store-navbar.component';
 export {ApplicationComponent} from './store/application/application.component';
 export {StoreAppsComponent} from './store/apps/store-apps.component';
+export {FeaturedAppsComponent} from './store/featured-apps/featured-apps.component';
 
 // Consumer
 export {ConsumerProfileComponent} from './consumer/profile/consumer-profile.component';

@@ -1,0 +1,43 @@
+<section *ngIf="featureItemsArray && featureItemsArray.length > 0">
+    <section class="section-white">
+        <div class="container">
+
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="./image3.jpg" alt="{{featureItemsArray[0].name}}">
+                        <div class="header-text hidden-xs">
+                            <div class="col-md-12 text-center">
+                                <h2><span><strong>{{featureItemsArray[0].name}}</strong></span></h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item" *ngFor="let application of (featureItemsArray)">
+                        <img src="./image3.jpg" alt="{{application.name}}">
+                        <div class="header-text hidden-xs">
+                            <div class="col-md-12 text-center">
+                                <h2><span><strong>{{application.name}}</strong></span></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+</section>
