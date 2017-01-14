@@ -40,6 +40,7 @@ export {ProfileService} from './services/profile.service'
 export {UserService} from './services/user.service';
 export {UserInfoResolver} from './services/user-info.resolver';
 export {DeveloperApplicationsService} from './services/developer-applications.service';
+export {DeveloperReportsService} from './services/developer-reports.service';
 export {JsonHttp} from './services/json-http';
 export {HttpErrorHandler} from './services/http-error-handler';
 export {DeveloperApplicationsBundleService} from './services/developer-app-bundle.service';

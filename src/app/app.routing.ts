@@ -27,10 +27,11 @@ import {AboutComponent,
         DeveloperApplicationsBundleComponent,
         DeveloperProfileComponent,
         DeveloperSettingsComponent,
+        DeveloperDashboardComponent,
         DeveloperApplicationUpdateComponent,
-        ApplicationSubscriptionComponent,
-        ConsumerProfileComponent,
         ConsumerAppsComponent,
+        ConsumerProfileComponent,
+        ApplicationSubscriptionComponent
         } from './components';
 
 import { PublicPageGuard, PrivatePageGuard, DeveloperProfileDataResolver, ConsumerProfileDataResolver} from './core';
@@ -89,6 +90,11 @@ const routes: Routes = [
       {
         path: 'settings',
         component: DeveloperSettingsComponent,
+        canActivate: [PrivatePageGuard]
+      },
+      {
+        path: 'dashboard',
+        component: DeveloperDashboardComponent,
         canActivate: [PrivatePageGuard]
       },
 
