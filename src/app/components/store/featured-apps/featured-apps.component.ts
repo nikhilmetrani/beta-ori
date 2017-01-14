@@ -35,7 +35,6 @@ export class FeaturedAppsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.featureItems = this.featureAppService.getFeaturedApplications();
-      console.log(this.featureItems);
       this.featureItems.forEach(next => this.featureItemsArray = next);
     });
   }

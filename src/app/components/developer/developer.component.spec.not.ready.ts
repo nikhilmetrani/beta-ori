@@ -56,7 +56,6 @@
 //       })
 //       .then(() => {
 //         const compiled = fixture.debugElement.nativeElement;
-//         console.log(compiled.querySelector('div').innerText);
 //         // expect(compiled.querySelector('div').innerText).toEqual('Test quote');
 //       });
 //   })));

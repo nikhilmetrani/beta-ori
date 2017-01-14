@@ -43,7 +43,6 @@ export class ConsumerProfileComponent implements OnInit {
         this.activatedRoute.data.subscribe(data => {
             this.consumerProfile = data['profile'].json();
             this.isProfileConfirmed = true;
-            console.log(this.consumerProfile);
         });
      }
 
