@@ -40,29 +40,29 @@ const routes: Routes = [
     component: DeveloperComponent,
     children: [
       {
-        path: 'apps',
+        path: '',
         component: DeveloperApplicationsComponent,
         canActivate: [PrivatePageGuard]
       },
-      { path: 'apps/app',
+      { path: 'app',
         component: DeveloperApplicationComponent,
         data: { action: 'view' },
         canActivate: [PrivatePageGuard]
       },
       {
-        path: 'apps/create',
+        path: 'create',
         component: DeveloperApplicationComponent,
         data: { action: 'create' },
         canActivate: [PrivatePageGuard]
       },
       {
-        path: 'apps/details',
+        path: 'details',
         component: DeveloperApplicationDetailsComponent,
         data: { action: 'details' },
         canActivate: [PrivatePageGuard]
       },
       {
-        path: 'apps/update',
+        path: 'update',
         component: DeveloperApplicationUpdateComponent,
         data: { action: 'create' },
         canActivate: [PrivatePageGuard]},
@@ -91,7 +91,7 @@ const routes: Routes = [
         canActivate: [PrivatePageGuard]
       },
 
-      { path: '**', redirectTo: 'apps'}
+      { path: '**', redirectTo: ''}
     ]
   },
   {

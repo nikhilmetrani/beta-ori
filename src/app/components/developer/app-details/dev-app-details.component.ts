@@ -116,7 +116,7 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
         }
         if (event === 'create') {
             localStorage.setItem('name', this.application.name.toString());
-            this.router.navigate(['/developer/apps/update']);
+            this.router.navigate(['/developer/update']);
         }
         if (event === 'close') {
             this.router.navigate(['/developer/apps']);

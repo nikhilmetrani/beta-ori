@@ -68,7 +68,7 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
         }
         if (event === 'close') {
 
-            this.router.navigate(['/developer/apps/details']);
+            this.router.navigate(['/developer/details']);
         }
     }
 }
