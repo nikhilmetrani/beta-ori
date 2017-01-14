@@ -56,7 +56,7 @@ export class ConsumerProfileComponent implements OnInit {
             (response) => {
                 if (response.status === 200) {
                 // Success response, so lets go back to the developer home page.
-                    this.router.navigate(['/developer']);
+                    this.router.navigate(['/store/profile']);
                 }
             },
             () => { // Handle failure to create profile 
@@ -65,6 +65,6 @@ export class ConsumerProfileComponent implements OnInit {
     }
 
     onClickCloseProfile() {
-         this.router.navigate(['/developer']);
+         this.router.navigate(['/store']);
     }
 }

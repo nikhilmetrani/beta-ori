@@ -28,10 +28,11 @@ import {AboutComponent,
         DeveloperProfileComponent,
         DeveloperSettingsComponent,
         DeveloperApplicationUpdateComponent,
-        ApplicationSubscriptionComponent
+        ApplicationSubscriptionComponent,
+        ConsumerProfileComponent
         } from './components';
 
-import { PublicPageGuard, PrivatePageGuard, ProfileDataResolver} from './core';
+import { PublicPageGuard, PrivatePageGuard, DeveloperProfileDataResolver, ConsumerProfileDataResolver} from './core';
 
 const routes: Routes = [
   {
@@ -81,8 +82,9 @@ const routes: Routes = [
       {
         path: 'profile',
         component: DeveloperProfileComponent,
-        resolve: {profile: ProfileDataResolver},
-        canActivate: [PrivatePageGuard]},
+        resolve: {profile: DeveloperProfileDataResolver},
+        canActivate: [PrivatePageGuard]
+      },
       {
         path: 'settings',
         component: DeveloperSettingsComponent,
@@ -114,6 +116,12 @@ const routes: Routes = [
       {
         path: '',
         component: StoreAppsComponent
+      },
+      {
+        path: 'profile',
+        component: ConsumerProfileComponent,
+        resolve: {profile: ConsumerProfileDataResolver},
+        canActivate: [PrivatePageGuard]
       },
 
       { path: '**', redirectTo: ''}

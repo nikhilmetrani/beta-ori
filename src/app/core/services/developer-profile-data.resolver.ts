@@ -7,7 +7,7 @@ import {Injectable} from '@angular/core';
 import {ProfileService} from './profile.service';
 
 @Injectable()
-export class ProfileDataResolver implements Resolve<any> {
+export class DeveloperProfileDataResolver implements Resolve<any> {
 
   constructor(private profileService: ProfileService) {
   }
