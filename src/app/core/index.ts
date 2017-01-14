@@ -28,6 +28,7 @@ export {StoreApplication} from './entities/store-application';
 export {Link} from './entities/link';
 export {DeveloperApplication} from './entities/developer-application';
 export {Installer} from './entities/installer';
+export {FeaturedApplication} from './entities/featured-application';
 export {DeveloperApplicationsBundle} from './entities/developer-app-bundle';
 export {Category} from './entities/category';
 export {Code} from './entities/code';
