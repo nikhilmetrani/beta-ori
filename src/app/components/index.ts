@@ -27,6 +27,7 @@ export {DeveloperApplicationsBundleComponent} from './developer/app-bundle/dev-a
 export {DeveloperApplicationCardComponent} from './developer/app-card/dev-app-card.component';
 export {DeveloperApplicationComponent} from './developer/app/dev-app.component';
 export {DeveloperSettingsComponent} from './developer/settings/dev-settings.component';
+export {DeveloperDashboardComponent} from './developer/dashboard/dev-dashboard.component';
 export {DeveloperNavbarComponent} from './developer/navbar/dev-navbar.component';
 export {DeveloperApplicationUpdateComponent} from './developer/update/dev-update.component';
 export {DeveloperWelcomeComponent} from './developer/welcome/dev-welcome.component';
