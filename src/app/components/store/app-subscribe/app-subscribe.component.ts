@@ -17,7 +17,7 @@ export class ApplicationSubscriptionComponent implements OnInit {
                 private loginService: LoginService,
                 private userService: UserService) {}
 
-    ngOnInit() {        
+    ngOnInit() {
         this.isSignedIn = this.loginService.isSignedIn();
 
         if (this.isSignedIn) {
@@ -53,7 +53,7 @@ export class ApplicationSubscriptionComponent implements OnInit {
                         }
         if (event === 'unsub') {
             this.storeService.unsubscribeApplication(this.applicationId).subscribe(
-                (response) => {                    
+                (response) => {
                     if (response.status === 403) {
                         // forbidden - shouldn't happen 
                     } else {
