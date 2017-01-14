@@ -15,8 +15,8 @@
  **/
 
 import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs/Observable";
-import {Router} from "@angular/router";
+import {Observable} from 'rxjs/Observable';
+import {Router} from '@angular/router';
 import {DeveloperApplication, DeveloperApplicationsService, DeveloperReportsService} from '../../../core';
 
 @Component({
@@ -29,7 +29,8 @@ export class DeveloperDashboardComponent implements OnInit {
     devAppsObservable: Observable<any>;
     devAppsArray: DeveloperApplication[] = [];
 
-    constructor(private router: Router, private devAppsService: DeveloperApplicationsService, private devReportsService: DeveloperReportsService) {
+    constructor(private router: Router, private devAppsService: DeveloperApplicationsService,
+                private devReportsService: DeveloperReportsService) {
     }
 
     ngOnInit() {
