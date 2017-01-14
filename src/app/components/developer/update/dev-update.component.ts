@@ -34,13 +34,37 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
         whatsNew: undefined, developer: undefined,
         name: undefined, state: undefined,
         version: undefined, installers: [
-        {
-            rid: undefined,
-            platform: undefined, os: undefined,
-            downloadUrl: undefined, expressInstallCommand: undefined,
-            selected: false
-        }
-    ]
+            {
+                rid: undefined,
+                platform: 'x64', os: 'Windows',
+                downloadUrl: undefined, expressInstallCommand: undefined,
+                selected: false
+            },
+            {
+                rid: undefined,
+                platform: 'x86', os: 'Windows',
+                downloadUrl: undefined, expressInstallCommand: undefined,
+                selected: false
+            },
+            {
+                rid: undefined,
+                platform: 'x64', os: 'Mac',
+                downloadUrl: undefined, expressInstallCommand: undefined,
+                selected: false
+            },
+            {
+                rid: undefined,
+                platform: 'x64', os: 'Linux',
+                downloadUrl: undefined, expressInstallCommand: undefined,
+                selected: false
+            },
+            {
+                rid: undefined,
+                platform: 'x86', os: 'Linux',
+                downloadUrl: undefined, expressInstallCommand: undefined,
+                selected: false
+            }
+        ]
     };
     // categoryArray: Code[] = [];
     // categoryObservable: Observable<any>;
