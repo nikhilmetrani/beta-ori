@@ -37,7 +37,8 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
         {
             rid: undefined,
             platform: undefined, os: undefined,
-            downloadUrl: undefined, expressInstallCommand: undefined
+            downloadUrl: undefined, expressInstallCommand: undefined,
+            selected: false
         }
     ]
     };

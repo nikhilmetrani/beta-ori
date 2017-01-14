@@ -32,24 +32,25 @@ export class DeveloperApplicationComponent implements OnInit {
         whatsNew: undefined, developer: undefined,
         name: undefined, state: undefined,
         version: undefined, installers: [
-        {
-            rid: undefined,
-            platform: undefined, os: undefined,
-            downloadUrl: undefined, expressInstallCommand: undefined
-        }
-    ]
+            {
+                rid: undefined,
+                platform: '', os: '',
+                downloadUrl: undefined, expressInstallCommand: undefined,
+                selected : false
+            }
+        ]
     };
     newInstaller: Installer = {
         rid: undefined,
-        platform: undefined, os: undefined,
-        downloadUrl: undefined, expressInstallCommand: undefined
+        platform: '', os: '',
+        downloadUrl: undefined, expressInstallCommand: undefined,
+        selected : false
     };
     categoryArray: Code[] = [];
     categoryObservable: Observable<any>;
 
-        nameIsUnique: boolean = true ;
-    selectedAll: string;
-    installer_selected: string[] = [];
+    nameIsUnique: boolean = true;
+    selectedAll: boolean = false;
 
     constructor(private developerAppsService: DeveloperApplicationsService, private codeService: CodeDefinitionService,
         private router: Router) { }
@@ -59,16 +60,15 @@ export class DeveloperApplicationComponent implements OnInit {
         this.categoryObservable.forEach(next => this.categoryArray = next);
     }
 
-     onChangeAppName() {
-         console.log(this.newApplication.name);
-         this.developerAppsService.checkApplicationNameExistsForDeveloper(this.newApplication.name).subscribe(
-                (response) => {
-                    if (response.status === 200) {
-                        this.nameIsUnique = false;
-                    } else {
-                        this.nameIsUnique = true;
-                    }
-                });
+    onChangeAppName() {
+        this.developerAppsService.checkApplicationNameExistsForDeveloper(this.newApplication.name).subscribe(
+            (response) => {
+                if (response.status === 200) {
+                    this.nameIsUnique = false;
+                } else {
+                    this.nameIsUnique = true;
+                }
+            });
     }
 
     onSubmitCreateApplication(event) {
@@ -84,7 +84,7 @@ export class DeveloperApplicationComponent implements OnInit {
         } else if (event === 'close') {
             this.router.navigate(['/developer/apps']);
         } else {
-            this.developerAppsService.createApplication(localStorage.getItem('uid'), this.newApplication).subscribe (
+            this.developerAppsService.createApplication(localStorage.getItem('uid'), this.newApplication).subscribe(
                 (response) => {
                     if (response.status === 200) {
                         // Success response, so lets go back to the developer home page.
@@ -102,34 +102,39 @@ export class DeveloperApplicationComponent implements OnInit {
                 'platform': '',
                 'os': '',
                 'downloadUrl': '',
-                'expressInstallCommand': ''
+                'expressInstallCommand': '',
+                selected: false
             });
         } else if (event === 'remove') {
             let newDataList = [];
-            alert(this.selectedAll);
-            if (this.selectedAll === 'Y') {
-                this.newApplication.installers = [];
-            } else {
-                alert(this.installer_selected.length);
-                for (let i = 0; i < this.installer_selected.length; i++) {
-                    alert(this.installer_selected[i]);
-                    if (this.installer_selected[i] !== 'Y') {
-                        newDataList.push(this.newApplication.installers[i]);
-                    }
+            let objDeleted = false;
+            for (let i = 0; i < this.newApplication.installers.length; i++) {
+                if (this.newApplication.installers[i].selected === true) {
+                    newDataList.push(this.newApplication.installers[i]);
+                    this.newApplication.installers[i].selected = false;
+                    objDeleted = true;
                 }
+            }
+            if (newDataList.length > 0) {
                 this.newApplication.installers = newDataList;
+            }else if (objDeleted === true) {
+                this.newApplication.installers = [];
+                this.newApplication.installers.push({
+                    'rid': undefined,
+                    'platform': '',
+                    'os': '',
+                    'downloadUrl': '',
+                    'expressInstallCommand': '',
+                    selected: false
+                });
             }
         }
     }
 
     checkAll() {
-        alert(this.installer_selected.length);
-        for (let i = 0; i < this.installer_selected.length; i++) {
-            if (this.selectedAll === 'Y') {
-                this.installer_selected[i] = 'Y';
-            } else {
-                this.installer_selected[i] = 'N';
-            }
+        this.selectedAll = !this.selectedAll;
+        for (let i = 0; i < this.newApplication.installers.length; i++) {
+            this.newApplication.installers[i].selected = this.selectedAll;
         }
     }
 }

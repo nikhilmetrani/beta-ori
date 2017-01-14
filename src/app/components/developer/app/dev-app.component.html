@@ -90,7 +90,7 @@
 													<table class="table table-striped table-bordered">
 														<thead>
 															<tr>
-																<th><input type="checkbox" ng-model="selectedAll" (click)="checkAll()" /></th>
+																<th><input type="checkbox" [(ngModel)]="selectedAll" (click)="checkAll()" [ngModelOptions]="{standalone: true}" checked=[selectedAll]/></th>
 																<th>Platform</th>
 																<th>OS</th>
 																<th>Download Url</th>
@@ -100,7 +100,7 @@
 														<tbody>
 															<tr *ngFor="let installer of newApplication.installers">
 																<td>
-																	<input type="checkbox" ng-model="installer_selected"/></td>
+																	<input #installer.selected tabindex="1" type="checkbox" name="selected" placeholder="" [(ngModel)]="installer.selected" value=[installer.selected] (click)="installer.selected=!installer.selected;" /></td>
 																<td>
 																	<select #installer.platform tabindex="1" class="form-control" id="installer.platform" name="platform" placeholder="" [(ngModel)]="installer.platform" required>
 																		<option value="">--Select--</option>

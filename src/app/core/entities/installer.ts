@@ -6,4 +6,5 @@ export interface Installer {
     os: string;
     downloadUrl: string;
     expressInstallCommand: string;
+    selected: boolean;
 }
