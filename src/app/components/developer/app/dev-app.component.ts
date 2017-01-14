@@ -34,9 +34,33 @@ export class DeveloperApplicationComponent implements OnInit {
         version: undefined, installers: [
             {
                 rid: undefined,
-                platform: '', os: '',
+                platform: 'x64', os: 'Windows',
                 downloadUrl: undefined, expressInstallCommand: undefined,
-                selected : false
+                selected: false
+            },
+            {
+                rid: undefined,
+                platform: 'x86', os: 'Windows',
+                downloadUrl: undefined, expressInstallCommand: undefined,
+                selected: false
+            },
+            {
+                rid: undefined,
+                platform: 'x64', os: 'Mac',
+                downloadUrl: undefined, expressInstallCommand: undefined,
+                selected: false
+            },
+            {
+                rid: undefined,
+                platform: 'x64', os: 'Linux',
+                downloadUrl: undefined, expressInstallCommand: undefined,
+                selected: false
+            },
+            {
+                rid: undefined,
+                platform: 'x86', os: 'Linux',
+                downloadUrl: undefined, expressInstallCommand: undefined,
+                selected: false
             }
         ]
     };
@@ -44,7 +68,7 @@ export class DeveloperApplicationComponent implements OnInit {
         rid: undefined,
         platform: '', os: '',
         downloadUrl: undefined, expressInstallCommand: undefined,
-        selected : false
+        selected: false
     };
     categoryArray: Code[] = [];
     categoryObservable: Observable<any>;
@@ -117,7 +141,7 @@ export class DeveloperApplicationComponent implements OnInit {
             }
             if (newDataList.length > 0) {
                 this.newApplication.installers = newDataList;
-            }else if (objDeleted === true) {
+            } else if (objDeleted === true) {
                 this.newApplication.installers = [];
                 this.newApplication.installers.push({
                     'rid': undefined,
