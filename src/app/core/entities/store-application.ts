@@ -17,7 +17,7 @@
 import {User, Link, Category} from '../';
 
 export interface StoreApplication {
-    rid: Number;
+    rid: string;
     name: string;
     developer: User;
     links: Link[];

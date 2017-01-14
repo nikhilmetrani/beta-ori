@@ -26,7 +26,7 @@ import { DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitio
     providers: [CodeDefinitionService]
 })
 export class DeveloperApplicationDetailsComponent implements OnInit {
-    appID = localStorage.getItem('appid');
+    appID: string = localStorage.getItem('appid');
     devAppObservable: Observable<any>;
     application: DeveloperApplication = {
         rid: undefined,

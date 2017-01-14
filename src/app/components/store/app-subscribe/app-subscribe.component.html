@@ -1,0 +1,6 @@
+<button type="button" name="dev-app-subscribe" id="dev-app-subscribe" 
+tabindex="0" class="btn btn-success buttonFontSize" 
+(click)="onSubscribleApp('sub');" *ngIf="!isSubscribled">Subscribe</button>
+<button type="button" name="dev-app-unsubscribe" id="dev-app-unsubscribe" 
+tabindex="0" class="btn btn-warning buttonFontSize" 
+(click)="onSubscribleApp('unsub');" *ngIf="isSubscribled">Unsubscribe</button>

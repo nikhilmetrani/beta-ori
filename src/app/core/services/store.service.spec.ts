@@ -37,7 +37,7 @@ let user: User = {
   enabled: true
 };
 let storeApps: StoreApplication[] = [{
-  rid: 2,
+  rid: '2',
   name: 'Application 2',
   developer: user,
   links: [],
@@ -45,7 +45,7 @@ let storeApps: StoreApplication[] = [{
   isFavorite: false
 },
 {
-  rid: 3,
+  rid: '3',
   name: 'Application 3',
   developer: user,
   links: [],
@@ -89,8 +89,8 @@ describe('StoreService Tests', () => {
       expect(storeService).toBeDefined();
 
       storeService.getApplications().subscribe((apps: StoreApplication[]) => {
-        expect(apps[0].rid).toEqual(2);
-        expect(apps[1].rid).toEqual(3);
+        expect(apps[0].rid).toEqual('2');
+        expect(apps[1].rid).toEqual('3');
 
         expect(apps[0].name).toEqual('Application 2');
         expect(apps[1].name).toEqual('Application 3');
@@ -144,7 +144,7 @@ describe('StoreService Tests', () => {
 
       storeService.getApplicationsByCategory('Productivity').subscribe((apps: StoreApplication[]) => {
         expect(apps.length).toEqual(1);
-        expect(apps[0].rid).toEqual(2);
+        expect(apps[0].rid).toEqual('2');
         expect(apps[0].name).toEqual('Application 2');
         expect(apps[0].category.name).toEqual('Productivity');
         done();

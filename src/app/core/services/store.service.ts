@@ -57,7 +57,7 @@ export class StoreService {
     }
 
     subscribeApplication(applicationId: string) {
-        return this.http.get(this.storeUrlforLoginUser + 'applications/' + applicationId + '/subscribe')
+        return this.http.post(this.storeUrlforLoginUser + 'applications/' + applicationId + '/subscribe', '')
             .map((response) => {
                 console.log(response.json());
                 return <StoreApplication>response.json();
@@ -66,7 +66,7 @@ export class StoreService {
     }
 
     unsubscribeApplication(applicationId: string) {
-        return this.http.get(this.storeUrlforLoginUser + 'applications/' + applicationId + '/unsubscribe')
+        return this.http.post(this.storeUrlforLoginUser + 'applications/' + applicationId + '/unsubscribe', '')
             .map((response) => {
                 console.log(response.json());
                 return <StoreApplication>response.json();
@@ -75,6 +75,6 @@ export class StoreService {
     }
 
     checkAppIsSubscibled(applicationId: string) {
-        return this.http.get(this.storeUrlforLoginUser + 'applications/' + applicationId + '/checkAppIsSubscibled');
+        return this.http.get(this.storeUrlforLoginUser + 'applications/' + applicationId + '/checkAppIsSubscribled');
     }
 }

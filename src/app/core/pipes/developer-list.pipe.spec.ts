@@ -32,7 +32,7 @@ let user2: User = {rid: 'user8',
                     enabled: true
                 };
 let storeApps: StoreApplication[] = [{
-                    rid: 2,
+                    rid: '2',
                     name: 'Application 2',
                     developer: user,
                     links: [],
@@ -40,7 +40,7 @@ let storeApps: StoreApplication[] = [{
                     isFavorite: false
                 },
                 {
-                    rid: 3,
+                    rid: '3',
                     name: 'Application 3',
                     developer: user2,
                     links: [],

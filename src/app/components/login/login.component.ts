@@ -18,6 +18,7 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 // import * as toastr from 'toastr';
 import {LoginService} from '../../core';
+import {Location} from '@angular/common';
 
 @Component({
     templateUrl: './login.component.html',
@@ -28,13 +29,14 @@ export class LoginComponent {
   private error: string = undefined;
 
   constructor(private router: Router,
-              private loginService: LoginService) {
+              private loginService: LoginService,
+              private location: Location) {
   }
 
   login(email, password) {
     this.loginService.login(email, password)
       .subscribe(() => {
-        this.router.navigate(['/']);
+         this.location.back();
       }, this.handleError)
     ;
   }

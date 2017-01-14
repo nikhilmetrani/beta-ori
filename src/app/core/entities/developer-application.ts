@@ -1,7 +1,7 @@
 import {User, Category, Installer} from '../';
 
 export interface DeveloperApplication {
-    rid: number;
+    rid: string;
     name: string;
     description: string;
     version: string;
