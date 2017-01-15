@@ -46,7 +46,9 @@ import {
   ApplicationSubscriptionComponent,
   ConsumerAppsComponent,
   ConsumerSubscriptionComponent,
-  FeaturedAppsComponent
+  FeaturedAppsComponent,
+  StoreApplicationDetailsComponent,
+  ReviewComponent
 } from './components';
 import {
   DeveloperListPipe,
@@ -102,7 +104,9 @@ import { routing } from './app.routing';
     ApplicationSubscriptionComponent,
     ConsumerAppsComponent,
     ConsumerSubscriptionComponent,
-    FeaturedAppsComponent
+    FeaturedAppsComponent,
+    StoreApplicationDetailsComponent,
+    ReviewComponent
   ],
   providers: [
     ENV_PROVIDERS

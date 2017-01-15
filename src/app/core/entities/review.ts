@@ -13,22 +13,15 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 **/
+import { User } from '../';
 
-import {Component, Input} from '@angular/core';
-import {StoreApplication} from '../../../core';
-import { Router } from '@angular/router';
-
-@Component({
-    selector: 'bo-application',
-    templateUrl: './application.component.html',
-    styleUrls: ['./application.component.css']
-})
-export class ApplicationComponent {
-    @Input() application: StoreApplication;
-
-    constructor(private router: Router) { }
-    viewApplicationDetails() {
-        localStorage.setItem('rid', this.application.rid);
-        this.router.navigate(['/store/app/details']);
-     }
+export interface Review {
+  rid: string;
+  applicationId: string;
+  consumer: User;
+  title: string;
+  description: string;
+  featured: Boolean;
+  creationDate: Date;
+  createBy: string;
 }

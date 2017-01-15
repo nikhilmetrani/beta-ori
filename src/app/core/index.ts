@@ -32,6 +32,8 @@ export {FeaturedApplication} from './entities/featured-application';
 export {DeveloperApplicationsBundle} from './entities/developer-app-bundle';
 export {Category} from './entities/category';
 export {Code} from './entities/code';
+export {Review} from './entities/review';
+
 
 // Export services
 export {LoginService} from './services/login.service';

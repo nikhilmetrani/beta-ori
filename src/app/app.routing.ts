@@ -31,7 +31,8 @@ import {AboutComponent,
         DeveloperApplicationUpdateComponent,
         ConsumerAppsComponent,
         ConsumerProfileComponent,
-        ApplicationSubscriptionComponent
+        ApplicationSubscriptionComponent,
+        StoreApplicationDetailsComponent
         } from './components';
 
 import { PublicPageGuard, PrivatePageGuard, DeveloperProfileDataResolver, ConsumerProfileDataResolver} from './core';
@@ -135,7 +136,12 @@ const routes: Routes = [
         component: ConsumerAppsComponent,
         canActivate: [PrivatePageGuard]
       },
-
+      {
+        path: 'app/details',
+        component: StoreApplicationDetailsComponent,
+        data: { action: 'details' },
+        canActivate: [PrivatePageGuard]
+      },
       { path: '**', redirectTo: ''}
     ]
   },

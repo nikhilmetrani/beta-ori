@@ -14,7 +14,7 @@
 * limitations under the License.
 **/
 
-import {User, Link, Category} from '../';
+import {User, Link, Category, Review } from '../';
 
 export interface StoreApplication {
     rid: string;
@@ -23,4 +23,6 @@ export interface StoreApplication {
     links: Link[];
     category: Category;
     isFavorite: boolean;
+    version: string;
+    reviews: Review[];
 }

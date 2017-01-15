@@ -16,9 +16,9 @@
 
 :host {
     display: flex;
-    min-height: 60vh;
+    min-height: 10vh;
     flex-direction: column;
-    padding: 10px;
+    padding: 5px;
 }
 header {
     color: #32435b;
@@ -34,6 +34,7 @@ header.category-photography {
 }
 header > h2 {
     font-size: 1.4em;
+    font-style: italic;
 }
 header > h2.error {
     color: #d93a3e;
@@ -45,7 +46,7 @@ section {
     align-content: flex-start;
 }
 section > bo-application {
-    margin: 10px;
+    margin: 5px;
 }
 footer {
     text-align: right;
@@ -55,7 +56,10 @@ footer .icon {
     height: 64px;
     margin: 15px;
 }
-
-.buttonFontSize {
-   font-size: .7em;
+p {
+    font: bold normal normal 12px Helvetica;
+    line-height: 20px;
+    color: grey;
+    text-align: left;
+    margin-left: 14px;
 }
