@@ -28,7 +28,7 @@
     </header>
     <br/>
     <section class="create-profile">
-        <form #f="ngForm" style="display: block;" (ngSubmit)="onSubmitCreateProfile()">
+        <form #f="ngForm" style="display: block;" (ngSubmit)="onSubmitChangePassword()">
 <div class="form-group row">
     <label for="example-text-input" class="col-xs-2 col-form-label">Email</label>
     <div class="col-xs-5">
@@ -42,21 +42,24 @@
 <div class="form-group row">
     <label for="example-text-input" class="col-xs-2 col-form-label">Old Password</label>
     <div class="col-xs-5">
-        <input type="text" #description tabindex="2" class="form-control" id="newpassword" name="newpassword" required>
+        <input type="text" #description tabindex="2" class="form-control" id="currentpassword" name="currentpassword" required
+                [(ngModel)]="currentPassword">
     </div>
 </div>
 <div class="form-group row">
     <label for="example-text-input" class="col-xs-2 col-form-label">Change Password</label>
     <div class="col-xs-5">
-        <input type="text" #description tabindex="3" class="form-control" id="newpassword" name="newpassword" required>
+        <input type="text" #description tabindex="3" class="form-control" id="newpassword" name="newpassword" required
+                [(ngModel)]="newPassword">
     </div>
 </div>
 <div class="form-group row">
-    <label for="example-text-input" class="col-xs-2 col-form-label">Confirm Password</label>
+<label for="example-text-input" class="col-xs-2 col-form-label">Confirm Password</label>
     <div class="col-xs-5">
-        <input type="text" #description tabindex="4" class="form-control" id="confirmedpassword" name="confirmedpassword" required>
+        <input type="text" #description tabindex="4" class="form-control" id="confirmedPassword" name="confirmedPassword" required
+                [(ngModel)]="confirmedPassword">          
     </div>
-</div>
+</div>  
 <br/>
 <div class="form-group row">
     <div class="col-sm-2 col-sm-offset-1">

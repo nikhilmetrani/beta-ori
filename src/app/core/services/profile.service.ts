@@ -18,15 +18,20 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import {DeveloperProfile} from '../';
-// import {ConsumerProfile} from '../';
+import {User} from '../';
 import {JsonHttp} from './json-http';
 
 @Injectable()
 export class ProfileService {
     developerUrl: string = '/api/0/developer/';
-    consumerUrl: string = '/api/0/consumer/';
+    consumerUrl: string = '/api/0/user/';
+    consumerPwdUrl: string = '/api/0/users/changepwd'
 
     constructor(private http: JsonHttp) {}
+
+    getProfileUrl(): string {
+        return this.developerUrl + 'profile';
+    }
 
     getDeveloperProfile(developerId: string) {
         // Developer ID validation is now implemented on server side.
@@ -42,25 +47,24 @@ export class ProfileService {
         return this.http.post(this.getProfileUrl(), profile);
     }
 
-    getProfileUrl(): string {
-        return this.developerUrl + 'profile';
+    getConsumerProfileUrl(): string {
+        return this.consumerUrl;
     }
-
-    getConsumerProfile(developerId: string) {
-        // Consumer ID validation is now implemented on server side.
+    
+    getConsumerProfile(consumerId: string) {
         return this.http.get(this.getConsumerProfileUrl());
     }
 
-    createConsumerProfile(developerId: string, profile: DeveloperProfile) {
-        // Developer ID validation is now implemented on server side.
-        return this.http.post(this.getConsumerProfileUrl(), profile);
+    getConsumerPasswordUrl(): string {
+        return this.consumerPwdUrl;
     }
 
-    modifyConsumerProfile(developerId: string, profile: DeveloperProfile) {
-        return this.http.post(this.getConsumerProfileUrl(), profile);
+    getConsumerPassword(consumerId: string) {
+        return this.http.get(this.getConsumerPasswordUrl());
     }
 
-    getConsumerProfileUrl(): string {
-        return this.consumerUrl + 'profile';
+    changeUserPassword(currentPwd: string, newPwd: string) {
+        return this.http.post(this.getConsumerPasswordUrl(), {'currentPwd': currentPwd, 'newPwd': newPwd});
     }
+
 }

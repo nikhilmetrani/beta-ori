@@ -28,10 +28,12 @@ export class ConsumerProfileComponent implements OnInit {
     observableConsumerProfile: Observable<any>;
     consumerProfile: any = {id: undefined,
         email: undefined,
-        password: undefined,
     };
     consumerId: string = undefined;
     isProfileConfirmed: boolean = false;
+    currentPassword: string = '';
+    newPassword: string = '';
+    confirmedPassword: string = '';
 
     constructor(private profileService: ProfileService,
                 private router: Router,
@@ -50,16 +52,18 @@ export class ConsumerProfileComponent implements OnInit {
         this.isProfileConfirmed = true;
     }
 
-    onSubmitCreateProfile() {
-        this.profileService.createDeveloperProfile(localStorage.getItem('uid'), this.consumerProfile).subscribe(
+    onSubmitChangePassword() {
+        this.profileService.changeUserPassword(this.currentPassword, this.newPassword).subscribe(
             (response) => {
                 if (response.status === 200) {
-                // Success response, so lets go back to the developer home page.
-                    this.router.navigate(['/store/profile']);
+                // Success response, so lets go back to the store landing page.
+                    this.router.navigate(['/store']);
                 }
             },
-            () => { // Handle failure to create profile 
-                }
+            () => { // Handle failure to update password
+                //console.log("failure"); 
+                this.router.navigate(['/developer']);
+            }
         );
     }
 
