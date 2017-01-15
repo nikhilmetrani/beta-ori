@@ -61,7 +61,7 @@ export class ConsumerProfileComponent implements OnInit {
                 }
             },
             () => { // Handle failure to update password
-                //console.log("failure"); 
+                // console.log("failure"); 
                 this.router.navigate(['/developer']);
             }
         );

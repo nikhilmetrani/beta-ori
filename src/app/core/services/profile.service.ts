@@ -18,14 +18,13 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import {DeveloperProfile} from '../';
-import {User} from '../';
 import {JsonHttp} from './json-http';
 
 @Injectable()
 export class ProfileService {
     developerUrl: string = '/api/0/developer/';
     consumerUrl: string = '/api/0/user/';
-    consumerPwdUrl: string = '/api/0/users/changepwd'
+    consumerPwdUrl: string = '/api/0/users/changepwd';
 
     constructor(private http: JsonHttp) {}
 
@@ -50,7 +49,7 @@ export class ProfileService {
     getConsumerProfileUrl(): string {
         return this.consumerUrl;
     }
-    
+
     getConsumerProfile(consumerId: string) {
         return this.http.get(this.getConsumerProfileUrl());
     }
