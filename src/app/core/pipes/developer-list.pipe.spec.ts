@@ -37,7 +37,9 @@ let storeApps: StoreApplication[] = [{
                     developer: user,
                     links: [],
                     category: { id: 1, name: 'Productivity' },
-                    isFavorite: false
+                    isFavorite: false,
+                    version: '1.0',
+                    reviews: []
                 },
                 {
                     rid: '3',
@@ -45,7 +47,9 @@ let storeApps: StoreApplication[] = [{
                     developer: user2,
                     links: [],
                     category: { id: 1, name: 'Development' },
-                    isFavorite: false
+                    isFavorite: false,
+                    version: '1.0',
+                    reviews: []
                 }];
 
 describe('DeveloperListPipe Tests', () => {
