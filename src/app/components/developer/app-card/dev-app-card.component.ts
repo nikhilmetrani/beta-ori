@@ -29,8 +29,7 @@ export class DeveloperApplicationCardComponent {
 
     constructor(private router: Router) { }
 
-    createApplicationUpdate() {
+    viewApplicationDetails() {
         localStorage.setItem('appid', this.application.rid.toString());
-        this.router.navigateByUrl('/developer/details');
     }
 }
