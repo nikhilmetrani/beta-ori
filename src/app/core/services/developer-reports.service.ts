@@ -28,16 +28,16 @@ export class DeveloperReportsService {
     constructor(private http: JsonHttp) {
     }
 
-    findSubscribedUsersPerApplication(applicationId: string, start: string, end: string) {
-        return this.http.get(this.getReportUrl() + '/subscriptions/' + applicationId + '/' + start + '/' + end);
+    findSubscribedUsersPerApplication(applicationId: string, startDate: string, endDate: string) {
+        return this.http.get(this.getReportUrl() + '/subscriptions/' + applicationId + '/' + startDate + '/' + endDate);
     }
 
-    findActiveSubscribedUsersPerApplication(applicationId: string, start: string, end: string) {
-        return this.http.get(this.getReportUrl() + '/activesubscriptions/' + applicationId + '/' + start + '/' + end);
+    findActiveSubscribedUsersPerApplication(applicationId: string, startDate: string, endDate: string) {
+        return this.http.get(this.getReportUrl() + '/activesubscriptions/' + applicationId + '/' + startDate + '/' + endDate);
     }
 
-    findTerminatedSubscribedUsersPerApplication(applicationId: string, start: string, end: string) {
-        return this.http.get(this.getReportUrl() + '/terminatedsubscriptions/' + applicationId + '/' + start + '/' + end);
+    findTerminatedSubscribedUsersPerApplication(applicationId: string, startDate: string, endDate: string) {
+        return this.http.get(this.getReportUrl() + '/terminatedsubscriptions/' + applicationId + '/' + startDate + '/' + endDate);
     }
 
     getReportUrl(): string {

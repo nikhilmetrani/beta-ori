@@ -20,6 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ENV_PROVIDERS } from './environment';
 import { AppComponent } from './app.component';
 import { UPLOAD_DIRECTIVES } from 'ng2-uploader/ng2-uploader';
+import { MyDatePickerModule } from 'mydatepicker';
+
 import {
   AboutComponent,
   LoginComponent,
@@ -63,15 +65,16 @@ import { routing } from './app.routing';
   imports: [
     BrowserModule,
     FormsModule,
+    MyDatePickerModule,
     ReactiveFormsModule,
     routing,
     BOCoreModule
   ],
   declarations: [
     UPLOAD_DIRECTIVES,
-    UploadComponent,
     AppComponent,
     AboutComponent,
+    UploadComponent,
     StoreComponent,
     StoreNavbarComponent,
     StoreAppsComponent,

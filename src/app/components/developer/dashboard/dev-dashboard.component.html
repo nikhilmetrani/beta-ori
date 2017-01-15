@@ -15,34 +15,78 @@
 * limitations under the License.
 **/
 -->
-
 <header>
     <div class="container-fluid">
         <h1>Application Reports</h1>
     </div>
 </header>
 
-<form id="login-form" #f="ngForm" style="display: block;" (ngSubmit)="onSubmitCreateApplication('create')">
+<form id="login-form" #f="ngForm" style="display: block;" (ngSubmit)="onSearchReport()">
     <div class="container-fluid">
         <div id="accordion" role="tablist" aria-multiselectable="true">
             <div class="card">
                 <div id="collapseOne" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="card-block">
+                        <div class="form-group row"></div>
+                        <div class="form-group row"></div>
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-xs-2 col-form-label">Application</label>
+                            <label class="col-xs-2 col-form-label">Application</label>
                             <div class="col-xs-5">
                                 <select #category tabindex="1" class="form-control" id="category" name="category"
                                         placeholder=""
-                                        [(ngModel)]="newApplication.category"
+                                        [(ngModel)]="applicationId"
                                         required>
-                                    <option *ngFor="let code of devAppsArray" [ngValue]="code.name">{{code.value}}
+                                    <option *ngFor="let code of devAppsArray" [ngValue]="code.rid">{{code.name}}
                                     </option>
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-xs-2 col-form-label">Start Date</label>
+                            <div class="col-xs-5">
+                                <my-date-picker [options]="options"
+                                                (dateChanged)="onStartDateChanged($event)"
+                                                [selDate]="selectedStartDate"></my-date-picker>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xs-2 col-form-label">End Date</label>
+                            <div class="col-xs-5">
+                                <my-date-picker [options]="options"
+                                                (dateChanged)="onEndDateChanged($event)"
+                                                [selDate]="selectedEndDate"></my-date-picker>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xs-2 col-form-label"></label>
+                            <div class="col-sm-2 col-sm-offset-1">
+                                <button type="submit" name="dev-app-create" id="dev-app-create" tabindex="4" class="form-control btn btn-success"
+                                        (click)="onSearchReport(); $event.preventDefault()">Search</button>
+                            </div>
+                        </div>
+                        <div class="form-group row"></div>
+                        <div class="form-group row"></div>
+                        <div class="form-group row"></div>
+                        <div class="form-group row">
+                            <label class="col-xs-3 col-form-label">Total Subscribed Users</label>
+                            <div class="col-xs-4">
+                                {{totalSubscriptions}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xs-3 col-form-label">Active Subscribed Users</label>
+                            <div class="col-xs-4">
+                                {{activeSubscriptions}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xs-3 col-form-label">Terminated Subscribed Users</label>
+                            <div class="col-xs-4">
+                                {{terminatedSubscriptions}}
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
