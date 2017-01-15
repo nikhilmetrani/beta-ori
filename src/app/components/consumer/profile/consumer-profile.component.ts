@@ -28,7 +28,7 @@ export class ConsumerProfileComponent implements OnInit {
     observableConsumerProfile: Observable<any>;
     consumerProfile: any = {id: undefined,
         email: undefined,
-        website: undefined,
+        password: undefined,
     };
     consumerId: string = undefined;
     isProfileConfirmed: boolean = false;

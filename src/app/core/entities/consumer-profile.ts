@@ -17,5 +17,5 @@
 export interface ConsumerProfile {
     id: number;
     email: string;
-    website: string;
+    password: string;
 }
