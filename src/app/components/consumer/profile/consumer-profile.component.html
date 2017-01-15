@@ -33,14 +33,28 @@
     <label for="example-text-input" class="col-xs-2 col-form-label">Email</label>
     <div class="col-xs-5">
         <input type="text" #description tabindex="1" class="form-control" id="email" name="email" placeholder="email@xyz.com" [(ngModel)]="consumerProfile.email"
-            required>
+            [disabled]="true" required>
     </div>
 </div>
 <div class="form-group row">
-    <label for="example-text-input" class="col-xs-2 col-form-label">Website</label>
+    <label for="example-text-input" class="col-xs-2 col-form-label">Change Password:</label>
+</div>
+<div class="form-group row">
+    <label for="example-text-input" class="col-xs-2 col-form-label">Old Password</label>
     <div class="col-xs-5">
-        <input type="text" #description tabindex="2" class="form-control" id="website" name="website" placeholder="http://www.xyz.com"
-            [(ngModel)]="consumerProfile.website" required>
+        <input type="text" #description tabindex="2" class="form-control" id="newpassword" name="newpassword" required>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="example-text-input" class="col-xs-2 col-form-label">Change Password</label>
+    <div class="col-xs-5">
+        <input type="text" #description tabindex="3" class="form-control" id="newpassword" name="newpassword" required>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="example-text-input" class="col-xs-2 col-form-label">Confirm Password</label>
+    <div class="col-xs-5">
+        <input type="text" #description tabindex="4" class="form-control" id="confirmedpassword" name="confirmedpassword" required>
     </div>
 </div>
 <br/>
@@ -49,7 +63,7 @@
         <button tabindex="3" class="form-control btn btn-success pull-right" type="submit" [disabled]="!f.valid">Save</button>
     </div>
      <div class="col-sm-2 col-sm-offset-1">
-        <button (click)="onClickCloseProfile(); $event.preventDefault()" tabindex="4" class="form-control btn btn-success pull-right" type="submit" >Close</button>
+        <button (click)="onClickCloseProfile(); $event.preventDefault()" tabindex="5" class="form-control btn btn-success pull-right" type="submit" >Close</button>
     </div>
 </div>
 </form>

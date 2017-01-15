@@ -59,38 +59,56 @@
 								required>
 						</div>
 					</div>
-					<div class="form-group row">
-						<label for="example-text-input" class="col-xs-2 col-form-label">Download Url</label>
-						<div class="col-xs-5">
-							<input type="text" #downloadUrl tabindex="1" class="form-control" id="downloadUrl" name="downloadUrl" placeholder="" [(ngModel)]="newApplication.downloadUrl">
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
-		<div class="card">
-			<div class="card-header" role="tab" id="headingTwo">
-				<h4 class="mb-0">
-					<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">More...</a>
-				</h4>
-			</div>
-			<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-				<div class="card-block">
-					<div class="form-group row">
-						<label for="example-text-input" class="col-xs-2 col-form-label">Email</label>
-						<div class="col-xs-5">
-							<input type="text" #email tabindex="1" class="form-control" id="email" name="email" placeholder="">
-						</div>
+				<div class="card">
+					<div class="card-header" role="tab" id="headingTwo">
+						<h4 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">More...</a>
+						</h4>
 					</div>
-					<div class="form-group row">
-						<label for="example-text-input" class="col-xs-2 col-form-label">Contact</label>
-						<div class="col-xs-5">
-							<input type="text" #description tabindex="1" class="form-control" id="contact" name="contact" placeholder="">
+					<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+						<div class="card-block">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="panel panel-default">
+											<div class="panel-body">
+												<form ng-submit="addNew()">
+													<table class="table table-striped table-bordered">
+														<thead>
+															<tr>
+																<th>Platform</th>
+																<th>OS</th>
+																<th>Download Url</th>
+																<th>Express Install Command</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr *ngFor="let installer of newApplication.installers">
+																<td>
+																	<label for="example-text-input" class="col-xs-2 col-form-label">{{installer.platform}}</label>
+																</td>
+																<td>
+																	<label for="example-text-input" class="col-xs-2 col-form-label">{{installer.os}}</label>
+																</td>
+																<td>
+																	<input type="text" #downloadUrl tabindex="1" class="form-control" id="installer.downloadUrl" name="installer.downloadUrl" placeholder="" [(ngModel)]="installer.downloadUrl" required>
+																<td>
+																	<input type="text" #expressInstallCommand tabindex="1" class="form-control" id="installer.expressInstallCommand" name="installer.expressInstallCommand" placeholder="" [(ngModel)]="installer.expressInstallCommand" /></td>
+															</tr>
+														</tbody>
+													</table>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 	</div>
 	<br/><br/>
 

@@ -47,7 +47,6 @@ export class DeveloperProfileComponent implements OnInit {
         this.activatedRoute.data.subscribe(data => {
             this.developerProfile = data['profile'].json();
             this.isProfileConfirmed = true;
-            console.log(this.developerProfile);
         });
      }
 

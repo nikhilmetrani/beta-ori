@@ -48,7 +48,7 @@ export {ConsumerProfileDataResolver} from './services/consumer-profile-data.reso
 export {DeveloperProfileDataResolver} from './services/developer-profile-data.resolver';
 export {CodeDefinitionService} from './services/code-definition.service';
 export {SubscriptionService} from './services/subscription.service';
-
+export {FeaturedApplicationsService} from './services/featured-applications.service';
 // Export pipes
 export {CategoryListPipe} from './pipes/category-list.pipe';
 export {DeveloperListPipe} from './pipes/developer-list.pipe';

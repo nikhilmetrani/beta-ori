@@ -19,7 +19,7 @@ import {JsonHttp} from './json-http';
 
 @Injectable()
 export class SubscriptionService {
-    subscriptionUrl: string = '/api/0/store/subscription/myapps';
+    subscriptionUrl: string = '/api/0/store/subscriptions';
 
     constructor(private http: JsonHttp) {}
 

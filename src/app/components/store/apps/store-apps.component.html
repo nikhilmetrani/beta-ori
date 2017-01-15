@@ -16,17 +16,18 @@
 **/
 -->
 
-<header 
-    [ngClass]="{'category-development':categoryString === 'Development',
+<!--<header [ngClass]="{'category-development':categoryString === 'Development',
     'category-productivity':categoryString === 'Productivity',
     'category-photography':categoryString === 'Photography'}">
     <h2>Category > {{categoryString}}</h2>
     <div>Developers > {{ storeItemsArray | boDeveloperList }}</div>
-</header>
+</header>-->
 <section>
-    <bo-application *ngFor="let application of storeItems | async"
-        [application]="application"
-        [ngClass]="{'category-development':categoryString === 'Development',
+    <bo-featured-apps></bo-featured-apps>
+</section>
+<br>
+<section>
+    <bo-application *ngFor="let application of storeItems | async" [application]="application" [ngClass]="{'category-development':categoryString === 'Development',
                 'category-productivity':categoryString === 'Productivity',
                 'category-photography':categoryString === 'Photography'}"></bo-application>
 </section>

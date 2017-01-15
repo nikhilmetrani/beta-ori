@@ -83,15 +83,6 @@
 									{{application.whatsNew}}
 								</div>
 							</div>
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Download Url</label>
-								<div class="col-xs-5" *ngIf="!(application.state === 'Active' || application.state === 'Recalled')">
-									<input type="text" #downloadUrl tabindex="1" class="form-control" id="downloadUrl" name="downloadUrl" placeholder="" [(ngModel)]="application.downloadUrl">
-								</div>
-								<div class="col-xs-5" *ngIf="(application.state === 'Active' || application.state === 'Recalled')">
-									{{application.downloadUrl}}
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -103,16 +94,48 @@
 					</div>
 					<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
 						<div class="card-block">
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Email</label>
-								<div class="col-xs-5" *ngIf="!(application.state === 'Active' || application.state === 'Recalled')">
-									<input type="text" #email tabindex="1" class="form-control" id="email" name="email" placeholder="">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Contact</label>
-								<div class="col-xs-5" *ngIf="!(application.state === 'Active' || application.state === 'Recalled')">
-									<input type="text" #description tabindex="1" class="form-control" id="contact" name="contact" placeholder="">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="panel panel-default">
+											<div class="panel-body">
+												<form ng-submit="addNew()">
+													<table class="table table-striped table-bordered">
+														<thead>
+															<tr>
+																<th>Platform</th>
+																<th>OS</th>
+																<th>Download Url</th>
+																<th>Express Install Command</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr *ngFor="let installer of application.installers; let i = index; trackBy: $index">
+																<td>
+																	<label for="example-text-input" class="col-xs-2 col-form-label">{{installer.platform}}</label>
+																</td>
+																<td>
+																	<label for="example-text-input" class="col-xs-2 col-form-label">{{installer.os}}</label>
+																</td>
+																<td *ngIf="!(application.state === 'Active' || application.state === 'Recalled')">
+																	<input type="text" #downloadUrl tabindex="1" class="form-control" id="application.installers[{{i}}].downloadUrl" name="application.installers[{{i}}].downloadUrl" placeholder="" [(ngModel)]="application.installers[i].downloadUrl" required>
+																</td>
+																<td *ngIf="(application.state === 'Active' || application.state === 'Recalled')">
+																	{{installer.downloadUrl}}
+																</td>
+																<td *ngIf="!(application.state === 'Active' || application.state === 'Recalled')">
+																	<input type="text" #expressInstallCommand tabindex="1" class="form-control" id="application.installers[{{i}}].expressInstallCommand" name="application.installers[{{i}}].expressInstallCommand" placeholder="" [(ngModel)]="application.installers[i].expressInstallCommand" />
+																</td>
+																<td *ngIf="(application.state === 'Active' || application.state === 'Recalled')">
+																	{{installer.expressInstallCommand}}
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</form>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

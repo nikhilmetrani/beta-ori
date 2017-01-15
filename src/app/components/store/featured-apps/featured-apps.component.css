@@ -1,0 +1,141 @@
+/**
+* Copyright 2016 - 29cu.io and the authors of beta-ori open source project
+
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+
+*     http://www.apache.org/licenses/LICENSE-2.0
+
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+**/
+
+/* Makes images fully responsive */
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ------------------- Carousel Styling ------------------- */
+
+.carousel-inner {
+  border-radius: 15px;
+}
+
+.carousel-caption {
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 0 0 10px 25px;
+  color: #fff;
+  text-align: left;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  z-index: 15;
+  margin: 0;
+  padding: 0 70px 25px 0;
+  text-align: right;
+}
+
+.carousel-control.buttonLeft {
+  background-image: none;
+}
+
+.carousel-control.buttonright {
+  background-image: none;  
+  right:34px;
+}
+
+
+
+/* ------------------- Section Styling - Not needed for carousel styling ------------------- */
+
+.section-white {
+   padding: 10px 0;
+}
+
+.section-white {
+  background-color: #fff;
+  color: #555;
+}
+
+@media screen and (min-width: 768px) {
+
+  .section-white {
+     padding: 1.5em 0;
+  }
+
+}
+
+@media screen and (min-width: 1000px) {
+
+  .container {
+    max-width: 965px;
+  }
+
+}
+
+.applogo {
+    margin-top: 40px;
+    margin-left: 100px;
+    float: left;
+    width: 100px;
+    height: 100px;
+    background: no-repeat;
+    background-position: center;
+}
+
+.buttonLeft {
+    font: bold normal normal 12px Helvetica;
+    color: #FF7551;
+    width: 80px;
+    line-height: 16px;
+    float: right;
+    padding: 6px;
+    border: 1px solid #FF7551;
+    margin: 8px;
+    text-align: center;
+    border-radius: 2px;
+    background-color: ghostwhite;
+} 
+
+p {
+    font: bold normal normal 12px Helvetica;
+    line-height: 20px;
+    color: black;
+    text-align: left;
+    margin-left: 14px;
+}
+
+.header-text {
+  position: absolute;
+  top: 20%;
+  left: 1.8%;
+  right: auto;
+  width: 96.66666666666666%; 
+}
+
+.header-text h2 {
+  font-size: 40px;
+  color: black;
+}
+

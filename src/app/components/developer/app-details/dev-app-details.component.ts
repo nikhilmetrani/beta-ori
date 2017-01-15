@@ -53,7 +53,6 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
     ngOnInit() {
         this.devAppObservable = this.developerAppsService.getApplicationById(this.appID);
         this.devAppObservable.forEach(next => {
-            // console.log(next);
             this.application = next;
             this.originalAppName =  this.application.name;
         });
@@ -63,8 +62,6 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
     }
 
     onChangeAppName() {
-        // console.log(this.application.name);
-        // console.log(this.originalAppName);
         if (this.application.name !== this.originalAppName) {
             this.developerAppsService.checkApplicationNameExistsForDeveloper(this.application.name).subscribe(
                 (response) => {
@@ -75,8 +72,6 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
                     }
                 }
             );
-        } else {
-            console.log('No change for app name');
         }
     }
 
