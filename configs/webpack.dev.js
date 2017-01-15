@@ -43,7 +43,7 @@ module.exports = webpackMerge(commonConfig, {
           to: 'img'
         },
         { // Copy images / icons
-          from: 'src/app/components/store/featured-apps/image3.jpg',
+          from: 'src/app/components/store/featured-apps/image4.jpg',
           to: ''
         },
         { // Copy error page

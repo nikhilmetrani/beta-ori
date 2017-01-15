@@ -55,3 +55,7 @@ footer .icon {
     height: 64px;
     margin: 15px;
 }
+
+.buttonFontSize {
+   font-size: .7em;
+}

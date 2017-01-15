@@ -52,14 +52,19 @@
   width: 100%;
   z-index: 15;
   margin: 0;
-  padding: 0 25px 25px 0;
+  padding: 0 70px 25px 0;
   text-align: right;
 }
 
-.carousel-control.left,
-.carousel-control.right {
+.carousel-control.buttonLeft {
   background-image: none;
 }
+
+.carousel-control.buttonright {
+  background-image: none;  
+  right:34px;
+}
+
 
 
 /* ------------------- Section Styling - Not needed for carousel styling ------------------- */
@@ -81,10 +86,10 @@
 
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1000px) {
 
   .container {
-    max-width: 930px;
+    max-width: 965px;
   }
 
 }
@@ -131,5 +136,6 @@ p {
 
 .header-text h2 {
   font-size: 40px;
+  color: black;
 }
 
