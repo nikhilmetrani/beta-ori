@@ -24,7 +24,7 @@
     padding: 10px;
     color: #29394b;
 }
-h2 {
+.title {
     font-size: 1.6em;
     flex: 1;
 }

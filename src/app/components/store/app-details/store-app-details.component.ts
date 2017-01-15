@@ -27,7 +27,8 @@ import { StoreApplication, StoreService, Review } from '../../../core';
 
 
 export class StoreApplicationDetailsComponent implements OnInit {
-        application: StoreApplication = {
+    appid: string;
+    application: StoreApplication = {
         rid: undefined,
         name: undefined, category: {id: undefined, name: undefined},
         developer: { rid: undefined, username: undefined, firstname: undefined,
@@ -41,6 +42,7 @@ export class StoreApplicationDetailsComponent implements OnInit {
     constructor( private storeService: StoreService, private router: Router ) { }
 
     ngOnInit() {
+        this.appid = localStorage.getItem('rid');
         this.devAppObservable = this.storeService.getApplicationById(localStorage.getItem('rid'));
         this.devAppObservable.subscribe(app => {
             this.application = app;

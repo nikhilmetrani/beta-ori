@@ -14,21 +14,14 @@
 -->
 
 <header>
-	<div class="container-fluid">
+	<div class="container">
 		<h1>Application Details</h1>
 	</div>
 </header>
 <section>
-	<form id="login-form" #f="ngForm" style="display: block;" (ngSubmit)="onSubmitViewDetails('create')">
-		<div class="container-fluid">
+		<div class="container">
 			<div id="accordion" role="tablist" aria-multiselectable="true">
 				<div class="card">
-					<div class="card-header" role="tab" id="headingOne">
-						<h4 class="mb-0">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Information</a>
-						</h4>
-					</div>
-					<div id="collapseOne" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
 						<div class="card-block">
 							<div class="form-group row">
 								<label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
@@ -56,25 +49,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
 				</div>
-				<div class="card">
-					<div class="card-header" role="tab" id="headingTwo">
-						<h4 class="mb-0">
-							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">More...</a>
-						</h4>
-					</div>
-					<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-					<section>
-							<ul>
-								<li *ngFor="let review of reviewItems">
-									<bo-review [review]="review">
-									</bo-review>
-								</li>
-							</ul>
-					</section>
-
-					</div>
 				<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
 						<div class="card-block">
 							<div class="form-group row">
@@ -90,31 +65,21 @@
 
 			</div>
 			<br/><br/>
-			 <div class="form-group row">
-				
-				<!--<div class="col-sm-2 col-sm-offset-1" *ngIf="!(application.state === 'Active' || application.state === 'Recalled')">
-					<button type="submit" name="dev-app-save" id="dev-app-save" tabindex="5" class="form-control btn btn-success" [disabled]="!f.valid"
-						(click)="onSubmitViewDetails('save'); $event.preventDefault()">Save</button>
+			 
+				<div class="col-sm-1">
+					<button type="submit" name="dev-app-close" id="dev-app-close" tabindex="5" class="btn btn-default" 
+						(click)="onSubmitViewDetails('close'); $event.preventDefault()">Back</button>
 				</div>
-				
-				<div class="col-sm-2 col-sm-offset-1" *ngIf="application.state === 'Staging' ">
-					<button type="submit" name="dev-app-publish" id="dev-app-publish" tabindex="5" class="form-control btn btn-success" [disabled]="!f.valid"
-						(click)="onSubmitViewDetails('publish'); $event.preventDefault()">Publish</button>
+				<div class="col-sm-3 col-sm-offset-2">
+					<bo-app-subscribe [applicationId]="appid"></bo-app-subscribe>
 				</div>
-
-				<div class="col-sm-2 col-sm-offset-1" *ngIf="(application.state === 'Active' || application.state === 'Recalled')">
-					<button type="submit" name="dev-app-create" id="dev-app-create" tabindex="5" class="form-control btn btn-success" [disabled]="!f.valid"
-						(click)="onSubmitViewDetails('create'); $event.preventDefault()">Create new update</button>
+				<br><br>
+				<h2>Reviews</h2>
+				<div class="list-group col-md-5">
+					<bo-review
+						*ngFor="let review of reviewItems"
+						[review]="review">
+					</bo-review>
 				</div>
-				<div class="col-sm-2 col-sm-offset-1" *ngIf="application.state === 'Active' ">
-					<button type="submit" name="dev-app-recall" id="dev-app-recall" tabindex="5" class="form-control btn btn-success" [disabled]="!f.valid"
-						(click)="onSubmitViewDetails('recall'); $event.preventDefault()">Recall</button>
-				</div> -->
-				<div class="col-sm-2 col-sm-offset-1">
-					<button type="submit" name="dev-app-close" id="dev-app-close" tabindex="5" class="form-control btn btn-success" 
-						(click)="onSubmitViewDetails('close'); $event.preventDefault()">Close</button>
-				</div>
-			</div> 
-		</div>
-	</form>
+	<!--</form>-->
 </section>

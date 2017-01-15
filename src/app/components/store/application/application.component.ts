@@ -29,6 +29,5 @@ export class ApplicationComponent {
     constructor(private router: Router) { }
     viewApplicationDetails() {
         localStorage.setItem('rid', this.application.rid);
-        this.router.navigate(['/store/app/details']);
      }
 }
