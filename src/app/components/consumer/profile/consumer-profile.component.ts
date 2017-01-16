@@ -34,6 +34,8 @@ export class ConsumerProfileComponent implements OnInit {
     currentPassword: string = '';
     newPassword: string = '';
     confirmedPassword: string = '';
+    errorString: string = undefined;
+    successString: string = undefined;
 
     constructor(private profileService: ProfileService,
                 private router: Router,
@@ -56,13 +58,16 @@ export class ConsumerProfileComponent implements OnInit {
         this.profileService.changeUserPassword(this.currentPassword, this.newPassword).subscribe(
             (response) => {
                 if (response.status === 200) {
-                // Success response, so lets go back to the store landing page.
-                    this.router.navigate(['/store']);
+                    this.errorString = undefined;
+                    this.successString = 'The password was updated successfully.';
                 }
             },
             () => { // Handle failure to update password
-                // console.log("failure"); 
-                this.router.navigate(['/developer']);
+                this.currentPassword = undefined;
+                this.newPassword = undefined;
+                this.confirmedPassword = undefined;
+                this.successString = undefined;
+                this.errorString = 'Unable to update the password!';
             }
         );
     }

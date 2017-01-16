@@ -2,7 +2,6 @@ const helpers = require('./helpers');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const PUBLIC_PATH = (process.env.PUBLIC_PATH || '') + '/' ;
@@ -45,22 +44,6 @@ module.exports = webpackMerge(commonConfig, {
       comments: false,
       sourceMap: true
     }),
-    new CopyWebpackPlugin(
-      [
-        { // Copy bootstrap fonts to dist/fonts folder
-          from: 'node_modules/bootstrap/dist/fonts',
-          to: 'fonts'
-        },
-        { // Copy images / icons
-          from: 'src/public/img',
-          to: 'img'
-        },
-        { // Copy error page
-          from: 'src/public/error',
-          to: 'error'
-        },
-      ]
-    ),
   ],
   node: {
     global: true,

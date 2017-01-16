@@ -22,6 +22,7 @@ export class SignupComponent implements OnInit {
   email: FormControl;
   password: FormControl;
   passwordConfirmation: FormControl;
+  errorString: string = undefined;
 
   constructor(private router: Router,
               private userService: UserService,
@@ -38,9 +39,14 @@ export class SignupComponent implements OnInit {
         return this.loginService.login(params.email, params.password);
       })
       .subscribe(() => {
-        this.router.navigate(['/']);
-      }, this.handleError)
-    ;
+          this.router.navigate(['/']);
+        }, (error) => {
+          if (error.json()['code'] === 'email_already_taken') {
+            this.errorString = 'This email is already taken!';
+          } else {
+            this.errorString = 'Unable to create account!';
+          }
+        });
   }
 
   private initForm() {
@@ -62,15 +68,4 @@ export class SignupComponent implements OnInit {
       passwordConfirmation: this.passwordConfirmation,
     });
   }
-
-  private handleError(error) {
-    switch (error.status) {
-      case 500:
-        // this.toastr.error('This username or email is already taken.');
-        // if (error.json()['code'] === 'email_already_taken') {
-        //   this.toastr.error('This email is already taken.');
-        // }
-    }
-  }
-
 }

@@ -79,7 +79,6 @@ export class StoreService {
     getApplicationById(applicationId: string) {
         return this.http.get(this.storeUrl + '/applications/' + applicationId)
             .map((response) => {
-                // console.log(response.json());
                 return <StoreApplication>response.json();
             })
             .catch(this.logError);

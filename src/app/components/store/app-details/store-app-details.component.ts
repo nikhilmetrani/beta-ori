@@ -46,14 +46,7 @@ export class StoreApplicationDetailsComponent implements OnInit {
         this.devAppObservable = this.storeService.getApplicationById(localStorage.getItem('rid'));
         this.devAppObservable.subscribe(app => {
             this.application = app;
-            console.log(app.reviews);
             this.reviewItems = app.reviews;
         });
-}
-
-   onSubmitViewDetails(event) {
-        if (event === 'close') {
-            this.router.navigate(['/store/apps']);
-        }
     }
 }

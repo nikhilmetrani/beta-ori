@@ -44,7 +44,10 @@ export class DeveloperComponent implements OnInit {
         this.loginService.events.subscribe(() => {
             this.isSignedIn = this.loginService.isSignedIn();
             if (this.isSignedIn) { // We are now logged in. Let's get the user name.
-                this.userService.get('user').subscribe((user) => this.userName = user.username);
+                this.userService.get('user').subscribe((user) => {
+                    this.userName = user.username;
+                    console.log(user);
+                });
             }
         });
     }

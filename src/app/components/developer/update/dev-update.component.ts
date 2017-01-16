@@ -28,7 +28,7 @@ import { DeveloperApplication, DeveloperApplicationsService } from '../../../cor
 })
 
 export class DeveloperApplicationUpdateComponent implements OnInit {
-    private newApplication: DeveloperApplication = {
+    newApplication: DeveloperApplication = {
         rid: undefined,
         description: undefined, category: undefined,
         whatsNew: undefined, developer: undefined,

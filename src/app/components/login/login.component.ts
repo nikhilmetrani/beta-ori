@@ -26,7 +26,7 @@ import {Location} from '@angular/common';
 })
 export class LoginComponent {
 
-  private error: string = undefined;
+  errorString: string = undefined;
 
   constructor(private router: Router,
               private loginService: LoginService,
@@ -36,16 +36,10 @@ export class LoginComponent {
   login(email, password) {
     this.loginService.login(email, password)
       .subscribe(() => {
-         this.location.back();
-      }, this.handleError)
-    ;
-  }
-
-  handleError(error) {
-    switch (error.status) {
-      case 401:
-        this.error = 'Email or password is wrong.';
-        // toastr.error('Email or password is wrong.');
-    }
+          this.location.back();
+        },
+        () => {
+          this.errorString = 'Email or password is wrong!';
+        });
   }
 }

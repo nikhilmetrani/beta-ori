@@ -3,6 +3,7 @@ const helpers = require('./helpers');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -49,6 +50,30 @@ module.exports = {
         $: 'jquery',
         jquery: 'jquery'
     }),
+    new CopyWebpackPlugin(
+      [
+        { // Copy bootstrap fonts to dist/fonts folder
+          from: 'node_modules/bootstrap/dist/fonts',
+          to: 'fonts'
+        },
+        { // Copy stylesheets
+          from: 'src/public/css',
+          to: 'css'
+        },
+        { // Copy images / icons
+          from: 'src/public/img',
+          to: 'img'
+        },
+        { // Copy images / icons
+          from: 'src/app/components/store/featured-apps/image4.jpg',
+          to: ''
+        },
+        { // Copy error page
+          from: 'src/public/error',
+          to: 'error'
+        },
+      ]
+    ),
   ],
   node: {
     global: true,

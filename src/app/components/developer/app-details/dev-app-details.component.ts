@@ -45,6 +45,7 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
     categoryObservable: Observable<any>;
     nameIsUnique: boolean = true;
     originalAppName: string = '';
+    $index: any;
 
     constructor(private developerAppsService: DeveloperApplicationsService,
                 private codeService: CodeDefinitionService,

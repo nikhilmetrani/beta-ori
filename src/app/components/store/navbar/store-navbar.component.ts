@@ -1,6 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
-import {LoginService} from '../../../core';
+import {LoginService, UserService} from '../../../core';
 
 @Component({
   selector: 'bo-store-navbar',
@@ -8,11 +8,12 @@ import {LoginService} from '../../../core';
 })
 export class StoreNavbarComponent implements OnInit {
 
-  @Input() userName: string;
+  userName: string;
   isSignedIn: boolean;
 
   constructor(private router: Router,
-              private loginService: LoginService) {
+              private loginService: LoginService,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -20,6 +21,11 @@ export class StoreNavbarComponent implements OnInit {
     this.loginService.events.subscribe(() => {
       this.isSignedIn = this.loginService.isSignedIn();
     });
+    if (this.isSignedIn) { // We are now logged in. Let's get the user name.
+      this.userService.get('user').subscribe((user) => {
+        this.userName = user.username;
+      });
+    }
   }
 
   logout() {

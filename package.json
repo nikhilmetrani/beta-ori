@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "clean-all": "rimraf node_modules doc dist && npm cache clean",
-    "clean": "rimraf doc dist build int typings",
+    "clean": "rimraf doc dist aot build int typings",
     "clean-dist": "rimraf dist build int",
     "clean-install": "npm run clean-all && npm install",
     "clean-start": "npm run clean-install && npm start",

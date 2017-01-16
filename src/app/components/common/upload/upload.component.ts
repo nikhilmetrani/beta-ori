@@ -39,9 +39,7 @@ export class UploadComponent implements OnInit {
     };
     this.imageURL = '/api/0/developer/applications/' + this.appId + '/image';
     this.devAppsService.getApplicationLogo(this.appId).subscribe(image => {
-      console.log(image);
       this.imageData = image;
-      console.log(this.imageData);
     });
   }
 

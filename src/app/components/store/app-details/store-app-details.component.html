@@ -67,8 +67,8 @@
 			<br/><br/>
 			 
 				<div class="col-sm-1">
-					<button type="submit" name="dev-app-close" id="dev-app-close" tabindex="5" class="btn btn-default" 
-						(click)="onSubmitViewDetails('close'); $event.preventDefault()">Back</button>
+					<button name="dev-app-close" id="dev-app-close" tabindex="5" class="btn btn-default" 
+						routerLink="'/store/apps'">Back</button>
 				</div>
 				<div class="col-sm-3 col-sm-offset-2">
 					<bo-app-subscribe [applicationId]="appid"></bo-app-subscribe>

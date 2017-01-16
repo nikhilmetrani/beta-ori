@@ -24,7 +24,7 @@ import {JsonHttp} from './json-http';
 export class ProfileService {
     developerUrl: string = '/api/0/developer/';
     consumerUrl: string = '/api/0/user/';
-    consumerPwdUrl: string = '/api/0/users/changepwd';
+    consumerPwdUrl: string = '/api/0/changepwd';
 
     constructor(private http: JsonHttp) {}
 
@@ -54,16 +54,11 @@ export class ProfileService {
         return this.http.get(this.getConsumerProfileUrl());
     }
 
-    getConsumerPasswordUrl(): string {
-        return this.consumerPwdUrl;
-    }
-
-    getConsumerPassword(consumerId: string) {
-        return this.http.get(this.getConsumerPasswordUrl());
-    }
-
     changeUserPassword(currentPwd: string, newPwd: string) {
-        return this.http.post(this.getConsumerPasswordUrl(), {'currentPwd': currentPwd, 'newPwd': newPwd});
+        let passwordDto = { currentPwd: currentPwd,
+                            newPwd: newPwd
+                        };
+        return this.http.post(this.consumerPwdUrl, passwordDto);
     }
 
 }
