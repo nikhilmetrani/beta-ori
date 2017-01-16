@@ -48,12 +48,12 @@ export class StoreService {
         return Observable.throw(err.json().error || 'Server error');
     }
 
-    searchApplications() {
-        return this.makeRequest('search');
+    searchApplications(keyword: string) {
+        return this.makeRequest('search?keyword=' + keyword);
     }
 
-    searchApplicationsByCategory(categoryId: string) {
-        return this.makeRequest('search/category/' + categoryId);
+    searchApplicationsByCategory(categoryId: string, keyword: string) {
+        return this.makeRequest('search/category/' + categoryId + '?keyword=' + keyword);
     }
 
     subscribeApplication(applicationId: string) {

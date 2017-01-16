@@ -31,6 +31,7 @@ export class StoreAppsComponent implements OnInit {
   storeItems: Observable<any>;
   storeItemsArray: StoreApplication[] = [];
   isAuthenticated: boolean = false;
+  keyword: string = '';
 
   constructor(public storeService: StoreService, private route: ActivatedRoute) {
   }
@@ -49,5 +50,27 @@ export class StoreAppsComponent implements OnInit {
       }
       this.storeItems.forEach(next => this.storeItemsArray = next);
     });
+  }
+
+  onClearSearch() {
+    this.keyword = '';
+    this.ngOnInit();
+  }
+
+  onSearch() {
+    console.log(this.category);
+    if (this.category && this.category.name && this.category.name !== 'All') {
+      this.storeItems = this.storeService.searchApplicationsByCategory(this.category.name, this.keyword);
+    } else {
+      console.log('else block');
+      this.storeItems = this.storeService.searchApplications(this.keyword);
+    }
+    this.storeItems.forEach(next => this.storeItemsArray = next);
+  }
+
+  onKeyEvent(event) {
+    if (event.keyCode === 13) {
+      this.onSearch();
+    }
   }
 }

@@ -22,6 +22,21 @@
     <h2>Category > {{categoryString}}</h2>
     <div>Developers > {{ storeItemsArray | boDeveloperList }}</div>
 </header>-->
+<form class="form-horizontal">
+<div class="form-group">
+<div class="input-group">
+    <input class="form-control" name="keyword" type="text" placeholder="Search for applications..." [(ngModel)]="keyword" (keydown)="onKeyEvent($event);">
+    <span class="input-group-btn">
+            <button class="btn btn-default" type="button" (click)="onClearSearch(); $event.preventDefault()">
+                <i class="glyphicon glyphicon-remove"></i>
+            </button>
+            <button class="btn btn-default" type="button" (click)="onSearch(); $event.preventDefault()">
+                <i class="glyphicon glyphicon-search"></i>
+            </button>
+        </span>
+</div>
+</div>
+</form>
 <section>
     <bo-featured-apps></bo-featured-apps>
 </section>
