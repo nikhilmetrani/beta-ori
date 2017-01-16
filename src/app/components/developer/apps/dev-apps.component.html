@@ -47,10 +47,12 @@
 </header>
 <br><br>
 <section *ngIf="devAppsArray && devAppsArray.length > 0 && hideActiveApps">
+    <!--<bo-upload [allowedExtensions]="imageExtensions" [uploadURL]="uploadURL"></bo-upload>-->
     <bo-dev-app-card *ngFor="let application of (devAppsArray | boHideActiveAppsList | boApplicationList:query)"
         [application]="application"></bo-dev-app-card>
 </section>
 <section *ngIf="devAppsArray && devAppsArray.length > 0 && !hideActiveApps">
+    <!--<bo-upload [allowedExtensions]="imageExtensions" [uploadURL]="uploadURL"></bo-upload>-->
     <bo-dev-app-card *ngFor="let application of (devAppsArray | boApplicationList:query)"
         [application]="application"></bo-dev-app-card>
 </section>

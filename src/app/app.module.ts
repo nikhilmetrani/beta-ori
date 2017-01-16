@@ -19,6 +19,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ENV_PROVIDERS } from './environment';
 import { AppComponent } from './app.component';
+import { CommonModule } from '@angular/common';
 import { UPLOAD_DIRECTIVES } from 'ng2-uploader/ng2-uploader';
 import { MyDatePickerModule } from 'mydatepicker';
 
@@ -66,6 +67,7 @@ import { routing } from './app.routing';
 
 @NgModule({
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     MyDatePickerModule,
@@ -111,6 +113,7 @@ import { routing } from './app.routing';
   providers: [
     ENV_PROVIDERS
   ],
+  entryComponents: [AppComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

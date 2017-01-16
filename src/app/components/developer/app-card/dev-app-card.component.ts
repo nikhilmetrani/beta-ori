@@ -14,7 +14,7 @@
 * limitations under the License.
 **/
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DeveloperApplication } from '../../../core';
 import { Router } from '@angular/router';
 
@@ -24,10 +24,16 @@ import { Router } from '@angular/router';
     styleUrls: ['./dev-app-card.component.css'],
     // template: '<bo-dev-app-details></bo-dev-app-details>'
 })
-export class DeveloperApplicationCardComponent {
+export class DeveloperApplicationCardComponent implements OnInit {
     @Input() application: DeveloperApplication;
+    uploadURL: string;
+    imageExtensions = ['image/png', 'image/jpg'];
 
     constructor(private router: Router) { }
+
+    ngOnInit() {
+        this.uploadURL = '/api/0/developer/applications/' + this.application.rid.toString() + '/image';
+    }
 
     viewApplicationDetails() {
         localStorage.setItem('appid', this.application.rid.toString());

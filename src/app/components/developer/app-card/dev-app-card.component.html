@@ -18,13 +18,13 @@
 <div class="appbox" [ngClass]="{'appbox-active':application.state === 'Active',
                 'appbox-staging':application.state === 'Staging',
                 'appbox-others':application.state !== 'Active' && application.state !== 'Staging'}">
-    <!--<button [routerLink]="'/developer/details'" class="buttonLeft" (click)="viewApplicationDetails()">Details</button>-->
-    <img class="applogo" src="" alt="{{application.name}}">
+    <bo-upload class="applogo"
+                [allowedExtensions]="imageExtensions"
+                [uploadURL]="uploadURL"
+                [appId]="application.rid"></bo-upload>
     <a [routerLink]="'/developer/details'" (click)="viewApplicationDetails()"><h2>{{application.name}}</h2></a>
 
     <p>
-        <!--State: {{ application.state | uppercase}}
-        <br>-->
         Category: {{ application.category.name }}
     </p>
 </div>

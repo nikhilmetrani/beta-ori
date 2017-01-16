@@ -16,22 +16,37 @@
 **/
 -->
 
-<input type="file" 
-       ngFileSelect
-       [options]="options"
-       (onUpload)="handleUpload($event)">
-
-<!-- drag & drop file example-->
-<style>
-  .file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
-</style>
-<div ngFileDrop
-     [options]="options"
-     (onUpload)="handleUpload($event)"
-     [ngClass]="{'file-over': hasBaseDropZoneOver}"
-     (onFileOver)="fileOverBase($event)">
+<div class="bo-polaroid">
+  <img class="bo-centered-and-cropped" 
+        [src]="previewData"
+        style="width:100%;height:100%"
+        *ngIf="previewData">
+    <img class="bo-centered-and-cropped"
+        src="imageData"
+        style="width:100%;height:100%"
+        *ngIf="!previewData">
 </div>
-
-<div>
-Response: {{ uploadFile | json }}
+<div class="bo-container" *ngIf="previewData && !response">
+  <input 
+      id="upload"
+      type="text"
+      class="inputfile"
+      (click)="startUpload()" >
+  <label for="upload"><strong>Upload</strong></label>
+  <!--<button class="button" (click)="startUpload()" *ngIf="previewData">Save</button>-->
 </div>
+<div class="bo-container" *ngIf="!(previewData && !response) || response">
+  <input 
+      id="file"
+      type="file"
+      class="inputfile"
+      ngFileSelect
+      [options]="extendedoptions" 
+      [events]="uploadEvents"
+      (onUpload)="handleUpload($event)"
+      (onPreviewData)="handlePreviewData($event)">
+  <label for="file"><strong>Browse</strong></label>
+</div>
+<!--<p *ngIf="response">
+  {{ response | json }}
+</p>-->

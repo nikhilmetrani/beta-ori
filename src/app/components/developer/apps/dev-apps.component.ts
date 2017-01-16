@@ -26,9 +26,9 @@ import {DeveloperApplication, DeveloperApplicationsService} from '../../../core'
 })
 export class DeveloperApplicationsComponent implements OnInit {
     query: string = '';
-    queryActive: string = '';
     hideActiveApps: boolean = false;
-
+    uploadURL: string = '/api/0/developer/applications/8a8a98fb597c3fed01597c42e44a0000/image';
+    imageExtensions = ['image/png', 'image/jpg'];
     devAppsObservable: Observable<any>;
     devAppsArray: DeveloperApplication[] = [];
     constructor(private router: Router, private devAppsService: DeveloperApplicationsService) {}

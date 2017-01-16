@@ -43,6 +43,10 @@ export class DeveloperApplicationsService {
             .catch(this.logError);
     }
 
+    getApplicationLogo(appId: string) {
+        return this.http.get(this.appsUrl + 'applications/' + appId + '/image');
+    }
+
     createApplication(developerId: string, application: DeveloperApplication) {
         return this.http.post(this.getApplicationsUrl() + '/create', application);
     }
