@@ -58,6 +58,9 @@ export class ConsumerProfileComponent implements OnInit {
         this.profileService.changeUserPassword(this.currentPassword, this.newPassword).subscribe(
             (response) => {
                 if (response.status === 200) {
+                    this.currentPassword = undefined;
+                    this.newPassword = undefined;
+                    this.confirmedPassword = undefined;
                     this.errorString = undefined;
                     this.successString = 'The password was updated successfully.';
                 }
