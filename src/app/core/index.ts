@@ -51,6 +51,8 @@ export {DeveloperProfileDataResolver} from './services/developer-profile-data.re
 export {CodeDefinitionService} from './services/code-definition.service';
 export {SubscriptionService} from './services/subscription.service';
 export {FeaturedApplicationsService} from './services/featured-applications.service';
+export {ConsumerReviewService} from './services/consumer-review.service';
+
 // Export pipes
 export {CategoryListPipe} from './pipes/category-list.pipe';
 export {DeveloperListPipe} from './pipes/developer-list.pipe';

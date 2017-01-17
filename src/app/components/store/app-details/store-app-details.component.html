@@ -11,7 +11,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 **/
--->
+--> 
 
 <header>
 	<div class="container">
@@ -50,17 +50,6 @@
 							</div>
 						</div>
 				</div>
-				<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-						<div class="card-block">
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">
-								     Write Review</label>
-								<div class="col-xs-5">
-									<!--<input type="text" #description tabindex="1" class="form-control" id="downloadUrl" name="downloadUrl" placeholder="" [(ngModel)]="application.description">-->
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 
 			</div>
@@ -74,12 +63,24 @@
 					<bo-app-subscribe [applicationId]="appid"></bo-app-subscribe>
 				</div>
 				<br><br>
+				
 				<h2>Reviews</h2>
+				<a class="list-group-item list-group-item-action flex-column align-items-start"  *ngIf="isSubscribled">
+
+			    <label>
+				<textarea ng-trim="10" #description id="description" name="description" 
+					placeholder=""  [(ngModel)]="newreview.description">
+				</textarea>
+				</label>
+
+				<button *ngIf="!((newreview.description === 'Post your review here!')||(newreview.description === ''))" type="submit" name="store-details" id="store-details" tabindex="2" class="btn btn-default" 
+						(click)="onSubmitViewDetails('save'); $event.preventDefault()">Save</button>
+				</a>
+	
 				<div class="list-group col-md-5">
 					<bo-review
 						*ngFor="let review of reviewItems"
 						[review]="review">
 					</bo-review>
 				</div>
-	<!--</form>-->
 </section>

@@ -92,3 +92,20 @@ body {
 .redlabel{
 	color: red;
 }
+.textara{
+	color: #00415d;
+	background-color: #fff;
+	border-color: #fff;
+	text-align:left;
+	max-width: 60px; 
+	border: 1.111px*1.111px;
+	margin: 420px * 40px;
+}
+footer {
+    text-align: right;
+}
+footer .icon {
+    width: 64px;
+    height: 64px;
+    margin: 15px;
+}

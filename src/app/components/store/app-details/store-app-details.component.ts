@@ -14,19 +14,22 @@
 * limitations under the License.
 **/
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { StoreApplication, StoreService, Review } from '../../../core';
+import { StoreApplication, StoreService, ConsumerReviewService, Review } from '../../../core';
 
 @Component({
     selector: 'bo-dev-app-details',
     templateUrl: './store-app-details.component.html',
     styleUrls: ['./store-app-details.component.css'],
+    providers: [ConsumerReviewService],
+
 })
 
 
 export class StoreApplicationDetailsComponent implements OnInit {
+    @Input() applicationId: string;
     appid: string;
     application: StoreApplication = {
         rid: undefined,
@@ -37,16 +40,52 @@ export class StoreApplicationDetailsComponent implements OnInit {
         links: [], isFavorite: undefined,
         version: undefined, reviews: []
     };
+    newreview: Review =  { rid: undefined, applicationId: undefined,
+        consumer: { rid: undefined, username: undefined, firstname: undefined,
+        lastname: undefined, email: undefined, authorities: undefined,
+        enabled: undefined }, title: undefined, description: 'Post your review here!',
+        featured: undefined, createBy: undefined, creationDate: undefined
+        };
     devAppObservable: Observable<any>;
     reviewItems: Review[] = [];
-    constructor( private storeService: StoreService, private router: Router ) { }
+    isSubscribled: boolean = false;
+    constructor( private storeService: StoreService, private consumerReviewService: ConsumerReviewService, private router: Router ) { }
 
     ngOnInit() {
         this.appid = localStorage.getItem('rid');
         this.devAppObservable = this.storeService.getApplicationById(localStorage.getItem('rid'));
         this.devAppObservable.subscribe(app => {
-            this.application = app;
-            this.reviewItems = app.reviews;
+           this.application = app;
+           this.reviewItems = app.reviews;
         });
+        this.storeService.checkAppIsSubscibled(this.appid).subscribe(
+            (response) => {
+                if (response.status === 200) {
+                    this.isSubscribled = true;
+                } else {
+                    this.isSubscribled = false;
+                }
+            }
+        );
+    }
+
+   onSubmitViewDetails(event) {
+        if (event === 'save') {
+            if (this.isSubscribled) {
+                this.consumerReviewService.createNewReview(localStorage.getItem('rid'), this.newreview).subscribe(
+                        (response) => {
+                            if (response.status === 400) {
+                                // bad request - Show message
+                            } else {
+                                this.router.navigate(['/store/apps']);
+                            }
+                        }
+                    );
+            }
+        }
+
+        if (event === 'close') {
+            this.router.navigate(['/store/apps']);
+        }
     }
 }
