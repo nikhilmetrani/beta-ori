@@ -63,6 +63,9 @@
 					<bo-app-subscribe [applicationId]="appid"></bo-app-subscribe>
 				</div>
 				<br><br>
+				<section>
+				<bo-app-rate  [applicationId]="appid"></bo-app-rate>
+				</section>
 				
 				<h2>Reviews</h2>
 				<a class="list-group-item list-group-item-action flex-column align-items-start"  *ngIf="isSubscribled">
@@ -75,12 +78,12 @@
 
 				<button *ngIf="!((newreview.description === 'Post your review here!')||(newreview.description === ''))" type="submit" name="store-details" id="store-details" tabindex="2" class="btn btn-default" 
 						(click)="onSubmitViewDetails('save'); $event.preventDefault()">Save</button>
-				</a>
+				</a>			
 	
-				<div class="list-group col-md-5">
+				<div class="list-group col-md-5">					
 					<bo-review
 						*ngFor="let review of reviewItems"
 						[review]="review">
-					</bo-review>
+					</bo-review>					
 				</div>
 </section>

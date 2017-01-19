@@ -34,6 +34,8 @@ import {ConsumerProfileDataResolver} from './services/consumer-profile-data.reso
 import {DeveloperProfileDataResolver} from './services/developer-profile-data.resolver';
 import {SubscriptionService} from './services/subscription.service';
 import {FeaturedApplicationsService} from './services/featured-applications.service';
+import {ApplicationRatingService} from './services/app-rating.service';
+
 
 // Import guards
 import {PublicPageGuard} from './guards/public-page.guard';
@@ -76,7 +78,8 @@ export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOp
     ConsumerProfileDataResolver,
     DeveloperProfileDataResolver,
     SubscriptionService,
-    FeaturedApplicationsService
+    FeaturedApplicationsService,
+    ApplicationRatingService
   ]
 })
 export class BOCoreModule {

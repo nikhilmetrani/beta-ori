@@ -1,0 +1,19 @@
+ <table>    
+      <tr>
+        <td class="block">{{appRateLikeNum}}</td>
+        <td class="block">{{appRateUnlikeNum}}</td>       
+      </tr>
+      <tr>
+        <td class="block">
+            <button type="button" class="btn btn-default btn-sm" (click)="onRateApp('like')"
+            [boLiked]="appRate == 0">
+                <span class="glyphicon glyphicon-thumbs-up"></span> Like
+            </button>         
+        <td class="block">
+            <button type="button" class="btn btn-default btn-sm" (click)="onRateApp('dislike')"
+            [boDisliked]="appRate == 1">
+                <span class="glyphicon glyphicon-thumbs-down" ></span> Unlike
+            </button>
+        </td>       
+      </tr>    
+  </table>

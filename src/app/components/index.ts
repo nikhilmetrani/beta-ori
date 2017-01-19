@@ -56,3 +56,4 @@ export {ConsumerAppsComponent} from './consumer/apps/consumer-apps.component';
 export {ConsumerSubscriptionComponent} from './consumer/subscription/subscription.component';
 
 export {ApplicationSubscriptionComponent} from './store/app-subscribe/app-subscribe.component';
+export {ApplicationRateComponent} from './store/app-rate/app-rate.component';

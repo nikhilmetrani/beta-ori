@@ -45,6 +45,7 @@ import {
   UploadComponent,
   DeveloperWelcomeComponent,
   ApplicationSubscriptionComponent,
+  ApplicationRateComponent,
   ConsumerAppsComponent,
   ConsumerSubscriptionComponent,
   FeaturedAppsComponent,
@@ -56,7 +57,9 @@ import {
   CategoryListPipe,
   ApplicationListPipe,
   FavoriteDirective,
-  HideActiveAppsListPipe
+  HideActiveAppsListPipe,
+  RatingLikedDirective,
+  RatingDislikedDirective
 } from './core';
 
 // import {SignupModule} from './components/signup/signup.module';
@@ -99,11 +102,14 @@ import { routing } from './app.routing';
     DeveloperListPipe,
     CategoryListPipe,
     FavoriteDirective,
+    RatingLikedDirective,
+    RatingDislikedDirective,
     ApplicationListPipe,
     DeveloperWelcomeComponent,
     DeveloperApplicationUpdateComponent,
     HideActiveAppsListPipe,
     ApplicationSubscriptionComponent,
+    ApplicationRateComponent,
     ConsumerAppsComponent,
     ConsumerSubscriptionComponent,
     FeaturedAppsComponent,

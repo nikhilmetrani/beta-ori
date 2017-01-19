@@ -1,0 +1,14 @@
+
+td{
+    margin:5px;
+    width:35px;
+    white-space:nowrap;
+}
+
+.is-liked {
+    color: green;
+}
+
+.is-disliked {
+    color: red;
+}

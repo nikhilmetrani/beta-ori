@@ -29,6 +29,7 @@ import {AboutComponent,
         DeveloperSettingsComponent,
         DeveloperDashboardComponent,
         DeveloperApplicationUpdateComponent,
+        ApplicationRateComponent,
         ConsumerAppsComponent,
         ConsumerProfileComponent,
         ApplicationSubscriptionComponent,
@@ -80,6 +81,12 @@ const routes: Routes = [
         path: 'store/sub',
         component: ApplicationSubscriptionComponent,
         data: { action: 'sub' },
+        canActivate: [PrivatePageGuard]
+      },
+      {
+        path: 'store/rate',
+        component: ApplicationRateComponent,
+        data: { action: 'rate' },
         canActivate: [PrivatePageGuard]
       },
       {
