@@ -14,11 +14,12 @@
 * limitations under the License.
 **/
 
-import {Component, OnInit} from '@angular/core';
-import {StoreService} from '../../../core';
-import {Observable} from 'rxjs/Observable';
-import {ActivatedRoute} from '@angular/router';
-import {StoreApplication, Category} from '../../../core';
+import { AnimationTransitionEvent, Component, OnInit } from '@angular/core';
+import { StoreService } from '../../../core';
+import { Observable } from 'rxjs/Observable';
+import { ActivatedRoute } from '@angular/router';
+import { StoreApplication, Category } from '../../../core';
+import { SidebarModule } from 'ng-sidebar';
 
 @Component({
   selector: 'bo-store-apps',
@@ -40,7 +41,7 @@ export class StoreAppsComponent implements OnInit {
     this.route.params.subscribe(params => {
       let categoryParam = params['category'];
       if (categoryParam && categoryParam !== 'All') {
-        this.category = {id: undefined, name: categoryParam};
+        this.category = { id: undefined, name: categoryParam };
         this.categoryString = categoryParam;
         this.storeItems = this.storeService.getApplicationsByCategory(categoryParam);
       } else {
@@ -72,5 +73,58 @@ export class StoreAppsComponent implements OnInit {
     if (event.keyCode === 13) {
       this.onSearch();
     }
+  }
+
+  private _open: boolean = false;
+  private _positionNum: number = 0;
+  private _closeOnClickOutside: boolean = false;
+  private _showOverlay: boolean = false;
+  private _animate: boolean = true;
+  private _trapFocus: boolean = true;
+  private _autoFocus: boolean = true;
+  private _keyClose: boolean = false;
+
+  private _toggleSidebar() {
+    this._open = !this._open;
+  }
+
+  private _toggleCloseOnClickOutside() {
+    this._closeOnClickOutside = !this._closeOnClickOutside;
+  }
+
+  private _toggleShowOverlay() {
+    this._showOverlay = !this._showOverlay;
+  }
+
+  private _toggleAnimate() {
+    this._animate = !this._animate;
+  }
+
+  private _toggleTrapFocus() {
+    this._trapFocus = !this._trapFocus;
+  }
+
+  private _toggleAutoFocus() {
+    this._autoFocus = !this._autoFocus;
+  }
+
+  private _toggleKeyClose() {
+    this._keyClose = !this._keyClose;
+  }
+
+  private _onOpen() {
+    console.info('Sidebar opened');
+  }
+
+  private _onClose() {
+    console.info('Sidebar closed');
+  }
+
+  private _onAnimationStarted(e: AnimationTransitionEvent) {
+    console.info('Animation started', e);
+  }
+
+  private _onAnimationDone(e: AnimationTransitionEvent) {
+    console.info('Animation done', e);
   }
 }
