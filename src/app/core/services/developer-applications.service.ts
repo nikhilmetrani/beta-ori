@@ -34,7 +34,11 @@ export class DeveloperApplicationsService {
             .catch(this.logError);
     }
 
-
+    getAllActiveApplications(developerId: string) {
+        return this.http.get(this.getAllActiveApplicationsUrl())
+            .map((response) => <DeveloperApplication[]>response.json().applications)
+            .catch(this.logError);
+    }
     getApplicationById(applicationId: string) {
         return this.http.get(this.getApplicationsUrl() + '/' + applicationId)
             .map((response) => {
@@ -91,6 +95,9 @@ export class DeveloperApplicationsService {
         return this.appsUrl + developerId + '/applications';
     }
 
+    getAllActiveApplicationsUrl(): string {
+            return this.appsUrl + 'activeapplications';
+        }
 
     // private extractData(res: Response): DeveloperProfile {
     //     try {
