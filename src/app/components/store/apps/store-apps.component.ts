@@ -34,6 +34,15 @@ export class StoreAppsComponent implements OnInit {
   isAuthenticated: boolean = false;
   keyword: string = '';
 
+  _open: boolean = false;
+  _positionNum: number = 0;
+  _closeOnClickOutside: boolean = false;
+  _showOverlay: boolean = false;
+  _animate: boolean = true;
+  _trapFocus: boolean = true;
+  _autoFocus: boolean = true;
+  _keyClose: boolean = false;
+
   constructor(public storeService: StoreService, private route: ActivatedRoute) {
   }
 
@@ -73,58 +82,5 @@ export class StoreAppsComponent implements OnInit {
     if (event.keyCode === 13) {
       this.onSearch();
     }
-  }
-
-  private _open: boolean = false;
-  private _positionNum: number = 0;
-  private _closeOnClickOutside: boolean = false;
-  private _showOverlay: boolean = false;
-  private _animate: boolean = true;
-  private _trapFocus: boolean = true;
-  private _autoFocus: boolean = true;
-  private _keyClose: boolean = false;
-
-  private _toggleSidebar() {
-    this._open = !this._open;
-  }
-
-  private _toggleCloseOnClickOutside() {
-    this._closeOnClickOutside = !this._closeOnClickOutside;
-  }
-
-  private _toggleShowOverlay() {
-    this._showOverlay = !this._showOverlay;
-  }
-
-  private _toggleAnimate() {
-    this._animate = !this._animate;
-  }
-
-  private _toggleTrapFocus() {
-    this._trapFocus = !this._trapFocus;
-  }
-
-  private _toggleAutoFocus() {
-    this._autoFocus = !this._autoFocus;
-  }
-
-  private _toggleKeyClose() {
-    this._keyClose = !this._keyClose;
-  }
-
-  private _onOpen() {
-    console.info('Sidebar opened');
-  }
-
-  private _onClose() {
-    console.info('Sidebar closed');
-  }
-
-  private _onAnimationStarted(e: AnimationTransitionEvent) {
-    console.info('Animation started', e);
-  }
-
-  private _onAnimationDone(e: AnimationTransitionEvent) {
-    console.info('Animation done', e);
   }
 }
