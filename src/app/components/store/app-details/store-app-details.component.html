@@ -63,7 +63,7 @@
 					<bo-app-subscribe [applicationId]="appid"></bo-app-subscribe>
 				</div>
 				<br><br>
-				<section>
+				<section *ngIf="isSubscribled">
 				<bo-app-rate  [applicationId]="appid"></bo-app-rate>
 				</section>
 				
