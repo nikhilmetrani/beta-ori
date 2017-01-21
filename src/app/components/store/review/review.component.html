@@ -4,5 +4,5 @@
     <!--Content-->
     <p class="list-group-item-text">{{review.description}}</p>
     <!--Metadata-->
-    <small class="text-muted">By: {{review.createBy}}, On: {{review.creationDate}}</small>
+    <small class="text-muted">By: {{review.createBy}}, On: {{review.creationDate | date:'MM/dd/yyyy @ h:mma'}}</small>
 </a>
