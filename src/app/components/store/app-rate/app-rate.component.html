@@ -5,12 +5,13 @@
       </tr>
       <tr>
         <td class="block">
-            <button type="button" class="btn btn-default btn-sm" (click)="onRateApp('like')"
+            <button type="button" class="btn btn-default btn-xs" (click)="onRateApp('like')"
             [boLiked]="appRate == 0">
                 <span class="glyphicon glyphicon-thumbs-up"></span> Like
-            </button>         
+            </button>
+        </td>
         <td class="block">
-            <button type="button" class="btn btn-default btn-sm" (click)="onRateApp('dislike')"
+            <button type="button" class="btn btn-default btn-xs" (click)="onRateApp('dislike')"
             [boDisliked]="appRate == 1">
                 <span class="glyphicon glyphicon-thumbs-down" ></span> Unlike
             </button>
