@@ -14,12 +14,12 @@
 * limitations under the License.
 **/
 
-import { AnimationTransitionEvent, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../../../core';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
 import { StoreApplication, Category } from '../../../core';
-import { SidebarModule } from 'ng-sidebar';
+
 
 @Component({
   selector: 'bo-store-apps',
