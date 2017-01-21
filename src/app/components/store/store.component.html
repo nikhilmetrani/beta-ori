@@ -17,10 +17,11 @@
 -->
 
 <header>
-  <bo-store-navbar></bo-store-navbar>
+  <bo-store-navbar *ngIf="!isRunningInClient"></bo-store-navbar>
 </header>
-
+<br *ngIf="isRunningInClient">
 <div class="container">
+    <bo-store-searchbar *ngIf="isRunningInClient"></bo-store-searchbar>
     <div class="container-fluid">
         <router-outlet></router-outlet>
     </div>

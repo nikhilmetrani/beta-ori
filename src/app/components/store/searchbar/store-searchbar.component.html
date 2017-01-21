@@ -1,21 +1,21 @@
-<form class="navbar-form" role="search">		
-    <div class="input-group">		
-        <input type="text" class="form-control"
-            placeholder="Search store..."
-            name="q"
-            [(ngModel)]="query"
-            (keydown)="onKeyEvent($event);">
-        <span class="input-group-btn">
-          <button class="btn btn-default"
-            *ngIf="query"
-            type="button"
-            (click)="onClearSearch(); $event.preventDefault()">
-            <i class="glyphicon glyphicon-remove"></i>
-          </button>	
-          <button class="btn btn-default" type="button"
-                (click)="onSearch()">		
-            <i class="glyphicon glyphicon-search"></i>		
-          </button>		
-        </span>		
-    </div>		
-</form>	
+<!--<form class="navbar-form" role="search">-->
+<div class="input-group">		
+    <input type="text" class="form-control"
+        placeholder="Search store..."
+        name="q"
+        [(ngModel)]="query"
+        (keydown)="onKeyEvent($event);">
+    <span class="input-group-btn">
+        <button class="btn btn-default"
+        *ngIf="query"
+        type="button"
+        (click)="onClearSearch(); $event.preventDefault()">
+        <i class="glyphicon glyphicon-remove"></i>
+        </button>	
+        <button class="btn btn-default" type="button"
+            (click)="onSearch()">		
+        <i class="glyphicon glyphicon-search"></i>		
+        </button>		
+    </span>		
+</div>		
+<!--</form>	-->
