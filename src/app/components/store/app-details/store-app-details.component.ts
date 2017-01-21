@@ -77,7 +77,8 @@ export class StoreApplicationDetailsComponent implements OnInit {
                             if (response.status === 400) {
                                 // bad request - Show message
                             } else {
-                                this.router.navigate(['/store/apps']);
+                                this.router.navigate(['/store/app/details']);
+                                location.reload();
                             }
                         }
                     );
