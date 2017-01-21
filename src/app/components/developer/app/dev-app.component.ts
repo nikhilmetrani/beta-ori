@@ -109,8 +109,8 @@ export class DeveloperApplicationComponent implements OnInit {
         } else if (event === 'close') {
             this.router.navigate(['/developer/apps']);
         } else {
-            var downloadUrlFound = false;
-            for (var i = 0; i < this.newApplication.installers.length; i++) {
+            let downloadUrlFound = false;
+            for (let i = 0; i < this.newApplication.installers.length; i++) {
                 if (this.newApplication.installers[i].downloadUrl !== '' && this.newApplication.installers[i].downloadUrl) {
                     downloadUrlFound = true;
                 }
