@@ -75,6 +75,7 @@ export class DeveloperApplicationComponent implements OnInit {
 
     nameIsUnique: boolean = true;
     selectedAll: boolean = false;
+    downlodUrlValidation: boolean = false;
 
     constructor(private developerAppsService: DeveloperApplicationsService, private codeService: CodeDefinitionService,
         private router: Router) { }
@@ -108,6 +109,18 @@ export class DeveloperApplicationComponent implements OnInit {
         } else if (event === 'close') {
             this.router.navigate(['/developer/apps']);
         } else {
+            var downloadUrlFound = false;
+            for (var i = 0; i < this.newApplication.installers.length; i++) {
+                if (this.newApplication.installers[i].downloadUrl !== '' && this.newApplication.installers[i].downloadUrl) {
+                    downloadUrlFound = true;
+                }
+            }
+            if (downloadUrlFound === true) {
+                this.downlodUrlValidation = false;
+            } else {
+                this.downlodUrlValidation = true;
+                return false;
+            }
             this.developerAppsService.createApplication(localStorage.getItem('uid'), this.newApplication).subscribe(
                 (response) => {
                     if (response.status === 200) {
