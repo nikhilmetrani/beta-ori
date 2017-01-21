@@ -34,14 +34,14 @@ export class StoreAppsComponent implements OnInit {
   isAuthenticated: boolean = false;
   keyword: string = '';
 
-  _open: boolean = false;
-  _positionNum: number = 0;
-  _closeOnClickOutside: boolean = false;
-  _showOverlay: boolean = false;
-  _animate: boolean = true;
-  _trapFocus: boolean = true;
-  _autoFocus: boolean = true;
-  _keyClose: boolean = false;
+  // _open: boolean = false;
+  // _positionNum: number = 0;
+  // _closeOnClickOutside: boolean = false;
+  // _showOverlay: boolean = false;
+  // _animate: boolean = true;
+  // _trapFocus: boolean = true;
+  // _autoFocus: boolean = true;
+  // _keyClose: boolean = false;
 
   constructor(public storeService: StoreService, private route: ActivatedRoute) {
   }
@@ -58,8 +58,8 @@ export class StoreAppsComponent implements OnInit {
         this.categoryString = 'All';
         this.storeItems = this.storeService.getApplications();
       }
-      this.storeItems.forEach(next => this.storeItemsArray = next);
     });
+    this.storeItems.subscribe(next => this.storeItemsArray = next);
   }
 
   onClearSearch() {
@@ -68,14 +68,19 @@ export class StoreAppsComponent implements OnInit {
   }
 
   onSearch() {
-    console.log(this.category);
     if (this.category && this.category.name && this.category.name !== 'All') {
-      this.storeItems = this.storeService.searchApplicationsByCategory(this.category.name, this.keyword);
+      if (this.keyword === '' || this.keyword === undefined) {
+        this.storeItems = this.storeService.getApplicationsByCategory(this.category.name);
+      } else {
+        this.storeItems = this.storeService.searchApplicationsByCategory(this.category.name, this.keyword);
+      }
     } else {
-      console.log('else block');
-      this.storeItems = this.storeService.searchApplications(this.keyword);
+      if (this.keyword === '' || this.keyword === undefined) {
+        this.storeItems = this.storeService.getApplications();
+      } else {
+        this.storeItems = this.storeService.searchApplications(this.keyword);
+      }
     }
-    this.storeItems.forEach(next => this.storeItemsArray = next);
   }
 
   onKeyEvent(event) {

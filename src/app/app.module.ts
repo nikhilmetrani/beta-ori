@@ -22,7 +22,6 @@ import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { UPLOAD_DIRECTIVES } from 'ng2-uploader/ng2-uploader';
 import { MyDatePickerModule } from 'mydatepicker';
-import { SidebarModule } from 'ng-sidebar';
 
 import {
   AboutComponent,
@@ -77,8 +76,7 @@ import { routing } from './app.routing';
     MyDatePickerModule,
     ReactiveFormsModule,
     routing,
-    BOCoreModule,
-    SidebarModule
+    BOCoreModule
   ],
   declarations: [
     UPLOAD_DIRECTIVES,

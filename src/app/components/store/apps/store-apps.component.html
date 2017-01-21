@@ -22,18 +22,7 @@
     <h2>Category > {{categoryString}}</h2>
     <div>Developers > {{ storeItemsArray | boDeveloperList }}</div>
 </header>-->
-<ng-sidebar [(opened)]="_open" keyClose="true" defaultStyles="true" position="left" closeOnClickOutside="true" showOverlay="true"
-    animate="true" trapFocus="false" autoFocus="true" sidebarClass="'demo-sidebar'" ariaLabel="'My sidebar'" (onOpen)="_onOpen()"
-    (onClose)="_onClose()" (onAnimationStarted)="_onAnimationStarted($event)" (onAnimationDone)="_onAnimationDone($event)">
-    <p>Sidebar contents</p>
 
-    <button class="demo-control" (click)="_toggleSidebar()">Close sidebar</button>
-    <p><a closeSidebar>This will close the sidebar too</a></p>
-</ng-sidebar>
-
-<header class="demo-header">
-    <span style="font-size:20px;cursor:pointer" (click)="_toggleSidebar()">&#9776; </span>
-</header>
 <form class="form-horizontal">
     <div class="form-group">
         <div class="input-group">
