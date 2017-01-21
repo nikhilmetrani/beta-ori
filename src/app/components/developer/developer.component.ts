@@ -46,7 +46,6 @@ export class DeveloperComponent implements OnInit {
             if (this.isSignedIn) { // We are now logged in. Let's get the user name.
                 this.userService.get('user').subscribe((user) => {
                     this.userName = user.username;
-                    console.log(user);
                 });
             }
         });

@@ -61,6 +61,7 @@ describe('CategoryListPipe Tests', () => {
 
     it('Should return comma separated string of categories', () => {
         let result = pipe.transform(storeApps);
-        expect(result).toEqual(storeApps[0].category.name + ', ' + storeApps[1].category.name);
+        expect(result[0]).toEqual(storeApps[0].category.name);
+        expect(result[1]).toEqual(storeApps[1].category.name);
     });
 });

@@ -50,7 +50,10 @@ import {
   ConsumerSubscriptionComponent,
   FeaturedAppsComponent,
   StoreApplicationDetailsComponent,
-  ReviewComponent
+  ReviewComponent,
+  StoreLandingComponent,
+  StoreSearchBarComponent,
+  StoreSearchViewComponent
 } from './components';
 import {
   DeveloperListPipe,
@@ -59,7 +62,8 @@ import {
   FavoriteDirective,
   HideActiveAppsListPipe,
   RatingLikedDirective,
-  RatingDislikedDirective
+  RatingDislikedDirective,
+  AppCategoryFilterPipe
 } from './core';
 
 // import {SignupModule} from './components/signup/signup.module';
@@ -101,6 +105,7 @@ import { routing } from './app.routing';
     DeveloperNavbarComponent,
     DeveloperListPipe,
     CategoryListPipe,
+    AppCategoryFilterPipe,
     FavoriteDirective,
     RatingLikedDirective,
     RatingDislikedDirective,
@@ -114,7 +119,10 @@ import { routing } from './app.routing';
     ConsumerSubscriptionComponent,
     FeaturedAppsComponent,
     StoreApplicationDetailsComponent,
-    ReviewComponent
+    ReviewComponent,
+    StoreLandingComponent,
+    StoreSearchBarComponent,
+    StoreSearchViewComponent
   ],
   providers: [
     ENV_PROVIDERS

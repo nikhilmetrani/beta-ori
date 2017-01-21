@@ -14,22 +14,25 @@
 * limitations under the License.
 **/
 
-import {Pipe, PipeTransform} from '@angular/core';
+import {Injectable, Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-    name: 'boCategoryList'
+    name: 'boAppCategoryFilter'
 })
-export class CategoryListPipe implements PipeTransform {
-    transform(storeItems) {
-        if (storeItems === null) {
+
+@Injectable()
+export class AppCategoryFilterPipe implements PipeTransform {
+    transform(storeItems, category: String) {
+        if (storeItems === null || category === undefined) {
             return storeItems;
         }
-        let categories = [];
+        let query = category.toLocaleLowerCase();
+        let filtered = [];
         storeItems.forEach(application => {
-            if (categories.indexOf(application.category.name) <= -1) {
-                categories.push(application.category.name);
+            if (application.category.name.toLocaleLowerCase() === query) {
+                filtered.push(application);
             }
         });
-        return categories;
+        return filtered;
     }
 }

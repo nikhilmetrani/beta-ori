@@ -14,22 +14,10 @@
 * limitations under the License.
 **/
 
-import {Pipe, PipeTransform} from '@angular/core';
+import { Component } from '@angular/core';
 
-@Pipe({
-    name: 'boCategoryList'
+@Component({
+  selector: 'bo-store-landing',
+  templateUrl: './store-landing.component.html',
 })
-export class CategoryListPipe implements PipeTransform {
-    transform(storeItems) {
-        if (storeItems === null) {
-            return storeItems;
-        }
-        let categories = [];
-        storeItems.forEach(application => {
-            if (categories.indexOf(application.category.name) <= -1) {
-                categories.push(application.category.name);
-            }
-        });
-        return categories;
-    }
-}
+export class StoreLandingComponent { }

@@ -49,6 +49,9 @@ export {StoreAppsComponent} from './store/apps/store-apps.component';
 export {FeaturedAppsComponent} from './store/featured-apps/featured-apps.component';
 export {StoreApplicationDetailsComponent} from './store/app-details/store-app-details.component';
 export {ReviewComponent} from './store/review/review.component';
+export {StoreLandingComponent} from './store/landing/store-landing.component';
+export {StoreSearchBarComponent} from './store/searchbar/store-searchbar.component';
+export {StoreSearchViewComponent} from './store/search-view/store-search-view.component';
 
 // Consumer
 export {ConsumerProfileComponent} from './consumer/profile/consumer-profile.component';

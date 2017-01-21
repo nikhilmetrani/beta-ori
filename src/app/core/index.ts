@@ -61,6 +61,7 @@ export {CategoryListPipe} from './pipes/category-list.pipe';
 export {DeveloperListPipe} from './pipes/developer-list.pipe';
 export {ApplicationListPipe} from './pipes/application-list.pipe';
 export {HideActiveAppsListPipe} from './pipes/hide-active-apps-list.pipe';
+export {AppCategoryFilterPipe} from './pipes/app-category-filter.pipe';
 
 // Export directives
 export {FavoriteDirective} from './directives/favorite.directive';

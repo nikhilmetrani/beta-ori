@@ -19,7 +19,6 @@ import { RouterModule, Routes } from '@angular/router';
 import {AboutComponent,
         LoginComponent,
         StoreComponent,
-        StoreAppsComponent,
         DeveloperComponent,
         DeveloperApplicationComponent,
         DeveloperApplicationDetailsComponent,
@@ -33,7 +32,9 @@ import {AboutComponent,
         ConsumerAppsComponent,
         ConsumerProfileComponent,
         ApplicationSubscriptionComponent,
-        StoreApplicationDetailsComponent
+        StoreApplicationDetailsComponent,
+        StoreLandingComponent,
+        StoreSearchViewComponent
         } from './components';
 
 import { PublicPageGuard, PrivatePageGuard, DeveloperProfileDataResolver, ConsumerProfileDataResolver} from './core';
@@ -130,7 +131,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: StoreAppsComponent
+        component: StoreLandingComponent
+      },
+      {
+        path: 'search',
+        component: StoreSearchViewComponent
       },
       {
         path: 'profile',

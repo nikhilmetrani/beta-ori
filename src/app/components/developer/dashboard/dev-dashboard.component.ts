@@ -83,16 +83,12 @@ export class DeveloperDashboardComponent implements OnInit {
     }
 
     onStartDateChanged(event: any) {
-        console.log('onStartDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(),
-            ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
         if (event.formatted !== '') {
             this.selectedStartDate = event.formatted;
         }
     }
 
     onEndDateChanged(event: any) {
-        console.log('onEndDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(),
-            ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
         if (event.formatted !== '') {
             this.selectedEndDate = event.formatted;
         }

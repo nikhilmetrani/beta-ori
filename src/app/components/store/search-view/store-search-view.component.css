@@ -38,13 +38,13 @@ header > h2 {
 header > h2.error {
     color: #d93a3e;
 }
-div {
+section {
     flex: 1;
     display: flex;
     flex-flow: row wrap;
     align-content: flex-start;
 }
-div > bo-application {
+section > bo-application {
     margin: 10px;
 }
 footer {

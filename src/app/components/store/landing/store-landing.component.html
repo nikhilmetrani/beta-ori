@@ -1,3 +1,4 @@
+<!--
 /**
 * Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
@@ -13,23 +14,12 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 **/
+-->
 
-import {Pipe, PipeTransform} from '@angular/core';
-
-@Pipe({
-    name: 'boCategoryList'
-})
-export class CategoryListPipe implements PipeTransform {
-    transform(storeItems) {
-        if (storeItems === null) {
-            return storeItems;
-        }
-        let categories = [];
-        storeItems.forEach(application => {
-            if (categories.indexOf(application.category.name) <= -1) {
-                categories.push(application.category.name);
-            }
-        });
-        return categories;
-    }
-}
+<section>
+    <bo-featured-apps></bo-featured-apps>
+</section>
+<br>
+<section>
+    <bo-store-apps></bo-store-apps>
+</section>

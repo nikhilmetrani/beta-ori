@@ -38,4 +38,7 @@ export class FeaturedAppsComponent implements OnInit {
       this.featureItems.subscribe(next => this.featureItemsArray = next);
     });
   }
+  viewApplicationDetails(rid) {
+    localStorage.setItem('rid', rid);
+  }
 }

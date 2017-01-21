@@ -18,7 +18,8 @@
                         <img class="img-feature" src="./image4.jpg" alt="{{application.name}}" style="width:936px;height:300px;">
                         <div class="header-text hidden-xs">
                             <div class="col-md-12 text-center">
-                                <h2><span><strong>{{application.name}}</strong></span></h2>
+                                <h2><span><a [routerLink]="'/store/app/details'" (click)="viewApplicationDetails(application.rid)">{{application.name}}</a></span></h2>
+                                <br>
                                 <section>
                                     <div class="col-md-12 left">
                                         <bo-app-subscribe [applicationId]="application.rid"></bo-app-subscribe>

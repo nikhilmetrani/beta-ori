@@ -61,31 +61,4 @@ export class StoreAppsComponent implements OnInit {
     });
     this.storeItems.subscribe(next => this.storeItemsArray = next);
   }
-
-  onClearSearch() {
-    this.keyword = '';
-    this.ngOnInit();
-  }
-
-  onSearch() {
-    if (this.category && this.category.name && this.category.name !== 'All') {
-      if (this.keyword === '' || this.keyword === undefined) {
-        this.storeItems = this.storeService.getApplicationsByCategory(this.category.name);
-      } else {
-        this.storeItems = this.storeService.searchApplicationsByCategory(this.category.name, this.keyword);
-      }
-    } else {
-      if (this.keyword === '' || this.keyword === undefined) {
-        this.storeItems = this.storeService.getApplications();
-      } else {
-        this.storeItems = this.storeService.searchApplications(this.keyword);
-      }
-    }
-  }
-
-  onKeyEvent(event) {
-    if (event.keyCode === 13) {
-      this.onSearch();
-    }
-  }
 }
