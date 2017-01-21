@@ -68,6 +68,7 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
     };
     // categoryArray: Code[] = [];
     // categoryObservable: Observable<any>;
+    downlodUrlValidation: boolean = false;
 
 
     constructor(private developerAppsService: DeveloperApplicationsService,
@@ -79,6 +80,18 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
 
     onSubmitCreateApplicationUpdate(event) {
         if (event === 'create') {
+            let downloadUrlFound = false;
+            for (let i = 0; i < this.newApplication.installers.length; i++) {
+                if (this.newApplication.installers[i].downloadUrl !== '' && this.newApplication.installers[i].downloadUrl) {
+                    downloadUrlFound = true;
+                }
+            }
+            if (downloadUrlFound === true) {
+                this.downlodUrlValidation = false;
+            } else {
+                this.downlodUrlValidation = true;
+                return false;
+            }
             this.developerAppsService.createApplicationUpdate(
                 localStorage.getItem('uid'),
                 localStorage.getItem('appid'),
