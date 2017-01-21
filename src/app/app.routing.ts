@@ -146,8 +146,7 @@ const routes: Routes = [
       {
         path: 'app/details',
         component: StoreApplicationDetailsComponent,
-        data: { action: 'details' },
-        canActivate: [PrivatePageGuard]
+        data: { action: 'details' }
       },
       { path: '**', redirectTo: ''}
     ]
