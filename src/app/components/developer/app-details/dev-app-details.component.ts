@@ -30,32 +30,34 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
     devAppObservable: Observable<any>;
     application: DeveloperApplication = {
         rid: undefined,
-        description: undefined, category: {id: undefined, name: undefined},
+        description: undefined, category: { id: undefined, name: undefined },
         whatsNew: undefined, developer: undefined,
         name: undefined, state: undefined,
         version: undefined, installers: [
-        {
-            rid: undefined,
-            platform: undefined, os: undefined,
-            downloadUrl: undefined, expressInstallCommand: undefined,
-            selected: false
-        }
-    ]};
+            {
+                rid: undefined,
+                platform: undefined, os: undefined,
+                downloadUrl: undefined, expressInstallCommand: undefined,
+                selected: false
+            }
+        ]
+    };
     categoryArray: Code[] = [];
     categoryObservable: Observable<any>;
     nameIsUnique: boolean = true;
     originalAppName: string = '';
     $index: any;
+    downlodUrlValidation: boolean = false;
 
     constructor(private developerAppsService: DeveloperApplicationsService,
-                private codeService: CodeDefinitionService,
-                private router: Router) { }
+        private codeService: CodeDefinitionService,
+        private router: Router) { }
 
     ngOnInit() {
         this.devAppObservable = this.developerAppsService.getApplicationById(this.appID);
         this.devAppObservable.forEach(next => {
             this.application = next;
-            this.originalAppName =  this.application.name;
+            this.originalAppName = this.application.name;
         });
         this.categoryObservable = this.codeService.getCategoryCodes();
         this.categoryObservable.forEach(next => this.categoryArray = next);
@@ -78,6 +80,18 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
 
     onSubmitViewDetails(event) {
         if (event === 'save') {
+            let downloadUrlFound = false;
+            for (let i = 0; i < this.application.installers.length; i++) {
+                if (this.application.installers[i].downloadUrl !== '' && this.application.installers[i].downloadUrl) {
+                    downloadUrlFound = true;
+                }
+            }
+            if (downloadUrlFound === true) {
+                this.downlodUrlValidation = false;
+            } else {
+                this.downlodUrlValidation = true;
+                return false;
+            }
             if (this.nameIsUnique === true) {
                 this.developerAppsService.updateDeveloperApplication(localStorage.getItem('appid'), this.application).subscribe(
                     (response) => {
