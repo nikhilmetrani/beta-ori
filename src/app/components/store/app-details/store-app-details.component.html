@@ -67,17 +67,22 @@
 				<bo-app-rate  [applicationId]="appid"></bo-app-rate>
 				</section>
 				
-				<h2>Reviews</h2>
+				<h2 ng-show="edit">Reviews</h2>
 				<a class="list-group-item list-group-item-action flex-column align-items-start"  *ngIf="isSubscribled">
+					<label>
+					<textarea ng-trim="10" #title id="title" name="title" 
+						placeholder="Title"  [(ngModel)]="newreview.title">
+					</textarea>					
+					</label>
+					<br>
+					<label>
+					<textarea ng-trim="10" #description id="description" name="description" 
+						placeholder="Post your review here!"  [(ngModel)]="newreview.description" ng-disabled="!edit">
+					</textarea>
+					</label>
 
-			    <label>
-				<textarea ng-trim="10" #description id="description" name="description" 
-					placeholder=""  [(ngModel)]="newreview.description">
-				</textarea>
-				</label>
-
-				<button *ngIf="!((newreview.description === 'Post your review here!')||(newreview.description === ''))" type="submit" name="store-details" id="store-details" tabindex="2" class="btn btn-default" 
-						(click)="onSubmitViewDetails('save'); $event.preventDefault()">Save</button>
+					<button *ngIf="newreview.title && newreview.description" type="submit" name="store-details" id="store-details" tabindex="2" class="btn btn-default" 
+							(click)="onSubmitViewDetails('save'); $event.preventDefault()">&#10004;Save</button>
 				</a>			
 	
 				<div class="list-group col-md-5">					

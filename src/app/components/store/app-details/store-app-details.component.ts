@@ -43,7 +43,7 @@ export class StoreApplicationDetailsComponent implements OnInit {
     newreview: Review =  { rid: undefined, applicationId: undefined,
         consumer: { rid: undefined, username: undefined, firstname: undefined,
         lastname: undefined, email: undefined, authorities: undefined,
-        enabled: undefined }, title: undefined, description: 'Post your review here!',
+        enabled: undefined }, title: undefined, description: undefined,
         featured: undefined, createBy: undefined, creationDate: undefined
         };
     devAppObservable: Observable<any>;
