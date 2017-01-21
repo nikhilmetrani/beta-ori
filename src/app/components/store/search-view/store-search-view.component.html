@@ -17,19 +17,9 @@
 -->
 
 <div class="row">
-    <div class="panel panel-default col-md-2">
-        <div class="panel-heading">Categories</div>
-        <div class="panel-body">
-        <ul class="nav nav-pills nav-stacked">
-            <li class="active">
-                <a href="#all" (click)="selectCategory('all')" data-toggle="pill">Show All</a>
-            </li>
-            <li *ngFor="let category of storeItems | async | boCategoryList">
-                <a href="#category" (click)="selectCategory(category)" data-toggle="pill">{{category}}</a>
-            </li>
-        </ul>
-        </div>
-    </div>
+    <bo-browse-list [browseItems]="storeItems | async | boCategoryList"
+                    [title]="'Categories'"
+                    (itemSelected)="selectCategory($event)"></bo-browse-list>
     <div class="tab-content col-md-10">
         <h3 *ngIf="errorMessage !== undefined">{{errorMessage}}</h3>
         <section>

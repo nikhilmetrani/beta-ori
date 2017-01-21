@@ -52,6 +52,7 @@ export {ReviewComponent} from './store/review/review.component';
 export {StoreLandingComponent} from './store/landing/store-landing.component';
 export {StoreSearchBarComponent} from './store/searchbar/store-searchbar.component';
 export {StoreSearchViewComponent} from './store/search-view/store-search-view.component';
+export {StoreBrowseListComponent} from './store/browse-list/store-browse-list.component';
 
 // Consumer
 export {ConsumerProfileComponent} from './consumer/profile/consumer-profile.component';

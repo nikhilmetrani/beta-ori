@@ -58,10 +58,10 @@ export class StoreSearchViewComponent implements OnInit {
   }
 
   selectCategory(category) {
-    if (category === 'all') {
+    if (category.value === 'all') {
       this.category = undefined;
       return;
     }
-    this.category = category;
+    this.category = category.value;
   }
 }

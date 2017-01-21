@@ -53,7 +53,8 @@ import {
   ReviewComponent,
   StoreLandingComponent,
   StoreSearchBarComponent,
-  StoreSearchViewComponent
+  StoreSearchViewComponent,
+  StoreBrowseListComponent
 } from './components';
 import {
   DeveloperListPipe,
@@ -122,7 +123,8 @@ import { routing } from './app.routing';
     ReviewComponent,
     StoreLandingComponent,
     StoreSearchBarComponent,
-    StoreSearchViewComponent
+    StoreSearchViewComponent,
+    StoreBrowseListComponent
   ],
   providers: [
     ENV_PROVIDERS

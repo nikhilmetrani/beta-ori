@@ -94,38 +94,6 @@
 
 }
 
-.applogo {
-    margin-top: 40px;
-    margin-left: 100px;
-    float: left;
-    width: 100px;
-    height: 100px;
-    background: no-repeat;
-    background-position: center;
-}
-
-.buttonLeft {
-    font: bold normal normal 12px Helvetica;
-    color: #FF7551;
-    width: 80px;
-    line-height: 16px;
-    float: right;
-    padding: 6px;
-    border: 1px solid #FF7551;
-    margin: 8px;
-    text-align: center;
-    border-radius: 2px;
-    background-color: ghostwhite;
-} 
-
-p {
-    font: bold normal normal 12px Helvetica;
-    line-height: 20px;
-    color: black;
-    text-align: left;
-    margin-left: 14px;
-}
-
 .header-text {
   position: absolute;
   top: 20%;
@@ -134,8 +102,4 @@ p {
   width: 96.66666666666666%; 
 }
 
-.header-text h2 {
-  font-size: 40px;
-  color: black;
-}
 
