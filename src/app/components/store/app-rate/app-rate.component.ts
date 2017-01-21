@@ -48,7 +48,7 @@ export class ApplicationRateComponent implements OnInit {
         this.isSignedIn = this.loginService.isSignedIn();
 
         if (this.isSignedIn) {
-             this.storeService.checkAppIsSubscibled(this.applicationId).subscribe(
+             this.storeService.checkAppIsSubscibed(this.applicationId).subscribe(
                 (response) => {
                     if (response.status === 200) {
                         this.isSubscribled = true;

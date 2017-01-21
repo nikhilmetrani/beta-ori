@@ -17,7 +17,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { StoreApplication, StoreService, ConsumerReviewService, Review } from '../../../core';
+import { StoreApplication, StoreService, ConsumerReviewService, LoginService, Review } from '../../../core';
 
 @Component({
     selector: 'bo-dev-app-details',
@@ -49,16 +49,19 @@ export class StoreApplicationDetailsComponent implements OnInit {
     devAppObservable: Observable<any>;
     reviewItems: Review[] = [];
     isSubscribled: boolean = false;
-    constructor( private storeService: StoreService, private consumerReviewService: ConsumerReviewService, private router: Router ) { }
+    isSignedIn: boolean = false;
+    constructor( private storeService: StoreService, private consumerReviewService: ConsumerReviewService, private loginService: LoginService, private router: Router ) { }
 
     ngOnInit() {
+        this.isSignedIn = this.loginService.isSignedIn();
         this.appid = localStorage.getItem('rid');
         this.devAppObservable = this.storeService.getApplicationById(localStorage.getItem('rid'));
         this.devAppObservable.subscribe(app => {
            this.application = app;
            this.reviewItems = app.reviews;
         });
-        this.storeService.checkAppIsSubscibled(this.appid).subscribe(
+        if (this.isSignedIn) {
+            this.storeService.checkAppIsSubscibed(this.appid).subscribe(
             (response) => {
                 if (response.status === 200) {
                     this.isSubscribled = true;
@@ -67,6 +70,7 @@ export class StoreApplicationDetailsComponent implements OnInit {
                 }
             }
         );
+        }        
     }
 
    onSubmitViewDetails(event) {

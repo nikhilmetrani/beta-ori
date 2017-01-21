@@ -48,11 +48,11 @@ export class ApplicationRatingService {
     }
 
     checkUserRate(applicationId: string) {
-        return this.http.post(this.getRateUrl(applicationId) + 'checkUserRate', '');
+        return this.http.get(this.getRateUrl(applicationId) + 'checkUserRate');
     }
 
     getRateLikeNumber(applicationId: string, rateType: string) {
-        return this.http.post(this.getRateUrl(applicationId) + 'getRateLikeNum/' + rateType, '');
+        return this.http.get(this.getRateUrl(applicationId) + 'getRateLikeNum/' + rateType);
     }
 
     updateDeveloperApplication(applicationId: string, application: DeveloperApplication) {

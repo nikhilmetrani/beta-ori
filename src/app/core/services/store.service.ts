@@ -72,8 +72,8 @@ export class StoreService {
             .catch(this.logError);
     }
 
-    checkAppIsSubscibled(applicationId: string) {
-        return this.http.get(this.storeUrlforLoginUser + 'applications/' + applicationId + '/checkAppIsSubscribled');
+    checkAppIsSubscibed(applicationId: string) {
+        return this.http.get(this.storeUrlforLoginUser + 'applications/' + applicationId + '/checkAppIsSubscribed');
     }
 
     getApplicationById(applicationId: string) {
