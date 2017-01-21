@@ -50,7 +50,9 @@ export class StoreApplicationDetailsComponent implements OnInit {
     reviewItems: Review[] = [];
     isSubscribled: boolean = false;
     isSignedIn: boolean = false;
-    constructor( private storeService: StoreService, private consumerReviewService: ConsumerReviewService, private loginService: LoginService, private router: Router ) { }
+    constructor( private storeService: StoreService,
+    private consumerReviewService: ConsumerReviewService,
+    private loginService: LoginService, private router: Router ) { }
 
     ngOnInit() {
         this.isSignedIn = this.loginService.isSignedIn();
@@ -68,9 +70,9 @@ export class StoreApplicationDetailsComponent implements OnInit {
                 } else {
                     this.isSubscribled = false;
                 }
-            }
+         }
         );
-        }        
+        }
     }
 
    onSubmitViewDetails(event) {
