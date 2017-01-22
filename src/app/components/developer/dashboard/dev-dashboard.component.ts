@@ -27,7 +27,7 @@ import {DeveloperApplication, DeveloperApplicationsService, DeveloperReportsServ
 export class DeveloperDashboardComponent implements OnInit {
     query: string = '';
     applicationId: string = '';
-    warningMessage: string = 'd';
+    warningMessage: string = '';
     showWarning: boolean = false;
     selectedEndDate: string = '';
     selectedStartDate: string = '';
@@ -56,13 +56,13 @@ export class DeveloperDashboardComponent implements OnInit {
     }
 
     onSearchReport() {
-        if (this.applicationId == '') {
+        if (this.applicationId === '') {
             this.showWarning = true;
             this.warningMessage = 'Please select an application';
-        } else if (this.selectedStartDate == '') {
+        } else if (this.selectedStartDate === '') {
             this.showWarning = true;
             this.warningMessage = 'Please select the start date';
-        } else if (this.selectedEndDate == '') {
+        } else if (this.selectedEndDate === '') {
             this.showWarning = true;
             this.warningMessage = 'Please select the end date';
         } else if (Number.parseFloat(this.selectedStartDate) >= Number.parseFloat(this.selectedEndDate)) {
