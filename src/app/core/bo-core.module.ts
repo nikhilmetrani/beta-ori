@@ -35,6 +35,7 @@ import {DeveloperProfileDataResolver} from './services/developer-profile-data.re
 import {SubscriptionService} from './services/subscription.service';
 import {FeaturedApplicationsService} from './services/featured-applications.service';
 import {ApplicationRatingService} from './services/app-rating.service';
+import {CategoryService} from './services/category.service';
 
 
 // Import guards
@@ -79,7 +80,8 @@ export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOp
     DeveloperProfileDataResolver,
     SubscriptionService,
     FeaturedApplicationsService,
-    ApplicationRatingService
+    ApplicationRatingService,
+    CategoryService
   ]
 })
 export class BOCoreModule {

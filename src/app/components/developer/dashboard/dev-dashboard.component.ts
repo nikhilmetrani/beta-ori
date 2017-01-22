@@ -27,6 +27,8 @@ import {DeveloperApplication, DeveloperApplicationsService, DeveloperReportsServ
 export class DeveloperDashboardComponent implements OnInit {
     query: string = '';
     applicationId: string = '';
+    warningMessage: string = '';
+    showWarning: boolean = false;
     selectedEndDate: string = '';
     selectedStartDate: string = '';
     totalSubscriptions: number = 0;
@@ -54,32 +56,49 @@ export class DeveloperDashboardComponent implements OnInit {
     }
 
     onSearchReport() {
-        this.devReportsService.findSubscribedUsersPerApplication(this.applicationId, this.selectedStartDate,
-            this.selectedEndDate).subscribe(
-            (response) => {
-                if (response.status === 200) {
-                    this.totalSubscriptions = <number>response.json();
-                }
-            }
-        );
+        if (this.applicationId === '') {
+            this.showWarning = true;
+            this.warningMessage = 'Please select an application';
+        } else if (this.selectedStartDate === '') {
+            this.showWarning = true;
+            this.warningMessage = 'Please select the start date';
+        } else if (this.selectedEndDate === '') {
+            this.showWarning = true;
+            this.warningMessage = 'Please select the end date';
+        } else if (Number.parseFloat(this.selectedStartDate) >= Number.parseFloat(this.selectedEndDate)) {
+            this.showWarning = true;
+            this.warningMessage = 'Please select the correct start date and end date';
+        } else {
+            this.showWarning = false;
+            this.warningMessage = ' ';
 
-        this.devReportsService.findActiveSubscribedUsersPerApplication(this.applicationId, this.selectedStartDate,
-            this.selectedEndDate).subscribe(
-            (response) => {
-                if (response.status === 200) {
-                    this.activeSubscriptions = <number>response.json();
+            this.devReportsService.findSubscribedUsersPerApplication(this.applicationId, this.selectedStartDate,
+                this.selectedEndDate).subscribe(
+                (response) => {
+                    if (response.status === 200) {
+                        this.totalSubscriptions = <number>response.json();
+                    }
                 }
-            }
-        );
+            );
 
-        this.devReportsService.findTerminatedSubscribedUsersPerApplication(this.applicationId, this.selectedStartDate,
-            this.selectedEndDate).subscribe(
-            (response) => {
-                if (response.status === 200) {
-                    this.terminatedSubscriptions = <number>response.json();
+            this.devReportsService.findActiveSubscribedUsersPerApplication(this.applicationId, this.selectedStartDate,
+                this.selectedEndDate).subscribe(
+                (response) => {
+                    if (response.status === 200) {
+                        this.activeSubscriptions = <number>response.json();
+                    }
                 }
-            }
-        );
+            );
+
+            this.devReportsService.findTerminatedSubscribedUsersPerApplication(this.applicationId, this.selectedStartDate,
+                this.selectedEndDate).subscribe(
+                (response) => {
+                    if (response.status === 200) {
+                        this.terminatedSubscriptions = <number>response.json();
+                    }
+                }
+            );
+        }
     }
 
     onStartDateChanged(event: any) {

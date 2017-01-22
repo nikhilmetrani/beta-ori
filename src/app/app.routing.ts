@@ -34,7 +34,8 @@ import {AboutComponent,
         ApplicationSubscriptionComponent,
         StoreApplicationDetailsComponent,
         StoreLandingComponent,
-        StoreSearchViewComponent
+        StoreSearchViewComponent,
+        CategoryComponent
         } from './components';
 
 import { PublicPageGuard, PrivatePageGuard, DeveloperProfileDataResolver, ConsumerProfileDataResolver} from './core';
@@ -142,6 +143,10 @@ const routes: Routes = [
         component: ConsumerProfileComponent,
         resolve: {profile: ConsumerProfileDataResolver},
         canActivate: [PrivatePageGuard]
+      },
+      {
+        path: 'category',
+        component: CategoryComponent
       },
       {
         path: 'myapps',
