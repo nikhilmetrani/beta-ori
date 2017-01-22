@@ -34,7 +34,7 @@
 				<div class="col-xs-5" *ngIf="!(application.state === 'Active' || application.state === 'Recalled')">
 					<input type="text" #description tabindex="1" class="form-control" id="appName" name="appName" placeholder="" [(ngModel)]="application.name"
 						required (change)="onChangeAppName()">
-					<label class="redlabel" *ngIf="!nameIsUnique">Duplicate name</label>
+					<label class="redlabel" *ngIf="!nameIsUnique">Duplicate Application name already exists</label>
 				</div>
 				<div class="col-xs-5" *ngIf="(application.state === 'Active' || application.state === 'Recalled')">
 					{{application.name}}
