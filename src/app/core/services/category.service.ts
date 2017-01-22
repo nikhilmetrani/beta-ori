@@ -48,8 +48,8 @@ export class CategoryService {
         return this.http.post(this.getCategoryUrl() + '/category/delete', category);
     }
 
-    checkCategoryNameExistsForDeveloper(categoryName: string) {
-        return this.http.get(this.getCategoryUrl() + '/check?name=' + categoryName);
+    checkCategoryNameExists(categoryName: string) {
+        return this.http.get(this.getCategoryUrl() + '/category/check?name=' + categoryName);
     }
 
     logError(err: Response) {

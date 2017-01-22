@@ -41,7 +41,8 @@
 						<label for="example-text-input" class="col-xs-2 col-form-label">&nbsp; Name:</label>
 						<div class="col-xs-5">
 							<input type="text" #name tabindex="1" class="form-control" id="name" name="name" placeholder="" [(ngModel)]="newCategory.name"
-								required>
+								required (change)="onChangeCatName()">
+							<label class="redlabel" *ngIf="!nameIsUnique">Duplicate name</label>
 						</div>
 					</div>
 				</div>
