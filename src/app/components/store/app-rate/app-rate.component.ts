@@ -38,6 +38,8 @@ export class ApplicationRateComponent implements OnInit {
 
     isSubscribled: boolean = false;
     isSignedIn: boolean = false;
+    likeFlag: boolean = true;
+    unlikeFlag: boolean = true;
     constructor(public storeService: StoreService,
                 private router: Router,
                 private loginService: LoginService,
@@ -60,7 +62,7 @@ export class ApplicationRateComponent implements OnInit {
 
             this.applicationRatingService.checkUserRate(this.applicationId).subscribe(
                 (response) => {
-                   this.appRate = response.json();
+                   this.appRate = <string>response.text();
                 }
             );
         }
@@ -84,41 +86,62 @@ export class ApplicationRateComponent implements OnInit {
 
     onRateApp(event) {
         if (event === 'like') {
+            if (!this.isSubscribled) {
+                return;
+            }
+            if (!this.likeFlag) {
+                return;
+            }
+            this.likeFlag = false;
             if (this.appRate === '0') {
-                this.rate.rating = '2';
-                this.appRateLikeNum--;
+                    this.rate.rating = '2';
             }else  {
-                this.rate.rating = '0';
-                if (this.appRate === '1') {
-                    this.appRateLikeNum++;
-                    this.appRateUnlikeNum--;
-                }else  {
-                    this.appRateLikeNum++;
-                }
+                this.rate.rating = '0';               
             }
             this.rate.applicationId = this.applicationId;
             this.applicationRatingService.createReview(this.applicationId, this.rate).subscribe(
             (response) => {
+                if (this.appRate === '0') {
+                    this.appRateLikeNum--;
+                }else  {
+                    if (this.appRate === '1') {
+                        this.appRateLikeNum++;
+                        this.appRateUnlikeNum--;
+                    }else  {
+                        this.appRateLikeNum++;
+                    }
+                }
                 this.appRate = this.rate.rating;
+                this.likeFlag = true;
             });
         }
         if (event === 'dislike') {
+            if (!this.isSubscribled) {
+                return;
+            }
+            if (!this.unlikeFlag) {
+                return;
+            }
             if (this.appRate === '1') {
                 this.rate.rating = '2';
-                this.appRateUnlikeNum--;
             }else {
                 this.rate.rating = '1';
-                 if (this.appRate === '0') {
-                    this.appRateLikeNum--;
-                    this.appRateUnlikeNum++;
-                }else {
-                    this.appRateUnlikeNum++;
-                }
             }
             this.rate.applicationId = this.applicationId;
             this.applicationRatingService.createReview(this.applicationId, this.rate).subscribe(
             (response) => {
+                if (this.appRate === '1') {
+                this.appRateUnlikeNum--;
+                }else {
+                    if (this.appRate === '0') {
+                        this.appRateLikeNum--;
+                        this.appRateUnlikeNum++;
+                    }else {
+                        this.appRateUnlikeNum++;
+                    }
+                 }
                  this.appRate = this.rate.rating;
+                 this.unlikeFlag = true;
             });
         }
     }
