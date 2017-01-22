@@ -54,7 +54,7 @@ export {SubscriptionService} from './services/subscription.service';
 export {FeaturedApplicationsService} from './services/featured-applications.service';
 export {ConsumerReviewService} from './services/consumer-review.service';
 export {ApplicationRatingService} from './services/app-rating.service';
-
+export {CategoryService} from './services/category.service';
 
 // Export pipes
 export {CategoryListPipe} from './pipes/category-list.pipe';
