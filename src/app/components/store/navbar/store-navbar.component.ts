@@ -50,7 +50,7 @@ export class StoreNavbarComponent implements OnInit {
               this.isEmployee = true;
           }
         });
-        //console.log(user.authorities);
+        // console.log(user.authorities);
       });
     }
   }
