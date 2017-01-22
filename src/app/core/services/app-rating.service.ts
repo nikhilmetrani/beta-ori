@@ -52,7 +52,7 @@ export class ApplicationRatingService {
     }
 
     getRateLikeNumber(applicationId: string, rateType: string) {
-        return this.http.get(this.getRateUrl(applicationId) + 'getRateLikeNum/' + rateType);
+        return this.http.get(this.getRateUrlWithNoLogin(applicationId) + 'getRateLikeNum/' + rateType);
     }
 
     updateDeveloperApplication(applicationId: string, application: DeveloperApplication) {
@@ -73,6 +73,10 @@ export class ApplicationRatingService {
 
     getRateUrl(applicationId: string): string {
         return this.appsUrl + applicationId + '/rating/';
+    }
+
+    getRateUrlWithNoLogin(applicationId: string): string {
+        return '/api/1/consumer/' + applicationId + '/rating/';
     }
 
     logError(err: Response) {
