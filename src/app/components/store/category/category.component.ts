@@ -17,7 +17,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Category, Installer, CategoryService, Code, CodeDefinitionService } from '../../../core';
+import { Category, CategoryService, Code, CodeDefinitionService } from '../../../core';
 
 @Component({
     selector: 'bo-category',
@@ -35,7 +35,7 @@ export class CategoryComponent implements OnInit {
     categoryObservable: Observable<any>;
     nameIsUnique: boolean = true;
 
-    constructor(private categoryService: CategoryService, private codeService: CodeDefinitionService, 
+    constructor(private categoryService: CategoryService, private codeService: CodeDefinitionService,
         private router: Router) {}
 
     ngOnInit() {
@@ -47,10 +47,8 @@ export class CategoryComponent implements OnInit {
         });
     }
 
-    selectCategory($event){
-
+    selectCategory($event) {
     }
-    
     onChangeCatName() {
         this.categoryService.checkCategoryNameExists(this.newCategory.name).subscribe(
             (response) => {
@@ -61,7 +59,6 @@ export class CategoryComponent implements OnInit {
                 }
             });
     }
-
     onSubmitCreateCategory(event) {
         if (event === 'create') {
             if (this.nameIsUnique === true) {

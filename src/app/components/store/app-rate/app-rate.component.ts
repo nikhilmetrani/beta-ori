@@ -96,7 +96,7 @@ export class ApplicationRateComponent implements OnInit {
             if (this.appRate === '0') {
                     this.rate.rating = '2';
             }else  {
-                this.rate.rating = '0';               
+                this.rate.rating = '0';
             }
             this.rate.applicationId = this.applicationId;
             this.applicationRatingService.createReview(this.applicationId, this.rate).subscribe(

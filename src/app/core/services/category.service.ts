@@ -43,7 +43,7 @@ export class CategoryService {
     createCategory(category: Category) {
         return this.http.post(this.getCategoryUrl() + '/category/create', category);
     }
-    
+
     deleteCategory(category: Category) {
         return this.http.post(this.getCategoryUrl() + '/category/delete', category);
     }
