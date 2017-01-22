@@ -18,17 +18,21 @@
 
 <header>
 	<div class="container-fluid">
-		<h1>Create New Category</h1>
+		<h1>Category Maintenance</h1>
 	</div>
 </header>
 <section>
+	<bo-browse-list [browseItems]="categoryArray"
+                    [title]="'Categories'"
+                    (itemSelected)="selectCategory($event)">
+	</bo-browse-list>
 	<form id="login-form" #f="ngForm" style="display: block;" (ngSubmit)="onSubmitCreateCategory('create')">
 		<div class="panel-group" id="accordion">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
 						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-							Category</a>
+							Create New</a>
 					</h4>
 				</div>
 				<br/>
@@ -41,17 +45,25 @@
 						</div>
 					</div>
 				</div>
+				<!--<div class="form-group row">
+						<label for="example-text-input" class="col-xs-2 col-form-label">&nbsp; Existing:</label>
+						<div class="col-xs-5">
+							<select #category tabindex="2" class="form-control" id="ExistingCategories" name="ExistingCategories" placeholder="" required>
+								<option *ngFor="let code of categoryArray" [ngValue]="code.name">{{code.value}}</option>
+							</select>
+						</div>
+				</div>	-->
 			</div>
 		</div>
 		<br/><br/>
 		<div class="form-group row">
 			<label for="example-text-input" class="col-xs-2 col-form-label"></label>
 			<div class="col-sm-2 col-sm-offset-1">
-				<button type="submit" name="dev-cat-create" id="dev-cat-create" tabindex="4" class="form-control btn btn-success" [disabled]="!f.valid"
+				<button type="submit" name="dev-cat-create" id="dev-cat-create" tabindex="3" class="form-control btn btn-success" [disabled]="!f.valid"
 					(click)="onSubmitCreateCategory('create'); $event.preventDefault()">Save</button>
 			</div>
 			<div class="col-sm-2 col-sm-offset-1">
-				<button type="submit" name="dev-cat-close" id="dev-cat-close" tabindex="5" class="form-control btn btn-success" (click)="onSubmitCreateCategory('close'); $event.preventDefault()">Close</button>
+				<button type="submit" name="dev-cat-close" id="dev-cat-close" tabindex="4" class="form-control btn btn-success" (click)="onSubmitCreateCategory('close'); $event.preventDefault()">Close</button>
 			</div>
 		</div>
 	</form>

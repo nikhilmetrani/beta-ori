@@ -44,6 +44,10 @@ export class CategoryService {
         return this.http.post(this.getCategoryUrl() + '/category/create', category);
     }
     
+    deleteCategory(category: Category) {
+        return this.http.post(this.getCategoryUrl() + '/category/delete', category);
+    }
+
     checkCategoryNameExistsForDeveloper(categoryName: string) {
         return this.http.get(this.getCategoryUrl() + '/check?name=' + categoryName);
     }

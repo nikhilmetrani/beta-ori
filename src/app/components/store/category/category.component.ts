@@ -17,11 +17,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Category, Installer, CategoryService } from '../../../core';
+import { Category, Installer, CategoryService, Code, CodeDefinitionService } from '../../../core';
 
 @Component({
     selector: 'bo-category',
-    templateUrl: './category.component.html'
+    templateUrl: './category.component.html',
+    providers: [CodeDefinitionService]
 })
 
 export class CategoryComponent implements OnInit {
@@ -29,16 +30,38 @@ export class CategoryComponent implements OnInit {
         id: undefined,
         name: undefined
     };
+
+    categoryArray: Code[] = [];
+    categoryObservable: Observable<any>;
     nameIsUnique: boolean = true;
 
-    constructor(private categoryService: CategoryService, private router: Router) {}
+    constructor(private categoryService: CategoryService, private codeService: CodeDefinitionService, 
+        private router: Router) {}
 
     ngOnInit() {
+        this.categoryObservable = this.codeService.getCategoryCodes();
+        this.categoryObservable.subscribe(categories => {
+            categories.forEach(category => {
+                this.categoryArray.push(category.value);
+            });
+        });
+    }
+
+    selectCategory($event){
+
     }
     
     onSubmitCreateCategory(event) {
         if (event === 'create') {
             this.categoryService.createCategory(this.newCategory).subscribe(
+                (response) => {
+                    if (response.status === 200) {
+                        location.reload();
+                    }
+                }
+            );
+        } else if (event === 'delete') {
+            this.categoryService.deleteCategory(this.newCategory).subscribe(
                 (response) => {
                     if (response.status === 200) {
                         this.router.navigate(['/store/category']);
