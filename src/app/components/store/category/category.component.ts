@@ -51,15 +51,28 @@ export class CategoryComponent implements OnInit {
 
     }
     
+    onChangeCatName() {
+        this.categoryService.checkCategoryNameExists(this.newCategory.name).subscribe(
+            (response) => {
+                if (response.status === 200) {
+                    this.nameIsUnique = false;
+                } else {
+                    this.nameIsUnique = true;
+                }
+            });
+    }
+
     onSubmitCreateCategory(event) {
         if (event === 'create') {
-            this.categoryService.createCategory(this.newCategory).subscribe(
-                (response) => {
-                    if (response.status === 200) {
-                        location.reload();
+            if (this.nameIsUnique === true) {
+                this.categoryService.createCategory(this.newCategory).subscribe(
+                    (response) => {
+                        if (response.status === 200) {
+                            location.reload();
+                        }
                     }
-                }
-            );
+                );
+            }
         } else if (event === 'delete') {
             this.categoryService.deleteCategory(this.newCategory).subscribe(
                 (response) => {
