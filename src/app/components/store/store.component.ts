@@ -45,7 +45,9 @@ export class StoreComponent implements OnInit {
         this.route.queryParams.subscribe(params => {
             let queryParams = params['client'];
             this.isRunningInClient = queryParams === 'copper';
-            localStorage.setItem('client', 'copper');
+            if (this.isRunningInClient) {
+                localStorage.setItem('client', 'copper');
+            }
         });
     }
 
