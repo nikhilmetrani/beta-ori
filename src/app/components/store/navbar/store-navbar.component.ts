@@ -18,6 +18,10 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {LoginService, UserService} from '../../../core';
 
+interface Authority {
+  authority: string;
+}
+
 @Component({
   selector: 'bo-store-navbar',
   templateUrl: 'store-navbar.component.html'
@@ -26,6 +30,7 @@ export class StoreNavbarComponent implements OnInit {
 
   userName: string;
   isSignedIn: boolean;
+  isEmployee: boolean = false;
 
   constructor(private router: Router,
               private loginService: LoginService,
@@ -40,6 +45,12 @@ export class StoreNavbarComponent implements OnInit {
     if (this.isSignedIn) { // We are now logged in. Let's get the user name.
       this.userService.get('user').subscribe((user) => {
         this.userName = user.username;
+        user.authorities.forEach(auth => {
+          if (auth.authority === 'ROLE_MAINTAINER' || auth.authority === 'ROLE_MANAGER') {
+              this.isEmployee = true;
+          }
+        });
+        //console.log(user.authorities);
       });
     }
   }
