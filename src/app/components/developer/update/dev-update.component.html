@@ -71,34 +71,27 @@
 				<div class="col-md-12">
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<form ng-submit="addNew()">
-								<table class="table table-striped table-bordered">
-									<thead>
-										<tr>
-											<th>Platform</th>
-											<th>OS</th>
-											<th>Download Url</th>
-											<th>Express Install Command</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr *ngFor="let installer of newApplication.installers">
-											<td>
-												<label for="example-text-input" class="col-xs-2 col-form-label">{{installer.platform}}</label>
-											</td>
-											<td>
-												<label for="example-text-input" class="col-xs-2 col-form-label">{{installer.os}}</label>
-											</td>
-											<td>
-												<input type="text" #downloadUrl tabindex="1" class="form-control" id="installer.downloadUrl" name="installer.downloadUrl"
-													placeholder="" [(ngModel)]="installer.downloadUrl" required>
-												<td>
-													<input type="text" #expressInstallCommand tabindex="1" class="form-control" id="installer.expressInstallCommand" name="installer.expressInstallCommand"
-														placeholder="" [(ngModel)]="installer.expressInstallCommand" /></td>
-										</tr>
-									</tbody>
-								</table>
-							</form>
+							<h2>Installer configuration</h2>
+							<p>Configure application installers by selecting the platform</p>
+							<ul class="nav nav-pills">
+								<li
+									*ngFor="let installer of newApplication.installers; let i = index; trackBy: $index"
+									[ngClass]="{'active': i == 0}">
+									<a data-toggle="pill"
+									href="#inst{{i}}">
+									{{installer.os}} {{installer.platform}}
+									</a>
+								</li>
+							</ul>
+							<div class="tab-content">
+								<div id="inst{{i}}" class="tab-pane fade in"
+									*ngFor="let installer of newApplication.installers; let i = index; trackBy: $index"
+									[ngClass]="{'active': i == 0}">
+									<bo-dev-app-installer [installer]="installer"
+										[applicationState]="'Staging'"
+										(installerChanged)="installerChanged($event)"></bo-dev-app-installer>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

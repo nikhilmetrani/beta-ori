@@ -22,8 +22,7 @@ import { DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitio
 @Component({
     selector: 'bo-dev-app-details',
     templateUrl: './dev-app-details.component.html',
-    styleUrls: ['./dev-app-details.component.css'],
-    providers: [CodeDefinitionService]
+    styleUrls: ['./dev-app-details.component.css']
 })
 export class DeveloperApplicationDetailsComponent implements OnInit {
     appID: string = localStorage.getItem('appid');
@@ -32,15 +31,8 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
         rid: undefined,
         description: undefined, category: { id: undefined, name: undefined },
         whatsNew: undefined, developer: undefined,
-        name: undefined, state: undefined,
-        version: undefined, installers: [
-            {
-                rid: undefined,
-                platform: undefined, os: undefined,
-                downloadUrl: undefined, expressInstallCommand: undefined,
-                selected: false
-            }
-        ]
+        name: undefined, state: 'Staging',
+        version: undefined, installers: []
     };
     categoryArray: Code[] = [];
     categoryObservable: Observable<any>;
@@ -55,12 +47,12 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
 
     ngOnInit() {
         this.devAppObservable = this.developerAppsService.getApplicationById(this.appID);
-        this.devAppObservable.forEach(next => {
+        this.devAppObservable.subscribe(next => {
             this.application = next;
             this.originalAppName = this.application.name;
         });
         this.categoryObservable = this.codeService.getCategoryCodes();
-        this.categoryObservable.forEach(next => this.categoryArray = next);
+        this.categoryObservable.subscribe(next => this.categoryArray = next);
         this.nameIsUnique = true;
     }
 
@@ -132,5 +124,12 @@ export class DeveloperApplicationDetailsComponent implements OnInit {
         if (event === 'close') {
             this.router.navigate(['/developer/apps']);
         }
+    }
+    installerChanged(inst) {
+        this.application.installers.forEach((part, index, installers) => {
+            if (part.os === inst.os && part.platform === inst.platform) {
+                installers[index] = part;
+            }
+        });
     }
 }

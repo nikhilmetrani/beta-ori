@@ -7,4 +7,6 @@ export interface Installer {
     downloadUrl: string;
     expressInstallCommand: string;
     selected: boolean;
+    launchCommand: string;
+    uninstallCommand: string;
 }

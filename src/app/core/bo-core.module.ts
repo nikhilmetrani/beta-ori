@@ -36,7 +36,7 @@ import {SubscriptionService} from './services/subscription.service';
 import {FeaturedApplicationsService} from './services/featured-applications.service';
 import {ApplicationRatingService} from './services/app-rating.service';
 import {CategoryService} from './services/category.service';
-
+import {CodeDefinitionService} from './services/code-definition.service';
 
 // Import guards
 import {PublicPageGuard} from './guards/public-page.guard';
@@ -81,7 +81,8 @@ export function createJsonHttp(xhrBackend: XHRBackend, requestOptions: RequestOp
     SubscriptionService,
     FeaturedApplicationsService,
     ApplicationRatingService,
-    CategoryService
+    CategoryService,
+    CodeDefinitionService
   ]
 })
 export class BOCoreModule {

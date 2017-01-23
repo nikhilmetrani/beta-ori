@@ -35,7 +35,7 @@ export class DeveloperApplicationsComponent implements OnInit {
 
     ngOnInit() {
         this.devAppsObservable = this.devAppsService.getApplications(localStorage.getItem('uid'));
-        this.devAppsObservable.forEach(next => this.devAppsArray = next);
+        this.devAppsObservable.subscribe(next => this.devAppsArray = next);
     }
 
     createNewApplication() {

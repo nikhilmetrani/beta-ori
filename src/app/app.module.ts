@@ -55,7 +55,8 @@ import {
   StoreSearchBarComponent,
   StoreSearchViewComponent,
   StoreBrowseListComponent,
-  CategoryComponent
+  CategoryComponent,
+  DeveloperAppInstallerComponent
 } from './components';
 import {
   DeveloperListPipe,
@@ -126,7 +127,8 @@ import { routing } from './app.routing';
     StoreSearchBarComponent,
     StoreSearchViewComponent,
     StoreBrowseListComponent,
-    CategoryComponent
+    CategoryComponent,
+    DeveloperAppInstallerComponent
   ],
   providers: [
     ENV_PROVIDERS

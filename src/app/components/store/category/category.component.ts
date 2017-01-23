@@ -21,8 +21,7 @@ import { Category, CategoryService, Code, CodeDefinitionService } from '../../..
 
 @Component({
     selector: 'bo-category',
-    templateUrl: './category.component.html',
-    providers: [CodeDefinitionService]
+    templateUrl: './category.component.html'
 })
 
 export class CategoryComponent implements OnInit {

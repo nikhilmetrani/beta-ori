@@ -17,58 +17,56 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { DeveloperApplication, Installer, DeveloperApplicationsService, Code, CodeDefinitionService } from '../../../core';
+import { DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitionService } from '../../../core';
 
 @Component({
     selector: 'bo-developer-application',
     templateUrl: './dev-app.component.html',
-    styleUrls: ['./dev-app.component.css'],
-    providers: [CodeDefinitionService]
+    styleUrls: ['./dev-app.component.css']
 })
 export class DeveloperApplicationComponent implements OnInit {
     newApplication: DeveloperApplication = {
         rid: undefined,
         description: undefined, category: undefined,
         whatsNew: undefined, developer: undefined,
-        name: undefined, state: undefined,
+        name: undefined, state: 'Staging',
         version: undefined, installers: [
             {
                 rid: undefined,
                 platform: 'x64', os: 'Windows',
                 downloadUrl: undefined, expressInstallCommand: undefined,
+                launchCommand: undefined, uninstallCommand: undefined,
                 selected: false
             },
             {
                 rid: undefined,
                 platform: 'x86', os: 'Windows',
                 downloadUrl: undefined, expressInstallCommand: undefined,
+                launchCommand: undefined, uninstallCommand: undefined,
                 selected: false
             },
             {
                 rid: undefined,
                 platform: 'x64', os: 'Mac',
                 downloadUrl: undefined, expressInstallCommand: undefined,
+                launchCommand: undefined, uninstallCommand: undefined,
                 selected: false
             },
             {
                 rid: undefined,
                 platform: 'x64', os: 'Linux',
                 downloadUrl: undefined, expressInstallCommand: undefined,
+                launchCommand: undefined, uninstallCommand: undefined,
                 selected: false
             },
             {
                 rid: undefined,
                 platform: 'x86', os: 'Linux',
                 downloadUrl: undefined, expressInstallCommand: undefined,
+                launchCommand: undefined, uninstallCommand: undefined,
                 selected: false
             }
         ]
-    };
-    newInstaller: Installer = {
-        rid: undefined,
-        platform: '', os: '',
-        downloadUrl: undefined, expressInstallCommand: undefined,
-        selected: false
     };
     categoryArray: Code[] = [];
     categoryObservable: Observable<any>;
@@ -82,7 +80,7 @@ export class DeveloperApplicationComponent implements OnInit {
 
     ngOnInit() {
         this.categoryObservable = this.codeService.getCategoryCodes();
-        this.categoryObservable.forEach(next => this.categoryArray = next);
+        this.categoryObservable.subscribe(next => this.categoryArray = next);
     }
 
     onChangeAppName() {
@@ -132,46 +130,11 @@ export class DeveloperApplicationComponent implements OnInit {
         }
     }
 
-    onSubmitInstaller(event) {
-        if (event === 'add') {
-            this.newApplication.installers.push({
-                'rid': undefined,
-                'platform': '',
-                'os': '',
-                'downloadUrl': '',
-                'expressInstallCommand': '',
-                selected: false
-            });
-        } else if (event === 'remove') {
-            let newDataList = [];
-            let objDeleted = false;
-            for (let i = 0; i < this.newApplication.installers.length; i++) {
-                if (this.newApplication.installers[i].selected === true) {
-                    newDataList.push(this.newApplication.installers[i]);
-                    this.newApplication.installers[i].selected = false;
-                    objDeleted = true;
-                }
+    installerChanged(inst) {
+        this.newApplication.installers.forEach((part, index, installers) => {
+            if (part.os === inst.os && part.platform === inst.platform) {
+                installers[index] = part;
             }
-            if (newDataList.length > 0) {
-                this.newApplication.installers = newDataList;
-            } else if (objDeleted === true) {
-                this.newApplication.installers = [];
-                this.newApplication.installers.push({
-                    'rid': undefined,
-                    'platform': '',
-                    'os': '',
-                    'downloadUrl': '',
-                    'expressInstallCommand': '',
-                    selected: false
-                });
-            }
-        }
-    }
-
-    checkAll() {
-        this.selectedAll = !this.selectedAll;
-        for (let i = 0; i < this.newApplication.installers.length; i++) {
-            this.newApplication.installers[i].selected = this.selectedAll;
-        }
+        });
     }
 }

@@ -14,11 +14,25 @@
 * limitations under the License.
 **/
 
-import {Component} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Installer } from '../../../core';
 
 @Component({
-    selector: 'bo-dev-welcome',
-    templateUrl: './dev-welcome.component.html'
+    selector: 'bo-dev-app-installer',
+    templateUrl: './dev-app-installer.component.html'
 })
-export class DeveloperWelcomeComponent {
+export class DeveloperAppInstallerComponent {
+    @Input() installer: Installer = undefined;
+    @Output() installerChanged = new EventEmitter();
+    @Input() applicationState: string;
+
+    isReadOnly() {
+        return this.applicationState !== 'Staging';
+    }
+
+    updateInstaller(installer) {
+        this.installerChanged.emit({
+            value: this.installer
+        });
+    }
 }

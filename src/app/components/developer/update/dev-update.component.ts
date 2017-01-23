@@ -16,17 +16,12 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import {Observable} from 'rxjs/Observable';
-// import {DeveloperApplication, DeveloperApplicationsService, Code, CodeDefinitionService} from '../../../core';
 import { DeveloperApplication, DeveloperApplicationsService } from '../../../core';
 
 @Component({
     selector: 'bo-developer-application',
     templateUrl: './dev-update.component.html'
-    //  providers: [CodeDefinitionService]
-
 })
-
 export class DeveloperApplicationUpdateComponent implements OnInit {
     newApplication: DeveloperApplication = {
         rid: undefined,
@@ -38,30 +33,35 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
                 rid: undefined,
                 platform: 'x64', os: 'Windows',
                 downloadUrl: undefined, expressInstallCommand: undefined,
+                launchCommand: undefined, uninstallCommand: undefined,
                 selected: false
             },
             {
                 rid: undefined,
                 platform: 'x86', os: 'Windows',
                 downloadUrl: undefined, expressInstallCommand: undefined,
+                launchCommand: undefined, uninstallCommand: undefined,
                 selected: false
             },
             {
                 rid: undefined,
                 platform: 'x64', os: 'Mac',
                 downloadUrl: undefined, expressInstallCommand: undefined,
+                launchCommand: undefined, uninstallCommand: undefined,
                 selected: false
             },
             {
                 rid: undefined,
                 platform: 'x64', os: 'Linux',
                 downloadUrl: undefined, expressInstallCommand: undefined,
+                launchCommand: undefined, uninstallCommand: undefined,
                 selected: false
             },
             {
                 rid: undefined,
                 platform: 'x86', os: 'Linux',
                 downloadUrl: undefined, expressInstallCommand: undefined,
+                launchCommand: undefined, uninstallCommand: undefined,
                 selected: false
             }
         ]
@@ -108,5 +108,13 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
 
             this.router.navigate(['/developer/details']);
         }
+    }
+
+    installerChanged(inst) {
+        this.newApplication.installers.forEach((part, index, installers) => {
+            if (part.os === inst.os && part.platform === inst.platform) {
+                installers[index] = part;
+            }
+        });
     }
 }

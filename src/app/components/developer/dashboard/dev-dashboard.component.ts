@@ -52,7 +52,7 @@ export class DeveloperDashboardComponent implements OnInit {
 
     ngOnInit() {
         this.devAppsObservable = this.devAppsService.getAllActiveApplications(localStorage.getItem('uid'));
-        this.devAppsObservable.forEach(next => this.devAppsArray = next);
+        this.devAppsObservable.subscribe(next => this.devAppsArray = next);
     }
 
     onSearchReport() {
