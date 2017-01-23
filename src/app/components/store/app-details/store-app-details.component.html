@@ -19,83 +19,88 @@
 	</div>
 </header>
 <section>
-		<div class="container">
-			<div id="accordion" role="tablist" aria-multiselectable="true">
-				<div class="card">
-						<div class="card-block">
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
-								<div class="col-xs-5">
-									{{application.name}}
-								</div>
+	<div class="container">
+		<div id="accordion" role="tablist" aria-multiselectable="true">
+			<div class="card">
+					<div class="card-block">
+						<div class="form-group row">
+							<label for="example-text-input" class="col-xs-2 col-form-label">Name</label>
+							<div class="col-xs-5">
+								{{application.name}}
+							</div>
 
+						</div>
+						<div class="form-group row">
+							<label for="example-text-input" class="col-xs-2 col-form-label">Description</label>
+							<div class="col-xs-5">
+								{{application.description}}
 							</div>
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Description</label>
-								<div class="col-xs-5">
-									{{application.description}}
-								</div>
 
-							</div>
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Developer</label>
-								<div class="col-xs-5">
-									{{application.developer.username}}
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Version</label>
-								<div class="col-xs-5">
-									{{application.version}}
-								</div>
-							</div>
-							<div class="form-group row">
-								<label for="example-text-input" class="col-xs-2 col-form-label">Category</label>
-								<div class="col-xs-5">
-									{{application.category.name}}
-								</div>
+						</div>
+						<div class="form-group row">
+							<label for="example-text-input" class="col-xs-2 col-form-label">Developer</label>
+							<div class="col-xs-5">
+								{{application.developer.username}}
 							</div>
 						</div>
-				</div>
-				</div>
-
+						<div class="form-group row">
+							<label for="example-text-input" class="col-xs-2 col-form-label">Version</label>
+							<div class="col-xs-5">
+								{{application.version}}
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="example-text-input" class="col-xs-2 col-form-label">Category</label>
+							<div class="col-xs-5">
+								{{application.category.name}}
+							</div>
+						</div>
+					</div>
 			</div>
-			<br/><br/>
-			 
-				<div class="col-sm-1">
-					<button name="dev-app-close" id="dev-app-close" tabindex="5" class="btn btn-default" 
-						routerLink="'/store/apps'">Back</button>
-				</div>
-				<div class="col-sm-3 col-sm-offset-2">
-					<bo-app-subscribe [applicationId]="appid"></bo-app-subscribe>
-				</div>
-				<br><br>
-				<section>
-				<bo-app-rate  [applicationId]="appid"></bo-app-rate>
-				</section>
-				
-				<h2 ng-show="edit">Reviews</h2>
-				<a class="list-group-item list-group-item-action flex-column align-items-start"  *ngIf="isSubscribled">
-					<label>
-					<textarea ng-trim="10" #title id="title" name="title" 
-						placeholder="Title"  [(ngModel)]="newreview.title">
-					</textarea>					
-					</label>
-					<br>
-					<label>
-					<textarea ng-trim="10" #description id="description" name="description" 
-						placeholder="Post your review here!"  [(ngModel)]="newreview.description" ng-disabled="!edit">
-					</textarea>
-					</label>
+		</div>
 
-					<button *ngIf="newreview.title && newreview.description" type="submit" name="store-details" id="store-details" tabindex="2" class="btn btn-default" 
-							(click)="onSubmitViewDetails('save'); $event.preventDefault()">&#10004;Save</button>
-				</a>			
+	</div>
+	<br/><br/>
+			 
+	<div class="col-sm-1">
+		<button name="dev-app-close" id="dev-app-close" tabindex="5" class="btn btn-default" 
+			routerLink="'/store/apps'">Back</button>
+	</div>
+	<div class="col-sm-3 col-sm-offset-2">
+		<bo-app-subscribe [applicationId]="appid"
+			(subscriptionChanged)="subscriptionChanged($event)"></bo-app-subscribe>
+	</div>
+	<br><br>
+	<section>
+		<bo-app-rate  [applicationId]="appid"></bo-app-rate>
+	</section>
+				
 	
-				<div class="list-group col-md-5">					
-					<bo-review
-						*ngFor="let review of reviewItems"
-						[review]="review">
-					</bo-review>					
-				</div>
+	<div class="form-group" *ngIf="isSubscribled">
+		<h3>Write a review</h3>
+		<div class="form-group row">
+			<label for="title" >Title:</label>
+			<input type="text" class="form-control" #title id="title" name="title" 
+				placeholder="Title"  [(ngModel)]="newreview.title">
+		</div>
+		
+		<div class="form-group row">
+			<label for="description">Description:</label>
+			<textarea class="form-control" rows="4" #description id="description" name="description" 
+				placeholder="Post your review here!"  [(ngModel)]="newreview.description" ng-disabled="!edit">
+			</textarea>
+		</div>
+		<div class="form-group row">
+			<button *ngIf="newreview.title && newreview.description" type="submit" name="store-details" id="store-details" tabindex="2" class="btn btn-default" 
+					(click)="onSubmitViewDetails('save'); $event.preventDefault()">&#10004;Save</button>
+		</div>
+	</div>
+
+	<h3 ng-show="edit">Application reviews</h3>
+	<div class="list-group">					
+		<bo-review
+			*ngFor="let review of reviewItems"
+			[review]="review">
+		</bo-review>					
+	</div>
 </section>

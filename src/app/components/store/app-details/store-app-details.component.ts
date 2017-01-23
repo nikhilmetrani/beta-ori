@@ -95,4 +95,8 @@ export class StoreApplicationDetailsComponent implements OnInit {
             this.router.navigate(['/store/apps']);
         }
     }
+
+    subscriptionChanged(status) {
+        this.isSubscribled = status.value;
+    }
 }

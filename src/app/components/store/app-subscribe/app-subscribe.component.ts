@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
 import {StoreService, LoginService, UserService} from '../../../core';
 import {Router} from '@angular/router';
 
@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 })
 export class ApplicationSubscriptionComponent implements OnInit {
     @Input() applicationId: string;
+    @Output() subscriptionChanged = new EventEmitter();
 
     isSubscribled: boolean = false;
     isSignedIn: boolean;
@@ -25,8 +26,10 @@ export class ApplicationSubscriptionComponent implements OnInit {
                 (response) => {
                     if (response.status === 200) {
                         this.isSubscribled = true;
+                        this.onSubscriotionChanged(this.isSubscribled);
                     } else {
                         this.isSubscribled = false;
+                        this.onSubscriotionChanged(this.isSubscribled);
                     }
                 }
             );
@@ -35,21 +38,22 @@ export class ApplicationSubscriptionComponent implements OnInit {
 
     onSubscribleApp(event) {
         if (event === 'sub') {
-             if (!this.isSignedIn) {
-                        this.router.navigate(['/login']);
-                    }else {
-                         this.storeService.subscribeApplication(this.applicationId).subscribe(
-                (response) => {
-                    if (response.status === 400) {
-                        // bad request - Show message
-                    } else {
-                        this.isSubscribled = true;
-                    }
-                }
-                    );
-
-                    }
+            if (!this.isSignedIn) {
+                this.router.navigate(['/login']);
+            } else {
+                    this.storeService.subscribeApplication(this.applicationId).subscribe(
+                    (response) => {
+                        if (response.status === 400) {
+                            // bad request - Show message
+                        } else {
+                            this.isSubscribled = true;
+                            this.onSubscriotionChanged(this.isSubscribled);
                         }
+                    }
+                );
+
+            }
+        }
         if (event === 'unsub') {
             this.storeService.unsubscribeApplication(this.applicationId).subscribe(
                 (response) => {
@@ -57,9 +61,16 @@ export class ApplicationSubscriptionComponent implements OnInit {
                         // forbidden - shouldn't happen 
                     } else {
                         this.isSubscribled = false;
+                        this.onSubscriotionChanged(this.isSubscribled);
                     }
                 }
             );
         }
+    }
+
+    onSubscriotionChanged(subscribed) {
+        this.subscriptionChanged.emit({
+            value: subscribed
+        });
     }
 }
