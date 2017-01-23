@@ -31,55 +31,53 @@
 		<div id="collapse1" class="panel-collapse collapse in">
 			<div class="form-group row">
 				<label for="example-text-input" class="col-xs-2 col-form-label">&nbsp; Name</label>
-				<div class="col-xs-5" *ngIf="!(application.state === 'Active' || application.state === 'Recalled')">
+				<div class="col-xs-5">
 					<input type="text" #description tabindex="1" class="form-control" id="appName" name="appName" placeholder="" [(ngModel)]="application.name"
-						required (change)="onChangeAppName()">
+						required (change)="onChangeAppName()"
+						[readonly]="(application.state === 'Active' || application.state === 'Recalled')">
 					<label class="redlabel" *ngIf="!nameIsUnique">Duplicate Application name already exists</label>
-				</div>
-				<div class="col-xs-5" *ngIf="(application.state === 'Active' || application.state === 'Recalled')">
-					{{application.name}}
 				</div>
 
 			</div>
 			<div class="form-group row">
 				<label for="example-text-input" class="col-xs-2 col-form-label">&nbsp; Description</label>
-				<div class="col-xs-5" *ngIf="!(application.state === 'Active' || application.state === 'Recalled')">
-					<input type="text" #description tabindex="1" class="form-control" id="description" name="description" placeholder="" [(ngModel)]="application.description"
-						required>
-				</div>
-				<div class="col-xs-5" *ngIf="(application.state === 'Active' || application.state === 'Recalled')">
-					{{application.description}}
+				<div class="col-xs-5">
+					<textarea rows="3" #description tabindex="1" 
+						class="form-control" id="description" 
+						name="description" placeholder="" 
+						[(ngModel)]="application.description"
+						required
+						[readonly]="(application.state === 'Active' || application.state === 'Recalled')">
+					</textarea>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="example-text-input" class="col-xs-2 col-form-label">&nbsp; Version</label>
-				<div class="col-xs-5" *ngIf="!(application.state === 'Active' || application.state === 'Recalled')">
+				<div class="col-xs-5">
 					<input type="text" #version tabindex="1" class="form-control" id="version" name="version" placeholder="" [(ngModel)]="application.version"
-						required minlength="1" pattern="((\d{1,3})|(\d{1,3}.\d{1,4})|(\d{1,3}.\d{1,4}.\d{1,4}))">
-				</div>
-				<div class="col-xs-5" *ngIf="(application.state === 'Active' || application.state === 'Recalled')">
-					{{application.version}}
+						required minlength="1" pattern="((\d{1,3})|(\d{1,3}.\d{1,4})|(\d{1,3}.\d{1,4}.\d{1,4}))"
+						[readonly]="(application.state === 'Active' || application.state === 'Recalled')">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="example-text-input" class="col-xs-2 col-form-label">&nbsp; Category</label>
-				<div class="col-xs-5" *ngIf="!(application.state === 'Active' || application.state === 'Recalled')">
+				<div class="col-xs-5">
 					<select #category tabindex="1" class="form-control" id="category" name="category" placeholder="" [(ngModel)]="application.category.name"
-						required>
-										<option *ngFor="let code of categoryArray" [ngValue]="code.value">{{code.value}}</option>
-									</select>
-				</div>
-				<div class="col-xs-5" *ngIf="(application.state === 'Active' || application.state === 'Recalled')">
-					{{application.category.name}}
+						required
+						[disabled]="(application.state === 'Active' || application.state === 'Recalled')">
+						<option *ngFor="let code of categoryArray" [ngValue]="code.value">{{code.value}}</option>
+					</select>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="example-text-input" class="col-xs-2 col-form-label">&nbsp; What's New</label>
-				<div class="col-xs-5" *ngIf="!(application.state === 'Active' || application.state === 'Recalled')">
-					<input type="text" #whatsnew tabindex="1" class="form-control" id="whatsnew" name="whatsnew" placeholder="" [(ngModel)]="application.whatsNew">
-				</div>
-				<div class="col-xs-5" *ngIf="(application.state === 'Active' || application.state === 'Recalled')">
-					{{application.whatsNew}}
+				<div class="col-xs-5">
+					<textarea rows="4" #whatsnew tabindex="1"
+						class="form-control" id="whatsnew"
+						name="whatsnew" placeholder=""
+						[(ngModel)]="application.whatsNew"
+						[readonly]="(application.state === 'Active' || application.state === 'Recalled')">
+					</textarea>
 				</div>
 			</div>
 		</div>
