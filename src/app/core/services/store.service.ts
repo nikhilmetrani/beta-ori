@@ -19,7 +19,7 @@ import {Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
-import {StoreApplication} from '../';
+import {StoreApplication, User} from '../';
 import {JsonHttp} from './json-http';
 
 @Injectable()
@@ -80,6 +80,15 @@ export class StoreService {
         return this.http.get(this.storeUrl + '/applications/' + applicationId)
             .map((response) => {
                 return <StoreApplication>response.json();
+            })
+            .catch(this.logError);
+    }
+
+    getApplicationDeveloperByAppId(applicationId: string) {
+        return this.http.get(this.storeUrl + '/applications/' + applicationId + '/developer')
+            .map((response) => {
+                console.log(response);
+                return <User>response.json();
             })
             .catch(this.logError);
     }

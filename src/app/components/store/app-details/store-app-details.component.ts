@@ -17,7 +17,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { StoreApplication, StoreService, ConsumerReviewService, LoginService, Review } from '../../../core';
+import { StoreApplication, StoreService, ConsumerReviewService, LoginService, Review, UserService } from '../../../core';
 
 @Component({
     selector: 'bo-dev-app-details',
@@ -47,12 +47,16 @@ export class StoreApplicationDetailsComponent implements OnInit {
         featured: undefined, createBy: undefined, creationDate: undefined
         };
     devAppObservable: Observable<any>;
+    developerObservable: Observable<any>;
     reviewItems: Review[] = [];
     isSubscribled: boolean = false;
     isSignedIn: boolean = false;
+    isEmployee: boolean = false;
+    devIsActive: boolean = true;
     constructor( private storeService: StoreService,
     private consumerReviewService: ConsumerReviewService,
-    private loginService: LoginService, private router: Router ) { }
+    private loginService: LoginService, private router: Router,
+    private userService: UserService) { }
 
     ngOnInit() {
         this.isSignedIn = this.loginService.isSignedIn();
@@ -62,16 +66,29 @@ export class StoreApplicationDetailsComponent implements OnInit {
            this.application = app;
            this.reviewItems = app.reviews;
         });
+        this.developerObservable = this.storeService.getApplicationDeveloperByAppId(localStorage.getItem('rid'));
+        this.developerObservable.subscribe(dev => {
+           this.application.developer.rid = dev.rid;
+           this.devIsActive = dev.enabled;
+        });
         if (this.isSignedIn) {
             this.storeService.checkAppIsSubscibed(this.appid).subscribe(
-            (response) => {
-                if (response.status === 200) {
-                    this.isSubscribled = true;
-                } else {
-                    this.isSubscribled = false;
+                (response) => {
+                    if (response.status === 200) {
+                        this.isSubscribled = true;
+                    } else {
+                        this.isSubscribled = false;
+                    }
                 }
-         }
-        );
+            );
+            this.userService.get('user').subscribe((user) => {
+                user.authorities.forEach(auth => {
+                    if (auth.authority === 'ROLE_MAINTAINER' || auth.authority === 'ROLE_MANAGER') {
+                        this.isEmployee = true;
+                    }
+                });
+                // console.log(user.authorities);
+            });
         }
     }
 
@@ -98,5 +115,18 @@ export class StoreApplicationDetailsComponent implements OnInit {
 
     subscriptionChanged(status) {
         this.isSubscribled = status.value;
+    }
+
+    onClickBlockUser(rid) {
+            this.userService.block(rid).subscribe(
+                (response) => {
+                    if (response.status === 200) {
+                        this.devIsActive = false;
+                        this.router.navigate(['/store/app/details']);
+                    }
+                },
+                () => { // Handle failure to create profile 
+                }
+            );
     }
 }

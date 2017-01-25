@@ -37,4 +37,10 @@ export class UserService {
         localStorage.setItem('jwt', resp.headers.get('x-auth-token'));
       });
   }
+
+  block(id: string | number ) {
+      console.log('developerId = ' + id);
+      return this.http.post(url + '/0/admin/users/' + id + '/block', id);
+  }
+
 }
