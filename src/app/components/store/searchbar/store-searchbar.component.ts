@@ -12,13 +12,9 @@ export class StoreSearchBarComponent {
 
   onSearch() {
     if (this.query === undefined || this.query === '') {
-      this.router.navigate(['/store'], {preserveQueryParams: true});
+      this.router.navigate(['/store']);
     } else {
-      if (localStorage.getItem('client') === 'copper') {
-        this.router.navigate(['/store/search'], {queryParams: {client: 'copper', q: this.query}});
-      } else {
         this.router.navigate(['/store/search'], {queryParams: {q: this.query}});
-      }
     }
   }
 

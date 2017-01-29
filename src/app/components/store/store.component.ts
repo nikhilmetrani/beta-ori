@@ -26,7 +26,6 @@ export class StoreComponent implements OnInit {
     developerId: number;
     userName: string;
     isAuthenticated: boolean;
-    isRunningInClient: boolean = false;
     isSignedIn: boolean;
 
     constructor (private route: ActivatedRoute,
@@ -40,13 +39,6 @@ export class StoreComponent implements OnInit {
             this.isSignedIn = this.loginService.isSignedIn();
             if (this.isSignedIn) { // We are now logged in. Let's get the user name.
                 this.userService.get('user').subscribe((user) => this.userName = user.username);
-            }
-        });
-        this.route.queryParams.subscribe(params => {
-            let queryParams = params['client'];
-            this.isRunningInClient = queryParams === 'copper';
-            if (this.isRunningInClient) {
-                localStorage.setItem('client', 'copper');
             }
         });
     }
