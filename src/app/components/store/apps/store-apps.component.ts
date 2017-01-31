@@ -56,7 +56,7 @@ export class StoreAppsComponent implements OnInit {
       } else {
         this.category = undefined;
         this.categoryString = 'All';
-        this.storeItems = this.storeService.getApplications();
+        this.storeItems = this.storeService.getTrendingApplications();
       }
     });
     this.storeItems.subscribe(next => this.storeItemsArray = next);

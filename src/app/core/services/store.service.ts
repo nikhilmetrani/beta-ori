@@ -33,6 +33,10 @@ export class StoreService {
         return this.makeRequest('');
     }
 
+    getTrendingApplications() {
+        return this.makeRequest('trending');
+    }
+
     getApplicationsByCategory(category: string) {
         return this.makeRequest(category);
     }
