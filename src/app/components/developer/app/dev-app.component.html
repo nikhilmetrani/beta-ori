@@ -1,0 +1,144 @@
+<!--
+/**
+* Copyright 2016 - 29cu.io and the authors of beta-ori open source project
+
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+
+*     http://www.apache.org/licenses/LICENSE-2.0
+
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+**/
+-->
+
+<header>
+	<div class="container-fluid">
+		<h1>Create New Application</h1>
+	</div>
+</header>
+<section>
+	<form id="login-form" #f="ngForm" style="display: block;" (ngSubmit)="onSubmitCreateApplication('create')">
+		<div class="panel-group" id="accordion">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+							General</a>
+					</h4>
+				</div>
+				<br/>
+				<div id="collapse1" class="panel-collapse collapse in">
+					<div class="form-group row">
+						<label for="example-text-input" class="col-xs-2 col-form-label">&nbsp; Name</label>
+						<div class="col-xs-5">
+							<input type="text" #name tabindex="1" class="form-control" id="name" name="name" placeholder="" [(ngModel)]="newApplication.name"
+								required (change)="onChangeAppName()">
+							<label class="redlabel" *ngIf="!nameIsUnique">&nbsp; Duplicate Application name already exists</label>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="example-text-input" class="col-xs-2 col-form-label">&nbsp; Description</label>
+						<div class="col-xs-5">
+							<textarea rows="3" #description tabindex="1" 
+									class="form-control"
+									id="description" 
+									name="description" 
+									placeholder="" 
+									[(ngModel)]="newApplication.description"
+									required>
+							</textarea>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="example-text-input" class="col-xs-2 col-form-label">&nbsp; Version</label>
+						<div class="col-xs-5">
+							<input type="text" #version tabindex="1" class="form-control" id="version" name="version" placeholder="" [(ngModel)]="newApplication.version"
+								required minlength="1" pattern="((\d{1,3})|(\d{1,3}.\d{1,4})|(\d{1,3}.\d{1,4}.\d{1,4}))">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="example-text-input" class="col-xs-2 col-form-label">&nbsp; Category</label>
+						<div class="col-xs-5">
+							<select #category tabindex="1" class="form-control" id="category" name="category" placeholder="" [(ngModel)]="newApplication.category"
+								required>
+										<option *ngFor="let code of categoryArray" [ngValue]="code.name">{{code.value}}</option>
+									</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="example-text-input" class="col-xs-2 col-form-label">&nbsp; What's New</label>
+						<div class="col-xs-5">
+							<textarea rows="4" #whatsnew tabindex="1"
+								class="form-control" id="whatsnew"
+								name="whatsnew" placeholder=""
+								[(ngModel)]="newApplication.whatsNew">
+							</textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">More...</a>
+					</h4>
+				</div>
+				<div id="collapse2" class="panel-collapse collapse">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<h2>Installer configuration</h2>
+									<p>Configure application installers by selecting the platform</p>
+									<ul class="nav nav-pills">
+										<li
+											*ngFor="let installer of newApplication.installers; let i = index; trackBy: $index"
+											[ngClass]="{'active': i == 0}">
+											<a data-toggle="pill"
+											href="#inst{{i}}">
+											{{installer.os}} {{installer.platform}}
+											</a>
+										</li>
+									</ul>
+									<div class="tab-content">
+										<div id="inst{{i}}" class="tab-pane fade in"
+											*ngFor="let installer of newApplication.installers; let i = index; trackBy: $index"
+											[ngClass]="{'active': i == 0}">
+											<bo-dev-app-installer [installer]="installer"
+												[applicationState]="newApplication.state"
+												(installerChanged)="installerChanged($event)"></bo-dev-app-installer>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="has-error">
+				<span id="installerHelp" class="help-block" *ngIf="downlodUrlValidation === true">
+						<strong>Error:</strong> Please provide download url for atleast one platform!</span>
+			</div>
+		</div>
+		<br/><br/>
+		<div class="form-group row">
+			<label for="example-text-input" class="col-xs-2 col-form-label"></label>
+			<div class="col-sm-2 col-sm-offset-1">
+				<button type="submit" name="dev-app-create" id="dev-app-create" tabindex="4" class="form-control btn btn-success" [disabled]="!f.valid"
+					(click)="onSubmitCreateApplication('create'); $event.preventDefault()">Save</button>
+			</div>
+			<div class="col-sm-2 col-sm-offset-1">
+				<button type="submit" name="dev-app-close" id="dev-app-close" tabindex="5" class="form-control btn btn-success" (click)="onSubmitCreateApplication('close'); $event.preventDefault()">Close</button>
+			</div>
+			<!--div class="col-sm-2 col-sm-offset-1">
+					<button type="submit" name="dev-app-publish" id="dev-app-publish" tabindex="5" class="form-control btn btn-success" [disabled]="!f.valid"
+						(click)="onSubmitCreateApplication('publish'); $event.preventDefault()">Publish</button>
+				</div-->
+		</div>
+	</form>
+</section>

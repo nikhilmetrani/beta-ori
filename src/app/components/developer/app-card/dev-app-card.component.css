@@ -1,0 +1,106 @@
+/**
+* Copyright 2016 - 29cu.io and the authors of beta-ori open source project
+
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+
+*     http://www.apache.org/licenses/LICENSE-2.0
+
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+**/
+
+.buttonRight {
+    font: bold normal normal 12px Helvetica;
+    color: white;
+    width: 80px;
+    line-height: 10px;
+    float: right;
+    padding: 6px;
+    background-color: #FF7551;
+    border: 1px solid #FF7551;
+    margin: 8px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+button:hover {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+}
+
+.buttonLeft {
+    font: bold normal normal 12px Helvetica;
+    color: seagreen;
+    width: 80px;
+    line-height: 16px;
+    float: right;
+    padding: 6px;
+    border: 1px solid seagreen;
+    margin: 8px;
+    text-align: center;
+    border-radius: 2px;
+    background-color: ghostwhite;
+} 
+
+.rigthValues {
+    font: bold normal normal 30px Helvetica;
+    width: 100px;
+    line-height: 10px;
+    padding-top: 5px;
+    margin-left: 8px;
+    text-align: right;
+}
+.appbox {
+    width: 260px;
+    height: 300px;
+    background-color: #F9F9F9;
+    background-position: center;
+    float: left;
+    margin: 4px;
+}
+
+.appbox-active {
+    border: 2px solid grey;
+}
+
+.appbox-staging {
+    border: 2px solid green;
+}
+
+.appbox-others {
+    border: 2px solid red;
+}
+
+.applogo {
+    margin-top: 40px;
+    margin-left: 80px;
+    float: left;
+    width: 100px;
+    height: 100px;
+    background: no-repeat;
+    background-position: center;
+}
+
+h2 { 
+    font: bold normal normal 1.6em Arial;
+    text-align: center;
+    margin-top: 220px;
+
+}
+p {
+    font: bold normal normal 12px Helvetica;
+    line-height: 20px;
+    color: grey;
+    text-align: left;
+    margin-left: 14px;
+}
+.tools {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}

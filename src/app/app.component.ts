@@ -1,5 +1,5 @@
 /**
-* Copyright 2016 - 29cu.io and the authors of alpha-umi open source project
+* Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -14,14 +14,11 @@
 * limitations under the License.
 **/
 
-import {Component, OnInit} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: "app",
-    templateUrl: "./app/app.html"
+  selector: 'bo-app', // <bo-app></bo-app>
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css', '../style/app.css'],
 })
-export class AppComponent implements OnInit {
-    ngOnInit() {
-        console.log("Application component initialized ...");
-    }
-}
+export class AppComponent { }

@@ -1,0 +1,71 @@
+<!--
+/**
+* Copyright 2016 - 29cu.io and the authors of beta-ori open source project
+
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+
+*     http://www.apache.org/licenses/LICENSE-2.0
+
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+**/
+-->
+
+<header>
+	<div class="container-fluid">
+		<h1>Category Maintenance</h1>
+	</div>
+</header>
+<section>
+	<bo-browse-list [browseItems]="categoryArray"
+                    [title]="'Categories'"
+                    (itemSelected)="selectCategory($event)">
+	</bo-browse-list>
+	<form id="login-form" #f="ngForm" style="display: block;" (ngSubmit)="onSubmitCreateCategory('create')">
+		<div class="panel-group" id="accordion">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+							Create New</a>
+					</h4>
+				</div>
+				<br/>
+				<div id="collapse1" class="panel-collapse collapse in">
+					<div class="form-group row">
+						<label for="example-text-input" class="col-xs-2 col-form-label">&nbsp; Name:</label>
+						<div class="col-xs-5">
+							<input type="text" #name tabindex="1" class="form-control" id="name" name="name" placeholder="" [(ngModel)]="newCategory.name"
+								required (change)="onChangeCatName()">
+							<label class="redlabel" *ngIf="!nameIsUnique">Duplicate name</label>
+						</div>
+					</div>
+				</div>
+				<!--<div class="form-group row">
+						<label for="example-text-input" class="col-xs-2 col-form-label">&nbsp; Existing:</label>
+						<div class="col-xs-5">
+							<select #category tabindex="2" class="form-control" id="ExistingCategories" name="ExistingCategories" placeholder="" required>
+								<option *ngFor="let code of categoryArray" [ngValue]="code.name">{{code.value}}</option>
+							</select>
+						</div>
+				</div>	-->
+			</div>
+		</div>
+		<br/><br/>
+		<div class="form-group row">
+			<label for="example-text-input" class="col-xs-2 col-form-label"></label>
+			<div class="col-sm-2 col-sm-offset-1">
+				<button type="submit" name="dev-cat-create" id="dev-cat-create" tabindex="3" class="form-control btn btn-success" [disabled]="!f.valid"
+					(click)="onSubmitCreateCategory('create'); $event.preventDefault()">Save</button>
+			</div>
+			<div class="col-sm-2 col-sm-offset-1">
+				<button type="submit" name="dev-cat-close" id="dev-cat-close" tabindex="4" class="form-control btn btn-success" (click)="onSubmitCreateCategory('close'); $event.preventDefault()">Close</button>
+			</div>
+		</div>
+	</form>
+</section>

@@ -1,0 +1,42 @@
+<section *ngIf="featureItemsArray && featureItemsArray.length > 0">
+    <section class="section-white">
+        <div class="container">
+
+            <div id="featured-apps" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#featured-apps" data-slide-to="0" class="active"></li>
+                    <li data-target="#featured-apps" data-slide-to="1"></li>
+                    <li data-target="#featured-apps" data-slide-to="2"></li>
+                    <li data-target="#featured-apps" data-slide-to="3"></li>
+                    <li data-target="#featured-apps" data-slide-to="4"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item" *ngFor="let application of featureItemsArray; let i = index; trackBy: $index" [ngClass]="{'active':i===0}">
+                        <img class="img-feature" src="./image4.jpg" alt="{{application.name}}" style="width:936px;height:300px;">
+                        <div class="header-text hidden-xs">
+                            <div class="col-md-12 text-center">
+                                <h2><span><a [routerLink]="'/store/app/details'" (click)="viewApplicationDetails(application.rid)">{{application.name}}</a></span></h2>
+                                <br>
+                                <section>
+                                    <div class="col-md-12 left">
+                                        <bo-app-subscribe [applicationId]="application.rid"></bo-app-subscribe>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#featured-apps" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#featured-apps" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+</section>

@@ -1,5 +1,5 @@
 /**
-* Copyright 2016 - 29cu.io and the authors of alpha-umi open source project
+* Copyright 2016 - 29cu.io and the authors of beta-ori open source project
 
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -14,46 +14,126 @@
 * limitations under the License.
 **/
 
-import {NgModule}      from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {HttpModule} from "@angular/http";
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ENV_PROVIDERS } from './environment';
+import { AppComponent } from './app.component';
+import { CommonModule } from '@angular/common';
+import { UPLOAD_DIRECTIVES } from 'ng2-uploader/ng2-uploader';
+import { MyDatePickerModule } from 'mydatepicker';
 
-import {AppComponent} from "./app.component";
-import {AboutComponent} from "./about/components/about.components";
-import {LoginComponent} from "./login/login.component";
-import {LoginService} from "./login/login.service";
+import {
+  AboutComponent,
+  LoginComponent,
+  StoreComponent,
+  StoreNavbarComponent,
+  DeveloperComponent,
+  StoreAppsComponent,
+  ConsumerProfileComponent,
+  ApplicationComponent,
+  DeveloperApplicationCardComponent,
+  DeveloperApplicationsComponent,
+  DeveloperApplicationsBundleComponent,
+  DeveloperProfileComponent,
+  DeveloperApplicationComponent,
+  DeveloperApplicationDetailsComponent,
+  DeveloperSettingsComponent,
+  DeveloperDashboardComponent,
+  DeveloperNavbarComponent,
+  DeveloperApplicationUpdateComponent,
+  UploadComponent,
+  DeveloperWelcomeComponent,
+  ApplicationSubscriptionComponent,
+  ApplicationRateComponent,
+  ConsumerAppsComponent,
+  ConsumerSubscriptionComponent,
+  FeaturedAppsComponent,
+  StoreApplicationDetailsComponent,
+  ReviewComponent,
+  StoreLandingComponent,
+  StoreSearchBarComponent,
+  StoreSearchViewComponent,
+  StoreBrowseListComponent,
+  CategoryComponent,
+  DeveloperAppInstallerComponent
+} from './components';
+import {
+  DeveloperListPipe,
+  CategoryListPipe,
+  ApplicationListPipe,
+  FavoriteDirective,
+  HideActiveAppsListPipe,
+  RatingLikedDirective,
+  RatingDislikedDirective,
+  AppCategoryFilterPipe
+} from './core';
 
-import {DeveloperListPipe} from './store/shared/developer-list.pipe';
-import {CategoryListPipe} from './store/shared/category-list.pipe';
-import {FavoriteDirective} from './store/shared/favorite.directive';
-import {ApplicationList, Application, StoreService} from './store/index';
+// import {SignupModule} from './components/signup/signup.module';
+import { BOCoreModule } from './core/bo-core.module';
 
-import {routing, appRoutingProviders} from './app.routes';
-import {FormsModule} from "@angular/forms";
+import { routing } from './app.routing';
+
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule,
-        routing,
-        HttpModule
-    ],
-    declarations: [
-        AppComponent,
-        DeveloperListPipe,
-        CategoryListPipe,
-        ApplicationList,
-        FavoriteDirective,
-        Application,
-        AboutComponent,
-        LoginComponent
-    ],
-    providers: [
-        appRoutingProviders,
-        LoginService,
-        StoreService
-    ],
-    bootstrap: [AppComponent]
+  imports: [
+    CommonModule,
+    BrowserModule,
+    FormsModule,
+    MyDatePickerModule,
+    ReactiveFormsModule,
+    routing,
+    BOCoreModule
+  ],
+  declarations: [
+    UPLOAD_DIRECTIVES,
+    AppComponent,
+    AboutComponent,
+    UploadComponent,
+    StoreComponent,
+    StoreNavbarComponent,
+    StoreAppsComponent,
+    ConsumerProfileComponent,
+    ApplicationComponent,
+    DeveloperComponent,
+    LoginComponent,
+    DeveloperApplicationCardComponent,
+    DeveloperApplicationComponent,
+    DeveloperApplicationDetailsComponent,
+    DeveloperApplicationsComponent,
+    DeveloperProfileComponent,
+    DeveloperSettingsComponent,
+    DeveloperDashboardComponent,
+    DeveloperApplicationsBundleComponent,
+    DeveloperNavbarComponent,
+    DeveloperListPipe,
+    CategoryListPipe,
+    AppCategoryFilterPipe,
+    FavoriteDirective,
+    RatingLikedDirective,
+    RatingDislikedDirective,
+    ApplicationListPipe,
+    DeveloperWelcomeComponent,
+    DeveloperApplicationUpdateComponent,
+    HideActiveAppsListPipe,
+    ApplicationSubscriptionComponent,
+    ApplicationRateComponent,
+    ConsumerAppsComponent,
+    ConsumerSubscriptionComponent,
+    FeaturedAppsComponent,
+    StoreApplicationDetailsComponent,
+    ReviewComponent,
+    StoreLandingComponent,
+    StoreSearchBarComponent,
+    StoreSearchViewComponent,
+    StoreBrowseListComponent,
+    CategoryComponent,
+    DeveloperAppInstallerComponent
+  ],
+  providers: [
+    ENV_PROVIDERS
+  ],
+  entryComponents: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

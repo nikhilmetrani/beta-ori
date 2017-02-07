@@ -1,0 +1,82 @@
+<!--
+/**
+* Copyright 2016 - 29cu.io and the authors of beta-ori open source project
+
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+
+*     http://www.apache.org/licenses/LICENSE-2.0
+
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+**/
+-->
+
+<div class="container-fluid" *ngIf="!isProfileConfirmed">
+    <h1>Welcome to USM Store</h1>
+    <p>Please click create profile to start publishing applications.</p>
+    <button type="button" class="btn btn-success" (click)="onClickCreateProfile()">Create profile</button>
+</div>
+
+<div class="container-fluid" *ngIf="isProfileConfirmed">
+    <header>
+        <h1>Your Profile</h1>
+    </header>
+    <br/>
+    <section class="create-profile">
+        <form #f="ngForm" style="display: block;" (ngSubmit)="onSubmitChangePassword()">
+<div class="form-group row">
+    <label for="example-text-input" class="col-xs-2 col-form-label">Email</label>
+    <div class="col-xs-5">
+        <input type="text" #description tabindex="1" class="form-control" id="email" name="email" placeholder="email@xyz.com" [(ngModel)]="consumerProfile.email"
+            [disabled]="true" required>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="example-text-input" class="col-xs-2 col-form-label">Change Password:</label>
+</div>
+<div class="form-group row">
+    <label for="example-text-input" class="col-xs-2 col-form-label">Old Password</label>
+    <div class="col-xs-5">
+        <input type="password" #description tabindex="2" class="form-control" id="currentpassword" name="currentpassword" required
+                [(ngModel)]="currentPassword">
+    </div>
+</div>
+<div class="form-group row">
+    <label for="example-text-input" class="col-xs-2 col-form-label">Change Password</label>
+    <div class="col-xs-5">
+        <input type="password" #description tabindex="3" class="form-control" id="newpassword" name="newpassword" required
+                [(ngModel)]="newPassword">
+    </div>
+</div>
+<div class="form-group row">
+<label for="example-text-input" class="col-xs-2 col-form-label">Confirm Password</label>
+    <div class="col-xs-5">
+        <input type="password" #description tabindex="4" class="form-control" id="confirmedPassword" name="confirmedPassword" required
+                [(ngModel)]="confirmedPassword">          
+    </div>
+</div>  
+<br/>
+<div class="form-group row">
+    <div class="alert alert-danger col-xs-6" *ngIf="errorString != undefined">
+        <strong>Error:</strong> {{errorString}}
+    </div>
+    <div class="alert alert-success col-xs-6" *ngIf="successString != undefined">
+        <strong>Success:</strong> {{successString}}
+    </div>
+</div>
+<div class="form-group row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <button (click)="onClickCloseProfile(); $event.preventDefault()" tabindex="5" class="form-control btn btn-default pull-right" type="submit" >Cancel</button>
+    </div>
+    <div class="col-sm-2 col-sm-offset-1">
+        <button tabindex="3" class="form-control btn btn-success pull-right" type="submit" [disabled]="!f.valid">Update</button>
+    </div>
+</div>
+</form>
+</section>
+</div>

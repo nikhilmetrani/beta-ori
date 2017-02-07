@@ -1,0 +1,59 @@
+<!--
+/**
+* Copyright 2016 - 29cu.io and the authors of beta-ori open source project
+
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+
+*     http://www.apache.org/licenses/LICENSE-2.0
+
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+**/
+-->
+
+<header>
+    <bo-dev-welcome *ngIf="!(devAppsArray && devAppsArray.length > 0)"></bo-dev-welcome>
+    <div class="container" *ngIf="devAppsArray && devAppsArray.length > 0">
+        <h1>Developer Applications</h1>
+        <form class="form-horizontal">
+            <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" name="appSearch" type="text" placeholder="Search for applications by name..." [(ngModel)]="query">
+                <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" (click)="onClickCleanSearch(); $event.preventDefault()">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+                        <button class="btn btn-default" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+            </div>
+            </div>
+        </form>
+        <div>
+            <label class="switch">
+                <input type="checkbox" #activeApps [checked]=false                                       
+                        (change)="onHideActiveApps(activeApps.checked)">
+                <div class="slider round"></div>
+            </label>
+            <label class="switchText"> Hide applications published to store</label>
+        </div>
+    </div>
+</header>
+<br><br>
+<section *ngIf="devAppsArray && devAppsArray.length > 0 && hideActiveApps">
+    <!--<bo-upload [allowedExtensions]="imageExtensions" [uploadURL]="uploadURL"></bo-upload>-->
+    <bo-dev-app-card *ngFor="let application of (devAppsArray | boHideActiveAppsList | boApplicationList:query)"
+        [application]="application"></bo-dev-app-card>
+</section>
+<section *ngIf="devAppsArray && devAppsArray.length > 0 && !hideActiveApps">
+    <!--<bo-upload [allowedExtensions]="imageExtensions" [uploadURL]="uploadURL"></bo-upload>-->
+    <bo-dev-app-card *ngFor="let application of (devAppsArray | boApplicationList:query)"
+        [application]="application"></bo-dev-app-card>
+</section>
+

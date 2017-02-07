@@ -1,0 +1,8 @@
+<a class="list-group-item list-group-item-action flex-column align-items-start">
+    <!--Header-->
+    <h4 class="list-group-item-heading">{{review.title}}</h4>
+    <!--Content-->
+    <p class="list-group-item-text">{{review.description}}</p>
+    <!--Metadata-->
+    <small class="text-muted">By: {{review.createBy}}, On: {{review.creationDate | date:'MM/dd/yyyy @ h:mma'}}</small>
+</a>

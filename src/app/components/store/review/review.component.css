@@ -1,0 +1,65 @@
+/**
+* Copyright 2016 - 29cu.io and the authors of beta-ori open source project
+
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+
+*     http://www.apache.org/licenses/LICENSE-2.0
+
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+**/
+
+:host {
+    display: flex;
+    min-height: 10vh;
+    flex-direction: column;
+    padding: 5px;
+}
+header {
+    color: #32435b;
+}
+header.category-development {
+    color: #53ace4;
+}
+header.category-productivity {
+    color: #45bf94;
+}
+header.category-photography {
+    color: #ff704d;
+}
+header > h2 {
+    font-size: 1.4em;
+    font-style: italic;
+}
+header > h2.error {
+    color: #d93a3e;
+}
+section {
+    flex: 1;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+}
+section > bo-application {
+    margin: 5px;
+}
+footer {
+    text-align: right;
+}
+footer .icon {
+    width: 64px;
+    height: 64px;
+    margin: 15px;
+}
+p {
+    font: bold normal normal 12px Helvetica;
+    line-height: 20px;
+    color: grey;
+    text-align: left;
+    margin-left: 14px;
+}

@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "6.7.0"
+cache:
+  directories:
+    - $HOME/.npm
+    - node_modules
+sudo: false
+notifications:
+  email:
+    recipients:
+      - a0135914@u.nus.edu
+      - a0135952@u.nus.edu
+      - liyufeng@u.nus.edu
+      - jingdong@u.nus.edu
+      - jayavignesh@u.nus.edu
+      - a0135916@u.nus.edu
+      - nikhilmetrani@u.nus.edu
+    on_success: change # default: change
+    on_failure: always # default: always
