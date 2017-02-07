@@ -19,6 +19,7 @@ import {User, Link, Category, Review } from '../';
 export interface StoreApplication {
     rid: string;
     name: string;
+    description: string;
     developer: User;
     links: Link[];
     category: Category;

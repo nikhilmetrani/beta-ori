@@ -6,13 +6,13 @@
       <tr>
         <td class="block">
             <button type="button" class="btn btn-default btn-xs" [ngClass]="{'disabled':!isSubscribled}" (click)="onRateApp('like')"
-            [boLiked]="appRate == 0" >
+            [boLiked]="appRate == '0'" >
                 <span class="glyphicon glyphicon-thumbs-up"></span> Like
             </button>
         </td>
         <td class="block">
             <button type="button" class="btn btn-default btn-xs" [ngClass]="{'disabled':!isSubscribled}" (click)="onRateApp('dislike')"
-            [boDisliked]="appRate == 1">
+            [boDisliked]="appRate == '1'">
                 <span class="glyphicon glyphicon-thumbs-down" ></span> Unlike
             </button>
         </td>       

@@ -66,6 +66,7 @@ export class DeveloperApplicationUpdateComponent implements OnInit {
             }
         ]
     };
+    $index = 0;
     // categoryArray: Code[] = [];
     // categoryObservable: Observable<any>;
     downlodUrlValidation: boolean = false;

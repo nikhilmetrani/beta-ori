@@ -32,7 +32,7 @@ export class StoreApplicationDetailsComponent implements OnInit {
     @Input() applicationId: string;
     appid: string;
     application: StoreApplication = {
-        rid: undefined,
+        rid: undefined, description: undefined,
         name: undefined, category: {id: undefined, name: undefined},
         developer: { rid: undefined, username: undefined, firstname: undefined,
         lastname: undefined, email: undefined, authorities: undefined,

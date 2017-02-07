@@ -68,6 +68,7 @@ export class DeveloperApplicationComponent implements OnInit {
             }
         ]
     };
+    $index = 0;
     categoryArray: Code[] = [];
     categoryObservable: Observable<any>;
 
